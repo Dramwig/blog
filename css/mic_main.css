@@ -2280,7 +2280,7 @@
 			#me {
 				padding: 0;
 				margin-right: 3rem; 
-				height: 20em;
+				height: 20em; /* 自我介绍白框高度 */
 			}
 
 				#me .pic {
@@ -2408,7 +2408,7 @@
 				padding: 15px 15px 15px 15px;
 				margin: 0 0 7px 0;
 				background: #ffffff;
-				border-radius:5px;
+				border-radius:5px; /* 自我介绍白框圆角 */
 				box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.25);
 			}
 
@@ -2426,7 +2426,7 @@
 
 				#me .pic img {
 					display: block;
-					border-radius:5px;
+					border-radius:5px; /* 人照片圆角*/
 					width: 100%;
 				}
 
@@ -2452,8 +2452,9 @@
 	}
 
 /*-----------------artivle------------*/
-/* link_containers */
+/* link_containers */ 
 
+/* 文章栏 */
 	.link_container {
 		margin-left: auto;
 		margin-right: auto;
@@ -2616,7 +2617,7 @@
 
 	}
 
-/* Grid */
+/* Grid 方格 */
 
 	.link_row {
 		border-bottom: solid 1px transparent;
@@ -3602,7 +3603,7 @@
 		}
 
 		.\31 2u\28narrower\29, .\31 2u\24\28narrower\29 {
-			width: 100%;
+			width: 100%; /*文章link宽*/
 			clear: none;
 			margin-left: 0;
 		}
@@ -4166,12 +4167,12 @@
 
 /* link_box */
 
-	.link_box {
+	.link_box { /* 文章白导航栏 */
 		background: #fff;
-		border-radius: 6px;
+		border-radius: 6px; /* 圆角 */
 		link_box-shadow: 0 2px 0 0 #e5e5e5;
 		margin: 0 0 2em 0;
-		padding-bottom: 2rem;
+		padding-bottom: 2rem; /* 高度 */
 		
 	}
 
@@ -4307,8 +4308,8 @@
 	}
 	.page_title{
 		position: relative;
-		width: 100%;
-		height:300px; 
+		width: 100%;    /* 100 文章列表窗口图片宽度 */
+		height: 300px; /* 300 文章列表窗口高度 */
 		_height:expression(this.height > 400 ? "400px" : this.height);
 	}
 	.page_title h1{
