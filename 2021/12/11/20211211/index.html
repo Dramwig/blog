@@ -1,231 +1,431 @@
-<!DOCTYPE HTML>
-<html>
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
 
 <head>
-	<link rel="bookmark"  type="image/x-icon"  href="/img/logo.png"/>
-	<link rel="shortcut icon" href="/img/logo.png">
-	
-			    <title>
-    风倾客栈 ✧
-    </title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="/css/mic_main.css" />
-    <link rel="stylesheet" href="/css/dropdownMenu.css" />
-    <meta name="keywords" content="dramwig" />
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个神秘的人">
+  <meta name="author" content="epochxi">
+  <meta name="keywords" content="dramwig">
+  <meta name="description" content="今天，突然看见了一个人的朋友圈，震惊了好久。一个故人，发了一个关于随机森林和决策树的说说，配图有她写的python代码以及是“大数据工作室”的文件。很厉害呀，因为我一直想学python但是一直放在了一边，因为会c++，多次可以实践的机会也被c++代替了，这也是我现在依然不会matlab和python的一个次要原因。回想大学的第一个学期就结束了，而我学到了什么呢？是数学建模、是高数、现代还是一些其他">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反思">
+<meta property="og:url" content="http://example.com/2021/12/11/20211211/index.html">
+<meta property="og:site_name" content="风倾客栈 ✧">
+<meta property="og:description" content="今天，突然看见了一个人的朋友圈，震惊了好久。一个故人，发了一个关于随机森林和决策树的说说，配图有她写的python代码以及是“大数据工作室”的文件。很厉害呀，因为我一直想学python但是一直放在了一边，因为会c++，多次可以实践的机会也被c++代替了，这也是我现在依然不会matlab和python的一个次要原因。回想大学的第一个学期就结束了，而我学到了什么呢？是数学建模、是高数、现代还是一些其他">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-11T07:50:00.000Z">
+<meta property="article:modified_time" content="2021-12-11T08:13:49.115Z">
+<meta property="article:author" content="epochxi">
+<meta property="article:tag" content="随笔">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>反思 - 风倾客栈 ✧</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
     
-    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	 
-    <noscript>
-        <link rel="stylesheet" href="/css/noscript.css" />
-    </noscript>
-    <style type="text/css">
-        body:before {
-          content: ' ';
-          position: fixed;
-          top: 0;
-          background: url('/img/bg.jpg') center 0 no-repeat;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          background-size: cover; 
-        }
-    </style>
-
-			    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
   
 
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery.scrollex.min.js"></script>
-    <script src="/js/jquery.scrolly.min.js"></script>
-    <script src="/js/skel.min.js"></script>
-    <script src="/js/util.js"></script>
-    <script src="/js/main.js"></script>
-	
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
-    
-		
-<!-- Layouts -->
 
 
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>风倾客栈</strong>
+    </a>
 
-<!--  代码渲染  -->
-<link rel="stylesheet" href="/css/prism_okaidia.css" />
-<link rel="stylesheet" href="/css/typo.css" />
-<!-- 文章页 -->
-<body class="is-loading">
-    <!-- Wrapper 外包 s-->
-    <div id="wrapper" class="fade-in">
-        <!-- Intro 头部显示 s -->
-        <!-- Intro 头部显示 e -->
-        <!-- Header 头部logo start -->
-        <header id="header">
-    <a href="/" class="logo">风居处</a>
-</header>
-        <!-- Nav 导航条 start -->
-        <nav id="nav" class="special" >
-            <ul class="menu links" >
-			<!-- Homepage  主页  --> 
-			<li >
-	            <a href="/" rel="nofollow">客栈</a>
-	        </li>
-			<!-- categories_name  分类   --> 
-	        
-	        <!-- archives  归档   --> 
-	              
-			<!-- Pages 自定义   -->
-			
-			<li>
-				<a href="/tag/" title="标签">
-					标签
-				</a>
-			</li>
-			
-			<li>
-				<a href="/friend/" title="友链">
-					友链
-				</a>
-			</li>
-			
-			<li>
-				<a href="/update/" title="更新">
-					更新
-				</a>
-			</li>
-			
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-            </ul>
-            <!-- icons 图标   -->
-			<ul class="icons">
-                    
-                    <li>
-                        <a title="github" href="https://github.com/dramwig" target="_blank" rel="noopener">
-                            <i class="icon fa fa-github"></i>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a title="qq" href="https://user.qzone.qq.com/393669798/infocenter" target="_blank" rel="noopener">
-                            <i class="icon fa fa-qq"></i>
-                        </a>
-                    </li>
-                    
-			</ul>
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/update/">
+                
+                更新
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                朋友
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 </nav>
 
-        <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://s3.bmp.ovh/imgs/2021/11/9b9223b66cb2f32d.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >反思</h2></a>
-            </div>
-            <!-- Post -->
-            <div class="typo" style="padding: 3rem;">
-                <p>今天，突然看见了一个人的朋友圈，震惊了好久。一个故人，发了一个关于随机森林和决策树的说说，配图有她写的python代码以及是“大数据工作室”的文件。很厉害呀，因为我一直想学python但是一直放在了一边，因为会c++，多次可以实践的机会也被c++代替了，这也是我现在依然不会matlab和python的一个次要原因。回想大学的第一个学期就结束了，而我学到了什么呢？是数学建模、是高数、现代还是一些其他什么东西，我感受到我虚度的时间的流失，包括在这里，也能看见光阴的影子。</p>
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="反思">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-11 15:50" pubdate>
+        2021年12月11日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      377 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">反思</h1>
+            
+            <div class="markdown-body">
+              <p>今天，突然看见了一个人的朋友圈，震惊了好久。一个故人，发了一个关于随机森林和决策树的说说，配图有她写的python代码以及是“大数据工作室”的文件。很厉害呀，因为我一直想学python但是一直放在了一边，因为会c++，多次可以实践的机会也被c++代替了，这也是我现在依然不会matlab和python的一个次要原因。回想大学的第一个学期就结束了，而我学到了什么呢？是数学建模、是高数、现代还是一些其他什么东西，我感受到我虚度的时间的流失，包括在这里，也能看见光阴的影子。</p>
 <p>半期考试前后可能是我这学期至今最充实，最高效的时间了，而这一切，完全是不够的——无论是python还是随机森林，我都不会，甚至不了解，虽然这又学习方向上的差距，但是，随机森林是可以属于数学建模的，而我竟然还是一无所知。</p>
 <p>在别人已经学会了很多新知识，而我却还在原地，所以，我究竟在做什么?</p>
 
             </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%8A%A8%E6%80%81/">动态</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/06/20211206/">
+                        <span class="hidden-mobile">近日小结</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-            <!-- Post Comments -->
             
-    <!-- 使用 valine -->
-<div id="comment">
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<script>
-    new Valine({
-        el: '#comment' , // ������Ԫ�أ�Ҫ��div�� Valine �ĳ�ʼ����������������һ��CSS ѡ������Ҳ������һ��ʵ�ʵ�HTMLԪ�ء�
-        //meta: ['nick','mail','link'], //������������� Ĭ��ֵ:['nick','mail','link']
-        count_el: 'span.comment-count' , // ���ۼ���Ԫ�أ�Ҫ��span��
-        lang: 'zh-cn',	 // ���ԣ�zh-cn��en��
-        app_id: 't9jCQpAs0bonvdH69rBoVs08-gzGzoHsz',
-        app_key: 'IVwl94UT4wnOPWUgwn4AfOCE',
-        placeholder: '世界的小小漂泊者呀，把你的足迹留在我的文字里吧…', // ��ʾ��
-        admin_email_hash: 'epochzici@gmail.com',
-        max_nest: 3,	
-        pageSize: '10',
-        avatar: 'robohash', //ͷ��
-        avatar_cdn: 'https://gravatar.loli.net/avatar/',
-        avatarForce: true,// ÿ�η���ǿ����ȡ���µ������б�ͷ��
-        recordIP: true,//�Ƿ��¼������IP
-        enableQQ: true,//�Ƿ������ǳƿ��Զ���ȡQQ�ǳƺ�QQͷ��
-        
-        emojiCDN: '//i0.hdslb.com/bfs/emote/', // ����Bilibili�������ַ
-        emojiMaps: { // ����title��ͼƬӳ��
-            "tv_doge": "6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png",
-            "tv_����": "a8111ad55953ef5e3be3327ef94eb4a39d535d06.png",
-            "tv_͵Ц": "bb690d4107620f1c15cff29509db529a73aee261.png",
-            "tv_�ټ�": "180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png",
-            "tv_��Į": "b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png",
-            "tv_��ŭ": "34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png",
-            "tv_����": "34db290afd2963723c6eb3c4560667db7253a21a.png",
-            "tv_�ɰ�": "9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png",
-            "tv_��Ѫ": "09dd16a7aa59b77baa1155d47484409624470c77.png",
-            "tv_��": "fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png",
-            "tv_Ż��": "9f996894a39e282ccf5e66856af49483f81870f3.png",
-            "tv_��": "241ee304e44c0af029adceb294399391e4737ef2.png",
-            "tv_��Ц": "1f0b87f731a671079842116e0991c91c2c88645a.png",
-            "tv_����": "093c1e2c490161aca397afc45573c877cdead616.png",
-            "tv_���": "23269aeb35f99daee28dda129676f6e9ea87934f.png",
-            "tv_ί��": "d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png",
-            "tv_����": "a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png",
-            "tv_����": "7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png",
-            "tv_΢Ц": "70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png",
-            "tv_˼��": "90cf159733e558137ed20aa04d09964436f618a1.png",
-            "tv_����": "0d15c7e2ee58e935adc6a7193ee042388adc22af.png",
-            // ... �������
-        } 
-    });
-</script>
-</div>
-<style>
-   #comment{
-        padding: 2pc; /*左右留宽*/
-    }
-</style>
-
-
+          </article>
         </div>
-        <!-- Copyright 版权 start -->
-                <div id="copyright">
-            <ul>
-                <li>&copy;2021 <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black"s>风倾</a></li>
-                <li>不远遐路,幸见光临</li>
-                <!-- 页尾
-                <li>&copy;Powered By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
-                <li>Design: <a target="_blank" rel="noopener" href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>
-                 end -->
-            </ul>
-            
-                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-			 
-				
-            
-        </div>
+      </div>
     </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
 </body>
-
-
-
- 	
 </html>
