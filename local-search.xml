@@ -8,7 +8,7 @@
     <link href="/2021/12/15/test/"/>
     <url>/2021/12/15/test/</url>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>        <div id="aplayer-zrTqVsTB" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <div class="hljs code-wrapper"><pre class="aplayer-lrc-content"></pre></div>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-zrTqVsTB"),            narrow: false,            autoplay: false,            showlrc: false,            music: {              title: "123",              author: "321",              url: "https://music.163.com/song/media/outer/url?id=27571865",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><!-- 进阶示例 -->    <div id="aplayer-SloVaDNz" class="aplayer aplayer-tag-marker meting-tag-marker"         data-id="2350798674" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="true" data-mutex="false" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"    ></div>]]></content>
     
     
     
@@ -199,6 +199,17 @@
   
   
   <entry>
+    <title>about me</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>Hi~ 啊哈，这里是<strong>风倾✧</strong>。<br />你也可以称呼为 epochxi &amp; Dramwig (其实并没有人这么叫我qwq……)<br />但是我好像有好多好多的名字！<br />都是回忆了……</p><p>观察者人格，不过似乎有转变。<br />想保留内心的温柔与明月，<br />希望留住留在内心的少年</p><hr /><p>GitHub：<a href="https://github.com/Dramwig">@Dramwig</a><br />知乎：     <a href="https://www.zhihu.com/people/feng-qing-51-31">@风倾</a><br />QQ：     <a href="https://user.qzone.qq.com/393669798/infocenter">@曦远</a></p><p>邮箱 (email)：</p><!-- gmail：--><-- epochzici@gmail.com<p><a href="mailto:epochzici@gmail.com">写给风倾</a></p> <!-- outlook：--><-- dramwig@outlook.com<p><a href="mailto:dramwig@outlook.com">写给风倾</a></p> <!-- outlook：--><-- epochzixi@outlook.com<p><a href="mailto:393669798@qq.com">写给风倾</a></p><hr /><p><strong>一些成就：</strong><br /><font size =2 face = "宋体"><br />  某软件能力认证某等奖<br />  某信息奥林匹克竞赛某等奖<br />  某物理奥林匹克竟赛某等奖<br />  某学校ACM月赛某等奖<br />  某学校ACM新秀杯某等奖<br />  某数学建模亚太杯某等奖<br />  某学校数学建模新秀杯某等奖<br /></font></p><hr /><p>PS：本小站代码markdown渲染经常出错……</p><p><font size =1 >BLOG: Power By <a href="https://hexo.io/zh-cn/index.html">Hexo</a> &amp; <a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a> <br />更多详见<a href="https://dramwig.github.io/update/">更新日志</a><br /></font></p>]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Gallery</title>
     <link href="/"/>
     <url>/</url>
@@ -210,11 +221,11 @@
   
   
   <entry>
-    <title>about me</title>
+    <title>����</title>
     <link href="/"/>
     <url>/</url>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>Hi~ 啊哈，这里是<strong>风倾✧</strong>。<br />你也可以称呼为 epochxi &amp; Dramwig (其实并没有人这么叫我qwq……)<br />但是我好像有好多好多的名字！<br />都是回忆了……</p><p>观察者人格，不过似乎有转变。<br />想保留内心的温柔与明月，<br />希望留住留在内心的少年</p><hr /><p>GitHub：<a href="https://github.com/Dramwig">@Dramwig</a><br />知乎：     <a href="https://www.zhihu.com/people/feng-qing-51-31">@风倾</a><br />QQ：     <a href="https://user.qzone.qq.com/393669798/infocenter">@曦远</a></p><p>邮箱 (email)：</p><!-- gmail：--><-- epochzici@gmail.com<p><a href="mailto:epochzici@gmail.com">写给风倾</a></p> <!-- outlook：--><-- dramwig@outlook.com<p><a href="mailto:dramwig@outlook.com">写给风倾</a></p> <!-- outlook：--><-- epochzixi@outlook.com<p><a href="mailto:393669798@qq.com">写给风倾</a></p><hr /><p><strong>一些成就：</strong><br /><font size =2 face = "宋体"><br />  某软件能力认证某等奖<br />  某信息奥林匹克竞赛某等奖<br />  某物理奥林匹克竟赛某等奖<br />  某学校ACM月赛某等奖<br />  某学校ACM新秀杯某等奖<br />  某数学建模亚太杯某等奖<br />  某学校数学建模新秀杯某等奖<br /></font></p><hr /><p>PS：本小站代码markdown渲染经常出错……</p><p><font size =1 >BLOG: Power By <a href="https://hexo.io/zh-cn/index.html">Hexo</a> &amp; <a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a> <br />更多详见<a href="https://dramwig.github.io/update/">更新日志</a><br /></font></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id=""><a class="markdownIt-Anchor" href="#"></a> ������</h1>]]></content>
     
   </entry>
   
@@ -237,17 +248,6 @@
     <url>/</url>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>����</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id=""><a class="markdownIt-Anchor" href="#"></a> ������</h1>]]></content>
     
   </entry>
   
