@@ -189,9 +189,9 @@
     
     <tags>
       
-      <tag>日志</tag>
-      
       <tag>随笔</tag>
+      
+      <tag>日志</tag>
       
     </tags>
     
@@ -216,9 +216,9 @@
     
     <tags>
       
-      <tag>日志</tag>
-      
       <tag>随笔</tag>
+      
+      <tag>日志</tag>
       
     </tags>
     
@@ -263,7 +263,29 @@
     <link href="/"/>
     <url>/</url>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>Hi~ 啊哈，这里是<strong>风倾✧</strong>。<br />你也可以称呼为 epochxi &amp; Dramwig (其实并没有人这么叫我qwq……)<br />但是我好像有好多好多的名字！<br />都是回忆了……</p><p>观察者人格，不过似乎有转变。<br />想保留内心的温柔与明月，<br />希望留住留在内心的少年</p><hr /><p>GitHub：<a href="https://github.com/Dramwig">@Dramwig</a><br />知乎：     <a href="https://www.zhihu.com/people/feng-qing-51-31">@风倾</a></p><p>邮箱 (email)：</p><!-- gmail：--><-- epochzici@gmail.com<p><a href="mailto:epochzici@gmail.com">写给风倾</a></p><!-- outlook：--><-- dramwig@outlook.com<p><a href="mailto:dramwig@outlook.com">写给风倾</a></p><!-- outlook：--><-- epochzixi@outlook.com<p><a href="mailto:393669798@qq.com">写给风倾</a></p><hr /><p><strong>一些成就：</strong><br /><font size =2 face = "宋体"><br />  某软件能力认证某等奖<br />  某信息奥林匹克竞赛某等奖<br />  某物理奥林匹克竟赛某等奖<br />  某学校ACM月赛某等奖<br />  某学校ACM新秀杯某等奖<br />  某数学建模亚太杯某等奖<br />  某学校数学建模新秀杯某等奖<br /></font></p><hr /><p>PS：本小站代码markdown渲染经常出错……</p><p><font size =1 >BLOG: Power By <a href="https://hexo.io/zh-cn/index.html">Hexo</a> &amp; <a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a> <br />更多详见<a href="https://dramwig.github.io/update/">更新日志</a><br /></font></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>转跳：<code><a href="/update/"><font color=#0F0F3F size=3 face="微软雅黑"><b> 「更新日志」</b></font></a></code> <code><a href="/links/"><font color=#0F0F3F size=3 face="微软雅黑"><b> 「轻音/友链」</b></font></a></code></p><hr /><p>Hi~ 啊哈，这里是<strong>风倾✧</strong>。<br />你也可以称呼为 epochxi &amp; Dramwig (其实并没有人这么叫我qwq……)<br />但是我好像有好多好多的名字！<br />都是回忆了……</p><p>观察者人格，不过似乎有转变。<br />想保留内心的温柔与明月，<br />希望留住留在内心的少年</p><hr /><p>GitHub：<a href="https://github.com/Dramwig">@Dramwig</a><br />知乎：     <a href="https://www.zhihu.com/people/feng-qing-51-31">@风倾</a></p><p>邮箱 (email)：</p><!-- gmail：--><-- epochzici@gmail.com<p><a href="mailto:epochzici@gmail.com">写给风倾</a></p><!-- outlook：--><-- dramwig@outlook.com<p><a href="mailto:dramwig@outlook.com">写给风倾</a></p><!-- outlook：--><-- epochzixi@outlook.com<p><a href="mailto:393669798@qq.com">写给风倾</a></p><hr /><p><strong>一些成就：</strong><br /><font size =2 face = "宋体"><br />  某软件能力认证某等奖<br />  某信息奥林匹克竞赛某等奖<br />  某物理奥林匹克竟赛某等奖<br />  某学校ACM月赛某等奖<br />  某学校ACM新秀杯某等奖<br />  某数学建模亚太杯某等奖<br />  某学校数学建模新秀杯某等奖<br /></font></p><hr /><p>PS：本小站代码markdown渲染经常出错……</p><p><font size =1 >BLOG: Power By <a href="https://hexo.io/zh-cn/index.html">Hexo</a> &amp; <a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a> <br />更多详见<a href="https://dramwig.github.io/update/">更新日志</a><br /></font></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>artitalk</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><script type="text/javascript" src="https://unpkg.com/artitalk"></script><div id="artitalk_main"></div><script>new Artitalk({    appId: 't9jCQpAs0bonvdH69rBoVs08-gzGzoHsz', // Your LeanCloud appId    appKey: 'IVwl94UT4wnOPWUgwn4AfOCE', // Your LeanCloud appKey})</script><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Gallery</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="about"><a class="markdownIt-Anchor" href="#about"></a> about</h1><h2 id="ժҫ"><a class="markdownIt-Anchor" href="#ժҫ"></a> ժҪ</h2><h2 id=""><a class="markdownIt-Anchor" href="#"></a> ��</h2><h2 id="-2"><a class="markdownIt-Anchor" href="#-2"></a> ����</h2><h2 id="-3"><a class="markdownIt-Anchor" href="#-3"></a> ����</h2><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
   </entry>
   
@@ -281,33 +303,22 @@
   
   
   <entry>
+    <title>更新日志</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h4 id="20211223"><a class="markdownIt-Anchor" href="#20211223"></a> 2021.12.23</h4><ul><li>再次取消菜单栏「主页」，<br />因为可以点击菜单栏左侧博客名回到主页</li><li>取消菜单栏「更新」，合并于「关于」界面，设置转跳链接</li></ul><h4 id="20211221"><a class="markdownIt-Anchor" href="#20211221"></a> 2021.12.21</h4><ul><li>更改网站logo，更加符合名字了呢~</li></ul><h4 id="20211214"><a class="markdownIt-Anchor" href="#20211214"></a> 2021.12.14</h4><ul><li>全面翻新，主题更改为<a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li><li>对背景、文字等做出调整</li><li>评论等配置重新添加</li><li>新增了歌单！并合并于「朋友」，<br />可以一边看友链一边听轻音乐了<s>bushi</s></li></ul><h4 id="2021129"><a class="markdownIt-Anchor" href="#2021129"></a> 2021.12.9</h4><ul><li><s>增加并</s>删除了<a href="https://swiftype.com/">swiftype</a>搜索</li></ul><h4 id="2021127"><a class="markdownIt-Anchor" href="#2021127"></a> 2021.12.7</h4><ul><li>整合所有更新日志于update</li><li>调整菜单栏</li><li>部分页面不在有aboutMe卡片</li><li>部分页面圆角优化</li><li><s>增加并</s>放弃了<a href="https://artitalk.js.org/">Artitalk</a></li><li>增加了导航栏qq图标</li><li>Markdown渲染器更改为<br /><a href="https://www.npmjs.com/package/@upupming/hexo-renderer-markdown-it-plus">@upupming/hexo-renderer-markdown-it-plus</a><br />插件++</li></ul><h4 id="2021125"><a class="markdownIt-Anchor" href="#2021125"></a> 2021.12.5</h4><ul><li>更改主题背景图片</li><li>精简菜单栏内容</li><li>更改主页文字</li></ul><h4 id="20211120"><a class="markdownIt-Anchor" href="#20211120"></a> 2021.11.20</h4><ul><li>网站logo和名称上线</li><li>移除了被放弃的底层代码</li><li>评论增加了大部分可用设置</li><li>改变了评论可用表情包</li><li>评论强制拉取QQ头像</li><li>评论头像强制拉取<a href="https://en.gravatar.com">Gravatar</a>最新版</li><li>评论更改默认头像为随机小机器人</li><li>制作并部署第一个文章背景略缩图</li></ul><h4 id="20211119"><a class="markdownIt-Anchor" href="#20211119"></a> 2021.11.19</h4><ul><li>调整菜单栏，启用所有功能</li><li>对分类和标签进行了规划调整</li><li>更改主题底层代码</li><li><a href="https://valine.js.org/">Valine</a>评论上线</li></ul><h4 id="20211117"><a class="markdownIt-Anchor" href="#20211117"></a> 2021.11.17</h4><ul><li>基于<a href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动，Github部署打造了本网页</li><li>使用主题<a href="https://github.com/miccall/hexo-theme-Mic_Theme">Miccal</a></li></ul><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>����</title>
     <link href="/"/>
     <url>/</url>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="23123"><a class="markdownIt-Anchor" href="#23123"></a> 23123</h1><p>123</p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>更新日志</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h4 id="20211221"><a class="markdownIt-Anchor" href="#20211221"></a> 2021.12.21</h4><ul><li>更改网站logo，更加符合名字了呢~</li></ul><h4 id="20211214"><a class="markdownIt-Anchor" href="#20211214"></a> 2021.12.14</h4><ul><li>全面翻新，主题更改为<a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li><li>对背景、文字等做出调整</li><li>评论等配置重新添加</li><li>新增了歌单！并合并于「朋友」<br />可以一边看友链一边听轻音乐了<s>bushi</s></li></ul><h4 id="2021129"><a class="markdownIt-Anchor" href="#2021129"></a> 2021.12.9</h4><ul><li><s>增加并</s>删除了<a href="https://swiftype.com/">swiftype</a>搜索</li></ul><h4 id="2021127"><a class="markdownIt-Anchor" href="#2021127"></a> 2021.12.7</h4><ul><li>整合所有更新日志于update</li><li>调整菜单栏</li><li>部分页面不在有aboutMe卡片</li><li>部分页面圆角优化</li><li><s>增加并</s>放弃了<a href="https://artitalk.js.org/">Artitalk</a></li><li>增加了导航栏qq图标</li><li>Markdown渲染器更改为<br /><a href="https://www.npmjs.com/package/@upupming/hexo-renderer-markdown-it-plus">@upupming/hexo-renderer-markdown-it-plus</a><br />插件++</li></ul><h4 id="2021125"><a class="markdownIt-Anchor" href="#2021125"></a> 2021.12.5</h4><ul><li>更改主题背景图片</li><li>精简菜单栏内容</li><li>更改主页文字</li></ul><h4 id="20211120"><a class="markdownIt-Anchor" href="#20211120"></a> 2021.11.20</h4><ul><li>网站logo和名称上线</li><li>移除了被放弃的底层代码</li><li>评论增加了大部分可用设置</li><li>改变了评论可用表情包</li><li>评论强制拉取QQ头像</li><li>评论头像强制拉取<a href="https://en.gravatar.com">Gravatar</a>最新版</li><li>评论更改默认头像为随机小机器人</li><li>制作并部署第一个文章背景略缩图</li></ul><h4 id="20211119"><a class="markdownIt-Anchor" href="#20211119"></a> 2021.11.19</h4><ul><li>调整菜单栏，启用所有功能</li><li>对分类和标签进行了规划调整</li><li>更改主题底层代码</li><li><a href="https://valine.js.org/">Valine</a>评论上线</li></ul><h4 id="20211117"><a class="markdownIt-Anchor" href="#20211117"></a> 2021.11.17</h4><ul><li>基于<a href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动，Github部署打造了本网页</li><li>使用主题<a href="https://github.com/miccall/hexo-theme-Mic_Theme">Miccal</a></li></ul><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Gallery</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="about"><a class="markdownIt-Anchor" href="#about"></a> about</h1><h2 id="ժҫ"><a class="markdownIt-Anchor" href="#ժҫ"></a> ժҪ</h2><h2 id=""><a class="markdownIt-Anchor" href="#"></a> ��</h2><h2 id="-2"><a class="markdownIt-Anchor" href="#-2"></a> ����</h2><h2 id="-3"><a class="markdownIt-Anchor" href="#-3"></a> ����</h2><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
     
   </entry>
   
