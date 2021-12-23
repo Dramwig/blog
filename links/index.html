@@ -63,6 +63,7 @@
 
 <body>
   <header style="height: 60vh;">
+    <!--菜单栏-->
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -145,14 +146,17 @@
     </div>
   </div>
 </nav>
-
-    <div class="banner" id="banner" parallax=true
+ 
+    <!--视差滚动-->
+    <div class="banner" id="banner" parallax=true   
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
+            <!--副标题 (打字机)-->
             <span class="h2" id="subtitle" title="记忆中的旅人…">
+              <!--typing打字机-->
               
             </span>
 
@@ -174,6 +178,7 @@
       <div class="container nopadding-x-md">
         <div class="py-5" id="board"
           >
+          <!--about界面-->
           
           <div class="container">
             <div class="row">
@@ -365,6 +370,7 @@
       </div>
     
 
+    <!--向顶部滚动的箭头-->
     
       <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
@@ -395,11 +401,14 @@
 </div>
     
 
+    <!--自定义底部 HTML 内容-->
     
   </main>
-
+  
+  <!--页脚-->
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
+    <!---->
      &copy;2021 <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
   </div>
   
@@ -448,6 +457,8 @@
 
 
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -456,8 +467,10 @@
     (function (window, document) {
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
+
+      <!--通过API接口作为首页副标题的内容-->
       
-      typing(title)
+        typing(title)  //tying打字机
       
     })(window, document);
   </script>
