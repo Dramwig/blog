@@ -1,0 +1,1042 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png">
+  <link rel="icon" href="/img/logo/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个神秘的人">
+  <meta name="author" content="epochxi">
+  <meta name="keywords" content="dramwig">
+  <meta name="description" content="一个迟到几周的复盘，现在大年初一才来补题(😓)  链接              2022—SWJTU寒假选拔赛第三场                         前辈写的题解              题目列表   A-A √ 要想让 S(x+1)&lt;s(x)S(x + 1) &lt; s(x)S(x+1)&lt;s(x) 只能可能发生在进位的时候,因此每逢尾数为 999 时就会对答案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2022—SWJTU寒假选拔赛第三场复盘">
+<meta property="og:url" content="http://example.com/2022/02/02/20220202/index.html">
+<meta property="og:site_name" content="风倾客栈 ✧">
+<meta property="og:description" content="一个迟到几周的复盘，现在大年初一才来补题(😓)  链接              2022—SWJTU寒假选拔赛第三场                         前辈写的题解              题目列表   A-A √ 要想让 S(x+1)&lt;s(x)S(x + 1) &lt; s(x)S(x+1)&lt;s(x) 只能可能发生在进位的时候,因此每逢尾数为 999 时就会对答案">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/02/02/ZaWudk8AX1nLYgm.png">
+<meta property="article:published_time" content="2022-02-02T08:38:00.000Z">
+<meta property="article:modified_time" content="2022-02-02T09:33:35.535Z">
+<meta property="article:author" content="epochxi">
+<meta property="article:tag" content="日志">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/02/02/ZaWudk8AX1nLYgm.png">
+  
+  <title>2022—SWJTU寒假选拔赛第三场复盘 &lt; 风倾客栈 ✧</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hovor","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <!--菜单栏-->
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="iconfont icon-home-fill"></i> <!-- homeͼ�� -->
+      <strong>风倾客栈</strong> <!-- �������� -->
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content --> <!-- �˵��б� -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/shuoshuo/">
+                
+                动态
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                朋友
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+    <!--视差滚动-->
+    <div class="banner" id="banner" parallax=true   
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <!--副标题 (打字机)-->
+            <span class="h2" id="subtitle" title="2022—SWJTU寒假选拔赛第三场复盘">
+              <!--typing打字机-->
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-02 16:38" pubdate>
+        2022年2月2日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      11k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2022—SWJTU寒假选拔赛第三场复盘</h1>
+            
+            <div class="markdown-body">
+              <p>一个迟到几周的复盘，现在大年初一才来补题(😓)</p>
+<h1 id="链接"><a class="markdownIt-Anchor" href="#链接"></a> 链接</h1>
+<div class="note note-info">
+            <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894"><b>2022—SWJTU寒假选拔赛第三场</b></a></p>
+          </div>
+<div class="note note-info">
+            <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_56007815/article/details/122655578?spm=1001.2014.3001.5501"><b>前辈写的题解</b></a></p>
+          </div>
+<center><hr width=100px></center>
+<h1 id="题目列表"><a class="markdownIt-Anchor" href="#题目列表"></a> 题目列表</h1>
+<p><img src="https://s2.loli.net/2022/02/02/ZaWudk8AX1nLYgm.png" srcset="/img/loading.gif" lazyload alt="RANK(E题是一道AC题被删的补偿)" /></p>
+<h2 id="a-a"><a class="markdownIt-Anchor" href="#a-a"></a> <a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/A">A-A √</a></h2>
+<p>要想让 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>&lt;</mo><mi>s</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">S(x + 1) &lt; s(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span> 只能可能发生在进位的时候,因此每逢尾数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span></span></span></span> 时就会对答案产生贡献。</p>
+<p>其实通过样例就可以得到解为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">(n+1)/10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">/</span><span class="mord">1</span><span class="mord">0</span></span></span></span></p>
+<p>AC code:</p>
+<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>,flag=<span class="hljs-number">1</span>;<span class="hljs-keyword">char</span> c;
+    <span class="hljs-keyword">for</span>(;c&gt;<span class="hljs-string">&#x27;9&#x27;</span>||c&lt;<span class="hljs-string">&#x27;0&#x27;</span>;c=<span class="hljs-built_in">getchar</span>()) <span class="hljs-keyword">if</span>(c==<span class="hljs-string">&#x27;-&#x27;</span>) flag=<span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">for</span>(;c&lt;=<span class="hljs-string">&#x27;9&#x27;</span>&amp;&amp;c&gt;=<span class="hljs-string">&#x27;0&#x27;</span>;c=<span class="hljs-built_in">getchar</span>()) sum=(sum&lt;&lt;<span class="hljs-number">3</span>)+(sum&lt;&lt;<span class="hljs-number">1</span>)+c-<span class="hljs-string">&#x27;0&#x27;</span>;
+    <span class="hljs-keyword">return</span> flag*sum;
+&#125;
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FOR(i,a,b) for(int i=(a);i&lt;=(b);i++)</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">32767</span>*<span class="hljs-number">2</span>+<span class="hljs-number">100</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = <span class="hljs-number">0x3f3f3f3f</span>;
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-keyword">int</span> T=<span class="hljs-built_in">read</span>();
+    <span class="hljs-keyword">while</span>(T--)&#123;
+        <span class="hljs-keyword">int</span> n=<span class="hljs-built_in">read</span>();
+        cout&lt;&lt;(n+<span class="hljs-number">1</span>)/<span class="hljs-number">10</span>&lt;&lt;endl;
+    &#125;
+&#125;</code></pre></div>
+<h2 id="b-b"><a class="markdownIt-Anchor" href="#b-b"></a> <a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/B">B-B √</a></h2>
+<p>题目重述；给出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 个长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 的序列，以及 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 个正整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>。问这个原序列中是否存在非空子序列，使其元素之和能被 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 整除。</p>
+<p>看到数据范围数据范围：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>&lt;</mo><mo>=</mo><mi>n</mi><mo>&lt;</mo><mo>=</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup><mo separator="true">,</mo><mn>2</mn><mo>&lt;</mo><mo>=</mo><mi>m</mi><mo>&lt;</mo><mo>=</mo><mn>1000</mn><mo separator="true">,</mo><mn>1</mn><mo>&lt;</mo><mo>=</mo><mi>n</mi><mo>&lt;</mo><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">1&lt;=n&lt;=10^6,2&lt;=m&lt;=1000,1&lt;=n&lt;=10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68354em;vertical-align:-0.0391em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.008548em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span> 。 自然不可能用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nm)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span>，时间复杂度仅仅与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>有关。</p>
+<ul>
+<li>
+<p>考虑 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&gt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n&gt;m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 的情况：我们对整个数列做前缀和，然后再对 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 取模。根据抽屉原理，因为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>&gt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n&gt;m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>，所以在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个前缀和中必有两个对 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 取模于是相等，它们中间那段就是答案。</p>
+</li>
+<li>
+<p>而 n⩽m 的情况，n⩽103，不会超时,直接 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nm)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span> 的背包。</p>
+</li>
+</ul>
+<p>Stl:</p>
+<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long</span>
+
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-keyword">int</span> x=<span class="hljs-number">0</span>,f=<span class="hljs-number">1</span>;<span class="hljs-keyword">char</span> ch=<span class="hljs-built_in">getchar</span>();
+<span class="hljs-keyword">while</span>(ch&lt;<span class="hljs-string">&#x27;0&#x27;</span>||ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>)&#123;<span class="hljs-keyword">if</span>(ch==<span class="hljs-string">&#x27;-&#x27;</span>)f=<span class="hljs-number">-1</span>;
+ch=<span class="hljs-built_in">getchar</span>();&#125;<span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>)&#123;x=(x&lt;&lt;<span class="hljs-number">1</span>)+
+(x&lt;&lt;<span class="hljs-number">3</span>)+(ch^<span class="hljs-number">48</span>);ch=<span class="hljs-built_in">getchar</span>();&#125;<span class="hljs-keyword">return</span> x*f;&#125;
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 100010</span>
+<span class="hljs-keyword">int</span> n, m, i, j, k; 
+<span class="hljs-keyword">int</span> dp[N], f[N], x; 
+
+<span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+ n=<span class="hljs-built_in">read</span>(); m=<span class="hljs-built_in">read</span>(); 
+ <span class="hljs-keyword">if</span>(n&gt;m) <span class="hljs-keyword">return</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;YES&quot;</span>), <span class="hljs-number">0</span>; 
+ <span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>; i&lt;=n; ++i)
+ &#123;
+  x=<span class="hljs-built_in">read</span>();
+  <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>; j&lt;m; ++j) f[j]=dp[j];
+  <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>; j&lt;m; ++j)
+   dp[(j+x)%m]+=f[j]; 
+  dp[x%m]++; <span class="hljs-comment">//只有当前x的子集</span>
+ &#125;
+ <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s&quot;</span>, (dp[<span class="hljs-number">0</span>] ? <span class="hljs-string">&quot;YES&quot;</span> : <span class="hljs-string">&quot;NO&quot;</span>)); 
+ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; 
+&#125;</code></pre></div>
+<p>AC code:</p>
+<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> int_;
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>&#123;
+ <span class="hljs-keyword">int</span> a = <span class="hljs-number">0</span>; <span class="hljs-keyword">char</span> c = <span class="hljs-built_in">getchar</span>(), f = <span class="hljs-number">1</span>;
+ <span class="hljs-keyword">for</span>(; c&lt;<span class="hljs-string">&#x27;0&#x27;</span>||c&gt;<span class="hljs-string">&#x27;9&#x27;</span>; c=<span class="hljs-built_in">getchar</span>())
+  <span class="hljs-keyword">if</span>(c == <span class="hljs-string">&#x27;-&#x27;</span>) f = -f;
+ <span class="hljs-keyword">for</span>(; <span class="hljs-string">&#x27;0&#x27;</span>&lt;=c&amp;&amp;c&lt;=<span class="hljs-string">&#x27;9&#x27;</span>; c=<span class="hljs-built_in">getchar</span>())
+  a = (a&lt;&lt;<span class="hljs-number">3</span>)+(a&lt;&lt;<span class="hljs-number">1</span>)+(c^<span class="hljs-number">48</span>);
+ <span class="hljs-keyword">return</span> a*f;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeint</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>&#123;
+ <span class="hljs-keyword">if</span>(x &gt; <span class="hljs-number">9</span>) <span class="hljs-built_in">writeint</span>(x/<span class="hljs-number">10</span>);
+ <span class="hljs-built_in">putchar</span>((x%<span class="hljs-number">10</span>)^<span class="hljs-number">48</span>);
+&#125;
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXM = <span class="hljs-number">1000</span>;
+<span class="hljs-keyword">int</span> gcd[MAXM];
+<span class="hljs-keyword">bool</span> dp[MAXM+<span class="hljs-number">5</span>];
+<span class="hljs-keyword">int</span> cnt[MAXM], dis[MAXM];
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;
+ <span class="hljs-keyword">int</span> n = <span class="hljs-built_in">read</span>(), m = <span class="hljs-built_in">read</span>();
+ <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;n; ++i)
+  ++ cnt[<span class="hljs-built_in">read</span>()%m];
+ <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;m; ++i)
+  <span class="hljs-keyword">if</span>(m%i == <span class="hljs-number">0</span>) 
+   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>; j&lt;m/i; ++j)
+    gcd[i*j] = i;
+ dp[<span class="hljs-number">0</span>] = <span class="hljs-literal">true</span>; 
+ <span class="hljs-keyword">bool</span> ans = cnt[<span class="hljs-number">0</span>];
+ <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> a=<span class="hljs-number">1</span>; a&lt;m&amp;&amp;!ans; ++a)&#123;
+  <span class="hljs-keyword">int</span> d = gcd[a];
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;d; ++i)
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">2</span>*m/d<span class="hljs-number">-1</span>; ~j; --j)&#123;
+   <span class="hljs-keyword">int</span> now = (i+j*a)%m;
+   dis[now] = dis[(now+a)%m]+<span class="hljs-number">1</span>;
+   <span class="hljs-keyword">if</span>(dp[now]) dis[now] = !now;
+  &#125;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;d; ++i)
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;m/d; ++j)&#123;
+   <span class="hljs-keyword">int</span> now = (i+j*a)%m;
+   <span class="hljs-keyword">if</span>(dp[now])&#123;
+    <span class="hljs-keyword">int</span> t = dis[(now+a)%m];
+    t = <span class="hljs-built_in">min</span>(t,cnt[a]);
+    <span class="hljs-keyword">for</span>(; t; --t,++j)&#123;
+     now = (now+a)%m;
+     dp[now] = <span class="hljs-literal">true</span>;
+     <span class="hljs-keyword">if</span>(now == <span class="hljs-number">0</span>)
+      ans = <span class="hljs-literal">true</span>;
+    &#125;
+   &#125;
+  &#125;
+ &#125;
+ <span class="hljs-built_in">puts</span>(ans ? <span class="hljs-string">&quot;YES&quot;</span> : <span class="hljs-string">&quot;NO&quot;</span>);
+ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<h2 id="c-c"><a class="markdownIt-Anchor" href="#c-c"></a> <a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/C">C-C √</a></h2>
+<p>最简单的签到题，直接过</p>
+<p>AC code:</p>
+<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>,flag=<span class="hljs-number">1</span>;<span class="hljs-keyword">char</span> c;
+    <span class="hljs-keyword">for</span>(;c&gt;<span class="hljs-string">&#x27;9&#x27;</span>||c&lt;<span class="hljs-string">&#x27;0&#x27;</span>;c=<span class="hljs-built_in">getchar</span>()) <span class="hljs-keyword">if</span>(c==<span class="hljs-string">&#x27;-&#x27;</span>) flag=<span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">for</span>(;c&lt;=<span class="hljs-string">&#x27;9&#x27;</span>&amp;&amp;c&gt;=<span class="hljs-string">&#x27;0&#x27;</span>;c=<span class="hljs-built_in">getchar</span>()) sum=(sum&lt;&lt;<span class="hljs-number">3</span>)+(sum&lt;&lt;<span class="hljs-number">1</span>)+c-<span class="hljs-string">&#x27;0&#x27;</span>;
+    <span class="hljs-keyword">return</span> flag*sum;
+&#125;
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FOR(i,a,b) for(int i=(a);i&lt;=(b);i++)</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">32767</span>*<span class="hljs-number">2</span>+<span class="hljs-number">100</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = <span class="hljs-number">0x3f3f3f3f</span>;
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-keyword">int</span> T=<span class="hljs-built_in">read</span>();
+    <span class="hljs-keyword">while</span>(T--)&#123;
+        <span class="hljs-keyword">int</span> n=<span class="hljs-built_in">read</span>();
+        <span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>;
+        <span class="hljs-built_in">FOR</span>(i,<span class="hljs-number">1</span>,n)
+            sum+=<span class="hljs-built_in">read</span>();
+        <span class="hljs-keyword">if</span>(sum&gt;=n) 
+            cout&lt;&lt;sum-n&lt;&lt;endl;
+        <span class="hljs-keyword">else</span> 
+            cout&lt;&lt;<span class="hljs-number">1</span>&lt;&lt;endl;
+    &#125;
+&#125;</code></pre></div>
+<h2 id="原d题"><a class="markdownIt-Anchor" href="#原d题"></a> 原D题 √</h2>
+<p>本来是二维dp题目，硬生生被我做成了字符串（公共子串）匹配，再在得到的二维数组上对公共子串长度记录，再dp（但是我觉得思路更清晰？迷幻）。</p>
+<p>AC code:</p>
+<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>,flag=<span class="hljs-number">1</span>;<span class="hljs-keyword">char</span> c;
+    <span class="hljs-keyword">for</span>(;c&gt;<span class="hljs-string">&#x27;9&#x27;</span>||c&lt;<span class="hljs-string">&#x27;0&#x27;</span>;c=<span class="hljs-built_in">getchar</span>()) <span class="hljs-keyword">if</span>(c==<span class="hljs-string">&#x27;-&#x27;</span>) flag=<span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">for</span>(;c&lt;=<span class="hljs-string">&#x27;9&#x27;</span>&amp;&amp;c&gt;=<span class="hljs-string">&#x27;0&#x27;</span>;c=<span class="hljs-built_in">getchar</span>()) sum=(sum&lt;&lt;<span class="hljs-number">3</span>)+(sum&lt;&lt;<span class="hljs-number">1</span>)+c-<span class="hljs-string">&#x27;0&#x27;</span>;
+    <span class="hljs-keyword">return</span> flag*sum;
+&#125;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FOR(i,a,b) for(int i=(a);i&lt;=(b);i++)</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">32767</span>*<span class="hljs-number">2</span>+<span class="hljs-number">100</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = <span class="hljs-number">0x3f3f3f3f</span>;
+
+<span class="hljs-keyword">int</span> a[<span class="hljs-number">1010</span>][<span class="hljs-number">1010</span>];
+<span class="hljs-keyword">int</span> d[<span class="hljs-number">1010</span>][<span class="hljs-number">1010</span>];
+<span class="hljs-keyword">int</span> f[<span class="hljs-number">1010</span>][<span class="hljs-number">1010</span>][<span class="hljs-number">13</span>];
+<span class="hljs-comment">//priority_queue &lt;int&gt; q;</span>
+<span class="hljs-comment">//priority_queue &lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; q;</span>
+<span class="hljs-comment">//priority_queue &lt;int,vector&lt;int&gt;,less&lt;int&gt; &gt;q;</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-keyword">int</span> n,m;
+    n=<span class="hljs-built_in">read</span>(),m=<span class="hljs-built_in">read</span>();
+    <span class="hljs-keyword">int</span> r=<span class="hljs-built_in">read</span>();
+    <span class="hljs-keyword">char</span> s[<span class="hljs-number">1010</span>];
+    <span class="hljs-keyword">char</span> t[<span class="hljs-number">1001</span>];
+    cin&gt;&gt;s+<span class="hljs-number">1</span>;
+    cin&gt;&gt;t+<span class="hljs-number">1</span>;
+    <span class="hljs-built_in">FOR</span>(i,<span class="hljs-number">1</span>,n)
+        <span class="hljs-built_in">FOR</span>(j,<span class="hljs-number">1</span>,m)
+            <span class="hljs-keyword">if</span>(s[i]==t[j])
+                a[i][j]=<span class="hljs-number">1</span>;
+    <span class="hljs-built_in">FOR</span>(i,<span class="hljs-number">1</span>,n)
+        <span class="hljs-built_in">FOR</span>(j,<span class="hljs-number">1</span>,m)&#123;
+            <span class="hljs-keyword">if</span>(a[i][j]==<span class="hljs-number">0</span>)
+                d[i][j]=<span class="hljs-number">0</span>;
+            <span class="hljs-keyword">else</span>
+                d[i][j]=d[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]+<span class="hljs-number">1</span>;
+        &#125;
+    <span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>;
+    <span class="hljs-built_in">FOR</span>(i,<span class="hljs-number">1</span>,n)
+        <span class="hljs-built_in">FOR</span>(j,<span class="hljs-number">1</span>,m)
+            <span class="hljs-built_in">FOR</span>(k,<span class="hljs-number">1</span>,r)&#123;
+                f[i][j][k]=<span class="hljs-built_in">max</span>(f[i<span class="hljs-number">-1</span>][j][k],f[i][j<span class="hljs-number">-1</span>][k]);
+                f[i][j][k]=<span class="hljs-built_in">max</span>(f[i][j][k],f[i-d[i][j]][j-d[i][j]][k<span class="hljs-number">-1</span>]+d[i][j]);
+                ans=<span class="hljs-built_in">max</span>(ans,f[i][j][k]);
+            &#125;
+    cout&lt;&lt;ans;
+&#125;</code></pre></div>
+<h2 id="d-e"><a class="markdownIt-Anchor" href="#d-e"></a> <a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/D">D-E</a></h2>
+<p>组合数学，详解见题解</p>
+<p>Stl:</p>
+<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> LL;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">2e5</span> + <span class="hljs-number">10</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> mod = <span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>; 
+LL fac[N],inv[N];
+<span class="hljs-function">LL <span class="hljs-title">qmi</span><span class="hljs-params">(LL a, LL k, LL p)</span>  <span class="hljs-comment">// 求a^k mod p</span></span>
+<span class="hljs-function"></span>&#123;
+    LL res = <span class="hljs-number">1</span> % p;
+    <span class="hljs-keyword">while</span> (k)
+    &#123;
+        <span class="hljs-keyword">if</span> (k &amp; <span class="hljs-number">1</span>) res = res * a % p;
+        a = a * a % p;
+        k &gt;&gt;= <span class="hljs-number">1</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;
+ 
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fc</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>
+<span class="hljs-function"></span>&#123;
+    inv[<span class="hljs-number">0</span>] = fac[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;i &lt;= n;i ++) fac[i] = (i * fac[i - <span class="hljs-number">1</span>]) % mod,inv[i] = <span class="hljs-built_in">qmi</span>(fac[i],mod - <span class="hljs-number">2</span>,mod);
+&#125;
+ 
+<span class="hljs-function">LL <span class="hljs-title">c</span><span class="hljs-params">(LL a,LL b)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> fac[a] * inv[b] % mod * inv[a - b] % mod;
+&#125;
+ 
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    LL n,k;
+    cin &gt;&gt; n &gt;&gt; k;
+    k = <span class="hljs-built_in">min</span>(k,n - <span class="hljs-number">1</span>);
+    <span class="hljs-built_in">fc</span>(N);
+    LL res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt;= k;i ++)
+	    res = (res + <span class="hljs-built_in">c</span>(n,i) * <span class="hljs-built_in">c</span>(n - <span class="hljs-number">1</span>,i) % mod) % mod;
+    cout &lt;&lt; res &lt;&lt; endl;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> T = <span class="hljs-number">1</span>;
+    <span class="hljs-comment">//cin &gt;&gt; T;</span>
+    <span class="hljs-keyword">while</span>(T --)
+    <span class="hljs-built_in">solve</span>();
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<h2 id="e-f"><a class="markdownIt-Anchor" href="#e-f"></a> <a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/E">E-F</a></h2>
+<p>看到这道题我先想到了树形dp、点分治。然而这是个图。</p>
+<p><strong>正确思路</strong>: 我们已经确定了起点和终点,那么我们只需要枚举 起点到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 的距离 + 终点到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 的距离 + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i,j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 之间的距离判断其是否大于等于最短距离,如果满足那么这个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i,j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 组合就是合法的加边结果。</p>
+<p><strong>流程</strong>：我们对起点和终点分别跑两次最短路,枚举要加边的两个端点,判断其是否满足条件,计算其对答案的贡献即可。</p>
+<p>Stl:</p>
+<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1e3</span> + <span class="hljs-number">10</span>;
+ 
+<span class="hljs-keyword">int</span> vis[N][N];
+vector&lt;<span class="hljs-keyword">int</span>&gt; g[N];
+<span class="hljs-keyword">int</span> dist_s[N],<span class="hljs-keyword">dist_t</span>[N];
+ 
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> LL;
+ 
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n,m,s,t;
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; s &gt;&gt; t;
+    <span class="hljs-keyword">while</span>(m --)
+    &#123;
+        <span class="hljs-keyword">int</span> a,b;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);
+        g[a].<span class="hljs-built_in">push_back</span>(b);
+        g[b].<span class="hljs-built_in">push_back</span>(a);
+        vis[a][b] = vis[b][a] = <span class="hljs-number">1</span>;
+    &#125;
+    
+    <span class="hljs-built_in">memset</span>(dist_s,- <span class="hljs-number">1</span>,<span class="hljs-keyword">sizeof</span> dist_s);
+    <span class="hljs-built_in">memset</span>(<span class="hljs-keyword">dist_t</span>,- <span class="hljs-number">1</span>,<span class="hljs-keyword">sizeof</span> <span class="hljs-keyword">dist_t</span>);
+    
+    queue&lt;<span class="hljs-keyword">int</span>&gt; q;
+    q.<span class="hljs-built_in">push</span>(s);
+    dist_s[s] = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(q.<span class="hljs-built_in">size</span>())
+    &#123;
+        <span class="hljs-keyword">auto</span> u = q.<span class="hljs-built_in">front</span>();
+        q.<span class="hljs-built_in">pop</span>();
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; g[u].<span class="hljs-built_in">size</span>();i ++)
+        &#123;
+            <span class="hljs-keyword">int</span> v = g[u][i];
+            <span class="hljs-keyword">if</span>(dist_s[v] == <span class="hljs-number">-1</span>) dist_s[v] = dist_s[u] + <span class="hljs-number">1</span>,q.<span class="hljs-built_in">push</span>(v);
+        &#125;
+    &#125;
+    
+    q.<span class="hljs-built_in">push</span>(t);
+    <span class="hljs-keyword">dist_t</span>[t] = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(q.<span class="hljs-built_in">size</span>())
+    &#123;
+        <span class="hljs-keyword">auto</span> u = q.<span class="hljs-built_in">front</span>();
+        q.<span class="hljs-built_in">pop</span>();
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; g[u].<span class="hljs-built_in">size</span>();i ++)
+        &#123;
+            <span class="hljs-keyword">int</span> v = g[u][i];
+            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">dist_t</span>[v] == <span class="hljs-number">-1</span>) <span class="hljs-keyword">dist_t</span>[v] = <span class="hljs-keyword">dist_t</span>[u] + <span class="hljs-number">1</span>,q.<span class="hljs-built_in">push</span>(v);
+        &#125;
+    &#125;
+ 
+    LL res = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;i &lt;= n;i ++)
+     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>;j &lt;= n;j ++)
+      <span class="hljs-keyword">if</span>(!vis[i][j] &amp;&amp; dist_s[i] + <span class="hljs-number">1</span> + <span class="hljs-keyword">dist_t</span>[j] &gt;= dist_s[t] &amp;&amp; <span class="hljs-keyword">dist_t</span>[i] + <span class="hljs-number">1</span> + dist_s[j] &gt;= dist_s[t])
+       res ++;
+    cout &lt;&lt; res &lt;&lt; endl;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> T = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span>(T --) <span class="hljs-built_in">solve</span>();
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<h2 id="f-g"><a class="markdownIt-Anchor" href="#f-g"></a> <a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/F">F-G</a></h2>
+<p>线段树</p>
+<p>Stl:</p>
+<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn=<span class="hljs-number">1e6</span>+<span class="hljs-number">5</span>;
+vector &lt;pair &lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt; &gt;in[maxn],out[maxn];
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">NODE</span></span>
+<span class="hljs-class">&#123;</span>
+    <span class="hljs-keyword">int</span> l,r;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> sum,num;
+&#125; p[maxn*<span class="hljs-number">4</span>];
+<span class="hljs-keyword">int</span> n,m,k;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,<span class="hljs-keyword">int</span> cur)</span></span>
+<span class="hljs-function"></span>&#123;
+    p[cur].l=l;
+    p[cur].r=r;
+    p[cur].num=p[cur].sum=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>(l==r)
+        <span class="hljs-keyword">return</span> ;
+    <span class="hljs-keyword">int</span> mid=(l+r)/<span class="hljs-number">2</span>;
+    <span class="hljs-built_in">build</span>(l,mid,cur*<span class="hljs-number">2</span>);
+    <span class="hljs-built_in">build</span>(mid+<span class="hljs-number">1</span>,r,cur*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pushup</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k)</span></span>
+<span class="hljs-function"></span>&#123;
+    p[k].num=p[k*<span class="hljs-number">2</span>].num+p[k*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>].num;
+    p[k].sum=p[k*<span class="hljs-number">2</span>].sum+p[k*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>].sum;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num,<span class="hljs-keyword">int</span> pri,<span class="hljs-keyword">int</span> cur)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> l=p[cur].l,r=p[cur].r;
+    <span class="hljs-keyword">if</span>(l==r)
+    &#123;
+        p[cur].num+=num;
+        p[cur].sum+=(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)num*pri;
+        <span class="hljs-keyword">return</span> ;
+    &#125;
+    <span class="hljs-keyword">int</span> mid=(l+r)/<span class="hljs-number">2</span>;
+    <span class="hljs-keyword">if</span>(pri&lt;=mid)
+        <span class="hljs-built_in">update</span>(num,pri,<span class="hljs-number">2</span>*cur);
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">update</span>(num,pri,<span class="hljs-number">2</span>*cur+<span class="hljs-number">1</span>);
+    <span class="hljs-built_in">pushup</span>(cur);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num,<span class="hljs-keyword">int</span> cur)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> l=p[cur].l,r=p[cur].r;
+    <span class="hljs-keyword">if</span>(l==r)
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)l*<span class="hljs-built_in">min</span>(p[cur].num,(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)num);
+    <span class="hljs-keyword">if</span>(num&lt;=p[cur*<span class="hljs-number">2</span>].num)
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">query</span>(num,cur*<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">return</span> p[cur*<span class="hljs-number">2</span>].sum+<span class="hljs-built_in">query</span>(num-p[cur*<span class="hljs-number">2</span>].num,cur*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> l,r,x,y;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>,&amp;n,&amp;k,&amp;m);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;=n; i++)
+    &#123;
+        in[i].<span class="hljs-built_in">clear</span>();
+        out[i].<span class="hljs-built_in">clear</span>();
+    &#125;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;=m; i++)
+    &#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d%d&quot;</span>,&amp;l,&amp;r,&amp;x,&amp;y);
+        in[l].<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">make_pair</span>(x,y));
+        out[r].<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">make_pair</span>(x,y));
+    &#125;
+    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans=<span class="hljs-number">0</span>;
+    <span class="hljs-built_in">build</span>(<span class="hljs-number">1</span>,maxn,<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)
+    &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;in[i].<span class="hljs-built_in">size</span>(); j++)
+            <span class="hljs-built_in">update</span>(in[i][j].first,in[i][j].second,<span class="hljs-number">1</span>);
+        ans+=<span class="hljs-built_in">query</span>(k,<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;out[i].<span class="hljs-built_in">size</span>(); j++)
+            <span class="hljs-built_in">update</span>(-out[i][j].first,out[i][j].second,<span class="hljs-number">1</span>);
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>,ans);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<h2 id="原h题"><a class="markdownIt-Anchor" href="#原h题"></a> 原H题</h2>
+<p>写了一个二分答案，wa后被告知题目要被删。</p>
+<h2 id="g-i"><a class="markdownIt-Anchor" href="#g-i"></a> <a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/G">G-I √</a></h2>
+<p>一个奇葩的题目。你只需要构造出一个满足题意的树就行。</p>
+<p>无法构造时： <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>&gt;</mo><mn>2</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">d&gt;2h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord mathdefault">h</span></span></span></span> 时必定不成立 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">d= 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 时,节点数只能是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>。</p>
+<p>先构建成一条满足条件的链,然后不够的再往上加点即可。有一些细节问题，所以我调了很久才A(哭)。</p>
+<p>AC code:</p>
+<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>,flag=<span class="hljs-number">1</span>;<span class="hljs-keyword">char</span> c;
+    <span class="hljs-keyword">for</span>(;c&gt;<span class="hljs-string">&#x27;9&#x27;</span>||c&lt;<span class="hljs-string">&#x27;0&#x27;</span>;c=<span class="hljs-built_in">getchar</span>()) <span class="hljs-keyword">if</span>(c==<span class="hljs-string">&#x27;-&#x27;</span>) flag=<span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">for</span>(;c&lt;=<span class="hljs-string">&#x27;9&#x27;</span>&amp;&amp;c&gt;=<span class="hljs-string">&#x27;0&#x27;</span>;c=<span class="hljs-built_in">getchar</span>()) sum=(sum&lt;&lt;<span class="hljs-number">3</span>)+(sum&lt;&lt;<span class="hljs-number">1</span>)+c-<span class="hljs-string">&#x27;0&#x27;</span>;
+    <span class="hljs-keyword">return</span> flag*sum;
+&#125;
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FOR(i,a,b) for(int i=(a);i&lt;=(b);i++)</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">32767</span>*<span class="hljs-number">2</span>+<span class="hljs-number">100</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = <span class="hljs-number">0x3f3f3f3f</span>;
+
+
+<span class="hljs-keyword">int</span> n,d,h;
+<span class="hljs-keyword">int</span> m=<span class="hljs-number">0</span>;
+
+
+<span class="hljs-keyword">int</span> cnt=<span class="hljs-number">1</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;
+    n=<span class="hljs-built_in">read</span>();d=<span class="hljs-built_in">read</span>();h=<span class="hljs-built_in">read</span>();
+    <span class="hljs-keyword">if</span>((!(<span class="hljs-number">2</span>*h&gt;=d&amp;&amp;d&gt;=h&amp;&amp;n&gt;=d+<span class="hljs-number">1</span>))||(d==<span class="hljs-number">1</span>&amp;&amp;n&gt;<span class="hljs-number">2</span>))&#123;
+        cout&lt;&lt;<span class="hljs-number">-1</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    &#125;
+    <span class="hljs-built_in">FOR</span>(i,<span class="hljs-number">1</span>,h)
+        cout&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;++cnt&lt;&lt;endl;
+    <span class="hljs-keyword">if</span>(h!=d)&#123;
+        cout&lt;&lt;<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;++cnt&lt;&lt;endl;
+        <span class="hljs-built_in">FOR</span>(i,<span class="hljs-number">2</span>,d-h)
+            cout&lt;&lt;cnt&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;++cnt&lt;&lt;endl;
+    &#125;
+    <span class="hljs-keyword">int</span> o=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span>(cnt==n) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>(h==d&amp;&amp;h&gt;<span class="hljs-number">1</span>)o=<span class="hljs-number">2</span>;
+    <span class="hljs-keyword">if</span>(h==d&amp;&amp;h==<span class="hljs-number">1</span>)&#123;
+        cout&lt;&lt;<span class="hljs-number">-1</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    &#125;
+    <span class="hljs-keyword">while</span>(cnt!=n)&#123;
+        cout&lt;&lt;o&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;++cnt&lt;&lt;endl;
+    &#125;
+        
+&#125;</code></pre></div>
+<h2 id="h-j"><a class="markdownIt-Anchor" href="#h-j"></a> <a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/H">H-J √</a></h2>
+<p>在学长的点拨下做出来的题。</p>
+<p>数据范围超空间，所以不能用数组作桶，用map。要用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 的做法，要用所以不能存位置，要map存奇数偶数的个数,还要开LL：<code>map&lt;int,ll&gt; m[2]</code>。导致我写了好几遍。</p>
+<p>基本思路：两个相同的数的亦或为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>和任意另外一个数的亦或都为另一个数。</p>
+<p>所以对于题目要救“区间从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">2</span></span></span></span>的位置分割为两部分，两部分的元素异或和相同”，记两段的亦或分别为<code>l</code>，<code>r</code>当且仅当<code>a^l^r=a</code>时满足题意，可得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>的算法（从左到右扫一遍）。</p>
+<p>AC code:</p>
+<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>,flag=<span class="hljs-number">1</span>;<span class="hljs-keyword">char</span> c;
+    <span class="hljs-keyword">for</span>(;c&gt;<span class="hljs-string">&#x27;9&#x27;</span>||c&lt;<span class="hljs-string">&#x27;0&#x27;</span>;c=<span class="hljs-built_in">getchar</span>()) <span class="hljs-keyword">if</span>(c==<span class="hljs-string">&#x27;-&#x27;</span>) flag=<span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">for</span>(;c&lt;=<span class="hljs-string">&#x27;9&#x27;</span>&amp;&amp;c&gt;=<span class="hljs-string">&#x27;0&#x27;</span>;c=<span class="hljs-built_in">getchar</span>()) sum=(sum&lt;&lt;<span class="hljs-number">3</span>)+(sum&lt;&lt;<span class="hljs-number">1</span>)+c-<span class="hljs-string">&#x27;0&#x27;</span>;
+    <span class="hljs-keyword">return</span> flag*sum;
+&#125;
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FOR(i,a,b) for(int i=(a);i&lt;=(b);i++)</span>
+
+map&lt;<span class="hljs-keyword">int</span>,ll&gt; m[<span class="hljs-number">2</span>];
+<span class="hljs-keyword">int</span> e;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-keyword">int</span> n=<span class="hljs-built_in">read</span>();
+    ll ans=<span class="hljs-number">0</span>;
+    m[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]++;
+    <span class="hljs-built_in">FOR</span>(i,<span class="hljs-number">1</span>,n)&#123;
+        e=e^<span class="hljs-built_in">read</span>();
+        ans+=m[i%<span class="hljs-number">2</span>][e];<span class="hljs-comment">//cout&lt;&lt;e&lt;&lt;&quot;:&quot;&lt;&lt;m[e][i%2]&lt;&lt;&quot; &quot;;</span>
+        m[i%<span class="hljs-number">2</span>][e]++;
+    &#125;
+    cout&lt;&lt;ans;
+&#125;</code></pre></div>
+<h2 id="i-k"><a class="markdownIt-Anchor" href="#i-k"></a> <a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/I">I-K</a></h2>
+<p>我想了线性dp但我就是没想出来(哭)</p>
+<p>让你求解整个序列上的极值问题,然后判断其是否无后效性和是否存在最优子结构就能够知道是不是个 dp ,这题整个序列上的极值显然是可以由其子序列转移而来的,具体证明就不多赘述,直接开始dp。</p>
+<p><strong>状态表示</strong>：<code>f[i]</code> 表示前 <code>i</code> 个数字中取 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mi>n</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{n}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.040392em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> (向下取整)个数并且这些数两两不相邻,其最大的和。</p>
+<p><strong>状态转移</strong>：</p>
+<p>由于是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mi>n</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{n}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.040392em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> (向下取整)存在奇偶数不同的情况,因此我们对其分类讨论</p>
+<p>若是奇数并且选了第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个数则 <code>f[i] = f[i-2] + a[i]</code>  ,因为选了第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个数后,第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 个数就不能被选中了,只能从 <code>f[i-2]</code>转移而来</p>
+<p>若没有选第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个数则 <code>f[i] = f[i-1]</code></p>
+<p>若是偶数并且选了第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个数则同理, <code>f[i] = f[i-2] + a[i]</code> ,</p>
+<p>若没有选第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个数,我们只能将奇数位置上的数全选上才能有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">⌊</mo><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn><mo stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">⌊n/2⌋</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord mathdefault">n</span><span class="mord">/</span><span class="mord">2</span><span class="mclose">⌋</span></span></span></span> (向下取整)个数字,不然的话若还是 <code>f[i-1]</code> ,此时 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 为奇数除二下取整会比原来少一个就不符合题目的条件了。</p>
+<p>Stl:</p>
+<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> LL;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">2e5</span> + <span class="hljs-number">10</span>;
+LL a[N],f[N],s[N];
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+	<span class="hljs-keyword">int</span> n;
+	cin &gt;&gt; n;
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;i &lt;= n;i ++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lld&quot;</span>,&amp;a[i]);
+	s[<span class="hljs-number">1</span>] = a[<span class="hljs-number">1</span>];
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">3</span>;i &lt;= n;i += <span class="hljs-number">2</span>) s[i] = s[i - <span class="hljs-number">2</span>] + a[i];
+	
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>;i &lt;= n;i ++)
+	&#123;
+		<span class="hljs-keyword">if</span>(i % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>) <span class="hljs-comment">//奇数</span>
+		&#123;
+			f[i] = <span class="hljs-built_in">max</span>(f[i - <span class="hljs-number">2</span>] + a[i],f[i - <span class="hljs-number">1</span>]);
+		&#125;
+		<span class="hljs-keyword">else</span> <span class="hljs-comment">//偶数</span>
+		&#123;
+			f[i] = <span class="hljs-built_in">max</span>(f[i - <span class="hljs-number">2</span>] + a[i],s[i - <span class="hljs-number">1</span>]);
+		&#125;
+	&#125;
+	cout &lt;&lt; f[n] &lt;&lt; endl;
+ 
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+	<span class="hljs-keyword">int</span> T = <span class="hljs-number">1</span>;
+	<span class="hljs-keyword">while</span>(T --)
+	<span class="hljs-built_in">solve</span>();
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/ACM/">ACM</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%97%A5%E5%BF%97/">日志</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/17/20220118/">
+                        <span class="hidden-mobile">2022—SWJTU寒假选拔赛第二场复盘</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <!-- begin 评论 -->
+  <div id="valine"></div> 
+  <!-- end 评论 -->
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+       
+        var options = Object.assign(
+          {"appId":"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz","appKey":"IVwl94UT4wnOPWUgwn4AfOCE","path":"window.location.pathname","placeholder":"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…","avatar":"robohash","avatarForce":true,"meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","admin_email_hash":"393669798@qq.com","enableQQ":true,"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        ) 
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+ 
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    <!--向顶部滚动的箭头-->
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!--自定义底部 HTML 内容-->
+    
+  </main>
+  
+  <!--页脚-->
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <!---->
+     &copy; <script type="text/javascript"> var myDate = new Date().getFullYear(); document.write(myDate) </script> <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+
+      <!--通过API接口作为首页副标题的内容-->
+      
+        typing(title)  //tying打字机
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
