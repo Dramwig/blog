@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png">
+  <link rel="icon" href="/img/logo/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个神秘的人">
+  <meta name="author" content="epochxi">
+  <meta name="keywords" content="dramwig">
+  <meta name="description" content="注意！此题目版权归本人指导老师卢鹏所有，禁止外传！             问题描述 有一座小山，其表面方程可以用 z&#x3D;1−x2−2y2z&#x3D;1-x^2-2y^2z&#x3D;1−x2−2y2 底部为 xOyxOyxOy ，记起点为 P(0.7,0.5,0.01)P(0.7,0.5,0.01)P(0.7,0.5,0.01) ，从该起点开始爬山，要求登山线路沿着梯度方向前进。试着研究一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【编程训练】登山问题 - 梯度上升法">
+<meta property="og:url" content="http://example.com/2022/04/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E3%80%90%E7%BC%96%E7%A8%8B%E8%AE%AD%E7%BB%83%E3%80%91%E7%99%BB%E5%B1%B1%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="风倾客栈 ✧">
+<meta property="og:description" content="注意！此题目版权归本人指导老师卢鹏所有，禁止外传！             问题描述 有一座小山，其表面方程可以用 z&#x3D;1−x2−2y2z&#x3D;1-x^2-2y^2z&#x3D;1−x2−2y2 底部为 xOyxOyxOy ，记起点为 P(0.7,0.5,0.01)P(0.7,0.5,0.01)P(0.7,0.5,0.01) ，从该起点开始爬山，要求登山线路沿着梯度方向前进。试着研究一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/04/27/o1HkqYFcv76eKwD.png">
+<meta property="article:published_time" content="2022-04-27T08:24:00.000Z">
+<meta property="article:modified_time" content="2022-04-27T08:28:14.906Z">
+<meta property="article:author" content="epochxi">
+<meta property="article:tag" content="梯度上升">
+<meta property="article:tag" content="梯度下降">
+<meta property="article:tag" content="MATLAB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/04/27/o1HkqYFcv76eKwD.png">
+  
+  <title>【编程训练】登山问题 - 梯度上升法 &lt; 风倾客栈 ✧</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hovor","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <!--菜单栏-->
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="iconfont icon-home-fill"></i> <!-- homeͼ�� -->
+      <strong>风倾客栈</strong> <!-- �������� -->
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content --> <!-- �˵��б� -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/shuoshuo/">
+                
+                动态
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                朋友
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+    <!--视差滚动-->
+    <div class="banner" id="banner" parallax=true   
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <!--副标题 (打字机)-->
+            <span class="h2" id="subtitle" title="【编程训练】登山问题 - 梯度上升法">
+              <!--typing打字机-->
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-27 16:24" pubdate>
+        2022年4月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【编程训练】登山问题 - 梯度上升法</h1>
+            
+              <p class="note note-info">
+                
+                  请注意，文章中部分理解可能已被笔者废弃，本文最后更新于：3 个月前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <div class="note note-warning">
+            <p>注意！此题目版权归本人指导老师卢鹏所有，禁止外传！</p>
+          </div>
+<h1 id="问题描述"><a class="markdownIt-Anchor" href="#问题描述"></a> 问题描述</h1>
+<p>有一座小山，其表面方程可以用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>z</mi><mo>=</mo><mn>1</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">z=1-x^2-2y^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.008548em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> 底部为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mi>O</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">xOy</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> ，记起点为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mn>0.7</mn><mo separator="true">,</mo><mn>0.5</mn><mo separator="true">,</mo><mn>0.01</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(0.7,0.5,0.01)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord">0</span><span class="mord">.</span><span class="mord">7</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> ，从该起点开始爬山，要求登山线路沿着梯度方向前进。试着研究一下从起点到顶点的登山曲线。</p>
+<p>计算注意要点：</p>
+<ol>
+<li>每个具体位置的梯度方向并不完全相同，所以必须采用逐步迭代的方法登上山顶；</li>
+<li>因为梯度有两个方向（x和y），所以不能简单取一个步长，合理的方式可以在梯度方向<br />
+上取单位向量并乘以取定步长（参考值 0.01）来确定x和y方向上的变化；</li>
+<li>判断登上山顶条件，可以取高度大于 0.9999 即为登顶。（循环退出条件）；</li>
+<li>函数的空间图形与空间登上曲线画在一个图形里面；</li>
+<li>平面线路图形的意思是需要画出空间曲线在平面中的投影曲线以及函数的等高线。<br />
+注：方法并不唯一，同学们也可以发挥想象完成此题！</li>
+</ol>
+<h1 id="结果展示"><a class="markdownIt-Anchor" href="#结果展示"></a> 结果展示</h1>
+<p><img src="https://s2.loli.net/2022/04/27/o1HkqYFcv76eKwD.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="梯度上升法代码"><a class="markdownIt-Anchor" href="#梯度上升法代码"></a> 梯度上升法代码</h1>
+<p>对于相同的题型，仅需要修改下面三个function。</p>
+<p>此外可以调整主函数的迭代参数。</p>
+<p>[MATLAB] f.m 原函数</p>
+<div class="hljs code-wrapper"><pre><code class="hljs m">function z <span class="hljs-built_in">=</span> f(x,y)
+    z<span class="hljs-built_in">=</span><span class="hljs-number">1</span>-x.*x-<span class="hljs-number">2</span>*y.*y;
+end</code></pre></div>
+<p>[MATLAB] fx.m 偏导x</p>
+<div class="hljs code-wrapper"><pre><code class="hljs m">function k <span class="hljs-built_in">=</span> fx(x,y)
+    k<span class="hljs-built_in">=</span>-<span class="hljs-number">2</span>*x;
+end</code></pre></div>
+<p>[MATLAB] fy.m 偏导y</p>
+<div class="hljs code-wrapper"><pre><code class="hljs m">function k <span class="hljs-built_in">=</span> fy(x,y)
+    k<span class="hljs-built_in">=</span>-<span class="hljs-number">4</span>*y;
+end</code></pre></div>
+<p>[MATLAB] main.m 主程序</p>
+<div class="hljs code-wrapper"><pre><code class="hljs m"><span class="hljs-comment">%%开始绘图</span>
+clear;clc;
+x<span class="hljs-built_in">=</span>[-<span class="hljs-number">0.5</span>:<span class="hljs-number">0.005</span>:<span class="hljs-number">0.5</span>];
+y<span class="hljs-built_in">=</span>[-<span class="hljs-number">0.5</span>:<span class="hljs-number">0.005</span>:<span class="hljs-number">0.5</span>];
+[X,Y]<span class="hljs-built_in">=</span>meshgrid(x,y);
+<span class="hljs-comment">%Z=1-X.*X - 2*Y.*Y;</span>
+Z<span class="hljs-built_in">=</span>f(X,Y);
+<span class="hljs-comment">%%迭代和绘图</span>
+figure(<span class="hljs-number">1</span>);
+hold on;
+    subplot(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>);
+        mesh(X,Y,Z);<span class="hljs-comment">%绘制三维图</span>
+        xlabel(<span class="hljs-string">&#x27;X&#x27;</span>);ylabel(<span class="hljs-string">&#x27;Y&#x27;</span>);zlabel(<span class="hljs-string">&#x27;Z&#x27;</span>);
+        hold on;
+        x0<span class="hljs-built_in">=</span><span class="hljs-number">0.1</span>;y0<span class="hljs-built_in">=</span><span class="hljs-number">0.5</span>; <span class="hljs-comment">%起始点</span>
+        z0<span class="hljs-built_in">=</span>f(x0,y0);
+        way_x<span class="hljs-built_in">=</span>[x0];way_y<span class="hljs-built_in">=</span>[y0];way_z<span class="hljs-built_in">=</span>[z0];
+        t<span class="hljs-built_in">=</span><span class="hljs-number">0.1</span>; <span class="hljs-comment">%步长：方向向量*t</span>
+        <span class="hljs-comment">%%开始迭代 梯度上升</span>
+        while z0&lt;<span class="hljs-number">0.999</span> &amp;&amp; t&gt;<span class="hljs-number">0.00001</span> 
+            x1<span class="hljs-built_in">=</span>x0+fx(x0,y0)*t;<span class="hljs-comment">% fx为偏x</span>
+            y1<span class="hljs-built_in">=</span>y0+fy(x0,y0)*t; <span class="hljs-comment">%fy为偏y</span>
+            z1<span class="hljs-built_in">=</span>f(x1,y1);
+            <span class="hljs-built_in">if</span>(z1&gt;z0) <span class="hljs-comment">%防止步长过大</span>
+                x0<span class="hljs-built_in">=</span>x1;
+                y0<span class="hljs-built_in">=</span>y1;
+                z0<span class="hljs-built_in">=</span>z1;
+                way_x(end+<span class="hljs-number">1</span>)<span class="hljs-built_in">=</span>x0; <span class="hljs-comment">%记录迭代路径</span>
+                way_y(end+<span class="hljs-number">1</span>)<span class="hljs-built_in">=</span>y0;
+                way_z(end+<span class="hljs-number">1</span>)<span class="hljs-built_in">=</span>z0;
+            <span class="hljs-built_in">else</span>
+                t<span class="hljs-built_in">=</span>t*<span class="hljs-number">0.1</span>; <span class="hljs-comment">%步长过大，“降温”</span>
+            end
+        end
+        <span class="hljs-comment">%%开始绘图</span>
+        plot3(way_x,way_y,way_z,<span class="hljs-string">&#x27;-o&#x27;</span>,<span class="hljs-string">&#x27;Color&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;MarkerSize&#x27;</span>,<span class="hljs-number">10</span>,...,
+        <span class="hljs-string">&#x27;MarkerFaceColor&#x27;</span>,<span class="hljs-string">&#x27;#D9FFFF&#x27;</span>);<span class="hljs-comment">% 绘制迭代点        </span>
+        camorbit(<span class="hljs-number">180</span>,<span class="hljs-number">0</span>,<span class="hljs-string">&#x27;data&#x27;</span>,[<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>])<span class="hljs-comment">% 转180度方便看</span>
+subplot(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>); <span class="hljs-comment">%三维等高线和迭代图</span>
+    contour3(X,Y,Z,<span class="hljs-number">20</span>);
+        hold on;
+        plot3(way_x,way_y,way_z,<span class="hljs-string">&#x27;*--&#x27;</span>)
+        camorbit(<span class="hljs-number">180</span>,<span class="hljs-number">0</span>,<span class="hljs-string">&#x27;data&#x27;</span>,[<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>]) <span class="hljs-comment">% 转180度方便看</span>
+ 
+    subplot(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>); <span class="hljs-comment">%平面等高线和迭代图</span>
+        contour(X,Y,Z,<span class="hljs-number">20</span>);
+        hold on;
+        plot3(way_x,way_y,way_z,<span class="hljs-string">&#x27;o--&#x27;</span>)
+        camorbit(<span class="hljs-number">180</span>,<span class="hljs-number">0</span>,<span class="hljs-string">&#x27;data&#x27;</span>,[<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>]) <span class="hljs-comment">% 转180度方便看</span>
+hold off;</code></pre></div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8A%E5%8D%87/">梯度上升</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">梯度下降</a>
+                    
+                      <a class="hover-with-bg" href="/tags/MATLAB/">MATLAB</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E3%80%90%E7%BC%96%E7%A8%8B%E8%AE%AD%E7%BB%83%E3%80%91%E6%97%85%E8%A1%8C%E5%95%86%E9%97%AE%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【编程训练】旅行商问题(TSP) - 遗传算法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/27/20220427%E8%93%9D%E6%A1%A5%E6%9D%AF/">
+                        <span class="hidden-mobile">2022—蓝桥杯C++A组复盘</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <!-- begin 评论 -->
+  <div id="valine"></div> 
+  <!-- end 评论 -->
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+       
+        var options = Object.assign(
+          {"appId":"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz","appKey":"IVwl94UT4wnOPWUgwn4AfOCE","path":"window.location.pathname","placeholder":"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…","avatar":"robohash","avatarForce":true,"meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","admin_email_hash":"393669798@qq.com","enableQQ":true,"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        ) 
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+ 
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    <!--向顶部滚动的箭头-->
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!--自定义底部 HTML 内容-->
+    
+  </main>
+  
+  <!--页脚-->
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <!---->
+     &copy; <script type="text/javascript"> var myDate = new Date().getFullYear(); document.write(myDate) </script> <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+
+      <!--通过API接口作为首页副标题的内容-->
+      
+        typing(title)  //tying打字机
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
