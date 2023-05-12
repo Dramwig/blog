@@ -189,19 +189,45 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/06/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%20-%20%E5%AE%9E%E9%AA%8C%E5%9B%9B%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E5%8D%95%E5%85%83%E8%AE%BE%E8%AE%A1/" target="_self">
-          计算机组成原理实验 - 实验四：算数逻辑单元设计
+        <a href="/2023/05/10/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%20-%20%E5%AE%9E%E9%AA%8C%E4%BA%94%EF%BC%9ACPU%E5%AF%84%E5%AD%98%E5%99%A8%E7%BB%84%E7%9A%84%E8%AE%BE%E8%AE%A1/" target="_self">
+          计算机组成原理实验 - 实验五：CPU寄存器组的设计
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2023/05/06/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%20-%20%E5%AE%9E%E9%AA%8C%E5%9B%9B%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E5%8D%95%E5%85%83%E8%AE%BE%E8%AE%A1/" target="_self">  <!-- �����µı�ǩ��ʽ -->
+        <a href="/2023/05/10/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%20-%20%E5%AE%9E%E9%AA%8C%E4%BA%94%EF%BC%9ACPU%E5%AF%84%E5%AD%98%E5%99%A8%E7%BB%84%E7%9A%84%E8%AE%BE%E8%AE%A1/" target="_self">  <!-- �����µı�ǩ��ʽ -->
           
           
             
           
            实验内容
-请使用文本输入方式(Verilog HDL)设计一个8位算术逻辑单元，包括控制信号与相关功能，具体如表2所示。假设暂存器A、B中的操作数均为8位补码，包含一位符号位，并使用双符号位补码进行算术加法运算，需要判断运算结果是否溢出，考虑低位进位输入Cin。如果运算结果溢出，则需要将溢出标志位Overflow置为1，否则置为0。在逻辑运算时，Overflow均置为0。对于算术右移操作，需要按
+实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。
+R0-R3:
+
+
+
+寄存器
+控制信号 RA1 RA0 Wr Rd
+操作
+
+
+
+
+R0
+0 0 0 1
+写入
+
+
+R0
+0 0 1 0
+读出
+
+
+R1
+0 1 0 1
+写入
+
+
         </a>
       </p>
 
@@ -209,8 +235,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-06 10:47" pubdate>
-              2023-05-06
+            <time datetime="2023-05-10 09:24" pubdate>
+              2023-05-10
             </time>
           </div>
         
@@ -324,9 +350,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
-            
               <a href="/tags/%E5%85%89%E7%82%B9/">光点</a>
+            
+              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
             
               <a href="/tags/%E6%95%A3%E6%96%87/">散文</a>
             
