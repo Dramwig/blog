@@ -18,12 +18,12 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="问题描述 山区地貌:在某山区测得一些地点的高程为一个矩阵。（平面区域1200&lt;&#x3D;x&lt;&#x3D;4000,1200&lt;&#x3D;y&lt;&#x3D;36001200&lt;&#x3D;x&lt;&#x3D;4000,1200&lt;&#x3D;y&lt;&#x3D;36001200&lt;&#x3D;x&lt;&#x3D;4000,1200&lt;&#x3D;y&lt;&#x3D;3600） 试作出该山区的地貌图和等高线图，并对几种插值方法进行比较。  结果展示    插值代码 注：">
+  <meta name="description" content="问题描述山区地貌:在某山区测得一些地点的高程为一个矩阵。（平面区域$1200&lt;&#x3D;x&lt;&#x3D;4000,1200&lt;&#x3D;y&lt;&#x3D;3600$） 试作出该山区的地貌图和等高线图，并对几种插值方法进行比较。 结果展示  插值代码注：以下采用的是两组线性插值来得到二维平面的插值数据。 对于相同的题型，仅需要修改下面x,y,z。[MATLAB] main.m">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【编程训练】山区地貌 - 插值">
 <meta property="og:url" content="http://example.com/2022/05/07/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E3%80%90%E7%BC%96%E7%A8%8B%E8%AE%AD%E7%BB%83%E3%80%91%E5%B1%B1%E5%8C%BA%E5%9C%B0%E8%B2%8C/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="问题描述 山区地貌:在某山区测得一些地点的高程为一个矩阵。（平面区域1200&lt;&#x3D;x&lt;&#x3D;4000,1200&lt;&#x3D;y&lt;&#x3D;36001200&lt;&#x3D;x&lt;&#x3D;4000,1200&lt;&#x3D;y&lt;&#x3D;36001200&lt;&#x3D;x&lt;&#x3D;4000,1200&lt;&#x3D;y&lt;&#x3D;3600） 试作出该山区的地貌图和等高线图，并对几种插值方法进行比较。  结果展示    插值代码 注：">
+<meta property="og:description" content="问题描述山区地貌:在某山区测得一些地点的高程为一个矩阵。（平面区域$1200&lt;&#x3D;x&lt;&#x3D;4000,1200&lt;&#x3D;y&lt;&#x3D;3600$） 试作出该山区的地貌图和等高线图，并对几种插值方法进行比较。 结果展示  插值代码注：以下采用的是两组线性插值来得到二维平面的插值数据。 对于相同的题型，仅需要修改下面x,y,z。[MATLAB] main.m">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/05/07/VnZ9MyY8WvLqhtd.png">
 <meta property="og:image" content="https://s2.loli.net/2022/05/07/cuavoiRJ46zNBFg.png">
@@ -186,7 +186,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2k 字
+      1.9k 字
     </span>
   
 
@@ -238,16 +238,12 @@
               </p>
             
             <div class="markdown-body">
-              <h1 id="问题描述"><a class="markdownIt-Anchor" href="#问题描述"></a> 问题描述</h1>
-<p>山区地貌:在某山区测得一些地点的高程为一个矩阵。（平面区域<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1200</mn><mo>&lt;</mo><mo>=</mo><mi>x</mi><mo>&lt;</mo><mo>=</mo><mn>4000</mn><mo separator="true">,</mo><mn>1200</mn><mo>&lt;</mo><mo>=</mo><mi>y</mi><mo>&lt;</mo><mo>=</mo><mn>3600</mn></mrow><annotation encoding="application/x-tex">1200&lt;=x&lt;=4000,1200&lt;=y&lt;=3600</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68354em;vertical-align:-0.0391em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">6</span><span class="mord">0</span><span class="mord">0</span></span></span></span>）</p>
+              <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>山区地貌:在某山区测得一些地点的高程为一个矩阵。（平面区域$1200&lt;&#x3D;x&lt;&#x3D;4000,1200&lt;&#x3D;y&lt;&#x3D;3600$）</p>
 <p>试作出该山区的地貌图和等高线图，并对几种插值方法进行比较。</p>
-<h1 id="结果展示"><a class="markdownIt-Anchor" href="#结果展示"></a> 结果展示</h1>
-<p><img src="https://s2.loli.net/2022/05/07/VnZ9MyY8WvLqhtd.png" srcset="/img/loading.gif" lazyload alt="原始数据"></p>
+<h1 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h1><p><img src="https://s2.loli.net/2022/05/07/VnZ9MyY8WvLqhtd.png" srcset="/img/loading.gif" lazyload alt="原始数据"></p>
 <p><img src="https://s2.loli.net/2022/05/07/cuavoiRJ46zNBFg.png" srcset="/img/loading.gif" lazyload alt="插值后"></p>
-<h1 id="插值代码"><a class="markdownIt-Anchor" href="#插值代码"></a> 插值代码</h1>
-<p>注：以下采用的是两组线性插值来得到二维平面的插值数据。</p>
-<p>对于相同的题型，仅需要修改下面<code>x,y,z</code>。<br>
-[MATLAB] main.m 主程序</p>
+<h1 id="插值代码"><a href="#插值代码" class="headerlink" title="插值代码"></a>插值代码</h1><p>注：以下采用的是两组线性插值来得到二维平面的插值数据。</p>
+<p>对于相同的题型，仅需要修改下面<code>x,y,z</code>。<br>[MATLAB] main.m 主程序</p>
 <div class="hljs code-wrapper"><pre><code class="hljs m">clc;clear;
 x <span class="hljs-built_in">=</span> [<span class="hljs-number">1200</span>	<span class="hljs-number">1600</span>	<span class="hljs-number">2000</span>	<span class="hljs-number">2400</span>	<span class="hljs-number">2800</span>	<span class="hljs-number">3200</span>	<span class="hljs-number">3600</span>	<span class="hljs-number">4000</span>];
 y <span class="hljs-built_in">=</span> [<span class="hljs-number">3600</span>	<span class="hljs-number">3200</span>	<span class="hljs-number">2800</span>	<span class="hljs-number">2400</span>	<span class="hljs-number">2000</span>	<span class="hljs-number">1600</span>	<span class="hljs-number">1200</span>]<span class="hljs-string">&#x27;;</span>

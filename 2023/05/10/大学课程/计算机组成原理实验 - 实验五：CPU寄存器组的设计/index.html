@@ -18,12 +18,12 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="实验内容 实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。 R0-R3:    寄存器 控制信号 RA1 RA0 Wr Rd 操作     R0 0 0 0 1 写入   R0 0 0 1 0 读出   R1 0 1 0 1 写入">
+  <meta name="description" content="实验内容实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。R0-R3:    寄存器 控制信号 RA1 RA0 Wr Rd 操作    R0 0 0 0 1 写入   R0 0 0 1 0 读出   R1 0 1 0 1 写入   R1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机组成原理实验 - 实验五：CPU寄存器组的设计">
 <meta property="og:url" content="http://example.com/2023/05/10/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%20-%20%E5%AE%9E%E9%AA%8C%E4%BA%94%EF%BC%9ACPU%E5%AF%84%E5%AD%98%E5%99%A8%E7%BB%84%E7%9A%84%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="实验内容 实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。 R0-R3:    寄存器 控制信号 RA1 RA0 Wr Rd 操作     R0 0 0 0 1 写入   R0 0 0 1 0 读出   R1 0 1 0 1 写入">
+<meta property="og:description" content="实验内容实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。R0-R3:    寄存器 控制信号 RA1 RA0 Wr Rd 操作    R0 0 0 0 1 写入   R0 0 0 1 0 读出   R1 0 1 0 1 写入   R1">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic2.imgdb.cn/item/645afa090d2dde577701fd6c.png">
 <meta property="og:image" content="https://pic2.imgdb.cn/item/645afa090d2dde577701fcfd.png">
@@ -235,97 +235,89 @@
               </p>
             
             <div class="markdown-body">
-              <h1 id="实验内容"><a class="markdownIt-Anchor" href="#实验内容"></a> 实验内容</h1>
-<p>实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。<br>
-<strong>R0-R3</strong>:</p>
+              <h1 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h1><p>实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。<br><strong>R0-R3</strong>:</p>
 <table>
 <thead>
 <tr>
 <th>寄存器</th>
-<th style="text-align:center">控制信号 RA1 RA0 Wr Rd</th>
+<th align="center">控制信号 RA1 RA0 Wr Rd</th>
 <th>操作</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>R0</td>
-<td style="text-align:center">0 0 0 1</td>
+<td align="center">0 0 0 1</td>
 <td>写入</td>
 </tr>
 <tr>
 <td>R0</td>
-<td style="text-align:center">0 0 1 0</td>
+<td align="center">0 0 1 0</td>
 <td>读出</td>
 </tr>
 <tr>
 <td>R1</td>
-<td style="text-align:center">0 1 0 1</td>
+<td align="center">0 1 0 1</td>
 <td>写入</td>
 </tr>
 <tr>
 <td>R1</td>
-<td style="text-align:center">0 1 1 0</td>
+<td align="center">0 1 1 0</td>
 <td>读出</td>
 </tr>
 <tr>
 <td>R2</td>
-<td style="text-align:center">1 0 0 1</td>
+<td align="center">1 0 0 1</td>
 <td>写入</td>
 </tr>
 <tr>
 <td>R2</td>
-<td style="text-align:center">1 0 1 0</td>
+<td align="center">1 0 1 0</td>
 <td>读出</td>
 </tr>
 <tr>
 <td>R3</td>
-<td style="text-align:center">1 1 0 1</td>
+<td align="center">1 1 0 1</td>
 <td>写入</td>
 </tr>
 <tr>
 <td>R3</td>
-<td style="text-align:center">11 1 0</td>
+<td align="center">11 1 0</td>
 <td>读出</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>RA控制R0~R3的选择，Wr和Rd控制输入和输出。</p>
 <p><strong>PC</strong>：</p>
 <table>
 <thead>
 <tr>
 <th>寄存器</th>
-<th style="text-align:center">控制信号 M1 M0</th>
+<th align="center">控制信号 M1 M0</th>
 <th>操作</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>PC</td>
-<td style="text-align:center">0 0</td>
+<td align="center">0 0</td>
 <td>置数</td>
 </tr>
 <tr>
 <td>PC</td>
-<td style="text-align:center">0 1</td>
+<td align="center">0 1</td>
 <td>加一计数</td>
 </tr>
 <tr>
 <td>PC</td>
-<td style="text-align:center">1 0</td>
+<td align="center">1 0</td>
 <td>减一计数</td>
 </tr>
 <tr>
 <td>PC</td>
-<td style="text-align:center">1 1</td>
+<td align="center">1 1</td>
 <td>保持</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>reset为低电平有效的PC清零信号。</p>
-<h1 id="实验代码"><a class="markdownIt-Anchor" href="#实验代码"></a> 实验代码</h1>
-<h2 id="顶层设计-exp5"><a class="markdownIt-Anchor" href="#顶层设计-exp5"></a> 顶层设计 exp5</h2>
-<div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> exp5(
+<h1 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h1><h2 id="顶层设计-exp5"><a href="#顶层设计-exp5" class="headerlink" title="顶层设计 exp5"></a>顶层设计 exp5</h2><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> exp5(
 	<span class="hljs-keyword">input</span> clk,
 	<span class="hljs-keyword">input</span> [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] KEY_C,
 	<span class="hljs-keyword">input</span> clr, <span class="hljs-comment">//K[0]</span>
@@ -350,8 +342,8 @@ segment_displays( clk,&#123;key_out,PC,res&#125;,seg,sel);
 
 
 <span class="hljs-keyword">endmodule</span></code></pre></div>
-<h2 id="cpu寄存器-cpu_register_group"><a class="markdownIt-Anchor" href="#cpu寄存器-cpu_register_group"></a> CPU寄存器 CPU_register_group</h2>
-<p>注：l用于分频，clk_alt是分频时钟信号。仿真时设置clk_alt&lt;=l[0]，实验时clk_alt&lt;=l[9]，l[9]可能还是太快了，可以设置的更高。</p>
+
+<h2 id="CPU寄存器-CPU-register-group"><a href="#CPU寄存器-CPU-register-group" class="headerlink" title="CPU寄存器 CPU_register_group"></a>CPU寄存器 CPU_register_group</h2><p>注：l用于分频，clk_alt是分频时钟信号。仿真时设置clk_alt&lt;&#x3D;l[0]，实验时clk_alt&lt;&#x3D;l[9]，l[9]可能还是太快了，可以设置的更高。</p>
 <div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> CPU_register_group(
 	<span class="hljs-keyword">input</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] M,RA,
 	<span class="hljs-keyword">input</span> [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] D,
@@ -418,8 +410,8 @@ segment_displays( clk,&#123;key_out,PC,res&#125;,seg,sel);
 <span class="hljs-keyword">end</span>
 
 <span class="hljs-keyword">endmodule</span></code></pre></div>
-<h2 id="矩阵键盘-keymodule"><a class="markdownIt-Anchor" href="#矩阵键盘-keymodule"></a> 矩阵键盘 keymodule</h2>
-<p>注：COUNT_MAX用于防抖，当其小于10左右会出现抬起抖动读取，建议在实验时设置为100或1000；在仿真时设置为1。</p>
+
+<h2 id="矩阵键盘-keymodule"><a href="#矩阵键盘-keymodule" class="headerlink" title="矩阵键盘 keymodule"></a>矩阵键盘 keymodule</h2><p>注：COUNT_MAX用于防抖，当其小于10左右会出现抬起抖动读取，建议在实验时设置为100或1000；在仿真时设置为1。</p>
 <div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> keymodule(
 	<span class="hljs-keyword">input</span> clk,
 	<span class="hljs-keyword">input</span> [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] KEY_C,
@@ -497,8 +489,8 @@ segment_displays( clk,&#123;key_out,PC,res&#125;,seg,sel);
 	
 <span class="hljs-keyword">end</span> <span class="hljs-comment">//end always</span>
 <span class="hljs-keyword">endmodule</span></code></pre></div>
-<h2 id="数码管输出-segment_displays"><a class="markdownIt-Anchor" href="#数码管输出-segment_displays"></a> 数码管输出 segment_displays</h2>
-<div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> segment_displays(
+
+<h2 id="数码管输出-segment-displays"><a href="#数码管输出-segment-displays" class="headerlink" title="数码管输出 segment_displays"></a>数码管输出 segment_displays</h2><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> segment_displays(
 	<span class="hljs-keyword">input</span> clk,
 	<span class="hljs-keyword">input</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] N,
 	<span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span> [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] seg,
@@ -545,22 +537,20 @@ segment_displays( clk,&#123;key_out,PC,res&#125;,seg,sel);
 <span class="hljs-keyword">end</span>
 	
 <span class="hljs-keyword">endmodule</span></code></pre></div>
-<h1 id="仿真波形"><a class="markdownIt-Anchor" href="#仿真波形"></a> 仿真波形</h1>
-<p><img src="https://pic2.imgdb.cn/item/645afa090d2dde577701fd6c.png" srcset="/img/loading.gif" lazyload alt="仿真波形"></p>
-<h1 id="引脚配置"><a class="markdownIt-Anchor" href="#引脚配置"></a> 引脚配置</h1>
-<table>
+
+<h1 id="仿真波形"><a href="#仿真波形" class="headerlink" title="仿真波形"></a>仿真波形</h1><p><img src="https://pic2.imgdb.cn/item/645afa090d2dde577701fd6c.png" srcset="/img/loading.gif" lazyload alt="仿真波形"></p>
+<h1 id="引脚配置"><a href="#引脚配置" class="headerlink" title="引脚配置"></a>引脚配置</h1><table>
 <thead>
 <tr>
 <th>信号</th>
-<th>输出/输出</th>
+<th>输出&#x2F;输出</th>
 <th>引脚</th>
 <th>信号</th>
-<th>输出/输出</th>
+<th>输出&#x2F;输出</th>
 <th>引脚</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>KEY_C[3]</td>
 <td>Input</td>
 <td>PIN_AE14</td>
@@ -672,10 +662,8 @@ segment_displays( clk,&#123;key_out,PC,res&#125;,seg,sel);
 <td>Input</td>
 <td>PIN_AE4</td>
 </tr>
-</tbody>
-</table>
-<h1 id="解释说明"><a class="markdownIt-Anchor" href="#解释说明"></a> 解释说明</h1>
-<p><img src="https://pic2.imgdb.cn/item/645afa090d2dde577701fcfd.png" srcset="/img/loading.gif" lazyload alt="RTL"></p>
+</tbody></table>
+<h1 id="解释说明"><a href="#解释说明" class="headerlink" title="解释说明"></a>解释说明</h1><p><img src="https://pic2.imgdb.cn/item/645afa090d2dde577701fcfd.png" srcset="/img/loading.gif" lazyload alt="RTL"></p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
             <hr>
