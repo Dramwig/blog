@@ -239,9 +239,9 @@
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/480842"><b>2022—SWJTU寒假选拔赛第五场</b></a></p>
           </div>
-<center><hr width=100px></center>
+<center><hr width="100px"></center>
 <h1 id="题目列表"><a class="markdownIt-Anchor" href="#题目列表"></a> 题目列表</h1>
-<p><img src="https://pic.imgdb.cn/item/621a02102ab3f51d915a71aa.png" srcset="/img/loading.gif" lazyload alt="RANK" /></p>
+<p><img src="https://pic.imgdb.cn/item/621a02102ab3f51d915a71aa.png" srcset="/img/loading.gif" lazyload alt="RANK"></p>
 <h2 id="a-codeforces-114e-很强的素数"><a class="markdownIt-Anchor" href="#a-codeforces-114e-很强的素数"></a> A - CodeForces 114E 很强的素数 ×</h2>
 <p><strong>题目大意：</strong></p>
 <p>给定区间[L,R]，求区间内满足条件的数的个数：</p>
@@ -312,11 +312,11 @@ bitset&lt;300000000/4+10&gt;result;
 &#125;</code></pre></div>
 <h2 id="b-codeforces-514c-字符串"><a class="markdownIt-Anchor" href="#b-codeforces-514c-字符串"></a> B  - CodeForces 514C 字符串</h2>
 <p><strong>思路一：哈希表</strong></p>
-<p>字符串hash<br />
-因为只有3个字符<br />
-所以权值就为3^x;<br />
-找个大质数取模就好；<br />
-不够大就再大一点。。<br />
+<p>字符串hash<br>
+因为只有3个字符<br>
+所以权值就为3^x;<br>
+找个大质数取模就好；<br>
+不够大就再大一点。。<br>
 然后对于每一位,尝试换成其他两个字母,看看存不存在</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
@@ -669,14 +669,14 @@ set&lt;<span class="hljs-keyword">int</span>&gt; s;
 <p>一个数论</p>
 <p>【题解】</p>
 <blockquote>
-<p>考虑怎么得到数字x2=N,假设是质数p的倍数<br />
-那么x1肯定在x2-p+1~x2这个范围内才行<br />
-因为p的倍数要刚好大于等于x1,<br />
-所以x1肯定是在这两个倍数之间才行<br />
-结果已经很显然了<br />
-肯定让p的值越大越好。<br />
-这样得到的x1才可能越小。<br />
-枚举x1在x2-p+1~x2之间。<br />
+<p>考虑怎么得到数字x2=N,假设是质数p的倍数<br>
+那么x1肯定在x2-p+1~x2这个范围内才行<br>
+因为p的倍数要刚好大于等于x1,<br>
+所以x1肯定是在这两个倍数之间才行<br>
+结果已经很显然了<br>
+肯定让p的值越大越好。<br>
+这样得到的x1才可能越小。<br>
+枚举x1在x2-p+1~x2之间。<br>
 用同样的方式得到x0就好。</p>
 </blockquote>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
@@ -865,14 +865,14 @@ ll n;
 <span class="hljs-comment"></span>
 <span class="hljs-comment">*/</span></code></pre></div>
 <h2 id="i-codeforces-687c-经验书"><a class="markdownIt-Anchor" href="#i-codeforces-687c-经验书"></a> I - CodeForces 687C 经验书</h2>
-<p>题意：<br />
+<p>题意：<br>
 给你n个数，然后让这些数相加组合，然后在这些组合的数里可以再相加组合搞出给定 k，输出这些组合的数。</p>
-<p>思路：<br />
-DP。<br />
+<p>思路：<br>
+DP。<br>
 <code>dp[i][j]</code> 代表数值为i时值为j能否被构成那么如果<code>dp[i][j]</code>能被构成那么 <code>dp[i+x][j]</code> <code>dp[i+x][j+x]</code> 都能被构成，这样状态转移方程就出来了</p>
-<p>在枚举到第i个coin的时，<code>dp[i][j]</code>,i 肯定能被<code>a[i]</code>组合，<br />
-然后再枚举<code>&lt;=a[i]</code>的部分，<code>dp[i][j]</code>的具体意义就是在coin值是i的时候，能用j去组合。<br />
-为了防止重复利用coin，从j枚举到<code>a[i]</code>;<br />
+<p>在枚举到第i个coin的时，<code>dp[i][j]</code>,i 肯定能被<code>a[i]</code>组合，<br>
+然后再枚举<code>&lt;=a[i]</code>的部分，<code>dp[i][j]</code>的具体意义就是在coin值是i的时候，能用j去组合。<br>
+为了防止重复利用coin，从j枚举到<code>a[i]</code>;<br>
 最后<code>dp[k][h]==1</code>的把h塞到容器里去，最后输出。</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cmath&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span>

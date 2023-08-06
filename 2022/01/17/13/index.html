@@ -244,22 +244,22 @@
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_56007815/article/details/122555017"><b>题解</b></a></p>
           </div>
-<center><hr width=100px></center>
+<center><hr width="100px"></center>
 <h1 id="题目列表"><a class="markdownIt-Anchor" href="#题目列表"></a> 题目列表</h1>
-<p><img src="https://s2.loli.net/2022/01/19/mrJYjLkT4XZVovt.png" srcset="/img/loading.gif" lazyload alt="RANk.png" /></p>
+<p><img src="https://s2.loli.net/2022/01/19/mrJYjLkT4XZVovt.png" srcset="/img/loading.gif" lazyload alt="RANk.png"></p>
 <h1 id="a-傻子楼梯"><a class="markdownIt-Anchor" href="#a-傻子楼梯"></a> A-傻子楼梯 ?</h1>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/A">题目链接</a> <span class="label label-warning">Attempted</span></p>
           </div>
-<p></b></font></p>
+<p></p>
 <p>队列模拟即可</p>
 <p>要转变方向当且仅当不同方向的人已抵达电梯,且该方向的下一个人还未到达电梯</p>
 <p>然而从赛场到现在我一直wa在test7上，现在也不知道怎么错的。</p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         我的错误代码
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
@@ -323,11 +323,11 @@
 
     </div>
 </div>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         std
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;queue&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
@@ -388,18 +388,18 @@ queue&lt;<span class="hljs-keyword">int</span>&gt; q0,q1;
     </div>
 </div>
 <h1 id="b-cold爱吃小蛋糕"><a class="markdownIt-Anchor" href="#b-cold爱吃小蛋糕"></a> B-cold爱吃小蛋糕√</h1>
-<p><font size=0.1 face="微软雅黑"><b></p>
+<p><font size="0.1" face="微软雅黑"><b></b></font></p>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/B">题目链接</a> <span class="label label-success">AC</span></p>
           </div>
-<p></b></font></p>
+<p></p>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>o</mi><mi>l</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">Cold</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">d</span></span></span></span> 可以无限次吃蛋糕，每次吃掉蛋糕的重量是一个正整数且任意，只要并且不会超过原本蛋糕重量的一半。因为可以无限次合并蛋糕。所以，可以贪心的考虑将所有蛋糕合并，然后次多次将蛋糕吃到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span> 的重量，然后再最后吃一口最重的就是最优解。</p>
 <p>也就是，会浪费 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mi>K</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{K}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.217331em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.872331em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 上取整重量的蛋糕。</p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         我的代码
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
@@ -429,19 +429,19 @@ queue&lt;<span class="hljs-keyword">int</span>&gt; q0,q1;
     </div>
 </div>
 <h1 id="c-郑老板玩方块"><a class="markdownIt-Anchor" href="#c-郑老板玩方块"></a> C-郑老板玩方块√</h1>
-<p><font size=0.1 face="微软雅黑"><b></p>
+<p><font size="0.1" face="微软雅黑"><b></b></font></p>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/C">题目链接</a> <span class="label label-success">AC</span></p>
           </div>
-<p></b></font></p>
+<p></p>
 <p><strong>题目重述</strong>：判断给出的八个坐标能否构成正方体</p>
 <p>最开始看到这个大模拟我是非常不想做的，但是看了其他题不是很有把握以及榜单上很多人这道题就写完了(神仙速度)然后就花了不少时间(30min?)把这个搞了出来。</p>
 <p>因为只有500组数据，时间很宽裕，我就用了个O(T<em>8</em>8*8)的暴力：对于每个点，计算其他七个点与它的距离(直接不用开方)，用距离进行个冒泡排序，再判断该点与该点最近的三个点构成的向量长度是否相等，是否垂直。</p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         我的代码
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
@@ -501,18 +501,18 @@ queue&lt;<span class="hljs-keyword">int</span>&gt; q0,q1;
     </div>
 </div>
 <h1 id="d-风神瞳"><a class="markdownIt-Anchor" href="#d-风神瞳"></a> D-风神瞳√</h1>
-<p><font size=0.1 face="微软雅黑"><b></p>
+<p><font size="0.1" face="微软雅黑"><b></b></font></p>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/D">题目链接</a> <span class="label label-success">AC</span></p>
           </div>
-<p></b></font></p>
+<p></p>
 <p>这是一个最短路模板+无穷背包模板的题目。</p>
 <p>首先，用Dij或SPFA跑出出发点 <code>S=1</code> 到每个点的最短距离，对于每个非出发点节点相当于背包的物品：花费时间为 <code>dis[i]*2</code>、收益为 <code>a[i]</code>。每个“物品”有无限个，然后无线背包dp就行。</p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         我的代码
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
@@ -603,20 +603,20 @@ priority_queue&lt;node2&gt; q;
     </div>
 </div>
 <h1 id="e-cold不会字符串"><a class="markdownIt-Anchor" href="#e-cold不会字符串"></a> E-cold不会字符串</h1>
-<p><font size=0.1 face="微软雅黑"><b></p>
+<p><font size="0.1" face="微软雅黑"><b></b></font></p>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/E">题目链接</a></p>
           </div>
-<p></b></font></p>
+<p></p>
 <p>我一直没想到做法是因为我把题目：“如果给你一个P串，是否能构造出来一个T串使得cold的代码不通过”看为了“如果给你一个T串，是否能构造出来一个P串使得cold的代码不通过”，话说如果这样改能有低于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>的做法吗。</p>
 <p>题目的意思是已知这么一段错误的代码然后给我们一个匹配串，问能否构造一个串使得这个算法得到的答案是错误的。</p>
 <p>很明显这段代码错误的原因在于指针  没有回溯。那么怎样的串我们可以把它 hack 掉呢</p>
 <p>倘若 <code>next[i]&gt;0</code> 的一定会被 hack ,学过KMP的同学知道,KMP就是求解前后缀匹配情况即数组回溯进行匹配的,但改错误代码其没有回溯,因此产生了错误。那么知道了这点以后,甚至可以不用求 <code>next</code> 数组了,直接判断串中是否有与 <code>s[1]</code> 相同的,有相同的必然是<code>next&gt;1</code>了。</p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         std
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 <span class="hljs-keyword">char</span> s[<span class="hljs-number">100000</span> + <span class="hljs-number">10</span>];
@@ -637,17 +637,17 @@ priority_queue&lt;node2&gt; q;
     </div>
 </div>
 <h1 id="f-你一定会种树吧20"><a class="markdownIt-Anchor" href="#f-你一定会种树吧20"></a> F-你一定会种树吧2.0</h1>
-<p><font size=0.1 face="微软雅黑"><b></p>
+<p><font size="0.1" face="微软雅黑"><b></b></font></p>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/F">题目链接</a></p>
           </div>
-<p></b></font></p>
+<p></p>
 <p>我知道这是个线段树，但我没时间去改模板了。也确实不想写。</p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         std
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
  
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> il inline</span>
@@ -772,18 +772,18 @@ priority_queue&lt;node2&gt; q;
     </div>
 </div>
 <h1 id="g-郑老板爱玩博弈论"><a class="markdownIt-Anchor" href="#g-郑老板爱玩博弈论"></a> G-郑老板爱玩博弈论√</h1>
-<p><font size=0.1 face="微软雅黑"><b></p>
+<p><font size="0.1" face="微软雅黑"><b></b></font></p>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/G">题目链接</a> <span class="label label-success">AC</span></p>
           </div>
-<p></b></font></p>
+<p></p>
 <p>这道题属于是，一看题面长度吓死人，仔细看后可以算，算出来后直觉离谱的题。因为答案就输出一个<code>0.0000</code></p>
 <p>老板对于每个选择都是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>20</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{20}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 的概率，我直接写了个程序跑出来，无论学生取什么数字，期望得分都是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>,</p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         我的代码
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
@@ -802,24 +802,24 @@ priority_queue&lt;node2&gt; q;
     </div>
 </div>
 <h1 id="h-琴"><a class="markdownIt-Anchor" href="#h-琴"></a> H-琴</h1>
-<p><font size=0.1 face="微软雅黑"><b></p>
+<p><font size="0.1" face="微软雅黑"><b></b></font></p>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/H">题目链接</a> <span class="label label-warning">Attempted</span></p>
           </div>
-<p></b></font></p>
+<p></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43627118/article/details/104024380?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164247770616780255231125%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=164247770616780255231125&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-104024380.first_rank_v2_pc_rank_v29&amp;utm_term=%E6%95%B4%E9%99%A4%E5%88%86%E5%9D%97&amp;spm=1018.2226.3001.4187">数学 - 数论 - 整除分块</a></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>T</mi><msqrt><mi>n</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(T\sqrt{n})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05028em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">n</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>T</mi><msqrt><mi>n</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(T\sqrt{n})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05028em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">n</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width="400em" height="1.08em" viewbox="0 0 400000 1080" preserveaspectratio="xMinYMin slice"><path d="M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
 -10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
 -50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
 35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
 -221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
 s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
-s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+s-65,47,-65,47z M834 80H400000v40H845z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         std
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> LL;
@@ -850,26 +850,26 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
     </div>
 </div>
 <h1 id="i-简单数学20"><a class="markdownIt-Anchor" href="#i-简单数学20"></a> I-简单数学2.0</h1>
-<p><font size=0.1 face="微软雅黑"><b></p>
+<p><font size="0.1" face="微软雅黑"><b></b></font></p>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/I">题目链接</a></p>
           </div>
-<p></b></font></p>
-<p>考虑离线莫队。<br />
-题目相当于找出每段区间里每个数字的所有因子，找到其出现次数最多的因子的个数。<br />
-但是 ai 最大可达到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mi>e</mi><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">1e^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span>, 因子数量太多。仔细想想会发现我们并不需要求出所有因子，只需要求出所有质因子即可，又因为一个数的质因子个数非常少（最多不超过 7 个，记为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>），因此我们可以预处理所有数的质因子后把问题近似为求区间众数。维护每个质因子出现的次数和出现 i 次的质因子的数量，即可离线后使用莫队求解本题。<br />
-由于 n 和 q 为同一数量级，总时间复杂度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mi>n</mi><msqrt><mi>n</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(kn\sqrt{n})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05028em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">n</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">n</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+<p></p>
+<p>考虑离线莫队。<br>
+题目相当于找出每段区间里每个数字的所有因子，找到其出现次数最多的因子的个数。<br>
+但是 ai 最大可达到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mi>e</mi><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">1e^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span>, 因子数量太多。仔细想想会发现我们并不需要求出所有因子，只需要求出所有质因子即可，又因为一个数的质因子个数非常少（最多不超过 7 个，记为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>），因此我们可以预处理所有数的质因子后把问题近似为求区间众数。维护每个质因子出现的次数和出现 i 次的质因子的数量，即可离线后使用莫队求解本题。<br>
+由于 n 和 q 为同一数量级，总时间复杂度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mi>n</mi><msqrt><mi>n</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(kn\sqrt{n})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05028em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">n</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">n</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width="400em" height="1.08em" viewbox="0 0 400000 1080" preserveaspectratio="xMinYMin slice"><path d="M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
 -10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
 -50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
 35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
 -221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
 s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
-s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+s-65,47,-65,47z M834 80H400000v40H845z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         std
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
  
@@ -999,19 +999,19 @@ vector&lt;<span class="hljs-keyword">int</span>&gt; vis;
     </div>
 </div>
 <h1 id="j-简单水题"><a class="markdownIt-Anchor" href="#j-简单水题"></a> J-简单水题√</h1>
-<p><font size=0.1 face="微软雅黑"><b></p>
+<p><font size="0.1" face="微软雅黑"><b></b></font></p>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/J">题目链接</a> <span class="label label-success">AC</span></p>
           </div>
-<p></b></font></p>
+<p></p>
 <p>看到棋盘格和从左上角走到右下角，只能向右边或者向下行走首先想到递推。</p>
 <p>因为每个格子上只能是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>或<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>,想到可以用路径和表示路过了多少个“<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>”和“<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>”,为了记录到达每个格子的各种已经路过数量的方案数，对每个格子 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> 还得开个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>+</mo><mi>j</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i+j-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 来储存各种可能的方案数量。即要开个<code>dp[n][m][n+m]</code>的三维数组，再在二维上对每个格子dp。</p>
 <p>然后我用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>510</mn><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>510</mn><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>1050</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[510][510][1050]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord">5</span><span class="mord">1</span><span class="mord">0</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">5</span><span class="mord">1</span><span class="mord">0</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mord">0</span><span class="mord">5</span><span class="mord">0</span><span class="mclose">]</span></span></span></span>写了出来。然后提交直接 ME。于是想了想，压缩了第一纬度空间。</p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         我的代码
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
@@ -1055,16 +1055,16 @@ vector&lt;<span class="hljs-keyword">int</span>&gt; vis;
     </div>
 </div>
 <h1 id="k-学不会的知识"><a class="markdownIt-Anchor" href="#k-学不会的知识"></a> K-学不会的知识*</h1>
-<p><font size=0.1 face="微软雅黑"><b></p>
+<p><font size="0.1" face="微软雅黑"><b></b></font></p>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/K">题目链接</a></p>
           </div>
-<p></b></font></p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+<p></p>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         std
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
  
@@ -1143,16 +1143,16 @@ vector&lt;LL&gt; V;
     </div>
 </div>
 <h1 id="l-写不完了"><a class="markdownIt-Anchor" href="#l-写不完了"></a> L-写不完了 *</h1>
-<p><font size=0.1 face="微软雅黑"><b></p>
+<p><font size="0.1" face="微软雅黑"><b></b></font></p>
 <div class="note note-info">
             <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894#problem/L">题目链接</a></p>
           </div>
-<p></b></font></p>
-<div class='spoiler collapsed'>
-    <div class='spoiler-title'>
+<p></p>
+<div class="spoiler collapsed">
+    <div class="spoiler-title">
         std
     </div>
-    <div class='spoiler-content'>
+    <div class="spoiler-content">
         <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxm=<span class="hljs-number">2e5</span>+<span class="hljs-number">5</span>;
