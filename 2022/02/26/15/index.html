@@ -18,12 +18,12 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="又是一篇迟到许久的复盘，终于在回到学校的第一天补上了。 链接             2022—SWJTU寒假选拔赛第五场               题目列表 A - CodeForces 114E 很强的素数 ×题目大意： 　　　　给定区间[L,R]，求区间内满足条件的数的个数： 　　　　条件1）z是素数 　　　　条件2）z&#x3D;x^2+y^2 x和y为任意的正整数 解题思路：">
+  <meta name="description" content="又是一篇迟到许久的复盘，终于在回到学校的第一天补上了。 链接              2022—SWJTU寒假选拔赛第五场               题目列表   RANK  A - CodeForces 114E 很强的素数 × 题目大意： 　　　　给定区间[L,R]，求区间内满足条件的数的个数： 　　　　条件1）z是素数 　　　　条件2）z&#x3D;x2+y2 x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2022—SWJTU寒假选拔赛第五场复盘">
 <meta property="og:url" content="http://example.com/2022/02/26/15/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="又是一篇迟到许久的复盘，终于在回到学校的第一天补上了。 链接             2022—SWJTU寒假选拔赛第五场               题目列表 A - CodeForces 114E 很强的素数 ×题目大意： 　　　　给定区间[L,R]，求区间内满足条件的数的个数： 　　　　条件1）z是素数 　　　　条件2）z&#x3D;x^2+y^2 x和y为任意的正整数 解题思路：">
+<meta property="og:description" content="又是一篇迟到许久的复盘，终于在回到学校的第一天补上了。 链接              2022—SWJTU寒假选拔赛第五场               题目列表   RANK  A - CodeForces 114E 很强的素数 × 题目大意： 　　　　给定区间[L,R]，求区间内满足条件的数的个数： 　　　　条件1）z是素数 　　　　条件2）z&#x3D;x2+y2 x">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/621a02102ab3f51d915a71aa.png">
 <meta property="article:published_time" content="2022-02-26T10:26:00.000Z">
@@ -235,23 +235,32 @@
             
             <div class="markdown-body">
               <p>又是一篇迟到许久的复盘，终于在回到学校的第一天补上了。</p>
-<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><div class="note note-info">
-            <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/480842"><b>2022—SWJTU寒假选拔赛第五场</b></a></p>
+<h1 id="链接">链接</h1>
+<div class="note note-info">
+            <p><atarget="_blank" rel="noopener" href="https://vjudge.net/contest/480842"><b>2022—SWJTU寒假选拔赛第五场</b></a></p>
           </div>
-
-<center><hr width=100px></center>
-
-<h1 id="题目列表"><a href="#题目列表" class="headerlink" title="题目列表"></a>题目列表</h1><p><img src="https://pic.imgdb.cn/item/621a02102ab3f51d915a71aa.png" srcset="/img/loading.gif" lazyload alt="RANK"></p>
-<h2 id="A-CodeForces-114E-很强的素数-×"><a href="#A-CodeForces-114E-很强的素数-×" class="headerlink" title="A - CodeForces 114E 很强的素数 ×"></a>A - CodeForces 114E 很强的素数 ×</h2><p><strong>题目大意：</strong></p>
+<center>
+<hr width=100px>
+</center>
+<h1 id="题目列表">题目列表</h1>
+<figure>
+<img src="https://pic.imgdb.cn/item/621a02102ab3f51d915a71aa.png" srcset="/img/loading.gif" lazyload
+alt="RANK" />
+<figcaption aria-hidden="true">RANK</figcaption>
+</figure>
+<h2 id="a---codeforces-114e-很强的素数">A - CodeForces 114E 很强的素数
+×</h2>
+<p><strong>题目大意：</strong></p>
 <p>　　　　给定区间[L,R]，求区间内满足条件的数的个数：</p>
 <p>　　　　条件1）z是素数</p>
-<p>　　　　条件2）z&#x3D;x^2+y^2 x和y为任意的正整数</p>
+<p>　　　　条件2）z=x<sup>2+y</sup>2 x和y为任意的正整数</p>
 <p><strong>解题思路：</strong></p>
 <p>　　　　其实就是求满足费马定理的数的个数。</p>
-<p>　　　<strong>费马定理： 一个奇素数z可以表示成z&#x3D;x^2+y^2的形式,当且仅当z可以表示成4*t+1的时候。（偶素数2&#x3D;1^2+1^2）</strong></p>
+<p>　　　**费马定理：
+一个奇素数z可以表示成z=x<sup>2+y</sup>2的形式,当且仅当z可以表示成4*t+1的时候。（偶素数2=1<sup>2+1</sup>2）**</p>
 <p>　　　　LR的范围是1到3*10^8用普通的筛选法求素数表，时间空间都会超。使用两次筛选来求素数。</p>
-<p>　　　　3*10^8的平方根小于17500，用17500以内的素数可以筛出范围内的所有素数。在通过判断是否满足z&#x3D;t%4+1来累加。</p>
-<p>　　　　又由于z的范围过大，但对于唯一确定的z来说，t也唯一确定，故可以用t作为数组下标即(z-1)&#x2F;4。数组大小就会小4倍左右。</p>
+<p>　　　　3*10^8的平方根小于17500，用17500以内的素数可以筛出范围内的所有素数。在通过判断是否满足z=t%4+1来累加。</p>
+<p>　　　　又由于z的范围过大，但对于唯一确定的z来说，t也唯一确定，故可以用t作为数组下标即(z-1)/4。数组大小就会小4倍左右。</p>
 <p>　　　　具体细节看代码备注。</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
@@ -309,9 +318,14 @@ bitset&lt;300000000/4+10&gt;result;
     cout&lt;&lt;<span class="hljs-built_in">cnt</span>(L,R)+ok;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
-<h2 id="B-CodeForces-514C-字符串"><a href="#B-CodeForces-514C-字符串" class="headerlink" title="B  - CodeForces 514C 字符串"></a>B  - CodeForces 514C 字符串</h2><p><strong>思路一：哈希表</strong></p>
-<p>字符串hash<br>因为只有3个字符<br>所以权值就为3^x;<br>找个大质数取模就好；<br>不够大就再大一点。。<br>然后对于每一位,尝试换成其他两个字母,看看存不存在</p>
+<h2 id="b---codeforces-514c-字符串">B - CodeForces 514C 字符串</h2>
+<p><strong>思路一：哈希表</strong></p>
+<p>字符串hash<br />
+因为只有3个字符<br />
+所以权值就为3^x;<br />
+找个大质数取模就好；<br />
+不够大就再大一点。。<br />
+然后对于每一位,尝试换成其他两个字母,看看存不存在</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> lson l,m,rt&lt;&lt;1</span>
@@ -391,7 +405,6 @@ set&lt;LL&gt; myset;
     <span class="hljs-comment">//printf(&quot;\n%.2lf sec \n&quot;, (double)clock() / CLOCKS_PER_SEC);</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
 <p><strong>思路二：字典树</strong></p>
 <p>考虑字典树。</p>
 <p>首先把n个单词插入字典树中。</p>
@@ -472,10 +485,13 @@ bitset &lt;N&gt; cnt;
  
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
-<h2 id="C-CodeForces-243A-或-×"><a href="#C-CodeForces-243A-或-×" class="headerlink" title="C - CodeForces 243A 或 ×"></a>C - CodeForces 243A 或 ×</h2><p>我着实没想到真的用枚举</p>
+<h2 id="c---codeforces-243a-或">C - CodeForces 243A 或 ×</h2>
+<p>我着实没想到真的用枚举</p>
 <p><strong>思路一: 枚举+剪枝</strong></p>
-<p>枚举左端点,在枚举 <code>&gt;i</code> 的每一个 <code>j</code> 。求两个值，以i为起点的和，与以 <code>i+1</code> 为起点的或和。如果两个值是一样的说明没必要 <code>a[i]</code> 没必要在此区间存在</p>
+<p>枚举左端点,在枚举 <code>&gt;i</code> 的每一个 <code>j</code>
+。求两个值，以i为起点的和，与以 <code>i+1</code>
+为起点的或和。如果两个值是一样的说明没必要 <code>a[i]</code>
+没必要在此区间存在</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 <span class="hljs-keyword">int</span> a[<span class="hljs-number">200005</span>];
@@ -498,10 +514,18 @@ set&lt;<span class="hljs-keyword">int</span>&gt;s;
     cout &lt;&lt; s.<span class="hljs-built_in">size</span>() &lt;&lt; endl;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
 <p><strong>思路二:st表+贪心.</strong></p>
-<p>st表可以求出每个区间的或和.我们枚举点,再枚举每一位 <code>j</code> ,对于点的第 <code>j</code> 位为 <code>i</code> 的点,我们直接记录当前最右的第 <code>j</code> 位为 1 的位置是 <code>i</code> , <code>last[j]=i</code>.如果 <code>i</code> 的第 <code>j</code> 位不为 1 ,那么求 <code>(last[j],i)</code> 之间的或和,用 <code>set</code> 记录.这样是不会漏解的.</p>
-<p>相当于把每个点作为右端点 <code>r</code>，找到能使得 <code>(l,r)</code> 间的亦或与 <code>r</code> 的第 <code>j</code> 位相异的最靠右的左端点，即 <code>last[j]</code>。本质是每次的记录 <code>ask(last[j],i)</code> 都是能改变(相异于) <code>a[i]</code> 的。</p>
+<p>st表可以求出每个区间的或和.我们枚举点,再枚举每一位 <code>j</code>
+,对于点的第 <code>j</code> 位为 <code>i</code>
+的点,我们直接记录当前最右的第 <code>j</code> 位为 1 的位置是
+<code>i</code> , <code>last[j]=i</code>.如果 <code>i</code> 的第
+<code>j</code> 位不为 1 ,那么求 <code>(last[j],i)</code> 之间的或和,用
+<code>set</code> 记录.这样是不会漏解的.</p>
+<p>相当于把每个点作为右端点 <code>r</code>，找到能使得
+<code>(l,r)</code> 间的亦或与 <code>r</code> 的第 <code>j</code>
+位相异的最靠右的左端点，即 <code>last[j]</code>。本质是每次的记录
+<code>ask(last[j],i)</code> 都是能改变(相异于) <code>a[i]</code>
+的。</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span>
@@ -543,10 +567,17 @@ set&lt;<span class="hljs-keyword">int</span>&gt; s;
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
 </code></pre></div>
-
-<h2 id="D-CodeForces-864C-校车-√"><a href="#D-CodeForces-864C-校车-√" class="headerlink" title="D - CodeForces 864C 校车 √"></a>D - CodeForces 864C 校车 √</h2><p>其实是用省略重复情况的模拟，经常遇到，但是我经常被卡很久，因为各种细节考虑情况。</p>
-<p><strong>题面：</strong> 一辆校车的路线是在坐标轴上的 0 点到 a 点之间往返，每消耗一升汽油能行驶一个单位长度。油箱容量为 b ，在 0 点和 a 点之间有一个加油站，位置是 f 点，在加油站，校车能把油加满。校车从 0 点出发，出发时油是满的。我们称校车从 0 点到 a 点或者从 a 点到 0 点为一趟，请问要进行 k 趟，校车最少要加几次油。</p>
-<p>将 0 - a 的 k 次往返的路径展开为一条轴，则题目变成小车从 0 驶向 k·a 的单项行驶，再考虑加油站与油箱最大容积的问题。每次 while 循环为当前点加满油驶向下一个最远的加油站的计算，若移动后位置不变，则为无法驶向下一个加油站，若情况满足直接输出“无解”；还要考虑是否为起步，是否已经为第 k 趟，能否直接到达终点。</p>
+<h2 id="d---codeforces-864c-校车">D - CodeForces 864C 校车 √</h2>
+<p>其实是用省略重复情况的模拟，经常遇到，但是我经常被卡很久，因为各种细节考虑情况。</p>
+<p><strong>题面：</strong> 一辆校车的路线是在坐标轴上的 0 点到 a
+点之间往返，每消耗一升汽油能行驶一个单位长度。油箱容量为 b ，在 0 点和 a
+点之间有一个加油站，位置是 f 点，在加油站，校车能把油加满。校车从 0
+点出发，出发时油是满的。我们称校车从 0 点到 a 点或者从 a 点到 0
+点为一趟，请问要进行 k 趟，校车最少要加几次油。</p>
+<p>将 0 - a 的 k 次往返的路径展开为一条轴，则题目变成小车从 0 驶向 k·a
+的单项行驶，再考虑加油站与油箱最大容积的问题。每次 while
+循环为当前点加满油驶向下一个最远的加油站的计算，若移动后位置不变，则为无法驶向下一个加油站，若情况满足直接输出“无解”；还要考虑是否为起步，是否已经为第
+k 趟，能否直接到达终点。</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
@@ -625,8 +656,9 @@ set&lt;<span class="hljs-keyword">int</span>&gt; s;
 <span class="hljs-comment"></span>
 <span class="hljs-comment"></span>
 <span class="hljs-comment">*/</span></code></pre></div>
-
-<h2 id="E-CodeForces-753A-送给你的新年礼物-√"><a href="#E-CodeForces-753A-送给你的新年礼物-√" class="headerlink" title="E - CodeForces 753A 送给你的新年礼物 √"></a>E - CodeForces 753A 送给你的新年礼物 √</h2><p>签到题，构造红包数最多的情况</p>
+<h2 id="e---codeforces-753a-送给你的新年礼物">E - CodeForces 753A
+送给你的新年礼物 √</h2>
+<p>签到题，构造红包数最多的情况</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
@@ -661,11 +693,15 @@ set&lt;<span class="hljs-keyword">int</span>&gt; s;
 <span class="hljs-comment"></span>
 <span class="hljs-comment"></span>
 <span class="hljs-comment">*/</span></code></pre></div>
-
-<h2 id="F-CodeForces-923A-升级-×"><a href="#F-CodeForces-923A-升级-×" class="headerlink" title="F - CodeForces 923A 升级 ×"></a>F - CodeForces 923A 升级 ×</h2><p>一个数论</p>
+<h2 id="f---codeforces-923a-升级">F - CodeForces 923A 升级 ×</h2>
+<p>一个数论</p>
 <p>【题解】</p>
 <blockquote>
-<p>考虑怎么得到数字x2&#x3D;N,假设是质数p的倍数<br>那么x1肯定在x2-p+1<del>x2这个范围内才行<br>因为p的倍数要刚好大于等于x1,<br>所以x1肯定是在这两个倍数之间才行<br>结果已经很显然了<br>肯定让p的值越大越好。<br>这样得到的x1才可能越小。<br>枚举x1在x2-p+1</del>x2之间。<br>用同样的方式得到x0就好。</p>
+<p>考虑怎么得到数字x2=N,假设是质数p的倍数
+那么x1肯定在x2-p+1~x2这个范围内才行 因为p的倍数要刚好大于等于x1,
+所以x1肯定是在这两个倍数之间才行 结果已经很显然了 肯定让p的值越大越好。
+这样得到的x1才可能越小。 枚举x1在x2-p+1~x2之间。
+用同样的方式得到x0就好。</p>
 </blockquote>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
@@ -701,7 +737,6 @@ set&lt;<span class="hljs-keyword">int</span>&gt; s;
  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
 </code></pre></div>
-
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
  
@@ -724,9 +759,11 @@ set&lt;<span class="hljs-keyword">int</span>&gt; s;
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
-<h2 id="G-CodeForces-961D-贯穿-√"><a href="#G-CodeForces-961D-贯穿-√" class="headerlink" title="G - CodeForces 961D 贯穿 √"></a>G - CodeForces 961D 贯穿 √</h2><p><strong>题目复述：</strong> 对于二维坐标系上的给出的一系列点，是否能用两条直线涵盖所有点。（n&lt;100000）</p>
-<p><strong>解题思路：</strong> 我们假设题目成立，在条件成立的情况下，尝试找到这两条直线。对于这一系列点的任意三个点，三个点表示的三条直线中一定有一条为两条直线中的一条。即，对次三条线各做一次尝试，若被第一条线排除后的点能被另一条线贯穿则题目成立。三条线都不满足则题目不成立。</p>
+<h2 id="g---codeforces-961d-贯穿">G - CodeForces 961D 贯穿 √</h2>
+<p><strong>题目复述：</strong>
+对于二维坐标系上的给出的一系列点，是否能用两条直线涵盖所有点。（n&lt;100000）</p>
+<p><strong>解题思路：</strong>
+我们假设题目成立，在条件成立的情况下，尝试找到这两条直线。对于这一系列点的任意三个点，三个点表示的三条直线中一定有一条为两条直线中的一条。即，对次三条线各做一次尝试，若被第一条线排除后的点能被另一条线贯穿则题目成立。三条线都不满足则题目不成立。</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
@@ -782,12 +819,15 @@ ll n;
     &#125;<span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NO\n&quot;</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
-<h2 id="H-CodeForces-733D-球球人-√"><a href="#H-CodeForces-733D-球球人-√" class="headerlink" title="H - CodeForces 733D 球球人 √"></a>H - CodeForces 733D 球球人 √</h2><p><strong>题目复述：</strong> 对于 n 个长方体，输出能使得单个或两个长方体拼合的新长方体的最短棱长最长的情况。（n&lt;100000）</p>
+<h2 id="h---codeforces-733d-球球人">H - CodeForces 733D 球球人 √</h2>
+<p><strong>题目复述：</strong> 对于 n
+个长方体，输出能使得单个或两个长方体拼合的新长方体的最短棱长最长的情况。（n&lt;100000）</p>
 <p>我最开始以为可以无数个长方体拼在一起，就放了，后来才发现只能两个或一个。</p>
 <p><strong>解题思路：</strong></p>
 <p>考虑单个：直接一边读入，一边记录长方体的最短棱长的最长值和长方体对应编号</p>
-<p>考虑两个：两个长方体能拼合当且仅当两个长方体各有两条棱长对应相等，而为了使得拼合后超越单个的情况，拼合的两个长方体一定是补短，即拼合的面是最长棱和第二长棱构成的面。考虑时间复杂度不能两两匹配尝试，考虑将最长棱和第二长棱相同的长方体聚集在一起，考虑以第二棱长、第一棱长、第三棱长的优先级排序 O(nlogn) ，再线性的扫描一遍，因为能拼合的一定相邻，最大的情况只可能为第二棱长、第一棱长相同的，且第三棱长在此基础上最长的两个，一定相邻。</p>
+<p>考虑两个：两个长方体能拼合当且仅当两个长方体各有两条棱长对应相等，而为了使得拼合后超越单个的情况，拼合的两个长方体一定是补短，即拼合的面是最长棱和第二长棱构成的面。考虑时间复杂度不能两两匹配尝试，考虑将最长棱和第二长棱相同的长方体聚集在一起，考虑以第二棱长、第一棱长、第三棱长的优先级排序
+O(nlogn)
+，再线性的扫描一遍，因为能拼合的一定相邻，最大的情况只可能为第二棱长、第一棱长相同的，且第三棱长在此基础上最长的两个，一定相邻。</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
@@ -853,10 +893,19 @@ ll n;
 <span class="hljs-comment"></span>
 <span class="hljs-comment"></span>
 <span class="hljs-comment">*/</span></code></pre></div>
-
-<h2 id="I-CodeForces-687C-经验书"><a href="#I-CodeForces-687C-经验书" class="headerlink" title="I - CodeForces 687C 经验书"></a>I - CodeForces 687C 经验书</h2><p>题意：<br>给你n个数，然后让这些数相加组合，然后在这些组合的数里可以再相加组合搞出给定 k，输出这些组合的数。</p>
-<p>思路：<br>DP。<br><code>dp[i][j]</code> 代表数值为i时值为j能否被构成那么如果<code>dp[i][j]</code>能被构成那么 <code>dp[i+x][j]</code> <code>dp[i+x][j+x]</code> 都能被构成，这样状态转移方程就出来了</p>
-<p>在枚举到第i个coin的时，<code>dp[i][j]</code>,i 肯定能被<code>a[i]</code>组合，<br>然后再枚举<code>&lt;=a[i]</code>的部分，<code>dp[i][j]</code>的具体意义就是在coin值是i的时候，能用j去组合。<br>为了防止重复利用coin，从j枚举到<code>a[i]</code>;<br>最后<code>dp[k][h]==1</code>的把h塞到容器里去，最后输出。</p>
+<h2 id="i---codeforces-687c-经验书">I - CodeForces 687C 经验书</h2>
+<p>题意：
+给你n个数，然后让这些数相加组合，然后在这些组合的数里可以再相加组合搞出给定
+k，输出这些组合的数。</p>
+<p>思路： DP。 <code>dp[i][j]</code>
+代表数值为i时值为j能否被构成那么如果<code>dp[i][j]</code>能被构成那么
+<code>dp[i+x][j]</code> <code>dp[i+x][j+x]</code>
+都能被构成，这样状态转移方程就出来了</p>
+<p>在枚举到第i个coin的时，<code>dp[i][j]</code>,i
+肯定能被<code>a[i]</code>组合，<br />
+然后再枚举<code>&lt;=a[i]</code>的部分，<code>dp[i][j]</code>的具体意义就是在coin值是i的时候，能用j去组合。<br />
+为了防止重复利用coin，从j枚举到<code>a[i]</code>;<br />
+最后<code>dp[k][h]==1</code>的把h塞到容器里去，最后输出。</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cmath&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
@@ -885,7 +934,8 @@ ll n;
 		cout &lt;&lt; num[i] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;
 	cout &lt;&lt; endl;
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; 
-&#125;</code></pre></div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+&#125;</code></pre></div>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
             <hr>
             <div>
@@ -1112,8 +1162,43 @@ ll n;
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

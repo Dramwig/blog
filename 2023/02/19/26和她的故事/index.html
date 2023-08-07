@@ -237,17 +237,18 @@
             
             <div class="markdown-body">
               <blockquote>
-<p>好似那笼中雀扑向水中月。</p>
-<span id="more"></span>
+<p>好似那笼中雀扑向水中月。 <span id="more"></span></p>
 </blockquote>
-<h2 id="和她的故事"><a href="#和她的故事" class="headerlink" title="和她的故事"></a>和她的故事</h2><p>我和她的故事如何讲起，是在那个还有这烟火味道的除夕？还是那年暑假的补课？时间过去了太久，久到我忘记了相知的细节，相处的悸动。</p>
+<h2 id="和她的故事">和她的故事</h2>
+<p>我和她的故事如何讲起，是在那个还有这烟火味道的除夕？还是那年暑假的补课？时间过去了太久，久到我忘记了相知的细节，相处的悸动。</p>
 <p>在那个除夕我天真的认为，真的是她大冒险输了，来询问我是否喜欢他人，再再一年后的补课，我出于什么心理坐在她身旁。我不能说这是少年的心动，因为这显得很廉价。在补课结束的那段时间我们慢慢聊了许多，再往后我要她写诗却写了一封信，信封从线上来到线下，配上周末的交谈，似乎便开始了。</p>
 <p>我不知道如何定义这个开始，可以说是她偶尔口上说笑，也可以说是相知与心换心。那段时间太多事太多细节已经记不清，至少每天会有担心，激动，害羞，有多想的充实。入今看来如梦如幻的日子啊，其实早也有祸根，我会吃错，交流也大都限于线上。也许这就是我至今不能确定这究竟算不算谈，算不算那关系。</p>
 <p>分开后的很长一段时间，我对她的定义是半个女友，这来自于离别的对话，但是我似乎是记错了。“我们还不算男女朋友关系吧”，“四舍五入也算了”。也许这段对话来自梦中？不管怎么样也快一年的联系就此断绝，在毕业后的第一天，从此山河相隔，再难相见。</p>
 <p>一直还是意难平的。在那个长假里，我逝去了许多爱好和计划，或积极或消极的逃进大学，我单方面屏蔽了她的空间很长时间，再往后我偶尔会看到她的说说与朋友圈。我也自以为两人再难走入新的亲密关系——直到她曾经从来不让我知道的账号突然关注了我——直到我今天看见他元宵节的回答——直到我看见了她对前男友的叙事。恍恍忽，我才知道，所谓的影响如镜中花。笼中雀倒影着水中月。一切静下来，慢下来，其实也不过如此。</p>
 <p>以为我想说什么？我眼泪早已在最后那一学期里留尽了。往后在她生日那天也再难哭出来，其实我并不逃避这段关系，我时常回想品味。已经很淡了，大学时间冲淡了太多东西，我是不想忘记的，也不可得。我只认为在无数的孤月下，会有两个独立又萧条的背影。如今看来，宛若秋风。</p>
 <p>感性叙事并不能带来什么。但她真的回避依恋了吗？我怀疑了起来了。我不知道，我只知道我的心空了，空了很久——我记不起来了。</p>
-<p>我现在，似乎很平静，也只是似乎罢了。一股电流从脚流到胸腔，它早就比不上当年的刺痛了。<br>我又来这干什么呢？</p>
+<p>我现在，似乎很平静，也只是似乎罢了。一股电流从脚流到胸腔，它早就比不上当年的刺痛了。
+我又来这干什么呢？</p>
 <p>——23.02.19 00:46</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
@@ -482,8 +483,43 @@
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

@@ -18,12 +18,12 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="拟牛顿法(Quasi-Newton Methods)是求解非线性优化问题最有效的方法之一。其在牛顿法的基础上，利用相邻两个点的位移和一阶导数信息构造与二阶导数阵相似的正定矩阵。从而以在不直接计算Hessian矩阵的情况下实现高维问题的超线性收敛。 牛顿法通过计算每一步的梯度 $\nabla f\left(\mathbf{x}{k}\right)$ 与Hessian矩阵 $\mathbf{H}{f}">
+  <meta name="description" content="拟牛顿法(Quasi-Newton Methods) 是求解非线性优化问题最有效的方法之一。其在牛顿法的基础上，利用相邻两个点的位移和一阶导数信息构造与二阶导数阵相似的正定矩阵。从而以在不直接计算Hessian矩阵的情况下实现高维问题的超线性收敛。 牛顿法通过计算每一步的梯度 \(\nabla f\left(\mathbf{x}_{k}\right)\) 与Hessian矩阵 \(\math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拟牛顿法">
 <meta property="og:url" content="http://example.com/2022/08/24/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="拟牛顿法(Quasi-Newton Methods)是求解非线性优化问题最有效的方法之一。其在牛顿法的基础上，利用相邻两个点的位移和一阶导数信息构造与二阶导数阵相似的正定矩阵。从而以在不直接计算Hessian矩阵的情况下实现高维问题的超线性收敛。 牛顿法通过计算每一步的梯度 $\nabla f\left(\mathbf{x}{k}\right)$ 与Hessian矩阵 $\mathbf{H}{f}">
+<meta property="og:description" content="拟牛顿法(Quasi-Newton Methods) 是求解非线性优化问题最有效的方法之一。其在牛顿法的基础上，利用相邻两个点的位移和一阶导数信息构造与二阶导数阵相似的正定矩阵。从而以在不直接计算Hessian矩阵的情况下实现高维问题的超线性收敛。 牛顿法通过计算每一步的梯度 \(\nabla f\left(\mathbf{x}_{k}\right)\) 与Hessian矩阵 \(\math">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-24T01:28:00.000Z">
 <meta property="article:modified_time" content="2022-08-24T02:28:34.271Z">
@@ -233,36 +233,83 @@
               </p>
             
             <div class="markdown-body">
-              <p>拟牛顿法(Quasi-Newton Methods)<br>是求解非线性优化问题最有效的方法之一。其在牛顿法的基础上，利用相邻两个点的位移和一阶导数信息构造与二阶导数阵相似的正定矩阵。从而以在不直接计算Hessian矩阵的情况下实现高维问题的超线性收敛。</p>
-<p>牛顿法通过计算每一步的梯度 $\nabla f\left(\mathbf{x}<em>{k}\right)$ 与Hessian矩阵 $\mathbf{H}</em>{f}\left(\mathbf{x}<em>{k}\right)$ 迭代更逼近驻点的 $\mathbf{x}</em>{k+1}$</p>
-<p>$$\mathbf{x}<em>{k+1}&#x3D;\mathbf{x}</em>{k}-\mathbf{H}<em>{f}^{-1}\left(\mathbf{x}</em>{k}\right) \nabla f\left(\mathbf{x}_{k}\right).$$</p>
-<p>其最大难度在于求解维度超大的Hessian矩阵与其逆矩阵 $\mathbf{H}<em>{f}^{-1}\left(\mathbf{x}</em>{k}\right)$ ，而拟牛顿法则通过一维导数（梯度）的变化便可以得到近似的Hessian矩阵，而大大降低了求解难度与求逆的时间。</p>
-<h1 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h1><p>（以下高维向量、矩阵不再加粗表示）</p>
-<p>记 $B_k$ 表示第 $k$ 次迭代的近似Hessian矩阵称为切线刚度矩阵，其初始为单位矩阵，即 $B_0&#x3D;I$. 根据</p>
-<p>$$B_kp_k&#x3D;-\nabla f\left(x_{k}\right)$$</p>
-<p>计算 $p_k$ ，作为每一次迭代的步。</p>
-<p>$$x_{k+1}&#x3D;x_k+\alpha p_k$$</p>
-<p>其中 $\alpha$ 一般计为 $1.0$，也可以从 $1.0$ 折半查找，直到 $f(x_{k+1})$ 更优。计算</p>
-<p>$$s_k&#x3D;\alpha p_k\ ,\ y_k&#x3D;\nabla f\left(x_{k+1}\right)-\nabla f\left(x_{k}\right).$$</p>
+              <p>拟牛顿法(Quasi-Newton Methods)<br />
+是求解非线性优化问题最有效的方法之一。其在牛顿法的基础上，利用相邻两个点的位移和一阶导数信息构造与二阶导数阵相似的正定矩阵。从而以在不直接计算Hessian矩阵的情况下实现高维问题的超线性收敛。</p>
+<p>牛顿法通过计算每一步的梯度 <span class="math inline">\(\nabla
+f\left(\mathbf{x}_{k}\right)\)</span> 与Hessian矩阵 <span
+class="math inline">\(\mathbf{H}_{f}\left(\mathbf{x}_{k}\right)\)</span>
+迭代更逼近驻点的 <span
+class="math inline">\(\mathbf{x}_{k+1}\)</span></p>
+<p><span
+class="math display">\[\mathbf{x}_{k+1}=\mathbf{x}_{k}-\mathbf{H}_{f}^{-1}\left(\mathbf{x}_{k}\right)
+\nabla f\left(\mathbf{x}_{k}\right).\]</span></p>
+<p>其最大难度在于求解维度超大的Hessian矩阵与其逆矩阵 <span
+class="math inline">\(\mathbf{H}_{f}^{-1}\left(\mathbf{x}_{k}\right)\)</span>
+，而拟牛顿法则通过一维导数（梯度）的变化便可以得到近似的Hessian矩阵，而大大降低了求解难度与求逆的时间。</p>
+<h1 id="基本步骤">基本步骤</h1>
+<p>（以下高维向量、矩阵不再加粗表示）</p>
+<p>记 <span class="math inline">\(B_k\)</span> 表示第 <span
+class="math inline">\(k\)</span>
+次迭代的近似Hessian矩阵称为切线刚度矩阵，其初始为单位矩阵，即 <span
+class="math inline">\(B_0=I\)</span>. 根据</p>
+<p><span class="math display">\[B_kp_k=-\nabla
+f\left(x_{k}\right)\]</span></p>
+<p>计算 <span class="math inline">\(p_k\)</span>
+，作为每一次迭代的步。</p>
+<p><span class="math display">\[x_{k+1}=x_k+\alpha p_k\]</span></p>
+<p>其中 <span class="math inline">\(\alpha\)</span> 一般计为 <span
+class="math inline">\(1.0\)</span>，也可以从 <span
+class="math inline">\(1.0\)</span> 折半查找，直到 <span
+class="math inline">\(f(x_{k+1})\)</span> 更优。计算</p>
+<p><span class="math display">\[s_k=\alpha p_k\ ,\ y_k=\nabla
+f\left(x_{k+1}\right)-\nabla f\left(x_{k}\right).\]</span></p>
 <p>计算新的刚度矩阵</p>
-<p>$$B_{k+1}&#x3D;B_{k}-\frac{B_{k} s_{k} s_{k}^{T} B_{k}}{s_{k}^{T} B_{k} s_{k}}+\frac{y_{k} y_{k}^{T}}{y_{k}^{T} s_{k}} （BFGS算法）.$$</p>
-<p>若误差足够小，如等式约束两端误差小于 $\epsilon$ 则得到解，否则继续迭代。</p>
-<h1 id="刚度矩阵算法"><a href="#刚度矩阵算法" class="headerlink" title="刚度矩阵算法"></a>刚度矩阵算法</h1><p>以上以BFGS法为例，介绍了基本的拟牛顿法步骤，其他方法也仅仅在计算刚度矩阵上进行的变化。</p>
-<h2 id="DFP法"><a href="#DFP法" class="headerlink" title="DFP法"></a>DFP法</h2><p>$$B_{k+1}&#x3D;B_{k}-\frac{B_{k} y_{k} y_{k}^{T} B_{k}}{y_{k}^{T} B_{k} y_{k}}+\frac{s_{k} s_{k}^{T}}{y_{k}^{T} s_{k}}$$</p>
-<p>DFP方法是秩-2更新的一种，由它产生的矩阵 $B_k$ 是正定的，而且满足这样的极小性：</p>
-<p>$$\min <em>{B}\left|B-B</em>{k}\right| \text { s.t. } B&#x3D;B^{T}, B s_{k}&#x3D;y_{k}$$</p>
-<h2 id="BFGS法"><a href="#BFGS法" class="headerlink" title="BFGS法"></a>BFGS法</h2><p>$$B_{k+1}&#x3D;B_{k}-\frac{B_{k} s_{k} s_{k}^{T} B_{k}}{s_{k}^{T} B_{k} s_{k}}+\frac{y_{k} y_{k}^{T}}{y_{k}^{T} s_{k}} $$</p>
-<p>该方法 $B_k$ 同样正定，也同样满足上述的极小性。</p>
+<p><span class="math display">\[B_{k+1}=B_{k}-\frac{B_{k} s_{k}
+s_{k}^{T} B_{k}}{s_{k}^{T} B_{k} s_{k}}+\frac{y_{k} y_{k}^{T}}{y_{k}^{T}
+s_{k}} （BFGS算法）.\]</span></p>
+<p>若误差足够小，如等式约束两端误差小于 <span
+class="math inline">\(\epsilon\)</span> 则得到解，否则继续迭代。</p>
+<h1 id="刚度矩阵算法">刚度矩阵算法</h1>
+<p>以上以BFGS法为例，介绍了基本的拟牛顿法步骤，其他方法也仅仅在计算刚度矩阵上进行的变化。</p>
+<h2 id="dfp法">DFP法</h2>
+<p><span class="math display">\[B_{k+1}=B_{k}-\frac{B_{k} y_{k}
+y_{k}^{T} B_{k}}{y_{k}^{T} B_{k} y_{k}}+\frac{s_{k} s_{k}^{T}}{y_{k}^{T}
+s_{k}}\]</span></p>
+<p>DFP方法是秩-2更新的一种，由它产生的矩阵 <span
+class="math inline">\(B_k\)</span> 是正定的，而且满足这样的极小性：</p>
+<p><span class="math display">\[\min _{B}\left|B-B_{k}\right| \text {
+s.t. } B=B^{T}, B s_{k}=y_{k}\]</span></p>
+<h2 id="bfgs法">BFGS法</h2>
+<p><span class="math display">\[B_{k+1}=B_{k}-\frac{B_{k} s_{k}
+s_{k}^{T} B_{k}}{s_{k}^{T} B_{k} s_{k}}+\frac{y_{k} y_{k}^{T}}{y_{k}^{T}
+s_{k}} \]</span></p>
+<p>该方法 <span class="math inline">\(B_k\)</span>
+同样正定，也同样满足上述的极小性。</p>
 <p>且BFGS和DFP公式在形式上是对称的，但是BFGS比DFP更加有效。</p>
-<h2 id="对称秩1（SR1）法"><a href="#对称秩1（SR1）法" class="headerlink" title="对称秩1（SR1）法"></a>对称秩1（SR1）法</h2><p>$$B_{k+1}&#x3D;B_{k}+\frac{\left(y_{k}-B_{k} s_{k}\right)\left(y_{k}-B_{k} s_{k}\right)^{T}}{\left(y_{k}-B_{k} s_{k}\right)^{T} s_{k}}$$</p>
+<h2 id="对称秩1sr1法">对称秩1（SR1）法</h2>
+<p><span class="math display">\[B_{k+1}=B_{k}+\frac{\left(y_{k}-B_{k}
+s_{k}\right)\left(y_{k}-B_{k} s_{k}\right)^{T}}{\left(y_{k}-B_{k}
+s_{k}\right)^{T} s_{k}}\]</span></p>
 <p>有别于DFP和BFG方法，SR1是一种秩-1更新。</p>
-<p>SR1公式不要求矩阵 $B_k$ 保持正定性，从而更逼近真实的Hesse矩阵，所以适用于信赖域方法(Trust Region Methods)。</p>
-<h2 id="Broyden族"><a href="#Broyden族" class="headerlink" title="Broyden族"></a>Broyden族</h2><p>$$B_{k+1}&#x3D;\left(1-c_{k}\right) B_{k+1}^{B F G S}+c_{k} B_{k+1}^{D F P}$$</p>
-<p>当 $c_k&#x3D;0$ 时，Broyden族公式就变成了BFGS公式；当 $c_k&#x3D;1$ 时，Broyden族公式就变成了DFP公式。因此BFGS和DFP均可看成Broyden族的特殊形式或者其中一员。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/9340944">https://baike.baidu.com/item/%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/9340944</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/45221013">https://zhuanlan.zhihu.com/p/45221013</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/222899764">https://zhuanlan.zhihu.com/p/222899764</a></li>
+<p>SR1公式不要求矩阵 <span class="math inline">\(B_k\)</span>
+保持正定性，从而更逼近真实的Hesse矩阵，所以适用于信赖域方法(Trust Region
+Methods)。</p>
+<h2 id="broyden族">Broyden族</h2>
+<p><span class="math display">\[B_{k+1}=\left(1-c_{k}\right) B_{k+1}^{B
+F G S}+c_{k} B_{k+1}^{D F P}\]</span></p>
+<p>当 <span class="math inline">\(c_k=0\)</span>
+时，Broyden族公式就变成了BFGS公式；当 <span
+class="math inline">\(c_k=1\)</span>
+时，Broyden族公式就变成了DFP公式。因此BFGS和DFP均可看成Broyden族的特殊形式或者其中一员。</p>
+<h1 id="参考">参考</h1>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/9340944"
+class="uri">https://baike.baidu.com/item/%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/9340944</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/45221013"
+class="uri">https://zhuanlan.zhihu.com/p/45221013</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/222899764"
+class="uri">https://zhuanlan.zhihu.com/p/222899764</a></li>
 </ul>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
@@ -493,8 +540,43 @@
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

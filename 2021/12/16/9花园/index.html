@@ -16,8 +16,7 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="
-我的故事里，有一座金色的花园，它不太大，却也撑起了年少的天空。
-">
+我的故事里，有一座金色的花园，它不太大，却也撑起了年少的天空。">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
   <meta name="description" content="我的故事里，有一座金色的花园，它不太大，却也撑起了年少的天空。">
@@ -230,17 +229,17 @@
             
               <p class="note note-info">
                 
-                  请注意，文章中部分理解可能已被笔者废弃，本文最后更新于：6 个月前
+                  请注意，文章中部分理解可能已被笔者废弃，本文最后更新于：7 个月前
                 
               </p>
             
             <div class="markdown-body">
               <blockquote>
-<p>我的故事里，有一座金色的花园，它不太大，却也撑起了年少的天空。</p>
+<p>我的故事里，有一座金色的花园，它不太大，却也撑起了年少的天空。
+<span id="more"></span></p>
 </blockquote>
-<span id="more"></span>
-
-<h2 id="小园记"><a href="#小园记" class="headerlink" title="小园记"></a>小园记</h2><p>从小家人就告诉我，花坛很脏，我可不听——因为那可是我自己的家园。</p>
+<h2 id="小园记">小园记</h2>
+<p>从小家人就告诉我，花坛很脏，我可不听——因为那可是我自己的家园。</p>
 <p>从我记事开始，那座花坛就在那里，仿佛，也一直应该在那里。在我家楼下，是一个被三面楼房和一堵墙包围的大院子，而正中央椭圆形的绿化空间就是这座花坛，在这个花坛中，有种植的几颗树木，四座假山，几株花草和一些我不曾认识的灌木类植物。</p>
 <p>大片大片的杂草总是随着季节的更替变换着不同的绿色，构成了花坛的主色调。与此同时新的杂草会挤占旧杂草的生存空间，杂草的演替伴随着我的年岁的长大不断更替着——直到我离开这片土地。</p>
 <p>我依然记得，在假山与灌木形成的空间中与那时的玩伴搭建的基地——对纸条进行一点点修剪，再在潮湿的泥土上铺上报纸，这便是一切，噢，还有木棍和砖块做一点简单的“家具”。我们还在林间的空地设置捕鸟笼；在斜坡上挖掘坡道形成灌溉线路；在假山边挖坑添水移栽花草制作风景点；在大“路”中间做出完美不会被看穿的陷阱……这哪是是花坛，这分明就是一大片树林、一大片田野、还有远山下的烟雨小镇。这是我们的土地，这片土地上空是我们的蓝天。</p>
@@ -476,8 +475,43 @@
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

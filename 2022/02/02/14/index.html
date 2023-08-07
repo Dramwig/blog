@@ -18,12 +18,12 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="一个迟到几周的复盘，现在大年初一才来补题(😓) 链接             2022—SWJTU寒假选拔赛第三场                          前辈写的题解               题目列表 A-A √要想让 $S(x + 1) &lt; s(x)$ 只能可能发生在进位的时候,因此每逢尾数为 $9$ 时就会对答案产生贡献。 其实通过样例就可以得到解为$(n+1)&amp;#x2">
+  <meta name="description" content="一个迟到几周的复盘，现在大年初一才来补题(😓) 链接              2022—SWJTU寒假选拔赛第三场                         前辈写的题解               题目列表   RANK(E题是一道AC题被删的补偿)  A-A √ 要想让 \(S(x + 1) &lt; s(x)\) 只能可能发生在进位的时候,因此每逢">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2022—SWJTU寒假选拔赛第三场复盘">
 <meta property="og:url" content="http://example.com/2022/02/02/14/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="一个迟到几周的复盘，现在大年初一才来补题(😓) 链接             2022—SWJTU寒假选拔赛第三场                          前辈写的题解               题目列表 A-A √要想让 $S(x + 1) &lt; s(x)$ 只能可能发生在进位的时候,因此每逢尾数为 $9$ 时就会对答案产生贡献。 其实通过样例就可以得到解为$(n+1)&amp;#x2">
+<meta property="og:description" content="一个迟到几周的复盘，现在大年初一才来补题(😓) 链接              2022—SWJTU寒假选拔赛第三场                         前辈写的题解               题目列表   RANK(E题是一道AC题被删的补偿)  A-A √ 要想让 \(S(x + 1) &lt; s(x)\) 只能可能发生在进位的时候,因此每逢">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/02/02/ZaWudk8AX1nLYgm.png">
 <meta property="article:published_time" content="2022-02-02T08:38:00.000Z">
@@ -235,19 +235,30 @@
             
             <div class="markdown-body">
               <p>一个迟到几周的复盘，现在大年初一才来补题(😓)</p>
-<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><div class="note note-info">
-            <p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/476894"><b>2022—SWJTU寒假选拔赛第三场</b></a></p>
-          </div>
-
+<h1 id="链接">链接</h1>
 <div class="note note-info">
-            <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_56007815/article/details/122655578?spm=1001.2014.3001.5501"><b>前辈写的题解</b></a></p>
+            <p><atarget="_blank" rel="noopener" href="https://vjudge.net/contest/476894"><b>2022—SWJTU寒假选拔赛第三场</b></a></p>
           </div>
-
-<center><hr width=100px></center>
-
-<h1 id="题目列表"><a href="#题目列表" class="headerlink" title="题目列表"></a>题目列表</h1><p><img src="https://s2.loli.net/2022/02/02/ZaWudk8AX1nLYgm.png" srcset="/img/loading.gif" lazyload alt="RANK(E题是一道AC题被删的补偿)"></p>
-<h2 id="A-A-√"><a href="#A-A-√" class="headerlink" title="A-A √"></a><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/A">A-A √</a></h2><p>要想让 $S(x + 1) &lt; s(x)$ 只能可能发生在进位的时候,因此每逢尾数为 $9$ 时就会对答案产生贡献。</p>
-<p>其实通过样例就可以得到解为$(n+1)&#x2F;10$</p>
+<div class="note note-info">
+            <p><atarget="_blank" rel="noopener" href="https://blog.csdn.net/m0_56007815/article/details/122655578?spm=1001.2014.3001.5501"><b>前辈写的题解</b></a></p>
+          </div>
+<center>
+<hr width=100px>
+</center>
+<h1 id="题目列表">题目列表</h1>
+<figure>
+<img src="https://s2.loli.net/2022/02/02/ZaWudk8AX1nLYgm.png" srcset="/img/loading.gif" lazyload
+alt="RANK(E题是一道AC题被删的补偿)" />
+<figcaption
+aria-hidden="true">RANK(E题是一道AC题被删的补偿)</figcaption>
+</figure>
+<h2 id="a-a"><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/A">A-A
+√</a></h2>
+<p>要想让 <span class="math inline">\(S(x + 1) &lt; s(x)\)</span>
+只能可能发生在进位的时候,因此每逢尾数为 <span
+class="math inline">\(9\)</span> 时就会对答案产生贡献。</p>
+<p>其实通过样例就可以得到解为<span
+class="math inline">\((n+1)/10\)</span></p>
 <p>AC code:</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
@@ -273,14 +284,28 @@
         cout&lt;&lt;(n+<span class="hljs-number">1</span>)/<span class="hljs-number">10</span>&lt;&lt;endl;
     &#125;
 &#125;</code></pre></div>
-
-<h2 id="B-B-√"><a href="#B-B-√" class="headerlink" title="B-B √"></a><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/B">B-B √</a></h2><p>题目重述；给出 $1$ 个长度为 $n$ 的序列，以及 $1$ 个正整数 $m$。问这个原序列中是否存在非空子序列，使其元素之和能被 $m$ 整除。</p>
-<p>看到数据范围数据范围：$1&lt;&#x3D;n&lt;&#x3D;10^6,2&lt;&#x3D;m&lt;&#x3D;1000,1&lt;&#x3D;n&lt;&#x3D;10$ 。 自然不可能用 $O(nm)$，时间复杂度仅仅与$m$有关。</p>
+<h2 id="b-b"><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/B">B-B
+√</a></h2>
+<p>题目重述；给出 <span class="math inline">\(1\)</span> 个长度为 <span
+class="math inline">\(n\)</span> 的序列，以及 <span
+class="math inline">\(1\)</span> 个正整数 <span
+class="math inline">\(m\)</span>。问这个原序列中是否存在非空子序列，使其元素之和能被
+<span class="math inline">\(m\)</span> 整除。</p>
+<p>看到数据范围数据范围：<span
+class="math inline">\(1&lt;=n&lt;=10^6,2&lt;=m&lt;=1000,1&lt;=n&lt;=10\)</span>
+。 自然不可能用 <span
+class="math inline">\(O(nm)\)</span>，时间复杂度仅仅与<span
+class="math inline">\(m\)</span>有关。</p>
 <ul>
-<li><p>考虑 $n&gt;m$ 的情况：我们对整个数列做前缀和，然后再对 $m$ 取模。根据抽屉原理，因为 $n&gt;m$，所以在 $n$ 个前缀和中必有两个对 $m$ 取模于是相等，它们中间那段就是答案。</p>
-</li>
-<li><p>而 n⩽m 的情况，n⩽103，不会超时,直接 $O(nm)$ 的背包。</p>
-</li>
+<li><p>考虑 <span class="math inline">\(n&gt;m\)</span>
+的情况：我们对整个数列做前缀和，然后再对 <span
+class="math inline">\(m\)</span> 取模。根据抽屉原理，因为 <span
+class="math inline">\(n&gt;m\)</span>，所以在 <span
+class="math inline">\(n\)</span> 个前缀和中必有两个对 <span
+class="math inline">\(m\)</span>
+取模于是相等，它们中间那段就是答案。</p></li>
+<li><p>而 n⩽m 的情况，n⩽103，不会超时,直接 <span
+class="math inline">\(O(nm)\)</span> 的背包。</p></li>
 </ul>
 <p>Stl:</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
@@ -311,7 +336,6 @@ ch=<span class="hljs-built_in">getchar</span>();&#125;<span class="hljs-keyword"
  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s&quot;</span>, (dp[<span class="hljs-number">0</span>] ? <span class="hljs-string">&quot;YES&quot;</span> : <span class="hljs-string">&quot;NO&quot;</span>)); 
  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; 
 &#125;</code></pre></div>
-
 <p>AC code:</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
@@ -373,8 +397,9 @@ ch=<span class="hljs-built_in">getchar</span>();&#125;<span class="hljs-keyword"
  <span class="hljs-built_in">puts</span>(ans ? <span class="hljs-string">&quot;YES&quot;</span> : <span class="hljs-string">&quot;NO&quot;</span>);
  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
-<h2 id="C-C-√"><a href="#C-C-√" class="headerlink" title="C-C √"></a><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/C">C-C √</a></h2><p>最简单的签到题，直接过</p>
+<h2 id="c-c"><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/C">C-C
+√</a></h2>
+<p>最简单的签到题，直接过</p>
 <p>AC code:</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
@@ -406,8 +431,8 @@ ch=<span class="hljs-built_in">getchar</span>();&#125;<span class="hljs-keyword"
             cout&lt;&lt;<span class="hljs-number">1</span>&lt;&lt;endl;
     &#125;
 &#125;</code></pre></div>
-
-<h2 id="原D题-√"><a href="#原D题-√" class="headerlink" title="原D题 √"></a>原D题 √</h2><p>本来是二维dp题目，硬生生被我做成了字符串（公共子串）匹配，再在得到的二维数组上对公共子串长度记录，再dp（但是我觉得思路更清晰？迷幻）。</p>
+<h2 id="原d题">原D题 √</h2>
+<p>本来是二维dp题目，硬生生被我做成了字符串（公共子串）匹配，再在得到的二维数组上对公共子串长度记录，再dp（但是我觉得思路更清晰？迷幻）。</p>
 <p>AC code:</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
@@ -457,8 +482,9 @@ ch=<span class="hljs-built_in">getchar</span>();&#125;<span class="hljs-keyword"
             &#125;
     cout&lt;&lt;ans;
 &#125;</code></pre></div>
-
-<h2 id="D-E"><a href="#D-E" class="headerlink" title="D-E"></a><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/D">D-E</a></h2><p>组合数学，详解见题解</p>
+<h2 id="d-e"><a
+target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/D">D-E</a></h2>
+<p>组合数学，详解见题解</p>
 <p>Stl:</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
@@ -509,9 +535,16 @@ LL fac[N],inv[N];
     
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
-<h2 id="E-F"><a href="#E-F" class="headerlink" title="E-F"></a><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/E">E-F</a></h2><p>看到这道题我先想到了树形dp、点分治。然而这是个图。</p>
-<p><strong>正确思路</strong>: 我们已经确定了起点和终点,那么我们只需要枚举 起点到 $i$ 的距离 + 终点到 $j$ 的距离 + $i,j$ 之间的距离判断其是否大于等于最短距离,如果满足那么这个 $i,j$ 组合就是合法的加边结果。</p>
+<h2 id="e-f"><a
+target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/E">E-F</a></h2>
+<p>看到这道题我先想到了树形dp、点分治。然而这是个图。</p>
+<p><strong>正确思路</strong>:
+我们已经确定了起点和终点,那么我们只需要枚举 起点到 <span
+class="math inline">\(i\)</span> 的距离 + 终点到 <span
+class="math inline">\(j\)</span> 的距离 + <span
+class="math inline">\(i,j\)</span>
+之间的距离判断其是否大于等于最短距离,如果满足那么这个 <span
+class="math inline">\(i,j\)</span> 组合就是合法的加边结果。</p>
 <p><strong>流程</strong>：我们对起点和终点分别跑两次最短路,枚举要加边的两个端点,判断其是否满足条件,计算其对答案的贡献即可。</p>
 <p>Stl:</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
@@ -580,8 +613,9 @@ vector&lt;<span class="hljs-keyword">int</span>&gt; g[N];
     <span class="hljs-keyword">while</span>(T --) <span class="hljs-built_in">solve</span>();
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
-<h2 id="F-G"><a href="#F-G" class="headerlink" title="F-G"></a><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/F">F-G</a></h2><p>线段树</p>
+<h2 id="f-g"><a
+target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/F">F-G</a></h2>
+<p>线段树</p>
 <p>Stl:</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
@@ -663,10 +697,14 @@ vector &lt;pair &lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyw
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
-<h2 id="原H题"><a href="#原H题" class="headerlink" title="原H题"></a>原H题</h2><p>写了一个二分答案，wa后被告知题目要被删。</p>
-<h2 id="G-I-√"><a href="#G-I-√" class="headerlink" title="G-I √"></a><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/G">G-I √</a></h2><p>一个奇葩的题目。你只需要构造出一个满足题意的树就行。</p>
-<p>无法构造时： $d&gt;2h$ 时必定不成立 $d&#x3D; 1$ 时,节点数只能是 $2$。</p>
+<h2 id="原h题">原H题</h2>
+<p>写了一个二分答案，wa后被告知题目要被删。</p>
+<h2 id="g-i"><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/G">G-I
+√</a></h2>
+<p>一个奇葩的题目。你只需要构造出一个满足题意的树就行。</p>
+<p>无法构造时： <span class="math inline">\(d&gt;2h\)</span>
+时必定不成立 <span class="math inline">\(d= 1\)</span> 时,节点数只能是
+<span class="math inline">\(2\)</span>。</p>
 <p>先构建成一条满足条件的链,然后不够的再往上加点即可。有一些细节问题，所以我调了很久才A(哭)。</p>
 <p>AC code:</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
@@ -717,11 +755,19 @@ vector &lt;pair &lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyw
     &#125;
         
 &#125;</code></pre></div>
-
-<h2 id="H-J-√"><a href="#H-J-√" class="headerlink" title="H-J √"></a><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/H">H-J √</a></h2><p>在学长的点拨下做出来的题。</p>
-<p>数据范围超空间，所以不能用数组作桶，用map。要用 $O(n)$ 的做法，要用所以不能存位置，要map存奇数偶数的个数,还要开LL：<code>map<int,ll> m[2]</code>。导致我写了好几遍。</p>
-<p>基本思路：两个相同的数的亦或为$0$，$0$和任意另外一个数的亦或都为另一个数。</p>
-<p>所以对于题目要救“区间从$1&#x2F;2$的位置分割为两部分，两部分的元素异或和相同”，记两段的亦或分别为<code>l</code>，<code>r</code>当且仅当<code>a^l^r=a</code>时满足题意，可得$O(n)$的算法（从左到右扫一遍）。</p>
+<h2 id="h-j"><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/H">H-J
+√</a></h2>
+<p>在学长的点拨下做出来的题。</p>
+<p>数据范围超空间，所以不能用数组作桶，用map。要用 <span
+class="math inline">\(O(n)\)</span>
+的做法，要用所以不能存位置，要map存奇数偶数的个数,还要开LL：<code>map&lt;int,ll&gt;
+m[2]</code>。导致我写了好几遍。</p>
+<p>基本思路：两个相同的数的亦或为<span
+class="math inline">\(0\)</span>，<span
+class="math inline">\(0\)</span>和任意另外一个数的亦或都为另一个数。</p>
+<p>所以对于题目要救“区间从<span
+class="math inline">\(1/2\)</span>的位置分割为两部分，两部分的元素异或和相同”，记两段的亦或分别为<code>l</code>，<code>r</code>当且仅当<code>a^l^r=a</code>时满足题意，可得<span
+class="math inline">\(O(n)\)</span>的算法（从左到右扫一遍）。</p>
 <p>AC code:</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
@@ -750,16 +796,32 @@ map&lt;<span class="hljs-keyword">int</span>,ll&gt; m[<span class="hljs-number">
     &#125;
     cout&lt;&lt;ans;
 &#125;</code></pre></div>
-
-<h2 id="I-K"><a href="#I-K" class="headerlink" title="I-K"></a><a target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/I">I-K</a></h2><p>我想了线性dp但我就是没想出来(哭)</p>
-<p>让你求解整个序列上的极值问题,然后判断其是否无后效性和是否存在最优子结构就能够知道是不是个 dp ,这题整个序列上的极值显然是可以由其子序列转移而来的,具体证明就不多赘述,直接开始dp。</p>
-<p><strong>状态表示</strong>：<code>f[i]</code> 表示前 <code>i</code> 个数字中取 $\frac{n}{2}$ (向下取整)个数并且这些数两两不相邻,其最大的和。</p>
+<h2 id="i-k"><a
+target="_blank" rel="noopener" href="https://vjudge.net/contest/477408#problem/I">I-K</a></h2>
+<p>我想了线性dp但我就是没想出来(哭)</p>
+<p>让你求解整个序列上的极值问题,然后判断其是否无后效性和是否存在最优子结构就能够知道是不是个
+dp
+,这题整个序列上的极值显然是可以由其子序列转移而来的,具体证明就不多赘述,直接开始dp。</p>
+<p><strong>状态表示</strong>：<code>f[i]</code> 表示前 <code>i</code>
+个数字中取 <span class="math inline">\(\frac{n}{2}\)</span>
+(向下取整)个数并且这些数两两不相邻,其最大的和。</p>
 <p><strong>状态转移</strong>：</p>
-<p>由于是 $\frac{n}{2}$ (向下取整)存在奇偶数不同的情况,因此我们对其分类讨论</p>
-<p>若是奇数并且选了第 $i$ 个数则 <code>f[i] = f[i-2] + a[i]</code>  ,因为选了第 $i$ 个数后,第 $i-1$ 个数就不能被选中了,只能从 <code>f[i-2]</code>转移而来</p>
-<p>若没有选第 $i$ 个数则 <code>f[i] = f[i-1]</code></p>
-<p>若是偶数并且选了第 $i$ 个数则同理, <code>f[i] = f[i-2] + a[i]</code> ,</p>
-<p>若没有选第 $i$ 个数,我们只能将奇数位置上的数全选上才能有 $⌊n&#x2F;2⌋$ (向下取整)个数字,不然的话若还是 <code>f[i-1]</code> ,此时 $i-1$ 为奇数除二下取整会比原来少一个就不符合题目的条件了。</p>
+<p>由于是 <span class="math inline">\(\frac{n}{2}\)</span>
+(向下取整)存在奇偶数不同的情况,因此我们对其分类讨论</p>
+<p>若是奇数并且选了第 <span class="math inline">\(i\)</span> 个数则
+<code>f[i] = f[i-2] + a[i]</code> ,因为选了第 <span
+class="math inline">\(i\)</span> 个数后,第 <span
+class="math inline">\(i-1\)</span> 个数就不能被选中了,只能从
+<code>f[i-2]</code>转移而来</p>
+<p>若没有选第 <span class="math inline">\(i\)</span> 个数则 <code>f[i] =
+f[i-1]</code></p>
+<p>若是偶数并且选了第 <span class="math inline">\(i\)</span> 个数则同理,
+<code>f[i] = f[i-2] + a[i]</code> ,</p>
+<p>若没有选第 <span class="math inline">\(i\)</span>
+个数,我们只能将奇数位置上的数全选上才能有 <span
+class="math inline">\(⌊n/2⌋\)</span> (向下取整)个数字,不然的话若还是
+<code>f[i-1]</code> ,此时 <span class="math inline">\(i-1\)</span>
+为奇数除二下取整会比原来少一个就不符合题目的条件了。</p>
 <p>Stl:</p>
 <div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
@@ -794,7 +856,8 @@ LL a[N],f[N],s[N];
 	<span class="hljs-keyword">while</span>(T --)
 	<span class="hljs-built_in">solve</span>();
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+&#125;</code></pre></div>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
             <hr>
             <div>
@@ -1021,8 +1084,43 @@ LL a[N],f[N],s[N];
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

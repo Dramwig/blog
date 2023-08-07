@@ -18,12 +18,12 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="请注意，本文最后更新于2022.2.1，其中一些理解可能已被笔者推翻或废弃。             层次分析法(AHP)层次分析法(Analytic Hierarchy Process,AHP)这是一种定性和定量相结合的、系统的、层次化的分析方法。这种方法是在对复杂决策问题的本质上，利用较少的定量信息使决策的思维过程数学化，从而为多目标、多准则或无结构特性的决策问题提供">
+  <meta name="description" content="请注意，本文最后更新于2022.2.1，其中一些理解可能已被笔者推翻或废弃。            层次分析法(AHP) 层次分析法(Analytic Hierarchy Process,AHP) 这是一种定性和定量相结合的、系统的、层次化的分析方法。这种方法是在对复杂决策问题的本质上，利用较少的定量信息使决策的思维过程数学化，从而为多目标、多准则或无结构特性的决">
 <meta property="og:type" content="article">
 <meta property="og:title" content="层次分析法">
 <meta property="og:url" content="http://example.com/2022/01/17/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="请注意，本文最后更新于2022.2.1，其中一些理解可能已被笔者推翻或废弃。             层次分析法(AHP)层次分析法(Analytic Hierarchy Process,AHP)这是一种定性和定量相结合的、系统的、层次化的分析方法。这种方法是在对复杂决策问题的本质上，利用较少的定量信息使决策的思维过程数学化，从而为多目标、多准则或无结构特性的决策问题提供">
+<meta property="og:description" content="请注意，本文最后更新于2022.2.1，其中一些理解可能已被笔者推翻或废弃。            层次分析法(AHP) 层次分析法(Analytic Hierarchy Process,AHP) 这是一种定性和定量相结合的、系统的、层次化的分析方法。这种方法是在对复杂决策问题的本质上，利用较少的定量信息使决策的思维过程数学化，从而为多目标、多准则或无结构特性的决">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/01/18/oVnIQh5DpORcuqX.png">
 <meta property="og:image" content="https://s2.loli.net/2022/01/18/f5gYz8SqUmTbahn.png">
@@ -241,137 +241,279 @@
               <div class="note note-warning">
             <p>请注意，本文最后更新于2022.2.1，其中一些理解可能已被笔者推翻或废弃。</p>
           </div>
-
-<h1 id="层次分析法-AHP"><a href="#层次分析法-AHP" class="headerlink" title="层次分析法(AHP)"></a>层次分析法(AHP)</h1><p>层次分析法(Analytic Hierarchy Process,AHP)<br>这是一种定性和定量相结合的、系统的、层次化的分析方法。这种方法是在对复杂决策问题的本质上，利用较少的定量信息使<strong>决策的思维过程数学化</strong>，从而为多目标、多准则或无结构特性的决策问题提供简便的决策方法。<strong>是对难以定量的复杂系统进行决策的模型</strong>。</p>
+<h1 id="层次分析法ahp">层次分析法(AHP)</h1>
+<p>层次分析法(Analytic Hierarchy Process,AHP)<br />
+这是一种定性和定量相结合的、系统的、层次化的分析方法。这种方法是在对复杂决策问题的本质上，利用较少的定量信息使<strong>决策的思维过程数学化</strong>，从而为多目标、多准则或无结构特性的决策问题提供简便的决策方法。<strong>是对难以定量的复杂系统进行决策的模型</strong>。</p>
 <p>层次分析法的根本是<strong>打分法</strong>：<u>确定指标</u>，<u>不同方案指标打分</u>，<u>为指标确定权重</u>。用于处理数据未知的评价。</p>
 <p>层次分析法将问题分解为组成因素，并按照因素间关联、影响以及隶属关系将因素按不同的层次聚集组合，形成一个多层次的分析结构模型。从而最终使问题归结为最低层(供决策的方案、措施等)相对于最高层(总目标)的相对重要权值的确定或相对优劣次序的排定。</p>
-<h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><h3 id="建立层次模型"><a href="#建立层次模型" class="headerlink" title="建立层次模型"></a>建立层次模型</h3><p>思考以下问题：</p>
-<ol>
+<h2 id="基本步骤">基本步骤</h2>
+<h3 id="建立层次模型">建立层次模型</h3>
+<p>思考以下问题：</p>
+<ol type="1">
 <li>我的的评价目标是什么？</li>
 <li>达到目标有哪些方案？</li>
 <li>★对方案的评价准则或指标是什么？（最好参考引用文献）</li>
 </ol>
 <p>将<u>决策的目标</u>、<u>决策准则</u>(考虑的因素)和<u>决策对象</u>绘制为层次结构图。</p>
-<ol>
+<ol type="1">
 <li>最高层(目标层)：决策的目的、要解决的问题；</li>
 <li>中间层(准则层或指标层)：考虑的因素、决策的准则；</li>
 <li>最低层(方案层)：决策时的备选方案；</li>
 </ol>
-<p>或仅绘制评价体系(树状图或表格)如下 (要包含<strong>多级指标</strong>)：</p>
-<p><img src="https://s2.loli.net/2022/01/18/oVnIQh5DpORcuqX.png" srcset="/img/loading.gif" lazyload alt="评价模型"></p>
-<h3 id="构造判断矩阵"><a href="#构造判断矩阵" class="headerlink" title="构造判断矩阵"></a>构造判断矩阵</h3><p>(成对比较矩阵)</p>
+<p>或仅绘制评价体系(树状图或表格)如下
+(要包含<strong>多级指标</strong>)：</p>
+<figure>
+<img src="https://s2.loli.net/2022/01/18/oVnIQh5DpORcuqX.png" srcset="/img/loading.gif" lazyload
+alt="评价模型" />
+<figcaption aria-hidden="true">评价模型</figcaption>
+</figure>
+<h3 id="构造判断矩阵">构造判断矩阵</h3>
+<p>(成对比较矩阵)</p>
 <p>在确定权重时，只给出定性的结果(就是我认为景色占80%，费用10%等等)，常常不被别人接受，因此采用一致矩阵法，即：</p>
 <ul>
 <li>不把所有因素放在一起比较，而是两两比较</li>
 <li>对此时采用相对尺度，尽可能减少诸因素导致的相互比较的困难，提高准确性</li>
 </ul>
-<p>成对比较矩阵是表示本层所有因素针对上一层某一个因素(准侧或目标)的相对重要性的比较。成对比较矩阵的元素 $a_{ij}$ 表示的是第 $i$ 个因素相对于第 $j$ 个因素的比较结果，这个值使用的是Santy的1-9标度方法给出。</p>
+<p>成对比较矩阵是表示本层所有因素针对上一层某一个因素(准侧或目标)的相对重要性的比较。成对比较矩阵的元素
+<span class="math inline">\(a_{ij}\)</span> 表示的是第 <span
+class="math inline">\(i\)</span> 个因素相对于第 <span
+class="math inline">\(j\)</span>
+个因素的比较结果，这个值使用的是Santy的1-9标度方法给出。</p>
 <p>定义且满足</p>
-<p>$$a_{ij}&#x3D;i相对j的重要度&#x3D;\frac{i的重要程度}{j的重要程度}&#x3D;a_{ik}a_{kj}$$</p>
-<p><img src="https://s2.loli.net/2022/01/18/f5gYz8SqUmTbahn.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="一致性检验"><a href="#一致性检验" class="headerlink" title="一致性检验"></a>一致性检验</h3><p>$\left[\begin{array}{cccc}<br>a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1 n} \<br>a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2 n} \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>a_{n 1} &amp; a_{n 2} &amp; \cdots &amp; a_{n n}<br>\end{array}\right]$为一致矩阵的充要条件$\left{\begin{array}{l}<br>a_{i j}&gt;0 \<br>a_{11}&#x3D;a_{22}&#x3D;\cdots&#x3D;a_{n n}&#x3D;1 \<br>{\left[a_{i 1},…, a_{i n}\right]&#x3D;k_{i}\left[a_{11},…, a_{1 n}\right]}<br>\end{array}\right.$</p>
+<p><span
+class="math display">\[a_{ij}=i相对j的重要度=\frac{i的重要程度}{j的重要程度}=a_{ik}a_{kj}\]</span></p>
+<p><img src="https://s2.loli.net/2022/01/18/f5gYz8SqUmTbahn.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="一致性检验">一致性检验</h3>
+<p><span class="math inline">\(\left[\begin{array}{cccc} a_{11} &amp;
+a_{12} &amp; \cdots &amp; a_{1 n} \\ a_{21} &amp; a_{22} &amp; \cdots
+&amp; a_{2 n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n
+1} &amp; a_{n 2} &amp; \cdots &amp; a_{n n}
+\end{array}\right]\)</span>为一致矩阵的充要条件<span
+class="math inline">\(\left\{\begin{array}{l} a_{i j}&gt;0 \\
+a_{11}=a_{22}=\cdots=a_{n n}=1 \\ {\left[a_{i 1},..., a_{i
+n}\right]=k_{i}\left[a_{11},..., a_{1 n}\right]}
+\end{array}\right.\)</span></p>
 <p>对于</p>
-<p>一致阵：则我们自然会取对应于最大特征根 $n$ 的归一化特征向量 ${w_1,w_2,\cdots,w_n}$ ，且 $\sum_{i&#x3D;1}^{n}{w_i&#x3D;1}$ ， $w_i$ 表示下层第 $i$ 个因素对上层某个因素影响程度的权值。</p>
-<p>非一致阵：用其最大特征根对应的归一化特征向量作为权向量 $W&#x3D;{w_1,w_2,\cdots,w_n}$ ，则 $AW&#x3D;\lambda W$ ，这样确定权向量的方法称为特征根法；</p>
+<p>一致阵：则我们自然会取对应于最大特征根 <span
+class="math inline">\(n\)</span> 的归一化特征向量 <span
+class="math inline">\(\{w_1,w_2,\cdots,w_n\}\)</span> ，且 <span
+class="math inline">\(\sum_{i=1}^{n}{w_i=1}\)</span> ， <span
+class="math inline">\(w_i\)</span> 表示下层第 <span
+class="math inline">\(i\)</span>
+个因素对上层某个因素影响程度的权值。</p>
+<p>非一致阵：用其最大特征根对应的归一化特征向量作为权向量 <span
+class="math inline">\(W=\{w_1,w_2,\cdots,w_n\}\)</span> ，则 <span
+class="math inline">\(AW=\lambda W\)</span>
+，这样确定权向量的方法称为特征根法；</p>
 <p>定理：</p>
-<ol>
-<li>$n$ 阶一致阵的唯一非零特征根为 $n$</li>
-<li>$n$  阶互反阵  $A\left(a_{i j}&gt;0, a_{i j}&#x3D;\frac{1}{a_{j i}}, a_{i i}&#x3D;1\right)$  最大特征根  $\lambda \geq n$ ，当且仅当  $\lambda&#x3D;n$  时，  $A$  为一致矩阵。</li>
+<ol type="1">
+<li><span class="math inline">\(n\)</span> 阶一致阵的唯一非零特征根为
+<span class="math inline">\(n\)</span></li>
+<li><span class="math inline">\(n\)</span> 阶互反阵 <span
+class="math inline">\(A\left(a_{i j}&gt;0, a_{i j}=\frac{1}{a_{j i}},
+a_{i i}=1\right)\)</span> 最大特征根 <span class="math inline">\(\lambda
+\geq n\)</span> ，当且仅当 <span
+class="math inline">\(\lambda=n\)</span> 时， <span
+class="math inline">\(A\)</span> 为一致矩阵。</li>
 </ol>
-<p>$\lambda$ 连续的依赖于 $a_{ij}$ ，则 $\lambda$ 比 $n$ 大的越多， $A$ 的不一致性越严重。用最大特征值对应的特征向量作为影响程度的权向量，其不一致程度越大，引起的判断误差越大。</p>
+<p><span class="math inline">\(\lambda\)</span> 连续的依赖于 <span
+class="math inline">\(a_{ij}\)</span> ，则 <span
+class="math inline">\(\lambda\)</span> 比 <span
+class="math inline">\(n\)</span> 大的越多， <span
+class="math inline">\(A\)</span>
+的不一致性越严重。用最大特征值对应的特征向量作为影响程度的权向量，其不一致程度越大，引起的判断误差越大。</p>
 <p><strong>第一步：计算一致性指标CI</strong></p>
-<p>$$CI&#x3D;\frac{\lambda -n}{n-1}$$</p>
-<ol>
-<li>$CI&#x3D;0$ ,有完全的一致性；</li>
-<li>$CI$ 接近 $0$ ，有满意的一致性</li>
-<li>$CI$ 越大，不一致越严重；</li>
+<p><span class="math display">\[CI=\frac{\lambda -n}{n-1}\]</span></p>
+<ol type="1">
+<li><span class="math inline">\(CI=0\)</span> ,有完全的一致性；</li>
+<li><span class="math inline">\(CI\)</span> 接近 <span
+class="math inline">\(0\)</span> ，有满意的一致性</li>
+<li><span class="math inline">\(CI\)</span> 越大，不一致越严重；</li>
 </ol>
 <p><strong>第二步：查找对应的平均随机一致性指标RI</strong></p>
 <table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
 <thead>
-<tr>
-<th align="center">n</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-<th align="center">4</th>
-<th align="center">5</th>
-<th align="center">6</th>
-<th align="center">7</th>
-<th align="center">8</th>
-<th align="center">9</th>
-<th align="center">10</th>
-<th align="center">11</th>
-<th align="center">12</th>
-<th align="center">13</th>
-<th align="center">14</th>
-<th align="center">15</th>
+<tr class="header">
+<th style="text-align: center;">n</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+<th style="text-align: center;">9</th>
+<th style="text-align: center;">10</th>
+<th style="text-align: center;">11</th>
+<th style="text-align: center;">12</th>
+<th style="text-align: center;">13</th>
+<th style="text-align: center;">14</th>
+<th style="text-align: center;">15</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">RI</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0.52</td>
-<td align="center">0.89</td>
-<td align="center">1.12</td>
-<td align="center">1.26</td>
-<td align="center">1.36</td>
-<td align="center">1.41</td>
-<td align="center">1.46</td>
-<td align="center">1.49</td>
-<td align="center">1.52</td>
-<td align="center">1.54</td>
-<td align="center">1.56</td>
-<td align="center">1.58</td>
-<td align="center">1.59</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">RI</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.52</td>
+<td style="text-align: center;">0.89</td>
+<td style="text-align: center;">1.12</td>
+<td style="text-align: center;">1.26</td>
+<td style="text-align: center;">1.36</td>
+<td style="text-align: center;">1.41</td>
+<td style="text-align: center;">1.46</td>
+<td style="text-align: center;">1.49</td>
+<td style="text-align: center;">1.52</td>
+<td style="text-align: center;">1.54</td>
+<td style="text-align: center;">1.56</td>
+<td style="text-align: center;">1.58</td>
+<td style="text-align: center;">1.59</td>
 </tr>
-</tbody></table>
-<p>$RI$ 为统计结果，详细计算方法参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38207837">这里</a></p>
+</tbody>
+</table>
+<p><span class="math inline">\(RI\)</span>
+为统计结果，详细计算方法参考<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38207837">这里</a></p>
 <p><strong>第三步：计算一致性比例CR</strong></p>
-<p>$$CR&#x3D;\frac{CI}{RI}$$</p>
-<p>如果 $CR &lt; 0.1$, 则可认为判断矩阵的一致性可以接受；否则需要对判断矩阵进行修正。</p>
-<h3 id="求得权重"><a href="#求得权重" class="headerlink" title="求得权重"></a>求得权重</h3><ol>
-<li>算术平均法求权重<br>$$\omega_{i}&#x3D;\frac{1}{n} \sum_{j&#x3D;1}^{n} \frac{a_{i j}}{\sum_{k&#x3D;1}^{n} a_{k j}}$$</li>
-<li>几何平均法求权重<br>$$\omega_{i}&#x3D;\frac{\left(\prod_{j&#x3D;1}^{n} a_{i j}\right)^{\frac{1}{n}}}{\sum_{k&#x3D;1}^{n}\left(\prod_{j&#x3D;1}^{n} a_{k j}\right)^{\frac{1}{n}}}$$</li>
+<p><span class="math display">\[CR=\frac{CI}{RI}\]</span></p>
+<p>如果 <span class="math inline">\(CR &lt; 0.1\)</span>,
+则可认为判断矩阵的一致性可以接受；否则需要对判断矩阵进行修正。</p>
+<h3 id="求得权重">求得权重</h3>
+<ol type="1">
+<li>算术平均法求权重 <span class="math display">\[\omega_{i}=\frac{1}{n}
+\sum_{j=1}^{n} \frac{a_{i j}}{\sum_{k=1}^{n} a_{k j}}\]</span></li>
+<li>几何平均法求权重 <span
+class="math display">\[\omega_{i}=\frac{\left(\prod_{j=1}^{n} a_{i
+j}\right)^{\frac{1}{n}}}{\sum_{k=1}^{n}\left(\prod_{j=1}^{n} a_{k
+j}\right)^{\frac{1}{n}}}\]</span></li>
 <li>特征值法求权</li>
 </ol>
-<p>特别的：若特征值为n，对应特征向量为$k\left[\frac{1}{a_{11}}, \frac{1}{a_{12}}, \cdots, \frac{1}{a_{1 n}}\right]^{T}$，且特征向量刚好为矩阵第一列。</p>
+<p>特别的：若特征值为n，对应特征向量为<span
+class="math inline">\(k\left[\frac{1}{a_{11}}, \frac{1}{a_{12}}, \cdots,
+\frac{1}{a_{1 n}}\right]^{T}\)</span>，且特征向量刚好为矩阵第一列。</p>
 <p>假如我们的判断矩阵一致性可以接受，那么我们可以仿照一致矩阵权重的求法。</p>
-<p>(1) 求出矩阵A的最大特征值以及其对应的特征向量<br>(2) 对求出的特征向量进行归一化即可得到我们的权重( $\sum_{i&#x3D;1}^{n}{w_i&#x3D;1}$ )</p>
-<h3 id="填表得结果"><a href="#填表得结果" class="headerlink" title="填表得结果"></a>填表得结果</h3><p><img src="https://s2.loli.net/2022/01/18/BgNZY8JkrPjMKtq.png" srcset="/img/loading.gif" lazyload alt="表格"></p>
+<ol type="1">
+<li>求出矩阵A的最大特征值以及其对应的特征向量<br />
+</li>
+<li>对求出的特征向量进行归一化即可得到我们的权重( <span
+class="math inline">\(\sum_{i=1}^{n}{w_i=1}\)</span> )</li>
+</ol>
+<h3 id="填表得结果">填表得结果</h3>
+<figure>
+<img src="https://s2.loli.net/2022/01/18/BgNZY8JkrPjMKtq.png" srcset="/img/loading.gif" lazyload
+alt="表格" />
+<figcaption aria-hidden="true">表格</figcaption>
+</figure>
 <p>然后相应的加权计算得分即可得到结果。</p>
-<h2 id="一点补充"><a href="#一点补充" class="headerlink" title="一点补充"></a>一点补充</h2><h3 id="详细做法补充"><a href="#详细做法补充" class="headerlink" title="详细做法补充"></a>详细做法补充</h3><ol>
-<li>对于评价指标：<ol>
+<h2 id="一点补充">一点补充</h2>
+<h3 id="详细做法补充">详细做法补充</h3>
+<ol type="1">
+<li>对于评价指标：
+<ol type="1">
 <li>单层评价指标：构造所有指标的两两判断矩阵，得到权值</li>
-<li>多层评价指标：<ol>
+<li>多层评价指标：
+<ol type="1">
 <li>构造一级指标的两两判断矩阵，得到权值</li>
 <li>构造每个一级指标下的二级指标的两两判断矩阵（每个一级指标一个矩阵），得到权值</li>
-<li>构造每个二级指标下……<br>……</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>对于方案：<ol>
+<li>构造每个二级指标下……<br />
+……</li>
+</ol></li>
+</ol></li>
+<li>对于方案：
+<ol type="1">
 <li>对于每个最低级指标构造所有方案的两两判断矩阵，得到权值</li>
-</ol>
-</li>
+</ol></li>
 </ol>
 <p>示例：</p>
-<p>$$<br>\left{\begin{array}{l}<br>   一级指标1\left{\begin{array}{l}<br>      二级指标1 :a_{11},a_{12},a_{13}\<br>      二级指标2 :a_{21},a_{22},a_{23}\<br>   \end{array}\right.\ \<br>   一级指标2\left{\begin{array}{l}<br>      二级指标3 :a_{31},a_{32},a_{33}\<br>      二级指标4 :a_{41},a_{42},a_{43}\<br>      二级指标5 :a_{51},a_{52},a_{53}\<br>   \end{array}\right.\ \<br>   一级指标3 : a_{61},a_{62},a_{63}<br>\end{array}\right.\<br>$$</p>
-<h3 id="特征向量含义思考"><a href="#特征向量含义思考" class="headerlink" title="特征向量含义思考"></a>特征向量含义思考</h3><p>对于矩阵 $A&#x3D;\left[\begin{array}{cccc}<br>a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1 n} \<br>a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2 n} \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>a_{n 1} &amp; a_{n 2} &amp; \cdots &amp; a_{n n}<br>\end{array}\right]$ ， $W&#x3D;\left[\begin{array}{c}<br>w_{1}\<br>w_{2}\<br>\vdots\<br>w_{n}<br>\end{array}\right]$ ，满足 $AW&#x3D;\lambda A$ 。</p>
-<p>矩阵的本质是变换，把 $A$ 看作对 $m$ 纬空间单位球体进行 $A$ 变换,取 $\lambda$ 最大时的特征向量 $W$ ,即表示为变换后的球体上与变换前方向相同的点中距离原点 $O$ 最远的点（距离原点距离为 $\lambda$ ）所表示的方向向量 。记 $W$ 为可以代表整个变换 $A$ 的线性变换。</p>
+<p><span class="math display">\[
+\left\{\begin{array}{l}
+   一级指标1\left\{\begin{array}{l}
+      二级指标1 :a_{11},a_{12},a_{13}\\
+      二级指标2 :a_{21},a_{22},a_{23}\\
+   \end{array}\right.\\ \\
+   一级指标2\left\{\begin{array}{l}
+      二级指标3 :a_{31},a_{32},a_{33}\\
+      二级指标4 :a_{41},a_{42},a_{43}\\
+      二级指标5 :a_{51},a_{52},a_{53}\\
+   \end{array}\right.\\ \\
+   一级指标3 : a_{61},a_{62},a_{63}
+\end{array}\right.\\
+\]</span></p>
+<h3 id="特征向量含义思考">特征向量含义思考</h3>
+<p>对于矩阵 <span class="math inline">\(A=\left[\begin{array}{cccc}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1 n} \\ a_{21} &amp; a_{22}
+&amp; \cdots &amp; a_{2 n} \\ \vdots &amp; \vdots &amp; \ddots &amp;
+\vdots \\ a_{n 1} &amp; a_{n 2} &amp; \cdots &amp; a_{n n}
+\end{array}\right]\)</span> ， <span
+class="math inline">\(W=\left[\begin{array}{c} w_{1}\\ w_{2}\\ \vdots\\
+w_{n} \end{array}\right]\)</span> ，满足 <span
+class="math inline">\(AW=\lambda A\)</span> 。</p>
+<p>矩阵的本质是变换，把 <span class="math inline">\(A\)</span> 看作对
+<span class="math inline">\(m\)</span> 纬空间单位球体进行 <span
+class="math inline">\(A\)</span> 变换,取 <span
+class="math inline">\(\lambda\)</span> 最大时的特征向量 <span
+class="math inline">\(W\)</span>
+,即表示为变换后的球体上与变换前方向相同的点中距离原点 <span
+class="math inline">\(O\)</span> 最远的点（距离原点距离为 <span
+class="math inline">\(\lambda\)</span> ）所表示的方向向量 。记 <span
+class="math inline">\(W\)</span> 为可以代表整个变换 <span
+class="math inline">\(A\)</span> 的线性变换。</p>
 <blockquote>
-<p>特别的对于对称矩阵 $A$ ，变换 $A$ 一定是将球变为椭球，这也是不同特征值对应特征向量一定正交的原因，相同特征值 $\lambda$ 若有多个特征向量 $e_1,e_2,…$，特征向量的张成空间都是该特征值 $\lambda$ 的特征向量。$\lambda$ 的特征向量。<br>但是，对于非特殊矩阵，几何意义不明确，另外对于正互反矩阵、一致性矩阵的变换性质，笔者并不清楚，所以也仅仅能近似的类比理解到这里了。<br>(22.1.18)</p>
+<p>特别的对于对称矩阵 <span class="math inline">\(A\)</span> ，变换
+<span class="math inline">\(A\)</span>
+一定是将球变为椭球，这也是不同特征值对应特征向量一定正交的原因，相同特征值
+<span class="math inline">\(\lambda\)</span> 若有多个特征向量 <span
+class="math inline">\(e_1,e_2,...\)</span>，特征向量的张成空间都是该特征值
+<span class="math inline">\(\lambda\)</span> 的特征向量。<span
+class="math inline">\(\lambda\)</span> 的特征向量。<br />
+但是，对于非特殊矩阵，几何意义不明确，另外对于正互反矩阵、一致性矩阵的变换性质，笔者并不清楚，所以也仅仅能近似的类比理解到这里了。
+(22.1.18)</p>
 </blockquote>
-<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><ol>
+<h2 id="一些问题">一些问题</h2>
+<ol type="1">
 <li>评价的决策层不能太多，太多的话n会很大,判断矩阵和一致矩阵差异可能会很大。</li>
 <li>平均随机一致性指标RI的表格中n最多是15。</li>
 </ol>
 <p>所以<strong>当n过大可以分层归纳为多级指标</strong>再构造多个判断矩阵。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>bilibili:数学建模学习交流
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38207837">https://zhuanlan.zhihu.com/p/38207837</a>
-<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<h1 id="参考">参考</h1>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>bilibili:数学建模学习交流
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/38207837
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
             <hr>
             <div>
@@ -602,8 +744,43 @@
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

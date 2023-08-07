@@ -18,12 +18,12 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="多元线性回归模型结构多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下： $$\left{\begin{matrix}y &#x3D; \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\\varepsilon \sim N(0,\sigma ^2)\end{matrix}\right.$$ 其中：$\">
+  <meta name="description" content="多元线性回归 模型结构 多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下： \[\left\{\begin{matrix} y &#x3D; \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\\ \varepsilon \sim N(0,\sigma ^2) \end{matrix}\right.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="回归分析">
 <meta property="og:url" content="http://example.com/2022/02/08/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="多元线性回归模型结构多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下： $$\left{\begin{matrix}y &#x3D; \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\\varepsilon \sim N(0,\sigma ^2)\end{matrix}\right.$$ 其中：$\">
+<meta property="og:description" content="多元线性回归 模型结构 多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下： \[\left\{\begin{matrix} y &#x3D; \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\\ \varepsilon \sim N(0,\sigma ^2) \end{matrix}\right.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/02/09/ryLoOf9UKcPJqWg.png">
 <meta property="og:image" content="https://s2.loli.net/2022/02/08/tOTeL4yjENYF6ld.png">
@@ -185,7 +185,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.9k 字
+      5.7k 字
     </span>
   
 
@@ -237,90 +237,300 @@
               </p>
             
             <div class="markdown-body">
-              <h1 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h1><h2 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h2><p>多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下：</p>
-<p>$$\left{\begin{matrix}<br>y &#x3D; \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\<br>\varepsilon \sim N(0,\sigma ^2)<br>\end{matrix}\right.$$</p>
-<p>其中：$\beta_0,\beta_1,\dotsb,\beta_m$ 为回归系数；$x_0,x_1,\dotsb,x_m$ 为变量；$\varepsilon$ 是误差随机项。</p>
-<p>对于 $n$ 组观测，满足 $y_i&#x3D;\beta_{0} + \beta_1 x_{i1} + \cdots + \beta_mx_{im} + \varepsilon_i$ ,记</p>
-<p>$$\boldsymbol{Y}&#x3D;\left[\begin{array}{l}<br>y_{1} \<br>y_{2} \<br>\vdots \<br>y_{n}<br>\end{array}\right] \quad, \quad \boldsymbol{X}&#x3D;\left[\begin{array}{cccc}<br>1 &amp; x_{11} &amp; \ldots &amp; x_{1m} \<br>1 &amp; x_{21} &amp; \ldots &amp; x_{2m} \<br>\vdots &amp; \vdots &amp; &amp; \vdots \<br>1 &amp; x_{n1} &amp; \ldots &amp; x_{nm}<br>\end{array}\right] \quad, \quad \boldsymbol{\beta}&#x3D;\left[\begin{array}{c}<br>\beta_{0} \<br>\beta_{1} \<br>\vdots \<br>\beta_{k}<br>\end{array}\right] \quad, \quad \boldsymbol{\varepsilon}&#x3D;\left[\begin{array}{c}<br>\varepsilon_{1} \<br>\varepsilon_{2} \<br>\vdots \<br>\varepsilon_{n}<br>\end{array}\right]$$</p>
+              <h1 id="多元线性回归">多元线性回归</h1>
+<h2 id="模型结构">模型结构</h2>
+<p>多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下：</p>
+<p><span class="math display">\[\left\{\begin{matrix}
+y = \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\\
+\varepsilon \sim N(0,\sigma ^2)
+\end{matrix}\right.\]</span></p>
+<p>其中：<span
+class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span>
+为回归系数；<span class="math inline">\(x_0,x_1,\dotsb,x_m\)</span>
+为变量；<span class="math inline">\(\varepsilon\)</span>
+是误差随机项。</p>
+<p>对于 <span class="math inline">\(n\)</span> 组观测，满足 <span
+class="math inline">\(y_i=\beta_{0} + \beta_1 x_{i1} + \cdots +
+\beta_mx_{im} + \varepsilon_i\)</span> ,记</p>
+<p><span class="math display">\[\boldsymbol{Y}=\left[\begin{array}{l}
+y_{1} \\
+y_{2} \\
+\vdots \\
+y_{n}
+\end{array}\right] \quad, \quad \boldsymbol{X}=\left[\begin{array}{cccc}
+1 &amp; x_{11} &amp; \ldots &amp; x_{1m} \\
+1 &amp; x_{21} &amp; \ldots &amp; x_{2m} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+1 &amp; x_{n1} &amp; \ldots &amp; x_{nm}
+\end{array}\right] \quad, \quad
+\boldsymbol{\beta}=\left[\begin{array}{c}
+\beta_{0} \\
+\beta_{1} \\
+\vdots \\
+\beta_{k}
+\end{array}\right] \quad, \quad
+\boldsymbol{\varepsilon}=\left[\begin{array}{c}
+\varepsilon_{1} \\
+\varepsilon_{2} \\
+\vdots \\
+\varepsilon_{n}
+\end{array}\right]\]</span></p>
 <p>这时模型可以写作:</p>
-<p>$$\boldsymbol{Y}&#x3D;\boldsymbol{X} \boldsymbol{\beta}+\boldsymbol{\varepsilon}$$</p>
-<h2 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h2><p>模型中的参数 $\beta_0,\beta_1,\dotsb,\beta_m$ 用最小二乘法估计，得到估计值 $\hat{\beta}_{i}$ 。</p>
+<p><span class="math display">\[\boldsymbol{Y}=\boldsymbol{X}
+\boldsymbol{\beta}+\boldsymbol{\varepsilon}\]</span></p>
+<h2 id="参数估计">参数估计</h2>
+<p>模型中的参数 <span
+class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span>
+用最小二乘法估计，得到估计值 <span
+class="math inline">\(\hat{\beta}_{i}\)</span> 。</p>
 <p>需要最小化的函数是：</p>
-<p>$$SSE &#x3D; Q\left(\beta_{0}, \beta_{1}, \ldots, \beta_{p}\right)&#x3D;\sum_{i&#x3D;1}^{n}(y_i-\hat{y_i})^2&#x3D;\sum_{i&#x3D;1}^{n}\left(y_{i}-\beta_{0}-\beta_{1} x_{i 1}-\ldots-\beta_{p} x_{i p}\right)^{2}$$</p>
-<p>为此，令<br>$$\frac{\partial Q}{\partial \beta _j} &#x3D;0,(j&#x3D;0,1,\dots ,m)$$</p>
-<p>解得(详细过程参考<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/48541799
-">[3]</span></a></sup>或<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
-">[1]</span></a></sup>)：<br>$$\boldsymbol{\hat{\beta}}&#x3D;\left(\boldsymbol{X}^{T} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{T} \boldsymbol{Y}$$</p>
-<p>记 $\boldsymbol{\hat{Y}}&#x3D;\boldsymbol{X}\boldsymbol{\hat{\beta}}$ ，$\boldsymbol{e}&#x3D;\boldsymbol{Y}-\boldsymbol{\hat{Y}}$ 为残差，而 $SSE&#x3D;\sum e_i^2$ 为残差平方和<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
+<p><span class="math display">\[SSE = Q\left(\beta_{0}, \beta_{1},
+\ldots,
+\beta_{p}\right)=\sum_{i=1}^{n}(y_i-\hat{y_i})^2=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}
+x_{i 1}-\ldots-\beta_{p} x_{i p}\right)^{2}\]</span></p>
+<p>为此，令 <span class="math display">\[\frac{\partial Q}{\partial
+\beta _j} =0,(j=0,1,\dots ,m)\]</span></p>
+<p>解得(详细过程参考<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/48541799
+">[3]</span></a></sup>或<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
+">[1]</span></a></sup>)： <span
+class="math display">\[\boldsymbol{\hat{\beta}}=\left(\boldsymbol{X}^{T}
+\boldsymbol{X}\right)^{-1} \boldsymbol{X}^{T}
+\boldsymbol{Y}\]</span></p>
+<p>记 <span
+class="math inline">\(\boldsymbol{\hat{Y}}=\boldsymbol{X}\boldsymbol{\hat{\beta}}\)</span>
+，<span
+class="math inline">\(\boldsymbol{e}=\boldsymbol{Y}-\boldsymbol{\hat{Y}}\)</span>
+为残差，而 <span class="math inline">\(SSE=\sum e_i^2\)</span>
+为残差平方和<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
 ">[1]</span></a></sup>。</p>
-<h2 id="显著性检验"><a href="#显著性检验" class="headerlink" title="显著性检验"></a>显著性检验</h2><h3 id="方程显著性检验"><a href="#方程显著性检验" class="headerlink" title="方程显著性检验"></a>方程显著性检验</h3><p>检验这个回归方程本身是否有效。我们给出下列原假设和备择假设：<br>$$ H_0: \beta_j&#x3D;0 , j&#x3D;1,2,\dots,m\<br>H_1: \beta_1,\dots,\beta_m 不全为 0$$<br>当假设 $H_0$ 成立时，满足：<br>$$F&#x3D;\frac{SSR&#x2F;m}{SSE&#x2F;(n-m-1)} \sim F(m,n-m-1)$$</p>
-<p>式中,  $SSR&#x3D;\sum_{i&#x3D;1}^{n}\left(\hat{y}<em>{i}-\bar{y}\right)^{2}$  是回归平方和；  $SSE&#x3D;\sum</em>{i&#x3D;1}^{n}\left(y_{i}-\hat{y}<em>{i}\right)^{2}$  是残差平方和。再给定的<br>显著性水平 $\alpha$ 下，对于上 $\alpha$ 分位数 $F</em>{\alpha}(k, n-k-1)$ ， 检验的拒绝域为  $F&gt;F_{\alpha}(k, n-k-1)$ 接受域可以为：$F_{1-\alpha&#x2F;2}(k, n-k-1)&lt;F&lt;F_{\alpha&#x2F;2}(k, n-k-1)$。</p>
+<h2 id="显著性检验">显著性检验</h2>
+<h3 id="方程显著性检验">方程显著性检验</h3>
+<p>检验这个回归方程本身是否有效。我们给出下列原假设和备择假设： <span
+class="math display">\[ H_0: \beta_j=0 , j=1,2,\dots,m\\
+H_1: \beta_1,\dots,\beta_m 不全为 0\]</span> 当假设 <span
+class="math inline">\(H_0\)</span> 成立时，满足： <span
+class="math display">\[F=\frac{SSR/m}{SSE/(n-m-1)} \sim
+F(m,n-m-1)\]</span></p>
+<p>式中, <span
+class="math inline">\(SSR=\sum_{i=1}^{n}\left(\hat{y}_{i}-\bar{y}\right)^{2}\)</span>
+是回归平方和； <span
+class="math inline">\(SSE=\sum_{i=1}^{n}\left(y_{i}-\hat{y}_{i}\right)^{2}\)</span>
+是残差平方和。再给定的 显著性水平 <span
+class="math inline">\(\alpha\)</span> 下，对于上 <span
+class="math inline">\(\alpha\)</span> 分位数 <span
+class="math inline">\(F_{\alpha}(k, n-k-1)\)</span> ， 检验的拒绝域为
+<span class="math inline">\(F&gt;F_{\alpha}(k, n-k-1)\)</span>
+接受域可以为：<span class="math inline">\(F_{1-\alpha/2}(k,
+n-k-1)&lt;F&lt;F_{\alpha/2}(k, n-k-1)\)</span>。</p>
 <blockquote>
-<p>上式，书上是这样写的，但是好像写错了。<br>(22.2.8)</p>
+<p>上式，书上是这样写的，但是好像写错了。 (22.2.8)</p>
 </blockquote>
-<p>注：$H_0$ 仅说明 $y$ 与 $x_1,x_2,\dots,x_m$ 的线性关系不明显，可能存在非线性关系(取对数)。</p>
-<p>对于预测型回归需要检查拟合优度($R^2$)；解释型回归更多的关注模型整体显著性以及自变量的统计显著性和经济意义显著性即可。</p>
-<p>$$R^2&#x3D;\frac{SSR}{SST}&#x3D;\frac{\sum_{i&#x3D;1}^{n}(\hat{y_i}-\bar{y})^2}{\sum_{i&#x3D;1}^{n}(y_i-\bar{y})^2}$$<br>$R$ 称为复相关系数，$R^2$ 越大，$y$ 与 $x_1,x_2,\dots,x_m$ 相关关系越密切，通常 $R$ 大于 $0.8$ 才认为相关性成立<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
+<p>注：<span class="math inline">\(H_0\)</span> 仅说明 <span
+class="math inline">\(y\)</span> 与 <span
+class="math inline">\(x_1,x_2,\dots,x_m\)</span>
+的线性关系不明显，可能存在非线性关系(取对数)。</p>
+<p>对于预测型回归需要检查拟合优度(<span
+class="math inline">\(R^2\)</span>)；解释型回归更多的关注模型整体显著性以及自变量的统计显著性和经济意义显著性即可。</p>
+<p><span
+class="math display">\[R^2=\frac{SSR}{SST}=\frac{\sum_{i=1}^{n}(\hat{y_i}-\bar{y})^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2}\]</span>
+<span class="math inline">\(R\)</span> 称为复相关系数，<span
+class="math inline">\(R^2\)</span> 越大，<span
+class="math inline">\(y\)</span> 与 <span
+class="math inline">\(x_1,x_2,\dots,x_m\)</span> 相关关系越密切，通常
+<span class="math inline">\(R\)</span> 大于 <span
+class="math inline">\(0.8\)</span>
+才认为相关性成立<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
 ">[1]</span></a></sup>,这是一个看拟合的好不好的一个综合指标。</p>
-<h3 id="系数显著性检验"><a href="#系数显著性检验" class="headerlink" title="系数显著性检验"></a>系数显著性检验</h3><p>经过上述验证得到 $H_0$ ，被拒绝，$\beta_j$ 不全为 $0$ ,但不排除存在 $\beta_j$ 为 $0$ 。所以还要进行以下 $m+1$ 个检验。<br>$$H_0^{(j)}：\beta_{j}&#x3D;0 , j&#x3D;0,1,\cdots,m$$</p>
-<p>根据无偏性和$cov(\hat \beta)&#x3D;\sigma^2(X^{T}X)^{-1}$ <sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://blog.csdn.net/heirenmin/article/details/94443404
-">[2]</span></a></sup>，得到 $\hat \beta_j \sim N(\beta_j, c_{jj}\sigma^2)$ ,其中 $c_{jj}$ 表示 $(X^{T}X)^{-1}$ 的对角线元素 $(j,j)$ 。考虑构造<strong>t检验</strong> $\frac{X}{\sqrt{Y&#x2F;N}}$。</p>
-<p>$$t&#x3D;\frac{\hat \beta_j}{\sqrt{c_{jj}}\sigma}&#x3D;\frac{\hat{\beta_j}&#x2F;\sqrt{c_{jj}}}{\sqrt{SSE&#x2F;(n-m-1)}} \sim t(n-m-1)$$</p>
-<p>在 $1-\alpha$ 的置信水平下， $\beta_j$ 的置信区间为<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
-">[1]</span></a></sup>：<br>$$[\hat{\beta_j}-t_{\frac{\alpha}{2}}(n-m-1)s\sqrt{c_{jj}},\hat{\beta_j}+t_{\frac{\alpha}{2}}(n-m-1)s\sqrt{c_{jj}}]$$<br>其中 $s&#x3D;\sqrt{\frac{SSE}{n-m-1}}$ ；或者当 $|t_j|&lt;t_{\frac{\alpha}{2}}(n-m-1)$ 判断接受 $H_0^{(j)}$ ,否则拒绝。</p>
-<h2 id="检验异方差"><a href="#检验异方差" class="headerlink" title="检验异方差"></a>检验异方差</h2><p>残差的方差齐(Equal variance),即LINE原则。即残差的大小不随预测值水平的变化而变化，通常在分析残差的时候，可以通过绘制普通残差或者标准化残差与预测值的散点图进行判断。残差的分布随着变量的取值的增大而呈现扩散趋势产生异方差<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/161483493
+<h3 id="系数显著性检验">系数显著性检验</h3>
+<p>经过上述验证得到 <span class="math inline">\(H_0\)</span>
+，被拒绝，<span class="math inline">\(\beta_j\)</span> 不全为 <span
+class="math inline">\(0\)</span> ,但不排除存在 <span
+class="math inline">\(\beta_j\)</span> 为 <span
+class="math inline">\(0\)</span> 。所以还要进行以下 <span
+class="math inline">\(m+1\)</span> 个检验。 <span
+class="math display">\[H_0^{(j)}：\beta_{j}=0 ,
+j=0,1,\cdots,m\]</span></p>
+<p>根据无偏性和<span class="math inline">\(cov(\hat
+\beta)=\sigma^2(X^{T}X)^{-1}\)</span>
+<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://blog.csdn.net/heirenmin/article/details/94443404
+">[2]</span></a></sup>，得到 <span class="math inline">\(\hat \beta_j
+\sim N(\beta_j, c_{jj}\sigma^2)\)</span> ,其中 <span
+class="math inline">\(c_{jj}\)</span> 表示 <span
+class="math inline">\((X^{T}X)^{-1}\)</span> 的对角线元素 <span
+class="math inline">\((j,j)\)</span> 。考虑构造<strong>t检验</strong>
+<span class="math inline">\(\frac{X}{\sqrt{Y/N}}\)</span>。</p>
+<p><span class="math display">\[t=\frac{\hat
+\beta_j}{\sqrt{c_{jj}}\sigma}=\frac{\hat{\beta_j}/\sqrt{c_{jj}}}{\sqrt{SSE/(n-m-1)}}
+\sim t(n-m-1)\]</span></p>
+<p>在 <span class="math inline">\(1-\alpha\)</span> 的置信水平下， <span
+class="math inline">\(\beta_j\)</span>
+的置信区间为<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
+">[1]</span></a></sup>： <span
+class="math display">\[[\hat{\beta_j}-t_{\frac{\alpha}{2}}(n-m-1)s\sqrt{c_{jj}},\hat{\beta_j}+t_{\frac{\alpha}{2}}(n-m-1)s\sqrt{c_{jj}}]\]</span>
+其中 <span class="math inline">\(s=\sqrt{\frac{SSE}{n-m-1}}\)</span>
+；或者当 <span
+class="math inline">\(|t_j|&lt;t_{\frac{\alpha}{2}}(n-m-1)\)</span>
+判断接受 <span class="math inline">\(H_0^{(j)}\)</span> ,否则拒绝。</p>
+<h2 id="检验异方差">检验异方差</h2>
+<p>残差的方差齐(Equal
+variance),即LINE原则。即残差的大小不随预测值水平的变化而变化，通常在分析残差的时候，可以通过绘制普通残差或者标准化残差与预测值的散点图进行判断。残差的分布随着变量的取值的增大而呈现扩散趋势产生异方差<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/161483493
 ">[5]</span></a></sup>。</p>
-<p>异方差是指各个扰动项的方差不相同，那么方差较大的扰动项破坏模型稳定性的程度就较大<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="清风数学建模视频
-">[4]</span></a></sup>；因变量的变异程度会随着自身数值或者其他变量的变化而变化，从而不满足残差方差齐性的条件<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/161483493
+<p>异方差是指各个扰动项的方差不相同，那么方差较大的扰动项破坏模型稳定性的程度就较大<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded" aria-label="清风数学建模视频
+">[4]</span></a></sup>；因变量的变异程度会随着自身数值或者其他变量的变化而变化，从而不满足残差方差齐性的条件<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/161483493
 ">[5]</span></a></sup>。</p>
-<p><img src="https://s2.loli.net/2022/02/09/ryLoOf9UKcPJqWg.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="多种检验方法"><a href="#多种检验方法" class="headerlink" title="多种检验方法"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46649908/article/details/117927359">多种检验方法</a></h3><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<p><img src="https://s2.loli.net/2022/02/09/ryLoOf9UKcPJqWg.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="多种检验方法"><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46649908/article/details/117927359">多种检验方法</a></h3>
+<h3 id="解决方法">解决方法</h3>
+<ol type="1">
 <li>构建加权最小二乘法模型</li>
 </ol>
 <p>判断导致残差不满足方差齐性的指标，对其加权。</p>
-<ol start="2">
-<li><p>使用“OLS + 稳健标准误”</p>
-</li>
-<li><p>广义最小二乘法 GLS</p>
-</li>
+<ol start="2" type="1">
+<li><p>使用“OLS + 稳健标准误”</p></li>
+<li><p>广义最小二乘法 GLS</p></li>
 </ol>
-<h2 id="检验多重共线性"><a href="#检验多重共线性" class="headerlink" title="检验多重共线性"></a>检验多重共线性</h2><p>方差膨胀因子(Variance Inflation Factor)VIF</p>
-<p>假设 $m$ 个自变量中，第 $j$ 个自变量的 $VIF&#x3D;\frac{1}{1-R_{1-m&#x2F;j}^2}$</p>
-<p>$R_{1-m&#x2F;j}^2$ 是将第 $j$ 个自变量作为因变量，对余下 $m-1$ 个自变量回归得到的拟合优度，$VIF_j$ 越大（也就是 $R_{1-m&#x2F;j}^2$ 越大），说明当前变量和其他变量关联度越大<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="清风数学建模视频
+<h2 id="检验多重共线性">检验多重共线性</h2>
+<p>方差膨胀因子(Variance Inflation Factor)VIF</p>
+<p>假设 <span class="math inline">\(m\)</span> 个自变量中，第 <span
+class="math inline">\(j\)</span> 个自变量的 <span
+class="math inline">\(VIF=\frac{1}{1-R_{1-m/j}^2}\)</span></p>
+<p><span class="math inline">\(R_{1-m/j}^2\)</span> 是将第 <span
+class="math inline">\(j\)</span> 个自变量作为因变量，对余下 <span
+class="math inline">\(m-1\)</span> 个自变量回归得到的拟合优度，<span
+class="math inline">\(VIF_j\)</span> 越大（也就是 <span
+class="math inline">\(R_{1-m/j}^2\)</span>
+越大），说明当前变量和其他变量关联度越大<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded" aria-label="清风数学建模视频
 ">[4]</span></a></sup>。记模型：</p>
-<p>$$VIF&#x3D;max(VIF_1,VIF_2,\dots,VIF_m)$$</p>
-<p>若，$VIF &gt; 10$, 则表示回归模型存在严重多重共线性。</p>
+<p><span
+class="math display">\[VIF=max(VIF_1,VIF_2,\dots,VIF_m)\]</span></p>
+<p>若，<span class="math inline">\(VIF &gt; 10\)</span>,
+则表示回归模型存在严重多重共线性。</p>
 <p>注：多重共线性不影响回归方程的解释变量能力与预测能力，只会影响被多重共线性影响的变量的显著性（系数）。解决办法是增大样本或剔除共线性变量。</p>
-<p><img src="https://s2.loli.net/2022/02/08/tOTeL4yjENYF6ld.png" srcset="/img/loading.gif" lazyload alt="用散点图观察相关性"></p>
+<figure>
+<img src="https://s2.loli.net/2022/02/08/tOTeL4yjENYF6ld.png" srcset="/img/loading.gif" lazyload
+alt="用散点图观察相关性" />
+<figcaption aria-hidden="true">用散点图观察相关性</figcaption>
+</figure>
 <p>有时候逐步回归（Lasso回归）是个快捷不动脑子的做法。此外，<strong>主成分回归</strong>也可用来解决多重共线性的问题。</p>
-<h2 id="SPSS实现多元线性回归"><a href="#SPSS实现多元线性回归" class="headerlink" title="SPSS实现多元线性回归"></a>SPSS实现多元线性回归</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/143049922">SPSS实现多元线性回归</a></p>
-<h1 id="岭回归和Lasso回归"><a href="#岭回归和Lasso回归" class="headerlink" title="岭回归和Lasso回归"></a>岭回归和Lasso回归</h1><p>岭回归 (Ridge regression)<br>Lasso(Least absolute shrinkage and selection operator)回归<br>是一种压缩估计。它通过构造一个惩罚函数得到一个较为精炼的模型，使得它压缩一些回归系数。以损失部分信息、降低精度为代价获得回归系数更为符合实际、更可靠的回归方法，对病态数据的拟合要强于最小二乘法。</p>
-<p>$$\left{<br>\begin{matrix}<br>多元线性：\boldsymbol{\hat{\beta }} &#x3D;argmin_{\hat{\beta }} \sum_{i&#x3D;1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta} } )^2 ，其中\boldsymbol{\hat{\beta}}&#x3D;[\hat{\beta}<em>1,\hat{\beta}<em>2,\dots ]\<br>岭回归：\boldsymbol{\hat{\beta } }&#x3D;argmin</em>{\hat{\beta }} [ \sum</em>{i&#x3D;1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta}}  )^2 + \lambda \sum_{i&#x3D;1}^n \hat{\beta_i}^2]，\lambda&gt;0\<br>Lasso回归：\boldsymbol{\hat{\beta }} &#x3D;argmin_{\hat{\beta }} [ \sum_{i&#x3D;1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta} } )^2 + \lambda \sum_{i&#x3D;1}^n |\hat{\beta_i}|]<br>\end{matrix}<br>\right.$$</p>
-<p>其中新增的最后一项$\sum_{i&#x3D;1}^n \hat{\beta_i}^2$称为惩罚函数。</p>
+<h2 id="spss实现多元线性回归">SPSS实现多元线性回归</h2>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/143049922">SPSS实现多元线性回归</a></p>
+<h1 id="岭回归和lasso回归">岭回归和Lasso回归</h1>
+<p>岭回归 (Ridge regression)<br />
+Lasso(Least absolute shrinkage and selection operator)回归<br />
+是一种压缩估计。它通过构造一个惩罚函数得到一个较为精炼的模型，使得它压缩一些回归系数。以损失部分信息、降低精度为代价获得回归系数更为符合实际、更可靠的回归方法，对病态数据的拟合要强于最小二乘法。</p>
+<p><span class="math display">\[\left\{
+\begin{matrix}
+多元线性：\boldsymbol{\hat{\beta }} =argmin_{\hat{\beta }}
+\sum_{i=1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta} } )^2
+，其中\boldsymbol{\hat{\beta}}=[\hat{\beta}_1,\hat{\beta}_2,\dots ]\\
+岭回归：\boldsymbol{\hat{\beta } }=argmin_{\hat{\beta }} [
+\sum_{i=1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta}}  )^2 +
+\lambda \sum_{i=1}^n \hat{\beta_i}^2]，\lambda&gt;0\\
+Lasso回归：\boldsymbol{\hat{\beta }} =argmin_{\hat{\beta }} [
+\sum_{i=1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta} } )^2 +
+\lambda \sum_{i=1}^n |\hat{\beta_i}|]
+\end{matrix}
+\right.\]</span></p>
+<p>其中新增的最后一项<span class="math inline">\(\sum_{i=1}^n
+\hat{\beta_i}^2\)</span>称为惩罚函数。</p>
 <p>对于岭回归有解为：</p>
-<p>$$\boldsymbol{\widehat{\beta}}&#x3D;\left(\boldsymbol{X}^{T} \boldsymbol{X}+\lambda \boldsymbol{I}\right)^{-1} \boldsymbol{X}^{T} \boldsymbol{y}$$</p>
-<p>易知：$\lambda$ 趋近 $0$ 时，系数和多元线性回归相同；$\lambda$ 趋近无穷时，系数趋近 $0$ 。</p>
-<p>Lasso回归相比岭回归，能将不重要的回归系数压缩至 $0$ ，可以进行降纬，但是没有显式解。</p>
-<p><img src="https://s2.loli.net/2022/02/09/XOaLo1vwhMDCgbn.jpg" srcset="/img/loading.gif" lazyload></p>
-<h1 id="多元二项式回归"><a href="#多元二项式回归" class="headerlink" title="多元二项式回归"></a>多元二项式回归</h1><p>Matlab 的统计工具箱提供了多元二项式回归命令 <code>rstool</code></p>
+<p><span
+class="math display">\[\boldsymbol{\widehat{\beta}}=\left(\boldsymbol{X}^{T}
+\boldsymbol{X}+\lambda \boldsymbol{I}\right)^{-1} \boldsymbol{X}^{T}
+\boldsymbol{y}\]</span></p>
+<p>易知：<span class="math inline">\(\lambda\)</span> 趋近 <span
+class="math inline">\(0\)</span> 时，系数和多元线性回归相同；<span
+class="math inline">\(\lambda\)</span> 趋近无穷时，系数趋近 <span
+class="math inline">\(0\)</span> 。</p>
+<p>Lasso回归相比岭回归，能将不重要的回归系数压缩至 <span
+class="math inline">\(0\)</span> ，可以进行降纬，但是没有显式解。</p>
+<p><img src="https://s2.loli.net/2022/02/09/XOaLo1vwhMDCgbn.jpg" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="多元二项式回归">多元二项式回归</h1>
+<p>Matlab 的统计工具箱提供了多元二项式回归命令 <code>rstool</code></p>
 <div class="hljs code-wrapper"><pre><code class="hljs matlab">rstool(X,Y,model,alpha)</code></pre></div>
-
-<p>其中 <code>alpha</code> 为显著性水平（默认为 $0.05$）, <code>model</code> 有以下四个模型（默认为线性模型）</p>
-<ol>
-<li>$\operatorname{linear}(  线性  ): y&#x3D;\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}$</li>
-<li>$purequadratic (纯二次)  : y&#x3D;\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny j&#x3D;1}^{\tiny m} \beta_{j j} x_{j}^{2}$ </li>
-<li>$interaction(交叉)  : y&#x3D;\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny1 \leqslant j&lt;k \leqslant m} \beta_{j k} x_{j} x_{k}$ </li>
-<li>$quadratic(完全二次)  : y&#x3D;\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny 1 \leqslant j \leqslant k \leqslant m} \beta_{j k} x_{j} x_{k}$</li>
+<p>其中 <code>alpha</code> 为显著性水平（默认为 <span
+class="math inline">\(0.05\)</span>）, <code>model</code>
+有以下四个模型（默认为线性模型）</p>
+<ol type="1">
+<li><span class="math inline">\(\operatorname{linear}( 线性 ):
+y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}\)</span></li>
+<li><span class="math inline">\(purequadratic (纯二次) :
+y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny
+j=1}^{\tiny m} \beta_{j j} x_{j}^{2}\)</span></li>
+<li><span class="math inline">\(interaction(交叉) :
+y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny1
+\leqslant j&lt;k \leqslant m} \beta_{j k} x_{j} x_{k}\)</span></li>
+<li><span class="math inline">\(quadratic(完全二次) :
+y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny 1
+\leqslant j \leqslant k \leqslant m} \beta_{j k} x_{j}
+x_{k}\)</span></li>
 </ol>
-<h1 id="非线性回归"><a href="#非线性回归" class="headerlink" title="非线性回归"></a>非线性回归</h1><p>这里的“线性”是相对于模型参数 $\beta_0,\beta_1,\dotsb,\beta_m$ 而言的。</p>
-<p>对于此类问题，应先给出 $y$ 与 $x_1,x_2,\dots,x_n$ 关于  $\beta_0,\beta_1,\dotsb,\beta_m$ 的非线性表达式。</p>
+<h1 id="非线性回归">非线性回归</h1>
+<p>这里的“线性”是相对于模型参数 <span
+class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span>
+而言的。</p>
+<p>对于此类问题，应先给出 <span class="math inline">\(y\)</span> 与
+<span class="math inline">\(x_1,x_2,\dots,x_n\)</span> 关于 <span
+class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span>
+的非线性表达式。</p>
 <p>再使用 Matlab 的 <code>nlpredci</code> 计算回归系数。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.csdn.net/heirenmin/article/details/94443404">https://blog.csdn.net/heirenmin/article/details/94443404</a>
-<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/48541799">https://zhuanlan.zhihu.com/p/48541799</a>
-<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span>清风数学建模视频
-<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/161483493">https://zhuanlan.zhihu.com/p/161483493</a>
-<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<h1 id="参考">参考</h1>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>司守奎 孙兆亮.
+数学建模算法与运用[M]. 第2版. 第150页.
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2"
+class="footnote-text"><span>https://blog.csdn.net/heirenmin/article/details/94443404
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/48541799
+<a href="#fnref:3" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:4" class="footnote-text"><span>清风数学建模视频
+<a href="#fnref:4" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:5"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/161483493
+<a href="#fnref:5" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
             <hr>
             <div>
@@ -549,8 +759,43 @@
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

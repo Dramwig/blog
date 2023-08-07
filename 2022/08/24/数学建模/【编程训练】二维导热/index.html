@@ -18,12 +18,12 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="显示迭代法问题模拟绝热环境下有初始温度差的二维平面的温度随时间的变化情况。 （gif见知乎文章） 代码%二维热传导过程显式差分模拟 clear;close all;clc;  t &#x3D; 0.03;       %时间范围，计算到0.03h x &#x3D; 1;y &#x3D; 1;    %空间范围，0-1m m &#x3D; 320;        %时间t方向分320个格子 n &#x3D; 32;         %空间x方向分3">
+  <meta name="description" content="显示迭代法 问题 模拟绝热环境下有初始温度差的二维平面的温度随时间的变化情况。 （gif见知乎文章） 代码 %二维热传导过程显式差分模拟 clear;close all;clc;  t &#x3D; 0.03;       %时间范围，计算到0.03h x &#x3D; 1;y &#x3D; 1;    %空间范围，0-1m m &#x3D; 320;        %时间t方向分320个格子 n &#x3D; 32;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【编程训练】二维导热 - 差分模拟">
 <meta property="og:url" content="http://example.com/2022/08/24/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E3%80%90%E7%BC%96%E7%A8%8B%E8%AE%AD%E7%BB%83%E3%80%91%E4%BA%8C%E7%BB%B4%E5%AF%BC%E7%83%AD/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="显示迭代法问题模拟绝热环境下有初始温度差的二维平面的温度随时间的变化情况。 （gif见知乎文章） 代码%二维热传导过程显式差分模拟 clear;close all;clc;  t &#x3D; 0.03;       %时间范围，计算到0.03h x &#x3D; 1;y &#x3D; 1;    %空间范围，0-1m m &#x3D; 320;        %时间t方向分320个格子 n &#x3D; 32;         %空间x方向分3">
+<meta property="og:description" content="显示迭代法 问题 模拟绝热环境下有初始温度差的二维平面的温度随时间的变化情况。 （gif见知乎文章） 代码 %二维热传导过程显式差分模拟 clear;close all;clc;  t &#x3D; 0.03;       %时间范围，计算到0.03h x &#x3D; 1;y &#x3D; 1;    %空间范围，0-1m m &#x3D; 320;        %时间t方向分320个格子 n &#x3D; 32;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-24T03:01:00.000Z">
 <meta property="article:modified_time" content="2022-08-24T03:30:10.400Z">
@@ -233,9 +233,12 @@
               </p>
             
             <div class="markdown-body">
-              <h1 id="显示迭代法"><a href="#显示迭代法" class="headerlink" title="显示迭代法"></a>显示迭代法</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>模拟绝热环境下有初始温度差的二维平面的温度随时间的变化情况。</p>
+              <h1 id="显示迭代法">显示迭代法</h1>
+<h2 id="问题">问题</h2>
+<p>模拟绝热环境下有初始温度差的二维平面的温度随时间的变化情况。</p>
 <p>（gif见知乎文章）</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="hljs code-wrapper"><pre><code class="hljs m"><span class="hljs-comment">%二维热传导过程显式差分模拟</span>
+<h2 id="代码">代码</h2>
+<div class="hljs code-wrapper"><pre><code class="hljs m"><span class="hljs-comment">%二维热传导过程显式差分模拟</span>
 clear;close <span class="hljs-built_in">all</span>;clc;
 
 t <span class="hljs-built_in">=</span> <span class="hljs-number">0.03</span>;       <span class="hljs-comment">%时间范围，计算到0.03h</span>
@@ -277,10 +280,12 @@ for i<span class="hljs-built_in">=</span><span class="hljs-number">1</span>:<spa
         imwrite(I,map,<span class="hljs-string">&#x27;test.gif&#x27;</span>,<span class="hljs-string">&#x27;gif&#x27;</span>,<span class="hljs-string">&#x27;WriteMode&#x27;</span>,<span class="hljs-string">&#x27;append&#x27;</span>,<span class="hljs-string">&#x27;DelayTime&#x27;</span>,<span class="hljs-number">0.05</span>);    
     end
 end</code></pre></div>
-
-<h1 id="交替隐式迭代法"><a href="#交替隐式迭代法" class="headerlink" title="交替隐式迭代法"></a>交替隐式迭代法</h1><h2 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h2><p>模拟外界温度周期变化的影响下，二维地板的温度随时间的变化情况。</p>
+<h1 id="交替隐式迭代法">交替隐式迭代法</h1>
+<h2 id="问题-1">问题</h2>
+<p>模拟外界温度周期变化的影响下，二维地板的温度随时间的变化情况。</p>
 <p>（gif见知乎文章）</p>
-<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><div class="hljs code-wrapper"><pre><code class="hljs m"><span class="hljs-comment">%二维热传导过程差分交替隐式迭代法(Alternating-direction implicit method)</span>
+<h2 id="代码-1">代码</h2>
+<div class="hljs code-wrapper"><pre><code class="hljs m"><span class="hljs-comment">%二维热传导过程差分交替隐式迭代法(Alternating-direction implicit method)</span>
 <span class="hljs-comment">%c过大会导致交替迭代非常不稳定</span>
 clear;close <span class="hljs-built_in">all</span>;clc;
 
@@ -375,28 +380,61 @@ for i<span class="hljs-built_in">=</span><span class="hljs-number">1</span>:nt
         imwrite(I,map,<span class="hljs-string">&#x27;test.gif&#x27;</span>,<span class="hljs-string">&#x27;gif&#x27;</span>,<span class="hljs-string">&#x27;WriteMode&#x27;</span>,<span class="hljs-string">&#x27;append&#x27;</span>,<span class="hljs-string">&#x27;DelayTime&#x27;</span>,<span class="hljs-number">0.05</span>);    
     end
 end</code></pre></div>
-
-<h1 id="模型说明"><a href="#模型说明" class="headerlink" title="模型说明"></a>模型说明</h1><p>二维热传导方程为</p>
-<p>$$\frac{\partial T}{\partial t}&#x3D;k\left(\frac{\partial^{2} T}{\partial x^{2}}+\frac{\partial^{2} T}{\partial y^{2}}\right)$$</p>
-<h2 id="显式有限差分格式"><a href="#显式有限差分格式" class="headerlink" title="显式有限差分格式"></a>显式有限差分格式</h2><p>$$\frac{T_{i, j}^{n+1}-T_{i, j}^{n}}{\Delta t}&#x3D;\left(\frac{T_{i+1, j}^{n}-2 T_{i, j}^{n}+T_{i-1, j}^{n}}{\Delta x^{2}}+\frac{T_{i, j+1}^{n}-2 T_{i, j}^{n}+T_{i, j-1}^{n}}{\Delta y^{2}}\right)$$</p>
+<h1 id="模型说明">模型说明</h1>
+<p>二维热传导方程为</p>
+<p><span class="math display">\[\frac{\partial T}{\partial
+t}=k\left(\frac{\partial^{2} T}{\partial x^{2}}+\frac{\partial^{2}
+T}{\partial y^{2}}\right)\]</span></p>
+<h2 id="显式有限差分格式">显式有限差分格式</h2>
+<p><span class="math display">\[\frac{T_{i, j}^{n+1}-T_{i,
+j}^{n}}{\Delta t}=\left(\frac{T_{i+1, j}^{n}-2 T_{i, j}^{n}+T_{i-1,
+j}^{n}}{\Delta x^{2}}+\frac{T_{i, j+1}^{n}-2 T_{i, j}^{n}+T_{i,
+j-1}^{n}}{\Delta y^{2}}\right)\]</span></p>
 <p>显式迭代格式免去了矩阵求解的麻烦，但却是条件稳定的。即只有保证时间步长和空间步长满足一定关系时才能获得收敛解，对于热传导问题需要满足：</p>
-<p>$$\frac{\Delta t}{\min(\Delta x^2,\Delta y^2)}\le \frac{1}{2}$$</p>
-<h2 id="隐式有限差分格式-BTCS"><a href="#隐式有限差分格式-BTCS" class="headerlink" title="隐式有限差分格式(BTCS)"></a>隐式有限差分格式(BTCS)</h2><p>$$\frac{T_{i, j}^{n+1}-T_{i, j}^{n}}{\Delta t}&#x3D;\left(\frac{T_{i+1, j}^{n+1}-2 T_{i, j}^{n+1}+T_{i-1, j}^{n+1}}{\Delta x^{2}}+\frac{T_{i, j+1}^{n+1}-2 T_{i, j}^{n+1}+T_{i, j-1}^{n+1}}{\Delta y^{2}}\right)$$</p>
+<p><span class="math display">\[\frac{\Delta t}{\min(\Delta x^2,\Delta
+y^2)}\le \frac{1}{2}\]</span></p>
+<h2 id="隐式有限差分格式btcs">隐式有限差分格式(BTCS)</h2>
+<p><span class="math display">\[\frac{T_{i, j}^{n+1}-T_{i,
+j}^{n}}{\Delta t}=\left(\frac{T_{i+1, j}^{n+1}-2 T_{i, j}^{n+1}+T_{i-1,
+j}^{n+1}}{\Delta x^{2}}+\frac{T_{i, j+1}^{n+1}-2 T_{i, j}^{n+1}+T_{i,
+j-1}^{n+1}}{\Delta y^{2}}\right)\]</span></p>
 <p>需要注意BTCS法是无条件稳定的，即时间步长可以任意取都不会计算发散（不发散不代表算得准）。由于BTCS时间项采用向后差分，因此该方法在时间层精度为一阶，而空间层精度为二阶。</p>
-<h2 id="隐式有限差分格式-Crank–Nicolson"><a href="#隐式有限差分格式-Crank–Nicolson" class="headerlink" title="隐式有限差分格式(Crank–Nicolson)"></a>隐式有限差分格式(Crank–Nicolson)</h2><p>$$\frac{T_{i, j}^{n+1}-T_{i, j}^{n}}{\Delta t}&#x3D;0.5\left(\frac{T_{i+1, j}^{n+1}-2 T_{i, j}^{n+1}+T_{i-1, j}^{n+1}}{\Delta x^{2}}+\frac{T_{i, j+1}^{n+1}-2 T_{i, j}^{n+1}+T_{i, j-1}^{n+1}}{\Delta y^{2}}\right) \<br>+0.5\left(\frac{T_{i+1, j}^{n}-2 T_{i, j}^{n}+T_{i-1, j}^{n}}{\Delta x^{2}}+\frac{T_{i, j+1}^{n}-2 T_{i, j}^{n}+T_{i, j-1}^{n}}{\Delta y^{2}}\right)$$</p>
+<h2
+id="隐式有限差分格式cranknicolson">隐式有限差分格式(Crank–Nicolson)</h2>
+<p><span class="math display">\[\frac{T_{i, j}^{n+1}-T_{i,
+j}^{n}}{\Delta t}=0.5\left(\frac{T_{i+1, j}^{n+1}-2 T_{i,
+j}^{n+1}+T_{i-1, j}^{n+1}}{\Delta x^{2}}+\frac{T_{i, j+1}^{n+1}-2 T_{i,
+j}^{n+1}+T_{i, j-1}^{n+1}}{\Delta y^{2}}\right) \\
++0.5\left(\frac{T_{i+1, j}^{n}-2 T_{i, j}^{n}+T_{i-1, j}^{n}}{\Delta
+x^{2}}+\frac{T_{i, j+1}^{n}-2 T_{i, j}^{n}+T_{i, j-1}^{n}}{\Delta
+y^{2}}\right)\]</span></p>
 <p>作为隐式方法，Crank–Nicolson格式是无条件稳定的，且其时间离散精度为二阶。</p>
-<h2 id="交替隐式迭代法-Alternating-direction-implicit-method"><a href="#交替隐式迭代法-Alternating-direction-implicit-method" class="headerlink" title="交替隐式迭代法(Alternating-direction implicit method)"></a>交替隐式迭代法(Alternating-direction implicit method)</h2><ol>
+<h2
+id="交替隐式迭代法alternating-direction-implicit-method">交替隐式迭代法(Alternating-direction
+implicit method)</h2>
+<ol type="1">
 <li>x方向隐式更新</li>
 </ol>
-<p>$$\frac{T_{i, j}^{n+1}-T_{i, j}^{n}}{\Delta t}&#x3D;k\left(\frac{T_{i+1, j}^{n+1}-2 T_{i, j}^{n+1}+T_{i-1, j}^{n+1}}{\Delta x^{2}}+\frac{T_{i, j+1}^{n}-2 T_{i, j}^{n}+T_{i, j-1}^{n}}{\Delta y^{2}}\right)$$</p>
-<ol start="2">
+<p><span class="math display">\[\frac{T_{i, j}^{n+1}-T_{i,
+j}^{n}}{\Delta t}=k\left(\frac{T_{i+1, j}^{n+1}-2 T_{i, j}^{n+1}+T_{i-1,
+j}^{n+1}}{\Delta x^{2}}+\frac{T_{i, j+1}^{n}-2 T_{i, j}^{n}+T_{i,
+j-1}^{n}}{\Delta y^{2}}\right)\]</span></p>
+<ol start="2" type="1">
 <li>y方向隐式更新</li>
 </ol>
-<p>$$\frac{T_{i, j}^{n+1}-T_{i, j}^{n}}{\Delta t &#x2F; 2}&#x3D;k\left(\frac{T_{i+1, j}^{n}-2 T_{i, j}^{n}+T_{i-1, j}^{n}}{\Delta x^{2}}+\frac{T_{i, j+1}^{n+1}-2 T_{i, j}^{n+1}+T_{i, j-1}^{n+1}}{\Delta y^{2}}\right)$$</p>
+<p><span class="math display">\[\frac{T_{i, j}^{n+1}-T_{i,
+j}^{n}}{\Delta t / 2}=k\left(\frac{T_{i+1, j}^{n}-2 T_{i, j}^{n}+T_{i-1,
+j}^{n}}{\Delta x^{2}}+\frac{T_{i, j+1}^{n+1}-2 T_{i, j}^{n+1}+T_{i,
+j-1}^{n+1}}{\Delta y^{2}}\right)\]</span></p>
 <p>交替隐式迭代法是无条件稳定的，且时间和空间离散精度均为二阶，同时矩阵求解计算量优于上述其他隐式算法，具有独特的优势。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li>matlab练习程序（差分法解二维热传导方程）. <a target="_blank" rel="noopener" href="http://t.zoukankan.com/tiandsp-p-14406223.html">http://t.zoukankan.com/tiandsp-p-14406223.html</a></li>
-<li>一文看懂交替隐式迭代法. <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/522899015">https://zhuanlan.zhihu.com/p/522899015</a></li>
+<h1 id="参考">参考</h1>
+<ul>
+<li>matlab练习程序（差分法解二维热传导方程）. <a
+target="_blank" rel="noopener" href="http://t.zoukankan.com/tiandsp-p-14406223.html"
+class="uri">http://t.zoukankan.com/tiandsp-p-14406223.html</a></li>
+<li>一文看懂交替隐式迭代法. <a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/522899015"
+class="uri">https://zhuanlan.zhihu.com/p/522899015</a></li>
 </ul>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
@@ -627,8 +665,43 @@ end</code></pre></div>
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

@@ -16,8 +16,7 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="
-那秋夜中的湖水，永远的留在了那里，直到再也找不到它的影子…
-">
+那秋夜中的湖水，永远的留在了那里，直到再也找不到它的影子…">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
   <meta name="description" content="那秋夜中的湖水，永远的留在了那里，直到再也找不到它的影子…">
@@ -236,11 +235,11 @@
             
             <div class="markdown-body">
               <blockquote>
-<p>那秋夜中的湖水，永远的留在了那里，直到再也找不到它的影子…</p>
+<p>那秋夜中的湖水，永远的留在了那里，直到再也找不到它的影子…
+<span id="more"></span></p>
 </blockquote>
-<span id="more"></span>
-
-<h2 id="迎泽影"><a href="#迎泽影" class="headerlink" title="迎泽影"></a>迎泽影</h2><p>我梦见迎泽许多次，却仅到了一次。而那一次，便足以使我回味至今。</p>
+<h2 id="迎泽影">迎泽影</h2>
+<p>我梦见迎泽许多次，却仅到了一次。而那一次，便足以使我回味至今。</p>
 <p>那是在国庆，我急于在北方这个略显萧瑟的城市寻找一个安心之所。萧瑟的不是这个城市，而是心；安心之所不是住处，而是寻找自己。毕竟，一个人同一群人，在陌生的城市里，在不习惯的空气中，显得格格不入。</p>
 <p>那正是在被打击的日子里。同行的师友善意的提醒我们，不要太放在心上，好好去放松下吧。我不甘心，相信在繁华的都市中，我仍然能够找寻到一片净土，在那里，一定会告诉我许多我未曾知晓的秘密。</p>
 <p>沿着小径，是夹岸的泛黄的叶柳，在夜色里略显幽僻，寂静的草深处，夏虫已然鸣出了丝丝秋意。沿着幽径行去，拨开纸条便是小亭，亭中有方石桌一，小石椅两，若有油灯一盏，月光一壶就更佳了。我并没有停留的念头，我只是脱离人群的一人，我只想看看园中的景色，更何况又没有能温酒的友人。</p>
@@ -472,8 +471,43 @@
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

@@ -18,12 +18,12 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="请注意，本文最后更新于2022.2.28，其中一些理解可能已被笔者推翻或废弃。             灰色关联分析(GRA)灰色关联度分析（Grey Relation Analysis）可以在一个灰色系统中，衡量某个项目受其他的因素影响的相对强弱。 两个系统之间的因素，随时间或不同对象而变化的关联性大小的量度，称为关联度。两个因素变化即同步变化程度较高，即可谓二者关联程">
+  <meta name="description" content="请注意，本文最后更新于2022.2.28，其中一些理解可能已被笔者推翻或废弃。            灰色关联分析(GRA) 灰色关联度分析（Grey Relation Analysis） 可以在一个灰色系统中，衡量某个项目受其他的因素影响的相对强弱。 两个系统之间的因素，随时间或不同对象而变化的关联性大小的量度，称为关联度。两个因素变化即同步变化程度较高，即可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="灰色关联分析">
 <meta property="og:url" content="http://example.com/2022/01/17/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E7%81%B0%E8%89%B2%E5%85%B3%E8%81%94%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="请注意，本文最后更新于2022.2.28，其中一些理解可能已被笔者推翻或废弃。             灰色关联分析(GRA)灰色关联度分析（Grey Relation Analysis）可以在一个灰色系统中，衡量某个项目受其他的因素影响的相对强弱。 两个系统之间的因素，随时间或不同对象而变化的关联性大小的量度，称为关联度。两个因素变化即同步变化程度较高，即可谓二者关联程">
+<meta property="og:description" content="请注意，本文最后更新于2022.2.28，其中一些理解可能已被笔者推翻或废弃。            灰色关联分析(GRA) 灰色关联度分析（Grey Relation Analysis） 可以在一个灰色系统中，衡量某个项目受其他的因素影响的相对强弱。 两个系统之间的因素，随时间或不同对象而变化的关联性大小的量度，称为关联度。两个因素变化即同步变化程度较高，即可">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-17T01:45:00.000Z">
 <meta property="article:modified_time" content="2022-12-31T09:49:11.909Z">
@@ -182,7 +182,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.3k 字
+      5.1k 字
     </span>
   
 
@@ -237,80 +237,228 @@
               <div class="note note-warning">
             <p>请注意，本文最后更新于2022.2.28，其中一些理解可能已被笔者推翻或废弃。</p>
           </div>
-
-<h1 id="灰色关联分析-GRA"><a href="#灰色关联分析-GRA" class="headerlink" title="灰色关联分析(GRA)"></a>灰色关联分析(GRA)</h1><p>灰色关联度分析（Grey Relation Analysis）<br>可以在一个灰色系统中，衡量某个项目受其他的因素影响的相对强弱。</p>
+<h1 id="灰色关联分析gra">灰色关联分析(GRA)</h1>
+<p>灰色关联度分析（Grey Relation Analysis）<br />
+可以在一个灰色系统中，衡量某个项目受其他的因素影响的相对强弱。</p>
 <p>两个系统之间的因素，随时间或不同对象而变化的关联性大小的量度，称为关联度。两个因素变化即同步变化程度较高，即可谓二者关联程度较高；反之，则较低。因此，灰色关联分析方法，根据因素之间发展趋势的相似相异程度，为衡量因素间关联程度提供了量化的度量。</p>
 <p>灰色关联分析的<strong>基本思想</strong>是根据<strong>序列曲线几何形状的相似程度</strong>来判断其联系是否紧密。曲线越接近，相应序列之间的关联度就越大，反之就越小。</p>
-<h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><h3 id="确定分析序列"><a href="#确定分析序列" class="headerlink" title="确定分析序列"></a>确定分析序列</h3><ol>
+<h2 id="基本步骤">基本步骤</h2>
+<h3 id="确定分析序列">确定分析序列</h3>
+<ol type="1">
 <li><strong>母序列(又称参考序列、母指标)</strong></li>
 </ol>
-<p>能反映系统行为特征的数据序列，类似于因变量 $Y$ ，记为</p>
-<p>$$Y&#x3D;[y_1,y_2,…,y_m]^T$$</p>
-<ol start="2">
+<p>能反映系统行为特征的数据序列，类似于因变量 <span
+class="math inline">\(Y\)</span> ，记为</p>
+<p><span class="math display">\[Y=[y_1,y_2,...,y_m]^T\]</span></p>
+<ol start="2" type="1">
 <li><strong>子序列(又称比较序列、子指标)</strong></li>
 </ol>
-<p>影响系统行为的因素组成的数据序列，类似于因变量 $X$ ，记为</p>
-<p>$$X_{nm}&#x3D;\left[\begin{array}{cccc}<br>x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1 m} \<br>x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2 m} \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>x_{n 1} &amp; x_{n 2} &amp; \cdots &amp; x_{n m}<br>\end{array}\right]$$</p>
-<p><strong>其中</strong>：$n$ 为年份数量，$m$ 为要素的个数</p>
-<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p>由于不同要素具有不同量纲和数据范围范围，因此我们需要对它们进行归一化(常用均值化)去量纲，将它们统一到近似的范围内，然后重点关注其变化和趋势。</p>
-<p>$$\widetilde{y}<em>{k}&#x3D;\frac{y</em>{k}}{\bar{y_i}}, \quad \bar{y_i}&#x3D;\frac{1}{n} \sum_{k&#x3D;1}^{n} y_{k}$$</p>
-<p>$$\widetilde{x}<em>{ki}&#x3D;\frac{x</em>{ki}}{\bar{x_{_i}}}, \quad \bar{x_{_i}}&#x3D;\frac{1}{n} \sum_{k&#x3D;1}^{n} x_{ki}, (i&#x3D;1,2,…m)$$</p>
-<p>注：下文继续用 $X$ 代指预处理后的 $\widetilde{X}$ ， $Y$ 代指 $\widetilde{Y}$。</p>
-<h3 id="计算灰色关联系数"><a href="#计算灰色关联系数" class="headerlink" title="计算灰色关联系数"></a>计算灰色关联系数</h3><p>计算子序列中各个指标与母序列的关联系数</p>
-<p>记<br>$$a&#x3D;\min <em>{i} \min</em>{k}\left|x_{0}(k)-x_{i}(k)\right|, \quad b&#x3D;\max <em>{i} \max</em>{k}\left|x_{0}(k)-x_{i}(k)\right|$$<br>为两极最小差和最大差。</p>
-<p>构造<br>$$z_{k,j}&#x3D;\xi_j(k)&#x3D;\frac{a+\rho b}{|x_{kj}-y_j|+\rho b}$$<br>构成 $Z$。</p>
-<p><strong>其中</strong>：$\rho$为分辨系数，一般取0.5</p>
-<h3 id="计算关联度"><a href="#计算关联度" class="headerlink" title="计算关联度"></a>计算关联度</h3><p>$$r_j&#x3D;\frac{1}{n} \sum_{k&#x3D;1}^{n} \xi_j(k) &#x3D; \frac{1}{n} \sum_{k&#x3D;1}^{n} z_{kj}$$</p>
-<h2 id="基于关联度计算权重的综合评价"><a href="#基于关联度计算权重的综合评价" class="headerlink" title="基于关联度计算权重的综合评价"></a>基于关联度计算权重的综合评价</h2><p>本质是构造虚拟母指标，以各个指标与母指标的灰色关联度 $r_j$ 代表指标权重，再<strong>以此权重对每个观测值做简单加权</strong>得到结果为评价。</p>
-<p>权重 $w_j$ 反应的是指标与样本最大值的关联度，指标下的观测值在同截面数据中最大的数目越多，与母序列相似程度愈高， $w_j$ 愈大。所以得到的综合评价结果仅仅是未加权结果的更平缓曲线(?)</p>
+<p>影响系统行为的因素组成的数据序列，类似于因变量 <span
+class="math inline">\(X\)</span> ，记为</p>
+<p><span class="math display">\[X_{nm}=\left[\begin{array}{cccc}
+x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1 m} \\
+x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2 m} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{n 1} &amp; x_{n 2} &amp; \cdots &amp; x_{n m}
+\end{array}\right]\]</span></p>
+<p><strong>其中</strong>：<span class="math inline">\(n\)</span>
+为年份数量，<span class="math inline">\(m\)</span> 为要素的个数</p>
+<h3 id="数据预处理">数据预处理</h3>
+<p>由于不同要素具有不同量纲和数据范围范围，因此我们需要对它们进行归一化(常用均值化)去量纲，将它们统一到近似的范围内，然后重点关注其变化和趋势。</p>
+<p><span
+class="math display">\[\widetilde{y}_{k}=\frac{y_{k}}{\bar{y_i}}, \quad
+\bar{y_i}=\frac{1}{n} \sum_{k=1}^{n} y_{k}\]</span></p>
+<p><span
+class="math display">\[\widetilde{x}_{ki}=\frac{x_{ki}}{\bar{x_{\_i}}},
+\quad \bar{x_{\_i}}=\frac{1}{n} \sum_{k=1}^{n} x_{ki},
+(i=1,2,...m)\]</span></p>
+<p>注：下文继续用 <span class="math inline">\(X\)</span> 代指预处理后的
+<span class="math inline">\(\widetilde{X}\)</span> ， <span
+class="math inline">\(Y\)</span> 代指 <span
+class="math inline">\(\widetilde{Y}\)</span>。</p>
+<h3 id="计算灰色关联系数">计算灰色关联系数</h3>
+<p>计算子序列中各个指标与母序列的关联系数</p>
+<p>记 <span class="math display">\[a=\min _{i}
+\min_{k}\left|x_{0}(k)-x_{i}(k)\right|, \quad b=\max _{i}
+\max_{k}\left|x_{0}(k)-x_{i}(k)\right|\]</span>
+为两极最小差和最大差。</p>
+<p>构造 <span class="math display">\[z_{k,j}=\xi_j(k)=\frac{a+\rho
+b}{|x_{kj}-y_j|+\rho b}\]</span> 构成 <span
+class="math inline">\(Z\)</span>。</p>
+<p><strong>其中</strong>：<span
+class="math inline">\(\rho\)</span>为分辨系数，一般取0.5</p>
+<h3 id="计算关联度">计算关联度</h3>
+<p><span class="math display">\[r_j=\frac{1}{n} \sum_{k=1}^{n} \xi_j(k)
+= \frac{1}{n} \sum_{k=1}^{n} z_{kj}\]</span></p>
+<h2 id="基于关联度计算权重的综合评价">基于关联度计算权重的综合评价</h2>
+<p>本质是构造虚拟母指标，以各个指标与母指标的灰色关联度 <span
+class="math inline">\(r_j\)</span>
+代表指标权重，再<strong>以此权重对每个观测值做简单加权</strong>得到结果为评价。</p>
+<p>权重 <span class="math inline">\(w_j\)</span>
+反应的是指标与样本最大值的关联度，指标下的观测值在同截面数据中最大的数目越多，与母序列相似程度愈高，
+<span class="math inline">\(w_j\)</span>
+愈大。所以得到的综合评价结果仅仅是未加权结果的更平缓曲线(?)</p>
 <blockquote>
-<p>本方法疑是来源清风的数学建模视频，在互联网上流传。与灰色关联分析的决策方法相异，正确性存疑。<br>(2.28)</p>
+<p>本方法疑是来源清风的数学建模视频，在互联网上流传。与灰色关联分析的决策方法相异，正确性存疑。
+(2.28)</p>
 </blockquote>
-<h3 id="1-正向化预处理"><a href="#1-正向化预处理" class="headerlink" title="1. 正向化预处理"></a>1. 正向化预处理</h3><p>记正向化后的数据为：<br>$$X_{nm}&#x3D;\left[\begin{array}{cccc}<br>x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1 m} \<br>x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2 m} \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>x_{n 1} &amp; x_{n 2} &amp; \cdots &amp; x_{n m}<br>\end{array}\right]$$</p>
-<p><strong>其中</strong>：$n$ 为年份数，$m$ 为指标数</p>
-<h3 id="2-去除量纲"><a href="#2-去除量纲" class="headerlink" title="2. 去除量纲"></a>2. 去除量纲</h3><p>每个数 $x_{ij}$ 除以每一列的平均值 $\bar{x_{_i}}$ ,记作 $Z$ ，有</p>
-<p>$$z_{ki}&#x3D;\frac{x_{ki}}{\bar{x_{_i}}}, \quad \bar{x_{_i}}&#x3D;\frac{1}{n} \sum_{k&#x3D;1}^{n} x_{ki}, (i&#x3D;1,2,…m)$$</p>
-<p>$$Z_{nm}&#x3D;\left[\begin{array}{cccc}<br>z_{11} &amp; z_{12} &amp; \cdots &amp; z_{1 m} \<br>z_{21} &amp; z_{22} &amp; \cdots &amp; z_{2 m} \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>z_{n 1} &amp; z_{n 2} &amp; \cdots &amp; z_{n m}<br>\end{array}\right]$$</p>
-<h3 id="3-构造母序列"><a href="#3-构造母序列" class="headerlink" title="3. 构造母序列"></a>3. 构造母序列</h3><p>构造<strong>虚拟指标</strong>表示每个观测值的最优值  $Y&#x3D;[y_1,y_2,…,y_n]^T$ 其中</p>
-<p>$$y_i&#x3D;max(z_{i1},z_{i2},…,z_{im})$$</p>
-<h3 id="4-计算关联系数"><a href="#4-计算关联系数" class="headerlink" title="4. 计算关联系数"></a>4. 计算关联系数</h3><p>记差值矩阵为 $K$，有<br>$$K&#x3D;\left[\begin{array}{cccc}<br>k_{11} &amp; k_{12} &amp; \cdots &amp; k_{1 m} \<br>k_{21} &amp; k_{22} &amp; \cdots &amp; k_{2 m} \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>k_{k 1} &amp; k_{n 2} &amp; \cdots &amp; k_{n m}<br>\end{array}\right]&#x3D;\left[\begin{array}{cccc}<br>|z_{11}-y_1| &amp; |z_{12}-y_1| &amp; \cdots &amp; |z_{1 m}-y_1| \<br>|z_{21}-y_2| &amp; |z_{22}-y_2| &amp; \cdots &amp; |z_{2 m}-y_2| \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>|z_{n 1}-y_n| &amp; |z_{n 2}-y_n| &amp; \cdots &amp; |z_{n m}-y_n|<br>\end{array}\right]$$</p>
-<p>记<br>$$a&#x3D;\min <em>{i} \min</em>{j}\left|k_{ij}\right|, \quad b&#x3D;\max_{i} \max <em>{j}\left|k</em>{ij}\right|$$<br>为两极最小差和最大差。</p>
-<h3 id="5-计算指标关联度"><a href="#5-计算指标关联度" class="headerlink" title="5. 计算指标关联度"></a>5. 计算指标关联度</h3><p>记<br>$$\xi_{ij}&#x3D;\frac{a+\rho b}{|k_{ij}|+\rho b}$$</p>
-<p><strong>其中</strong>：$\rho$为分辨系数，一般取0.5</p>
-<p>$$r_j&#x3D;\frac{1}{n} \sum_{i&#x3D;1}^{n} \xi_{ij}$$</p>
-<p><strong>其中</strong>：$r_j$ 为第 $j$ 个指标的灰色关联度</p>
-<h3 id="6-计算指标权重"><a href="#6-计算指标权重" class="headerlink" title="6. 计算指标权重"></a>6. 计算指标权重</h3><p>$$w_j&#x3D;\frac{r_j}{\sum_{k&#x3D;1}^{m} r_k} (j&#x3D;1,2,…,m)$$</p>
-<h3 id="7-计算得分"><a href="#7-计算得分" class="headerlink" title="7. 计算得分"></a>7. 计算得分</h3><p>$$S_i&#x3D; \sum_{j&#x3D;1}^{m} Z_{ij} \cdot r_j$$</p>
-<h3 id="8-结果处理"><a href="#8-结果处理" class="headerlink" title="8. 结果处理"></a>8. 结果处理</h3><p>$$\tilde{S}<em>i&#x3D;\frac{S_i}{\sum</em>{k&#x3D;1}^{m} S_k} (i&#x3D;1,2,\cdots,n)$$</p>
-<h2 id="基于灰色关联分析的综合评价"><a href="#基于灰色关联分析的综合评价" class="headerlink" title="基于灰色关联分析的综合评价"></a>基于灰色关联分析的综合评价</h2><h3 id="1-数据处理"><a href="#1-数据处理" class="headerlink" title="1. 数据处理"></a>1. 数据处理</h3><p>记横轴为指标，纵轴为样本编号的矩阵 $X$ 经每个指标规范化（纵轴方向归一化&#x2F;标准化）后为</p>
-<p>$$Z_{nm}&#x3D;\left[\begin{array}{cccc} z_{11} &amp; z_{12} &amp; \cdots &amp; z_{1 m} \ z_{21} &amp; z_{22} &amp; \cdots &amp; z_{2 m} \ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \ z_{n 1} &amp; z_{n 2} &amp; \cdots &amp; z_{n m} \end{array}\right]\$$</p>
-<h3 id="2-构造虚拟样本"><a href="#2-构造虚拟样本" class="headerlink" title="2. 构造虚拟样本"></a>2. 构造虚拟样本</h3><p>记虚拟母样本为 $Y$ ，其每个元素取对应指标的最优值，</p>
-<p>$$Y&#x3D;\left[y_1,y_2,\dotsb,y_m\right]$$</p>
+<h3 id="正向化预处理">1. 正向化预处理</h3>
+<p>记正向化后的数据为： <span
+class="math display">\[X_{nm}=\left[\begin{array}{cccc}
+x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1 m} \\
+x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2 m} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{n 1} &amp; x_{n 2} &amp; \cdots &amp; x_{n m}
+\end{array}\right]\]</span></p>
+<p><strong>其中</strong>：<span class="math inline">\(n\)</span>
+为年份数，<span class="math inline">\(m\)</span> 为指标数</p>
+<h3 id="去除量纲">2. 去除量纲</h3>
+<p>每个数 <span class="math inline">\(x_{ij}\)</span> 除以每一列的平均值
+<span class="math inline">\(\bar{x_{\_i}}\)</span> ,记作 <span
+class="math inline">\(Z\)</span> ，有</p>
+<p><span class="math display">\[z_{ki}=\frac{x_{ki}}{\bar{x_{\_i}}},
+\quad \bar{x_{\_i}}=\frac{1}{n} \sum_{k=1}^{n} x_{ki},
+(i=1,2,...m)\]</span></p>
+<p><span class="math display">\[Z_{nm}=\left[\begin{array}{cccc}
+z_{11} &amp; z_{12} &amp; \cdots &amp; z_{1 m} \\
+z_{21} &amp; z_{22} &amp; \cdots &amp; z_{2 m} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+z_{n 1} &amp; z_{n 2} &amp; \cdots &amp; z_{n m}
+\end{array}\right]\]</span></p>
+<h3 id="构造母序列">3. 构造母序列</h3>
+<p>构造<strong>虚拟指标</strong>表示每个观测值的最优值 <span
+class="math inline">\(Y=[y_1,y_2,...,y_n]^T\)</span> 其中</p>
+<p><span
+class="math display">\[y_i=max(z_{i1},z_{i2},...,z_{im})\]</span></p>
+<h3 id="计算关联系数">4. 计算关联系数</h3>
+<p>记差值矩阵为 <span class="math inline">\(K\)</span>，有 <span
+class="math display">\[K=\left[\begin{array}{cccc}
+k_{11} &amp; k_{12} &amp; \cdots &amp; k_{1 m} \\
+k_{21} &amp; k_{22} &amp; \cdots &amp; k_{2 m} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+k_{k 1} &amp; k_{n 2} &amp; \cdots &amp; k_{n m}
+\end{array}\right]=\left[\begin{array}{cccc}
+|z_{11}-y_1| &amp; |z_{12}-y_1| &amp; \cdots &amp; |z_{1 m}-y_1| \\
+|z_{21}-y_2| &amp; |z_{22}-y_2| &amp; \cdots &amp; |z_{2 m}-y_2| \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+|z_{n 1}-y_n| &amp; |z_{n 2}-y_n| &amp; \cdots &amp; |z_{n m}-y_n|
+\end{array}\right]\]</span></p>
+<p>记 <span class="math display">\[a=\min _{i}
+\min_{j}\left|k_{ij}\right|, \quad b=\max_{i} \max
+_{j}\left|k_{ij}\right|\]</span> 为两极最小差和最大差。</p>
+<h3 id="计算指标关联度">5. 计算指标关联度</h3>
+<p>记 <span class="math display">\[\xi_{ij}=\frac{a+\rho
+b}{|k_{ij}|+\rho b}\]</span></p>
+<p><strong>其中</strong>：<span
+class="math inline">\(\rho\)</span>为分辨系数，一般取0.5</p>
+<p><span class="math display">\[r_j=\frac{1}{n} \sum_{i=1}^{n}
+\xi_{ij}\]</span></p>
+<p><strong>其中</strong>：<span class="math inline">\(r_j\)</span> 为第
+<span class="math inline">\(j\)</span> 个指标的灰色关联度</p>
+<h3 id="计算指标权重">6. 计算指标权重</h3>
+<p><span class="math display">\[w_j=\frac{r_j}{\sum_{k=1}^{m} r_k}
+(j=1,2,...,m)\]</span></p>
+<h3 id="计算得分">7. 计算得分</h3>
+<p><span class="math display">\[S_i= \sum_{j=1}^{m} Z_{ij} \cdot
+r_j\]</span></p>
+<h3 id="结果处理">8. 结果处理</h3>
+<p><span class="math display">\[\tilde{S}_i=\frac{S_i}{\sum_{k=1}^{m}
+S_k} (i=1,2,\cdots,n)\]</span></p>
+<h2 id="基于灰色关联分析的综合评价">基于灰色关联分析的综合评价</h2>
+<h3 id="数据处理">1. 数据处理</h3>
+<p>记横轴为指标，纵轴为样本编号的矩阵 <span
+class="math inline">\(X\)</span>
+经每个指标规范化（纵轴方向归一化/标准化）后为</p>
+<p><span class="math display">\[Z_{nm}=\left[\begin{array}{cccc} z_{11}
+&amp; z_{12} &amp; \cdots &amp; z_{1 m} \\ z_{21} &amp; z_{22} &amp;
+\cdots &amp; z_{2 m} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+z_{n 1} &amp; z_{n 2} &amp; \cdots &amp; z_{n m}
+\end{array}\right]\\\]</span></p>
+<h3 id="构造虚拟样本">2. 构造虚拟样本</h3>
+<p>记虚拟母样本为 <span class="math inline">\(Y\)</span>
+，其每个元素取对应指标的最优值，</p>
+<p><span
+class="math display">\[Y=\left[y_1,y_2,\dotsb,y_m\right]\]</span></p>
 <p>其中</p>
-<p>$$y_j&#x3D;\max(z_{1j},z_{2j},\dotsb,z_{nj})$$</p>
-<h3 id="3-计算关联系数"><a href="#3-计算关联系数" class="headerlink" title="3. 计算关联系数"></a>3. 计算关联系数</h3><p>记差值矩阵为 $K$ ，有</p>
-<p>$$K&#x3D;\left[\begin{array}{cccc}<br>k_{11} &amp; k_{12} &amp; \cdots &amp; k_{1 m} \<br>k_{21} &amp; k_{22} &amp; \cdots &amp; k_{2 m} \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>k_{k 1} &amp; k_{n 2} &amp; \cdots &amp; k_{n m}<br>\end{array}\right]&#x3D;\left[\begin{array}{cccc}<br>|z_{11}-y_1| &amp; |z_{12}-y_2| &amp; \cdots &amp; |z_{1 m}-y_m| \<br>|z_{21}-y_1| &amp; |z_{22}-y_2| &amp; \cdots &amp; |z_{2 m}-y_m| \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>|z_{n 1}-y_1| &amp; |z_{n 2}-y_2| &amp; \cdots &amp; |z_{n m}-y_m|<br>\end{array}\right]\$$</p>
+<p><span
+class="math display">\[y_j=\max(z_{1j},z_{2j},\dotsb,z_{nj})\]</span></p>
+<h3 id="计算关联系数-1">3. 计算关联系数</h3>
+<p>记差值矩阵为 <span class="math inline">\(K\)</span> ，有</p>
+<p><span class="math display">\[K=\left[\begin{array}{cccc}
+k_{11} &amp; k_{12} &amp; \cdots &amp; k_{1 m} \\
+k_{21} &amp; k_{22} &amp; \cdots &amp; k_{2 m} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+k_{k 1} &amp; k_{n 2} &amp; \cdots &amp; k_{n m}
+\end{array}\right]=\left[\begin{array}{cccc}
+|z_{11}-y_1| &amp; |z_{12}-y_2| &amp; \cdots &amp; |z_{1 m}-y_m| \\
+|z_{21}-y_1| &amp; |z_{22}-y_2| &amp; \cdots &amp; |z_{2 m}-y_m| \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+|z_{n 1}-y_1| &amp; |z_{n 2}-y_2| &amp; \cdots &amp; |z_{n m}-y_m|
+\end{array}\right]\\\]</span></p>
 <p>记</p>
-<p>$$a&#x3D;\min <em>{i} \min</em>{j}\left|k_{ij}\right|, \quad b&#x3D;\max_{i} \max <em>{k}\left|k</em>{ij}\right|\$$</p>
-<h3 id="4-计算指标关联度"><a href="#4-计算指标关联度" class="headerlink" title="4.计算指标关联度"></a>4.计算指标关联度</h3><p>取 $\rho&#x3D;0.5$ ，记</p>
-<p>$$\xi_{ij}&#x3D;\frac{a+\rho b}{|k_{ij}|+\rho b}\$$</p>
-<p>得到第 $i$ 个样本的灰色关联度，即评价结果为 $r_i$ 为</p>
-<p>$$r_i&#x3D;\frac{1}{m} \sum_{j&#x3D;1}^{m} \xi_{ij} \ \ 或 \ \ r_i&#x3D; \sum_{j&#x3D;1}^{m} w_j\xi_{ij}$$</p>
-<p>其中 $w_j$ 为指标的权重，</p>
+<p><span class="math display">\[a=\min _{i} \min_{j}\left|k_{ij}\right|,
+\quad b=\max_{i} \max _{k}\left|k_{ij}\right|\\\]</span></p>
+<h3 id="计算指标关联度-1">4.计算指标关联度</h3>
+<p>取 <span class="math inline">\(\rho=0.5\)</span> ，记</p>
+<p><span class="math display">\[\xi_{ij}=\frac{a+\rho b}{|k_{ij}|+\rho
+b}\\\]</span></p>
+<p>得到第 <span class="math inline">\(i\)</span>
+个样本的灰色关联度，即评价结果为 <span
+class="math inline">\(r_i\)</span> 为</p>
+<p><span class="math display">\[r_i=\frac{1}{m} \sum_{j=1}^{m} \xi_{ij}
+\ \ 或 \ \ r_i= \sum_{j=1}^{m} w_j\xi_{ij}\]</span></p>
+<p>其中 <span class="math inline">\(w_j\)</span> 为指标的权重，</p>
 <p>以此作为各个观测值的评价结果。</p>
-<h1 id="去量纲化方法"><a href="#去量纲化方法" class="headerlink" title="*去量纲化方法"></a>*去量纲化方法</h1><h2 id="初值化"><a href="#初值化" class="headerlink" title="初值化"></a>初值化</h2><p>顾名思义，就是把这一个序列的数据统一除以最开始的值，由于同一个因素的序列的量级差别不大，所以通过除以初值就能将这些值都整理到1这个量级附近。</p>
-<p>$$f(x(k))&#x3D;\frac{x(k)}{x(1)}&#x3D;y(k), \quad x(1) \neq 0$$</p>
-<h2 id="均值化"><a href="#均值化" class="headerlink" title="均值化"></a>均值化</h2><p>顾名思义，就是把这个序列的数据除以均值，由于数量级大的序列均值比较大，所以除掉以后就能归一化到1的量级附近。</p>
-<p>$$f(x(k))&#x3D;\frac{x(k)}{\bar{x}}&#x3D;y(k), \quad \bar{x}&#x3D;\frac{1}{n} \sum_{k&#x3D;1}^{n} x(k)$$</p>
-<h2 id="百分比变换"><a href="#百分比变换" class="headerlink" title="百分比变换"></a>百分比变换</h2><p>$$f(x(k))&#x3D;\frac{x(k)}{\max _{k} x(k)}&#x3D;y(k)$$</p>
-<h2 id="倍数变换"><a href="#倍数变换" class="headerlink" title="倍数变换"></a>倍数变换</h2><p>$$f(x(k))&#x3D;\frac{x(k)}{\min <em>{k} x(k)}&#x3D;y(k), \quad \min</em>{k} x(k) \neq 0$$</p>
-<h2 id="归一化变换"><a href="#归一化变换" class="headerlink" title="归一化变换"></a>归一化变换</h2><p>$$f(x(k))&#x3D;\frac{x(k)}{x_{0}}&#x3D;y(k)$$</p>
-<h2 id="极差最大值变换"><a href="#极差最大值变换" class="headerlink" title="极差最大值变换"></a>极差最大值变换</h2><p>$$f(x(k))&#x3D;\frac{x(k)-\min <em>{k} x(k)}{\max</em>{k} x(k)}&#x3D;y(k)$$</p>
-<h2 id="区间值变换"><a href="#区间值变换" class="headerlink" title="区间值变换"></a>区间值变换</h2><p>$$f(x(k))&#x3D;\frac{x(k)-\min <em>{k} x(k)}{\max</em>{k} x(k)-\min _{k} x(k)}&#x3D;y(k)$$</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%81%B0%E8%89%B2%E5%85%B3%E8%81%94%E5%88%86%E6%9E%90%E6%B3%95/8602076?fr=aladdin">https://baike.baidu.com/item/%E7%81%B0%E8%89%B2%E5%85%B3%E8%81%94%E5%88%86%E6%9E%90%E6%B3%95/8602076?fr=aladdin</a>
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149479206">https://zhuanlan.zhihu.com/p/149479206</a>
-<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/266959639">https://zhuanlan.zhihu.com/p/266959639</a>
-<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<h1 id="去量纲化方法">*去量纲化方法</h1>
+<h2 id="初值化">初值化</h2>
+<p>顾名思义，就是把这一个序列的数据统一除以最开始的值，由于同一个因素的序列的量级差别不大，所以通过除以初值就能将这些值都整理到1这个量级附近。</p>
+<p><span class="math display">\[f(x(k))=\frac{x(k)}{x(1)}=y(k), \quad
+x(1) \neq 0\]</span></p>
+<h2 id="均值化">均值化</h2>
+<p>顾名思义，就是把这个序列的数据除以均值，由于数量级大的序列均值比较大，所以除掉以后就能归一化到1的量级附近。</p>
+<p><span class="math display">\[f(x(k))=\frac{x(k)}{\bar{x}}=y(k), \quad
+\bar{x}=\frac{1}{n} \sum_{k=1}^{n} x(k)\]</span></p>
+<h2 id="百分比变换">百分比变换</h2>
+<p><span class="math display">\[f(x(k))=\frac{x(k)}{\max _{k}
+x(k)}=y(k)\]</span></p>
+<h2 id="倍数变换">倍数变换</h2>
+<p><span class="math display">\[f(x(k))=\frac{x(k)}{\min _{k}
+x(k)}=y(k), \quad \min_{k} x(k) \neq 0\]</span></p>
+<h2 id="归一化变换">归一化变换</h2>
+<p><span
+class="math display">\[f(x(k))=\frac{x(k)}{x_{0}}=y(k)\]</span></p>
+<h2 id="极差最大值变换">极差最大值变换</h2>
+<p><span class="math display">\[f(x(k))=\frac{x(k)-\min _{k}
+x(k)}{\max_{k} x(k)}=y(k)\]</span></p>
+<h2 id="区间值变换">区间值变换</h2>
+<p><span class="math display">\[f(x(k))=\frac{x(k)-\min _{k}
+x(k)}{\max_{k} x(k)-\min _{k} x(k)}=y(k)\]</span></p>
+<h1 id="参考">参考</h1>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1"
+class="footnote-text"><span>https://baike.baidu.com/item/%E7%81%B0%E8%89%B2%E5%85%B3%E8%81%94%E5%88%86%E6%9E%90%E6%B3%95/8602076?fr=aladdin
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/149479206
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/266959639
+<a href="#fnref:3" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
             <hr>
             <div>
@@ -541,8 +689,43 @@
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

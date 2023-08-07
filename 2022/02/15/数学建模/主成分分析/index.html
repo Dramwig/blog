@@ -18,21 +18,19 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="主成分分析（Principal Component Analysis，PCA）目的是用较少的变量代表解释原有的变量。将相关性高的变量转换为相互独立的变量[1]。 原理：降维，有关联的变量反映的信息有一定的重叠。对于原有变量，将重复的变量（关系紧密的变量）删去，建立尽可能少的新变量，使得新变量是两两不相关的[3]，且能尽可能保持原有的信息（方差最大化）和解释原有变量，使样本具有相对较好的区分性。 定">
+  <meta name="description" content="主成分分析（Principal Component Analysis，PCA） 目的是用较少的变量代表解释原有的变量。将相关性高的变量转换为相互独立的变量[1]。 原理：降维，有关联的变量反映的信息有一定的重叠。对于原有变量，将重复的变量（关系紧密的变量）删去，建立尽可能少的新变量，使得新变量是两两不相关的[3]，且能尽可能保持原有的信息（方差最大化）和解释原有变量，使样本具有相对较好的区分性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="主成分分析">
 <meta property="og:url" content="http://example.com/2022/02/15/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="主成分分析（Principal Component Analysis，PCA）目的是用较少的变量代表解释原有的变量。将相关性高的变量转换为相互独立的变量[1]。 原理：降维，有关联的变量反映的信息有一定的重叠。对于原有变量，将重复的变量（关系紧密的变量）删去，建立尽可能少的新变量，使得新变量是两两不相关的[3]，且能尽可能保持原有的信息（方差最大化）和解释原有变量，使样本具有相对较好的区分性。 定">
+<meta property="og:description" content="主成分分析（Principal Component Analysis，PCA） 目的是用较少的变量代表解释原有的变量。将相关性高的变量转换为相互独立的变量[1]。 原理：降维，有关联的变量反映的信息有一定的重叠。对于原有变量，将重复的变量（关系紧密的变量）删去，建立尽可能少的新变量，使得新变量是两两不相关的[3]，且能尽可能保持原有的信息（方差最大化）和解释原有变量，使样本具有相对较好的区分性">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic.imgdb.cn/item/622201105baa1a80ab9a2b94.png">
 <meta property="article:published_time" content="2022-02-15T01:59:00.000Z">
 <meta property="article:modified_time" content="2023-02-02T13:05:13.304Z">
 <meta property="article:author" content="epochxi">
 <meta property="article:tag" content="主成分分析">
 <meta property="article:tag" content="相关系数矩阵">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pic.imgdb.cn/item/622201105baa1a80ab9a2b94.png">
   
   <title>主成分分析 &lt; 风倾客栈 ✧</title>
 
@@ -234,73 +232,308 @@
               </p>
             
             <div class="markdown-body">
-              <p>主成分分析（Principal Component Analysis，PCA）<br>目的是用较少的变量代表解释原有的变量。将相关性高的变量转换为相互独立的变量<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第231页.
+              <p>主成分分析（Principal Component Analysis，PCA）<br />
+目的是用较少的变量代表解释原有的变量。将相关性高的变量转换为相互独立的变量<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第231页.
 ">[1]</span></a></sup>。</p>
-<p>原理：降维，有关联的变量反映的信息有一定的重叠。对于原有变量，将重复的变量（关系紧密的变量）删去，建立尽可能少的新变量，使得新变量是两两不相关的<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://baike.baidu.com/item/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/829840
+<p>原理：降维，有关联的变量反映的信息有一定的重叠。对于原有变量，将重复的变量（关系紧密的变量）删去，建立尽可能少的新变量，使得新变量是两两不相关的<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://baike.baidu.com/item/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/829840
 ">[3]</span></a></sup>，且能<strong>尽可能保持原有的信息</strong>（方差最大化）和解释原有变量，使样本具有相对较好的区分性。</p>
-<p>定义：一个正交化线性变换，把数据（包含降维）变换到一个新的坐标系统中，使得这一数据的任何投影的第一大方差在第一个坐标（称为第一主成分）上，第二大方差在第二个坐标（第二主成分）上，依次类推<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/342659017
+<p>定义：一个正交化线性变换，把数据（包含降维）变换到一个新的坐标系统中，使得这一数据的任何投影的第一大方差在第一个坐标（称为第一主成分）上，第二大方差在第二个坐标（第二主成分）上，依次类推<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/342659017
 ">[4]</span></a></sup>。</p>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>主成分分析仅是变量转换，以下是得到变量转换的方法。</p>
-<p>记 $Z_1,Z_2,\dots,Z_r$ 为主成分<br>$$\left{\begin{array}{c}<br>Z_{1}&#x3D;c_{11} X_{1}+c_{12} X_{2}+\cdots+c_{1 m} X_{m} \<br>Z_{2}&#x3D;c_{21} X_{1}+c_{22} X_{2}+\cdots+c_{2 m} X_{m} \<br>\vdots \<br>Z_{r}&#x3D;c_{r 1} X_{1}+c_{r 2} X_{2}+\cdots+c_{r m} X_{m}<br>\end{array}\right.$$</p>
-<p>即<br>$$<br>\begin{bmatrix}<br> \boldsymbol{Z}<em>1\<br>  \boldsymbol{Z}<em>2\<br> \vdots\<br> \boldsymbol{Z}<em>r<br>\end{bmatrix}<br>&#x3D;\begin{bmatrix}<br>  c</em>{11}&amp; c</em>{12} &amp; \cdots  &amp; c</em>{1m}\<br>  c_{21}&amp; c_{22} &amp; \cdots   &amp;c_{2m} \<br>  \vdots &amp;  \vdots &amp;  &amp; \vdots\<br>  c_{r1}&amp; c_{r2} &amp; \cdots &amp; c_{rm}<br>\end{bmatrix}<br>\begin{bmatrix}<br> \boldsymbol{X}_1\<br>  \boldsymbol{X}_2\<br> \vdots\<br> \boldsymbol{X}_m<br>\end{bmatrix}<br>$$</p>
-<p>其中 $\boldsymbol{X}<em>i$ 和 $\boldsymbol{Z}<em>i$ 都表示为长度为 $n$ 的观察值向量； $[ c</em>{i1}, c</em>{i2} , \cdots  , c_{im}]$ 为第 $i$ 个特征向量 $\boldsymbol{\alpha}_i$ 。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>设有 $m$ 个指标，$n$ 组观测值 $\boldsymbol{X}&#x3D;[\boldsymbol{X}_1,\boldsymbol{X}_2,\dots,\boldsymbol{X}_m]$ <sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/342659017
+<h1 id="方法">方法</h1>
+<p>主成分分析仅是变量转换，以下是得到变量转换的方法。</p>
+<p>记 <span class="math inline">\(Z_1,Z_2,\dots,Z_r\)</span> 为主成分
+<span class="math display">\[\left\{\begin{array}{c}
+Z_{1}=c_{11} X_{1}+c_{12} X_{2}+\cdots+c_{1 m} X_{m} \\
+Z_{2}=c_{21} X_{1}+c_{22} X_{2}+\cdots+c_{2 m} X_{m} \\
+\vdots \\
+Z_{r}=c_{r 1} X_{1}+c_{r 2} X_{2}+\cdots+c_{r m} X_{m}
+\end{array}\right.\]</span></p>
+<p>即 <span class="math display">\[
+\begin{bmatrix}
+\boldsymbol{Z}_1\\
+  \boldsymbol{Z}_2\\
+\vdots\\
+\boldsymbol{Z}_r
+\end{bmatrix}
+=\begin{bmatrix}
+  c_{11}&amp; c_{12} &amp; \cdots  &amp; c_{1m}\\
+  c_{21}&amp; c_{22} &amp; \cdots   &amp;c_{2m} \\
+  \vdots &amp;  \vdots &amp;  &amp; \vdots\\
+  c_{r1}&amp; c_{r2} &amp; \cdots &amp; c_{rm}
+\end{bmatrix}
+\begin{bmatrix}
+\boldsymbol{X}_1\\
+  \boldsymbol{X}_2\\
+\vdots\\
+\boldsymbol{X}_m
+\end{bmatrix}
+\]</span></p>
+<p>其中 <span class="math inline">\(\boldsymbol{X}_i\)</span> 和 <span
+class="math inline">\(\boldsymbol{Z}_i\)</span> 都表示为长度为 <span
+class="math inline">\(n\)</span> 的观察值向量； <span
+class="math inline">\([ c_{i1}, c_{i2} , \cdots , c_{im}]\)</span> 为第
+<span class="math inline">\(i\)</span> 个特征向量 <span
+class="math inline">\(\boldsymbol{\alpha}_i\)</span> 。</p>
+<h2 id="步骤">步骤</h2>
+<p>设有 <span class="math inline">\(m\)</span> 个指标，<span
+class="math inline">\(n\)</span> 组观测值 <span
+class="math inline">\(\boldsymbol{X}=[\boldsymbol{X}_1,\boldsymbol{X}_2,\dots,\boldsymbol{X}_m]\)</span>
+<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/342659017
 ">[4]</span></a></sup></p>
-<ol>
-<li>将各指标数据标准化(去除量纲)和中心化，即 $x_{ik}’&#x3D;\frac{x_{ik}-\mu_k}{\sigma_k}$ ，得到矩阵 $\boldsymbol{X’}$ ；</li>
-<li>计算相关系数矩阵 $\boldsymbol{R}&#x3D;\frac{1}{n-1}\boldsymbol{A’}^T\boldsymbol{A’}$ ；</li>
-<li>（特征值分解或奇异值分解）求出协方差矩阵的特征值 $\lambda$ 及对应的特征向量 $\boldsymbol{\alpha}$ ；</li>
-<li>计算累计贡献率确定解释度 $\alpha$，取前 $r$ 个特征向量（标准化、正交化）<strong>按行排列</strong>组成矩阵 $\boldsymbol{P}$ ；</li>
-<li>$(\boldsymbol{Z}<em>{ij})</em>{r 1}&#x3D;\boldsymbol{P}<em>{rn}(\boldsymbol{X}^T)</em>{n 1}$ ；</li>
+<ol type="1">
+<li>将各指标数据标准化(去除量纲)和中心化，即 <span
+class="math inline">\(x_{ik}&#39;=\frac{x_{ik}-\mu_k}{\sigma_k}\)</span>
+，得到矩阵 <span class="math inline">\(\boldsymbol{X&#39;}\)</span>
+；</li>
+<li>计算相关系数矩阵 <span
+class="math inline">\(\boldsymbol{R}=\frac{1}{n-1}\boldsymbol{A&#39;}^T\boldsymbol{A&#39;}\)</span>
+；</li>
+<li>（特征值分解或奇异值分解）求出协方差矩阵的特征值 <span
+class="math inline">\(\lambda\)</span> 及对应的特征向量 <span
+class="math inline">\(\boldsymbol{\alpha}\)</span> ；</li>
+<li>计算累计贡献率确定解释度 <span
+class="math inline">\(\alpha\)</span>，取前 <span
+class="math inline">\(r\)</span>
+个特征向量（标准化、正交化）<strong>按行排列</strong>组成矩阵 <span
+class="math inline">\(\boldsymbol{P}\)</span> ；</li>
+<li><span class="math inline">\((\boldsymbol{Z}_{ij})_{r
+1}=\boldsymbol{P}_{rn}(\boldsymbol{X}^T)_{n 1}\)</span> ；</li>
 <li>解释主成分的含义。</li>
 </ol>
 <p>注：若不能够给出主成分的较好解释，整个主成分分析也就失败了，可以采用因子分析。</p>
-<h2 id="计算贡献"><a href="#计算贡献" class="headerlink" title="计算贡献"></a>计算贡献</h2><ul>
-<li>贡献率（特征值占比）<br>$$\frac{\lambda_{i}}{\sum_{k&#x3D;1}^{r} \lambda_{k}} \quad(i&#x3D;1,2, \cdots, r)$$</li>
-<li>累计贡献率<br>$$\frac{\sum_{k&#x3D;1}^{i} \lambda_{k}}{\sum_{i&#x3D;1}^{r} \lambda_{k}}\quad(i&#x3D;1,2, \cdots, r)$$</li>
-<li>对原始变量 $\boldsymbol{x}<em>i$ 贡献值（相关系数平方和）<br>$$\rho_i&#x3D;\sum\limits</em>{j&#x3D;1}^{r}r^2(\boldsymbol{z}_j,\boldsymbol{x}_i)$$</li>
+<h2 id="计算贡献">计算贡献</h2>
+<ul>
+<li>贡献率（特征值占比） <span
+class="math display">\[\frac{\lambda_{i}}{\sum_{k=1}^{r} \lambda_{k}}
+\quad(i=1,2, \cdots, r)\]</span></li>
+<li>累计贡献率 <span class="math display">\[\frac{\sum_{k=1}^{i}
+\lambda_{k}}{\sum_{i=1}^{r} \lambda_{k}}\quad(i=1,2, \cdots,
+r)\]</span></li>
+<li>对原始变量 <span class="math inline">\(\boldsymbol{x}_i\)</span>
+贡献值（相关系数平方和） <span
+class="math display">\[\rho_i=\sum\limits_{j=1}^{r}r^2(\boldsymbol{z}_j,\boldsymbol{x}_i)\]</span></li>
 </ul>
-<h1 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h1><h2 id="主成分含义"><a href="#主成分含义" class="headerlink" title="主成分含义"></a>主成分含义</h2><p>记 $Z_1,Z_2,\dots,Z_r$ 为主成分</p>
-<p>$$\left{\begin{array}{c}<br>Z_{1}&#x3D;c_{11} X_{1}+c_{12} X_{2}+\cdots+c_{1 m} X_{m} \<br>Z_{2}&#x3D;c_{21} X_{1}+c_{22} X_{2}+\cdots+c_{2 m} X_{m} \<br>\vdots \<br>Z_{r}&#x3D;c_{r 1} X_{1}+c_{r 2} X_{2}+\cdots+c_{r m} X_{m}<br>\end{array}\right.$$</p>
-<p>对于每一个式子有 $c_{i1}^2+c_{i2}^2+\dots+c_{im}^2&#x3D;1$ （单位向量）。</p>
-<p>$[c_{11},c_{12},\dots,c_{1m}]$ 使得 $Var(Z_1)$ 的值最大（信息量最大）；$[c_{21},c_{22},\dots,c_{2m}]$ 垂直于 $[c_{11},c_{12},\dots,c_{1m}]$ 在该条件下使得 $Var(Z_2)$ 的值最大；$[c_{31},c_{32},\dots,c_{3m}]$ 垂直于 $\boldsymbol{c_{1·}}$ ， $\boldsymbol{c_{2·}}$ ……可推得到全部主成分，每个主成分是满足与所有特征向量正交情况下的信息量最大的单位向量。</p>
+<h1 id="理解">理解</h1>
+<h2 id="主成分含义">主成分含义</h2>
+<p>记 <span class="math inline">\(Z_1,Z_2,\dots,Z_r\)</span>
+为主成分</p>
+<p><span class="math display">\[\left\{\begin{array}{c}
+Z_{1}=c_{11} X_{1}+c_{12} X_{2}+\cdots+c_{1 m} X_{m} \\
+Z_{2}=c_{21} X_{1}+c_{22} X_{2}+\cdots+c_{2 m} X_{m} \\
+\vdots \\
+Z_{r}=c_{r 1} X_{1}+c_{r 2} X_{2}+\cdots+c_{r m} X_{m}
+\end{array}\right.\]</span></p>
+<p>对于每一个式子有 <span
+class="math inline">\(c_{i1}^2+c_{i2}^2+\dots+c_{im}^2=1\)</span>
+（单位向量）。</p>
+<p><span class="math inline">\([c_{11},c_{12},\dots,c_{1m}]\)</span>
+使得 <span class="math inline">\(Var(Z_1)\)</span>
+的值最大（信息量最大）；<span
+class="math inline">\([c_{21},c_{22},\dots,c_{2m}]\)</span> 垂直于 <span
+class="math inline">\([c_{11},c_{12},\dots,c_{1m}]\)</span>
+在该条件下使得 <span class="math inline">\(Var(Z_2)\)</span>
+的值最大；<span
+class="math inline">\([c_{31},c_{32},\dots,c_{3m}]\)</span> 垂直于 <span
+class="math inline">\(\boldsymbol{c_{1·}}\)</span> ， <span
+class="math inline">\(\boldsymbol{c_{2·}}\)</span>
+……可推得到全部主成分，每个主成分是满足与所有特征向量正交情况下的信息量最大的单位向量。</p>
 <p><strong>直观解释（几何）</strong></p>
-<p>一般情况， $m$ 个变量组成 $m$ 维空间， $n$ 个样品点就是 $m$ 维空间的 $n$ 个点。对于 $m$ 维正态随机向量来说,找主成分的问题就是找 $m$ 维空间中椭球的主轴问题<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span class="hint--top hint--rounded" aria-label="高惠璇. 应用多元统计分析[M]. 第2版. 第310页.
+<p>一般情况， <span class="math inline">\(m\)</span> 个变量组成 <span
+class="math inline">\(m\)</span> 维空间， <span
+class="math inline">\(n\)</span> 个样品点就是 <span
+class="math inline">\(m\)</span> 维空间的 <span
+class="math inline">\(n\)</span> 个点。对于 <span
+class="math inline">\(m\)</span> 维正态随机向量来说,找主成分的问题就是找
+<span class="math inline">\(m\)</span>
+维空间中椭球的主轴问题<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="高惠璇. 应用多元统计分析[M]. 第2版. 第310页.
 ">[6]</span></a></sup>。</p>
-<p>初始数据集合中的样本由(正交)坐标系中的点来表示，每一个轴代表一个变量。对原坐标系中的数据进行主成分分析等价于对坐标系进行旋转变换，将数据投影到新坐标系的坐标轴上，此时每一个轴代表一个主成分。将新坐标系中的点在每个主成分轴上投影，得到对应的投影点。投影点的平方和则称为该主成分的方差，方差最大的轴称为第一主成分，依次类推第二主成分的选取，且保证与已选坐标轴正交<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/339038035
+<p>初始数据集合中的样本由(正交)坐标系中的点来表示，每一个轴代表一个变量。对原坐标系中的数据进行主成分分析等价于对坐标系进行旋转变换，将数据投影到新坐标系的坐标轴上，此时每一个轴代表一个主成分。将新坐标系中的点在每个主成分轴上投影，得到对应的投影点。投影点的平方和则称为该主成分的方差，方差最大的轴称为第一主成分，依次类推第二主成分的选取，且保证与已选坐标轴正交<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/339038035
 ">[5]</span></a></sup>。</p>
-<h2 id="矩阵变换的理解"><a href="#矩阵变换的理解" class="headerlink" title="矩阵变换的理解"></a>矩阵变换的理解</h2><p>对于矩阵变换有两个理解，第一个是来自3Blue1Brown的解释。</p>
-<h3 id="理解一：基变换"><a href="#理解一：基变换" class="headerlink" title="理解一：基变换"></a>理解一：基变换</h3><p>$$\begin{bmatrix}<br> i_1 &amp; j_1 &amp; k_1\<br> i_2 &amp; j_2 &amp; k_2\<br> i_3 &amp; j_3 &amp; k_3<br>\end{bmatrix}<br>\begin{bmatrix}<br>x\<br>y\<br>z<br>\end{bmatrix}&#x3D;<br>x\begin{bmatrix}<br>i_1\<br>i_2\<br>i_3<br>\end{bmatrix}+<br>y\begin{bmatrix}<br>j_1\<br>j_2\<br>j_3<br>\end{bmatrix}+<br>z\begin{bmatrix}<br>k_1\<br>k_2\<br>k_3<br>\end{bmatrix}$$</p>
-<p>$\small [i_1,i_2,i_3]’,[j_1,j_2,j_3]’,[k_1,k_2,k_3]’$ 就是新的基，变换 $\small \boldsymbol{AX}$ 的结果就是将点 $\boldsymbol{X}$ 经过坐标基的旋转伸缩变换后，点在<strong>原坐标</strong>中的表示形式。</p>
-<h3 id="理解二：新坐标轴投影"><a href="#理解二：新坐标轴投影" class="headerlink" title="理解二：新坐标轴投影"></a>理解二：新坐标轴投影</h3><p>$$\begin{bmatrix}<br> i_1 &amp; j_1 &amp; k_1\<br> i_2 &amp; j_2 &amp; k_2\<br> i_3 &amp; j_3 &amp; k_3<br>\end{bmatrix}<br>\begin{bmatrix}<br>x\<br>y\<br>z<br>\end{bmatrix}&#x3D;<br>\begin{bmatrix}<br>\begin{bmatrix} i_1 &amp;j_1&amp;k_1\end{bmatrix}\boldsymbol{X}\<br>\begin{bmatrix} i_2 &amp;j_2&amp;k_2\end{bmatrix}\boldsymbol{X}\<br>\begin{bmatrix} i_3 &amp;j_3&amp;k_3\end{bmatrix}\boldsymbol{X}\<br>\end{bmatrix},\boldsymbol{X}&#x3D;\begin{bmatrix} x\y\z\end{bmatrix}.$$</p>
-<p>可以理解为点 $\boldsymbol{X}$ 在各个方向向量上的投影（在乘以长度）的结果。$[i,j,k]$ 就是变换后坐标系的原坐标轴，逆变换后在原空间的表示结果。</p>
-<h2 id="协方差矩阵与特征值理解"><a href="#协方差矩阵与特征值理解" class="headerlink" title="协方差矩阵与特征值理解"></a>协方差矩阵与特征值理解</h2><h3 id="理解一：旋转"><a href="#理解一：旋转" class="headerlink" title="理解一：旋转"></a>理解一：旋转</h3><p>通过线性代数知识有，对于任意一对称矩阵 $\boldsymbol{\Sigma}$ 存在一个特征值分解(eigenvalue decomposition, EVD)：<br>$$\boldsymbol{\Sigma}&#x3D;\boldsymbol{U}\boldsymbol{\Lambda} \boldsymbol{U}^T$$<br>其中，$\boldsymbol{U}$ 的每一列为标准相互正交的特征向量，$\boldsymbol{\lambda}$ 对角线上的元素是从大到小排列的特征值，非对角线上的元素均为 $0$ 。可以看出 $\boldsymbol{\Lambda}$ 与 $\boldsymbol{\Sigma}$ 是同一个向量在不同坐标系中的表示。</p>
-<p>也可以写作<br>$$\boldsymbol{\Sigma}&#x3D;\left(\boldsymbol{U}\boldsymbol{\Lambda}^{1&#x2F;2}\right)\left(\boldsymbol{U}\boldsymbol{\Lambda}^{1&#x2F;2}\right)^T&#x3D;\boldsymbol{A}\boldsymbol{A}^T$$<br>因子分析中用的就是上式。</p>
-<p>可以理解到，**协方差矩阵的特征向量控制旋转(rotation)，特征值控制尺度(scale)**，特征值的大小代表了信息量（原始特征）多少<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/37609917
+<h2 id="矩阵变换的理解">矩阵变换的理解</h2>
+<p>对于矩阵变换有两个理解，第一个是来自3Blue1Brown的解释。</p>
+<h3 id="理解一基变换">理解一：基变换</h3>
+<p><span class="math display">\[\begin{bmatrix}
+i_1 &amp; j_1 &amp; k_1\\
+i_2 &amp; j_2 &amp; k_2\\
+i_3 &amp; j_3 &amp; k_3
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}=
+x\begin{bmatrix}
+i_1\\
+i_2\\
+i_3
+\end{bmatrix}+
+y\begin{bmatrix}
+j_1\\
+j_2\\
+j_3
+\end{bmatrix}+
+z\begin{bmatrix}
+k_1\\
+k_2\\
+k_3
+\end{bmatrix}\]</span></p>
+<p><span class="math inline">\(\small
+[i_1,i_2,i_3]&#39;,[j_1,j_2,j_3]&#39;,[k_1,k_2,k_3]&#39;\)</span>
+就是新的基，变换 <span class="math inline">\(\small
+\boldsymbol{AX}\)</span> 的结果就是将点 <span
+class="math inline">\(\boldsymbol{X}\)</span>
+经过坐标基的旋转伸缩变换后，点在<strong>原坐标</strong>中的表示形式。</p>
+<h3 id="理解二新坐标轴投影">理解二：新坐标轴投影</h3>
+<p><span class="math display">\[\begin{bmatrix}
+i_1 &amp; j_1 &amp; k_1\\
+i_2 &amp; j_2 &amp; k_2\\
+i_3 &amp; j_3 &amp; k_3
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}=
+\begin{bmatrix}
+\begin{bmatrix} i_1 &amp;j_1&amp;k_1\end{bmatrix}\boldsymbol{X}\\
+\begin{bmatrix} i_2 &amp;j_2&amp;k_2\end{bmatrix}\boldsymbol{X}\\
+\begin{bmatrix} i_3 &amp;j_3&amp;k_3\end{bmatrix}\boldsymbol{X}\\
+\end{bmatrix},\boldsymbol{X}=\begin{bmatrix}
+x\\y\\z\end{bmatrix}.\]</span></p>
+<p>可以理解为点 <span class="math inline">\(\boldsymbol{X}\)</span>
+在各个方向向量上的投影（在乘以长度）的结果。<span
+class="math inline">\([i,j,k]\)</span>
+就是变换后坐标系的原坐标轴，逆变换后在原空间的表示结果。</p>
+<h2 id="协方差矩阵与特征值理解">协方差矩阵与特征值理解</h2>
+<h3 id="理解一旋转">理解一：旋转</h3>
+<p>通过线性代数知识有，对于任意一对称矩阵 <span
+class="math inline">\(\boldsymbol{\Sigma}\)</span>
+存在一个特征值分解(eigenvalue decomposition, EVD)： <span
+class="math display">\[\boldsymbol{\Sigma}=\boldsymbol{U}\boldsymbol{\Lambda}
+\boldsymbol{U}^T\]</span> 其中，<span
+class="math inline">\(\boldsymbol{U}\)</span>
+的每一列为标准相互正交的特征向量，<span
+class="math inline">\(\boldsymbol{\lambda}\)</span>
+对角线上的元素是从大到小排列的特征值，非对角线上的元素均为 <span
+class="math inline">\(0\)</span> 。可以看出 <span
+class="math inline">\(\boldsymbol{\Lambda}\)</span> 与 <span
+class="math inline">\(\boldsymbol{\Sigma}\)</span>
+是同一个向量在不同坐标系中的表示。</p>
+<p>也可以写作 <span
+class="math display">\[\boldsymbol{\Sigma}=\left(\boldsymbol{U}\boldsymbol{\Lambda}^{1/2}\right)\left(\boldsymbol{U}\boldsymbol{\Lambda}^{1/2}\right)^T=\boldsymbol{A}\boldsymbol{A}^T\]</span>
+因子分析中用的就是上式。</p>
+<p>可以理解到，<strong>协方差矩阵的特征向量控制旋转(rotation)，特征值控制尺度(scale)</strong>，特征值的大小代表了信息量（原始特征）多少<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/37609917
 ">[2]</span></a></sup>。</p>
-<h3 id="理解二：投影"><a href="#理解二：投影" class="headerlink" title="理解二：投影"></a>理解二：投影</h3><p>记协方差矩阵与中心化后的样本矩阵有以下关系<sup id="fnref:8" class="footnote-ref"><a href="#fn:8" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/435001757
+<h3 id="理解二投影">理解二：投影</h3>
+<p>记协方差矩阵与中心化后的样本矩阵有以下关系<sup id="fnref:8" class="footnote-ref"><a href="#fn:8" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/435001757
 ">[8]</span></a></sup>：</p>
-<p>$$\boldsymbol{\Sigma}&#x3D;\boldsymbol{A}^T\boldsymbol{A}$$</p>
+<p><span
+class="math display">\[\boldsymbol{\Sigma}=\boldsymbol{A}^T\boldsymbol{A}\]</span></p>
 <p>其特征向量与特征特征值满足</p>
-<p>$$\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{\beta}&#x3D;\lambda\boldsymbol{\beta}$$</p>
-<p>左右同时左乘 $\small\boldsymbol{\beta}^T$ 得到</p>
-<p>$$\boldsymbol{\beta}^T\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{\beta}&#x3D;\boldsymbol{\beta}^T\lambda\boldsymbol{\beta}$$</p>
-<p>$\small \boldsymbol{\beta}$ 为单位向量，化简如下：</p>
-<p>$$\left(\boldsymbol{A}\boldsymbol{\beta}\right)^T\left(\boldsymbol{A}\boldsymbol{\beta}\right)&#x3D;\lambda$$</p>
-<p>$\small \boldsymbol{A}$ 的每行是个样本点在这里 $\small \boldsymbol{a_i}·\boldsymbol{\beta}$ 是 $\small \boldsymbol{a_i}$ 在 $\boldsymbol{\beta}$ 方向上的投影，故 $\small\boldsymbol{A}\boldsymbol{\beta}$ 可理解为样本空间中的样本点投影到轴 $\small\boldsymbol{\beta}$ 上的结果， $\small \left(\boldsymbol{A}\boldsymbol{\beta}\right)^T\left(\boldsymbol{A}\boldsymbol{\beta}\right)$ 则是投影平方和。故 $\lambda$ 最大，表示投影后方差最大即信息量最大。</p>
-<p><img src="https://pic.imgdb.cn/item/622201105baa1a80ab9a2b94.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="主成分分析的滥用"><a href="#主成分分析的滥用" class="headerlink" title="主成分分析的滥用"></a>主成分分析的滥用</h2><p>参考<sup id="fnref:7" class="footnote-ref"><a href="#fn:7" rel="footnote"><span class="hint--top hint--rounded" aria-label="王学明. 应用多元统计分析[M].
-">[7]</span></a></sup>，国内以 $\small \lambda_i&#x2F;\sum\limits_{i&#x3D;1}^r\lambda_i$ 作为权重对主成分加权得到的结果作为评价的综合评价的方法是对主成分分析思想的误用（如高惠璇老师的书中内容）。</p>
-<p>主成分分析得到的主成分 $\small \boldsymbol{Z}_1,\boldsymbol{Z}_2,\dotsb,\boldsymbol{Z}_r$ 仅使得其表示的信息量趋大，其不满足正负向性，不具有作为综合评价的条件；其次，主成分的线性组合会瓦解主成分分析在信息上的优势；主成分意义模糊，其线性组合一般没有意义。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第231页.
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37609917">https://zhuanlan.zhihu.com/p/37609917</a>
-<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/829840">https://baike.baidu.com/item/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/829840</a>
-<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/342659017">https://zhuanlan.zhihu.com/p/342659017</a>
-<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/339038035">https://zhuanlan.zhihu.com/p/339038035</a>
-<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:6" class="footnote-text"><span>高惠璇. 应用多元统计分析[M]. 第2版. 第310页.
-<a href="#fnref:6" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:7" class="footnote-text"><span>王学明. 应用多元统计分析[M].
-<a href="#fnref:7" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:8" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/435001757">https://zhuanlan.zhihu.com/p/435001757</a>
-<a href="#fnref:8" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<p><span
+class="math display">\[\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{\beta}=\lambda\boldsymbol{\beta}\]</span></p>
+<p>左右同时左乘 <span
+class="math inline">\(\small\boldsymbol{\beta}^T\)</span> 得到</p>
+<p><span
+class="math display">\[\boldsymbol{\beta}^T\boldsymbol{A}^T\boldsymbol{A}\boldsymbol{\beta}=\boldsymbol{\beta}^T\lambda\boldsymbol{\beta}\]</span></p>
+<p><span class="math inline">\(\small \boldsymbol{\beta}\)</span>
+为单位向量，化简如下：</p>
+<p><span
+class="math display">\[\left(\boldsymbol{A}\boldsymbol{\beta}\right)^T\left(\boldsymbol{A}\boldsymbol{\beta}\right)=\lambda\]</span></p>
+<p><span class="math inline">\(\small \boldsymbol{A}\)</span>
+的每行是个样本点在这里 <span class="math inline">\(\small
+\boldsymbol{a_i}·\boldsymbol{\beta}\)</span> 是 <span
+class="math inline">\(\small \boldsymbol{a_i}\)</span> 在 <span
+class="math inline">\(\boldsymbol{\beta}\)</span> 方向上的投影，故 <span
+class="math inline">\(\small\boldsymbol{A}\boldsymbol{\beta}\)</span>
+可理解为样本空间中的样本点投影到轴 <span
+class="math inline">\(\small\boldsymbol{\beta}\)</span> 上的结果， <span
+class="math inline">\(\small
+\left(\boldsymbol{A}\boldsymbol{\beta}\right)^T\left(\boldsymbol{A}\boldsymbol{\beta}\right)\)</span>
+则是投影平方和。故 <span class="math inline">\(\lambda\)</span>
+最大，表示投影后方差最大即信息量最大。</p>
+<p><img
+src="https://pic.imgdb.cn/item/622201105baa1a80ab9a2b94.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="主成分分析的滥用">主成分分析的滥用</h2>
+<p>参考<sup id="fnref:7" class="footnote-ref"><a href="#fn:7" rel="footnote"><span
+class="hint--top hint--rounded" aria-label="王学明. 应用多元统计分析[M].
+">[7]</span></a></sup>，国内以 <span class="math inline">\(\small
+\lambda_i/\sum\limits_{i=1}^r\lambda_i\)</span>
+作为权重对主成分加权得到的结果作为评价的综合评价的方法是对主成分分析思想的误用（如高惠璇老师的书中内容）。</p>
+<p>主成分分析得到的主成分 <span class="math inline">\(\small
+\boldsymbol{Z}_1,\boldsymbol{Z}_2,\dotsb,\boldsymbol{Z}_r\)</span>
+仅使得其表示的信息量趋大，其不满足正负向性，不具有作为综合评价的条件；其次，主成分的线性组合会瓦解主成分分析在信息上的优势；主成分意义模糊，其线性组合一般没有意义。</p>
+<h1 id="参考">参考</h1>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>司守奎 孙兆亮.
+数学建模算法与运用[M]. 第2版. 第231页.
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/37609917
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3"
+class="footnote-text"><span>https://baike.baidu.com/item/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/829840
+<a href="#fnref:3" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:4"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/342659017
+<a href="#fnref:4" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:5"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/339038035
+<a href="#fnref:5" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:6" class="footnote-text"><span>高惠璇. 应用多元统计分析[M].
+第2版. 第310页.
+<a href="#fnref:6" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:7" class="footnote-text"><span>王学明. 应用多元统计分析[M].
+<a href="#fnref:7" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:8"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/435001757
+<a href="#fnref:8" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
             <hr>
             <div>
@@ -527,8 +760,43 @@
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

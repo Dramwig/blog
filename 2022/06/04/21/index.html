@@ -18,12 +18,12 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="先去欢乐谷的这个童年愿望已经有了很久，终于在今天圆梦。无论是游乐场的游玩还是火锅之后的话谈都不虚此行。 我们（主要和晨）玩了除了蹦极以外的所有刺激的游乐设施。包括：四种大型刺激过山车、两种激流勇进、大摆锤、直上云霄等等。玩的很尽兴，究其原因是游乐设施比较刺激，而且竟然我很喜欢，其次是有能和我一起玩的人，甚至还可以比拼谁不发出声音和保持“不屑”的坐姿。 其次，是火锅后的话谈，知道了更多协会的故事和人">
+  <meta name="description" content="先去欢乐谷的这个童年愿望已经有了很久，终于在今天圆梦。无论是游乐场的游玩还是火锅之后的话谈都不虚此行。 我们（主要和晨）玩了除了蹦极以外的所有刺激的游乐设施。包括：四种大型刺激过山车、两种激流勇进、大摆锤、直上云霄等等。玩的很尽兴，究其原因是游乐设施比较刺激，而且竟然我很喜欢，其次是有能和我一起玩的人，甚至还可以比拼谁不发出声音和保持“不屑”的坐姿。 其次，是火锅后的话谈，知道了更多协会的故事">
 <meta property="og:type" content="article">
 <meta property="og:title" content="欢乐谷圆梦">
 <meta property="og:url" content="http://example.com/2022/06/04/21/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="先去欢乐谷的这个童年愿望已经有了很久，终于在今天圆梦。无论是游乐场的游玩还是火锅之后的话谈都不虚此行。 我们（主要和晨）玩了除了蹦极以外的所有刺激的游乐设施。包括：四种大型刺激过山车、两种激流勇进、大摆锤、直上云霄等等。玩的很尽兴，究其原因是游乐设施比较刺激，而且竟然我很喜欢，其次是有能和我一起玩的人，甚至还可以比拼谁不发出声音和保持“不屑”的坐姿。 其次，是火锅后的话谈，知道了更多协会的故事和人">
+<meta property="og:description" content="先去欢乐谷的这个童年愿望已经有了很久，终于在今天圆梦。无论是游乐场的游玩还是火锅之后的话谈都不虚此行。 我们（主要和晨）玩了除了蹦极以外的所有刺激的游乐设施。包括：四种大型刺激过山车、两种激流勇进、大摆锤、直上云霄等等。玩的很尽兴，究其原因是游乐设施比较刺激，而且竟然我很喜欢，其次是有能和我一起玩的人，甚至还可以比拼谁不发出声音和保持“不屑”的坐姿。 其次，是火锅后的话谈，知道了更多协会的故事">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-04T14:13:00.000Z">
 <meta property="article:modified_time" content="2022-07-22T04:07:58.400Z">
@@ -437,8 +437,43 @@
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

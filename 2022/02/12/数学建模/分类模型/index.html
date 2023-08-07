@@ -18,16 +18,15 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="判别分析是在已知研究对象分成若干类型并已经取得各种类型的一批已知样本的观测数据，在此基础上根据某些准则建立判别式，然后对未知类型的样品进行判别分析。 0-1回归即采用逻辑回归(logistic regressio)把观测数据作为因变量对虚拟变量(0,1)进行回归，将y看作事件0发生的概率。 模型构造构造线性概率模型$$y_{i}&#x3D;\beta_{0}+\beta_{1} x_{1 i}+\">
+  <meta name="description" content="判别分析是在已知研究对象分成若干类型并已经取得各种类型的一批已知样本的观测数据，在此基础上根据某些准则建立判别式，然后对未知类型的样品进行判别分析。 0-1回归 即采用逻辑回归(logistic regressio) 把观测数据作为因变量对虚拟变量(0,1)进行回归，将y看作事件0发生的概率。 模型构造 构造线性概率模型 \[y_{i}&#x3D;\beta_{0}+\beta_{1} x_{1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分类模型">
 <meta property="og:url" content="http://example.com/2022/02/12/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="判别分析是在已知研究对象分成若干类型并已经取得各种类型的一批已知样本的观测数据，在此基础上根据某些准则建立判别式，然后对未知类型的样品进行判别分析。 0-1回归即采用逻辑回归(logistic regressio)把观测数据作为因变量对虚拟变量(0,1)进行回归，将y看作事件0发生的概率。 模型构造构造线性概率模型$$y_{i}&#x3D;\beta_{0}+\beta_{1} x_{1 i}+\">
+<meta property="og:description" content="判别分析是在已知研究对象分成若干类型并已经取得各种类型的一批已知样本的观测数据，在此基础上根据某些准则建立判别式，然后对未知类型的样品进行判别分析。 0-1回归 即采用逻辑回归(logistic regressio) 把观测数据作为因变量对虚拟变量(0,1)进行回归，将y看作事件0发生的概率。 模型构造 构造线性概率模型 \[y_{i}&#x3D;\beta_{0}+\beta_{1} x_{1">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/02/12/YVulZUi73kohRfN.png">
 <meta property="og:image" content="https://s2.loli.net/2022/02/12/Eusi4l2NkGBMZj1.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190516120230815.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1BpbmFwcGxlTWk=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://s2.loli.net/2022/02/12/6gjoFQa8Hy5NWR9.png">
 <meta property="article:published_time" content="2022-02-12T06:53:00.000Z">
 <meta property="article:modified_time" content="2022-02-12T11:16:37.099Z">
@@ -185,7 +184,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.2k 字
+      5.1k 字
     </span>
   
 
@@ -238,56 +237,202 @@
             
             <div class="markdown-body">
               <p>判别分析是在已知研究对象分成若干类型并已经取得各种类型的一批已知样本的观测数据，在此基础上根据某些准则建立判别式，然后对未知类型的样品进行判别分析。</p>
-<h1 id="0-1回归"><a href="#0-1回归" class="headerlink" title="0-1回归"></a>0-1回归</h1><p>即采用逻辑回归(logistic regressio)<br>把观测数据作为因变量对虚拟变量(0,1)进行回归，将y看作事件0发生的概率。</p>
-<h2 id="模型构造"><a href="#模型构造" class="headerlink" title="模型构造"></a>模型构造</h2><h3 id="构造线性概率模型"><a href="#构造线性概率模型" class="headerlink" title="构造线性概率模型"></a>构造线性概率模型</h3><p>$$y_{i}&#x3D;\beta_{0}+\beta_{1} x_{1 i}+\beta_{2} x_{2 i}+\cdots+\beta_{k} x_{k i}+\mu_{i}$$</p>
-<p>㝍成向量乘积形式:  $y_{i}&#x3D;\boldsymbol{x}<em>{i}^{\prime} \boldsymbol{\beta}+u</em>{i}(i&#x3D;1,2, \cdots, n)$</p>
-<h3 id="构造两点分布"><a href="#构造两点分布" class="headerlink" title="构造两点分布"></a>构造两点分布</h3><p>$$\left{\begin{array}{l}<br>P(y&#x3D;1 \mid \boldsymbol{x})&#x3D;F(\boldsymbol{x}, \boldsymbol{\beta}) \<br>P(y&#x3D;0 \mid \boldsymbol{x})&#x3D;1-F(\boldsymbol{x}, \boldsymbol{\beta})<br>\end{array} \text { 注: 一般 } F(\boldsymbol{x}, \boldsymbol{\beta})&#x3D;S\left(\boldsymbol{x}_{\boldsymbol{i}}^{\prime} \boldsymbol{\beta}\right)\right.$$</p>
-<h3 id="构造连接函数"><a href="#构造连接函数" class="headerlink" title="构造连接函数"></a>构造连接函数</h3><p>要使 $F(\boldsymbol{x},\boldsymbol{\beta})$ 为值域 $[0,1]$ 上的函数。构造以下函数：</p>
-<ol>
-<li>$F(\boldsymbol{x},\boldsymbol{\beta})$ 取正态分布累计密度函数$(cdf)$<br>$$\begin{array}{c}<br>F(\boldsymbol{x}, \boldsymbol{\beta})&#x3D;\Phi\left(\boldsymbol{x}<em>{\boldsymbol{i}}^{\prime} \boldsymbol{\beta}\right)&#x3D;\int</em>{-\infty}^{\boldsymbol{x}_{\boldsymbol{i}}^{\prime} \boldsymbol{\beta}} \frac{1}{\sqrt{2 \pi}} e^{-\frac{t^{2}}{2}} d t \<br>\color{Red} (\text { probit 回归 })<br>\end{array}$$</li>
-<li>$F(\boldsymbol{x},\boldsymbol{\beta})$ 取$Sigmoid$函数<br>$$\begin{aligned}<br>F(\boldsymbol{x}, \boldsymbol{\beta})&#x3D;&amp; S\left(\boldsymbol{x}<em>{i}^{\prime} \boldsymbol{\beta}\right)&#x3D;\frac{\exp \left(\boldsymbol{x}</em>{i}^{\prime} \boldsymbol{\beta}\right)}{1+\exp \left(\boldsymbol{x}_{i}^{\prime} \boldsymbol{\beta}\right)} \<br>&amp; \color{Red} (\text{ logistic回归  })<br>\end{aligned}$$</li>
+<h1 id="回归">0-1回归</h1>
+<p>即采用逻辑回归(logistic regressio)<br />
+把观测数据作为因变量对虚拟变量(0,1)进行回归，将y看作事件0发生的概率。</p>
+<h2 id="模型构造">模型构造</h2>
+<h3 id="构造线性概率模型">构造线性概率模型</h3>
+<p><span class="math display">\[y_{i}=\beta_{0}+\beta_{1} x_{1
+i}+\beta_{2} x_{2 i}+\cdots+\beta_{k} x_{k i}+\mu_{i}\]</span></p>
+<p>㝍成向量乘积形式: <span
+class="math inline">\(y_{i}=\boldsymbol{x}_{i}^{\prime}
+\boldsymbol{\beta}+u_{i}(i=1,2, \cdots, n)\)</span></p>
+<h3 id="构造两点分布">构造两点分布</h3>
+<p><span class="math display">\[\left\{\begin{array}{l}
+P(y=1 \mid \boldsymbol{x})=F(\boldsymbol{x}, \boldsymbol{\beta}) \\
+P(y=0 \mid \boldsymbol{x})=1-F(\boldsymbol{x}, \boldsymbol{\beta})
+\end{array} \text { 注: 一般 } F(\boldsymbol{x},
+\boldsymbol{\beta})=S\left(\boldsymbol{x}_{\boldsymbol{i}}^{\prime}
+\boldsymbol{\beta}\right)\right.\]</span></p>
+<h3 id="构造连接函数">构造连接函数</h3>
+<p>要使 <span
+class="math inline">\(F(\boldsymbol{x},\boldsymbol{\beta})\)</span>
+为值域 <span class="math inline">\([0,1]\)</span>
+上的函数。构造以下函数：</p>
+<ol type="1">
+<li><span
+class="math inline">\(F(\boldsymbol{x},\boldsymbol{\beta})\)</span>
+取正态分布累计密度函数<span class="math inline">\((cdf)\)</span> <span
+class="math display">\[\begin{array}{c}
+F(\boldsymbol{x},
+\boldsymbol{\beta})=\Phi\left(\boldsymbol{x}_{\boldsymbol{i}}^{\prime}
+\boldsymbol{\beta}\right)=\int_{-\infty}^{\boldsymbol{x}_{\boldsymbol{i}}^{\prime}
+\boldsymbol{\beta}} \frac{1}{\sqrt{2 \pi}} e^{-\frac{t^{2}}{2}} d t \\
+\color{Red} (\text { probit 回归 })
+\end{array}\]</span></li>
+<li><span
+class="math inline">\(F(\boldsymbol{x},\boldsymbol{\beta})\)</span>
+取<span class="math inline">\(Sigmoid\)</span>函数 <span
+class="math display">\[\begin{aligned}
+F(\boldsymbol{x}, \boldsymbol{\beta})=&amp;
+S\left(\boldsymbol{x}_{i}^{\prime} \boldsymbol{\beta}\right)=\frac{\exp
+\left(\boldsymbol{x}_{i}^{\prime} \boldsymbol{\beta}\right)}{1+\exp
+\left(\boldsymbol{x}_{i}^{\prime} \boldsymbol{\beta}\right)} \\
+&amp; \color{Red} (\text{ logistic回归  })
+\end{aligned}\]</span></li>
 </ol>
-<h3 id="参数求解"><a href="#参数求解" class="headerlink" title="参数求解"></a>参数求解</h3><p>对于非线性模型采用极大似然估计法(MLE)估计：<br>$$f\left(y_{i} \mid \boldsymbol{x}<em>{i}, \boldsymbol{\beta}\right)&#x3D;\left{\begin{array}{ll}<br>S\left(\boldsymbol{x}</em>{i}^{\prime} \boldsymbol{\beta}\right) &amp; , y_{i}&#x3D;1 \<br>1-S\left(\boldsymbol{x}<em>{i}^{\prime} \boldsymbol{\beta}\right) &amp; , y</em>{i}&#x3D;0<br>\end{array}\right.$$<br>即<br>$$f\left(y_{i} \mid \boldsymbol{x}<em>{i}, \boldsymbol{\beta}\right)&#x3D;\left[S\left(\boldsymbol{x}</em>{i}^{\prime} \boldsymbol{\beta}\right)\right]^{y_{i}}\left[1-S\left(\boldsymbol{x}<em>{\boldsymbol{i}}^{\prime} \boldsymbol{\beta}\right)\right]^{1-y</em>{i}}$$<br>取对数<br>$$\ln f\left(y_{i} \mid \boldsymbol{x}<em>{i}, \boldsymbol{\beta}\right)&#x3D;y</em>{i} \ln \left[S\left(\boldsymbol{x}<em>{i}^{\prime} \boldsymbol{\beta}\right)\right]+\left(1-y</em>{i}\right) \ln \left[1-S\left(\boldsymbol{x}<em>{i}^{\prime} \boldsymbol{\beta}\right)\right]$$<br>得到样本对数似然函数<br>$$\left.\ln L(\boldsymbol{\beta} \mid \boldsymbol{y}, \boldsymbol{x})&#x3D;\sum</em>{i&#x3D;1}^{n} y_{i} \ln \left[S\left(\boldsymbol{x}<em>{\boldsymbol{i}}^{\prime} \boldsymbol{\beta}\right)\right]+\sum</em>{i&#x3D;1}^{n}\left(1-y_{i}\right) \ln \left[1-S\left(\boldsymbol{x}_{\boldsymbol{i}}^{\prime} \boldsymbol{\beta}\right)\right]\right.$$<br>求这个函数的最大化。</p>
-<h3 id="求准确率"><a href="#求准确率" class="headerlink" title="求准确率"></a>求准确率</h3><p>把数据分为<strong>训练组</strong>和<strong>测试组</strong>，一般取80%和20%，多次随机抽选训练组和测试组，对模型求一个平均的准确率(交叉验证)。</p>
-<p><img src="https://s2.loli.net/2022/02/12/YVulZUi73kohRfN.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>对于这个模型 $\hat{y}$ 理解为为事件“$y&#x3D;1$”发生的概率</p>
-<p>$$\hat{y}<em>{i}&#x3D;P\left(y</em>{i}&#x3D;1 \mid \boldsymbol{x}\right)&#x3D;S\left(\boldsymbol{x}<em>{i}^{\prime} \hat{\boldsymbol{\beta}}\right)&#x3D;\frac{\exp \left(\boldsymbol{x}</em>{i}^{\prime} \hat{\boldsymbol{\beta}}\right)}{1+\exp \left(\boldsymbol{x}<em>{i}^{\prime} \hat{\boldsymbol{\beta}}\right)}&#x3D;\frac{e^{\widehat{\beta}</em>{0}+\widehat{\beta}<em>{1} x</em>{1 i}+\widehat{\beta}<em>{2} x</em>{2 i}+\cdots+\widehat{\beta}<em>{k} x</em>{k i}}}{1+e^{\widehat{\beta}<em>{0}+\widehat{\beta}</em>{1} x_{1 i}+\widehat{\beta}<em>{2} x</em>{2 i}+\cdots+\widehat{\beta}<em>{k} x</em>{k i}}}$$</p>
-<p>对于 $S\left(\boldsymbol{x}_{i}^{\prime} \hat{\boldsymbol{\beta}}\right)&#x3D;\frac{1}{2}$ 即</p>
-<p>$${\widehat{\beta}<em>{0}+\widehat{\beta}</em>{1} x_{1 i}+\widehat{\beta}<em>{2} x</em>{2 i}+\cdots+\widehat{\beta}<em>{k} x</em>{k i}}&#x3D;0$$</p>
-<p>可以看作一个超平面（ $k&#x3D;2$时是直线 ）。该分类的本质就是找到一个“曲线”把 ‘$y&#x3D;0$’ 和 ‘$y&#x3D;1$’ 分割到曲线的两侧。</p>
-<h1 id="Fisher线性判别分析"><a href="#Fisher线性判别分析" class="headerlink" title="Fisher线性判别分析"></a>Fisher线性判别分析</h1><p>线性判别式分析(Linear Discriminant Analysis, LDA)<br>也叫做Fisher线性判别(Fisher Linear Discriminant ,FLD)</p>
-<p>基本思想：选取适当的投影方向<strong>将高维数据投影到低维空间上</strong>使得投影后各样本类<strong>内离差</strong>平方和尽可能小，而使各样本类间的离差平方和尽可能大<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://www.jianshu.com/p/cd5ac0b95c03
+<h3 id="参数求解">参数求解</h3>
+<p>对于非线性模型采用极大似然估计法(MLE)估计： <span
+class="math display">\[f\left(y_{i} \mid \boldsymbol{x}_{i},
+\boldsymbol{\beta}\right)=\left\{\begin{array}{ll}
+S\left(\boldsymbol{x}_{i}^{\prime} \boldsymbol{\beta}\right) &amp; ,
+y_{i}=1 \\
+1-S\left(\boldsymbol{x}_{i}^{\prime} \boldsymbol{\beta}\right) &amp; ,
+y_{i}=0
+\end{array}\right.\]</span> 即 <span class="math display">\[f\left(y_{i}
+\mid \boldsymbol{x}_{i},
+\boldsymbol{\beta}\right)=\left[S\left(\boldsymbol{x}_{i}^{\prime}
+\boldsymbol{\beta}\right)\right]^{y_{i}}\left[1-S\left(\boldsymbol{x}_{\boldsymbol{i}}^{\prime}
+\boldsymbol{\beta}\right)\right]^{1-y_{i}}\]</span> 取对数 <span
+class="math display">\[\ln f\left(y_{i} \mid \boldsymbol{x}_{i},
+\boldsymbol{\beta}\right)=y_{i} \ln
+\left[S\left(\boldsymbol{x}_{i}^{\prime}
+\boldsymbol{\beta}\right)\right]+\left(1-y_{i}\right) \ln
+\left[1-S\left(\boldsymbol{x}_{i}^{\prime}
+\boldsymbol{\beta}\right)\right]\]</span> 得到样本对数似然函数 <span
+class="math display">\[\left.\ln L(\boldsymbol{\beta} \mid
+\boldsymbol{y}, \boldsymbol{x})=\sum_{i=1}^{n} y_{i} \ln
+\left[S\left(\boldsymbol{x}_{\boldsymbol{i}}^{\prime}
+\boldsymbol{\beta}\right)\right]+\sum_{i=1}^{n}\left(1-y_{i}\right) \ln
+\left[1-S\left(\boldsymbol{x}_{\boldsymbol{i}}^{\prime}
+\boldsymbol{\beta}\right)\right]\right.\]</span>
+求这个函数的最大化。</p>
+<h3 id="求准确率">求准确率</h3>
+<p>把数据分为<strong>训练组</strong>和<strong>测试组</strong>，一般取80%和20%，多次随机抽选训练组和测试组，对模型求一个平均的准确率(交叉验证)。</p>
+<p><img src="https://s2.loli.net/2022/02/12/YVulZUi73kohRfN.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="思考">思考</h2>
+<p>对于这个模型 <span class="math inline">\(\hat{y}\)</span>
+理解为为事件“<span class="math inline">\(y=1\)</span>”发生的概率</p>
+<p><span class="math display">\[\hat{y}_{i}=P\left(y_{i}=1 \mid
+\boldsymbol{x}\right)=S\left(\boldsymbol{x}_{i}^{\prime}
+\hat{\boldsymbol{\beta}}\right)=\frac{\exp
+\left(\boldsymbol{x}_{i}^{\prime}
+\hat{\boldsymbol{\beta}}\right)}{1+\exp
+\left(\boldsymbol{x}_{i}^{\prime}
+\hat{\boldsymbol{\beta}}\right)}=\frac{e^{\widehat{\beta}_{0}+\widehat{\beta}_{1}
+x_{1 i}+\widehat{\beta}_{2} x_{2 i}+\cdots+\widehat{\beta}_{k} x_{k
+i}}}{1+e^{\widehat{\beta}_{0}+\widehat{\beta}_{1} x_{1
+i}+\widehat{\beta}_{2} x_{2 i}+\cdots+\widehat{\beta}_{k} x_{k
+i}}}\]</span></p>
+<p>对于 <span class="math inline">\(S\left(\boldsymbol{x}_{i}^{\prime}
+\hat{\boldsymbol{\beta}}\right)=\frac{1}{2}\)</span> 即</p>
+<p><span class="math display">\[{\widehat{\beta}_{0}+\widehat{\beta}_{1}
+x_{1 i}+\widehat{\beta}_{2} x_{2 i}+\cdots+\widehat{\beta}_{k} x_{k
+i}}=0\]</span></p>
+<p>可以看作一个超平面（ <span class="math inline">\(k=2\)</span>时是直线
+）。该分类的本质就是找到一个“曲线”把 '<span
+class="math inline">\(y=0\)</span>' 和 '<span
+class="math inline">\(y=1\)</span>' 分割到曲线的两侧。</p>
+<h1 id="fisher线性判别分析">Fisher线性判别分析</h1>
+<p>线性判别式分析(Linear Discriminant Analysis, LDA)<br />
+也叫做Fisher线性判别(Fisher Linear Discriminant ,FLD)</p>
+<p>基本思想：选取适当的投影方向<strong>将高维数据投影到低维空间上</strong>使得投影后各样本类<strong>内离差</strong>平方和尽可能小，而使各样本类间的离差平方和尽可能大<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://www.jianshu.com/p/cd5ac0b95c03
 ">[2]</span></a></sup>。即，使得在子空间上有最佳的可分离性。</p>
-<p><img src="https://s2.loli.net/2022/02/12/Eusi4l2NkGBMZj1.png" srcset="/img/loading.gif" lazyload alt="LDA.png"></p>
-<h2 id="一维压缩的Fisher判别模型"><a href="#一维压缩的Fisher判别模型" class="headerlink" title="一维压缩的Fisher判别模型"></a>一维压缩的Fisher判别模型</h2><p>Fisher判别可以将 $C$ 维指标压缩到 $[1,C-1]$ 纬空间。这里只解释将样本压缩到一维的情况。</p>
-<p>设样本数据集为 ${\boldsymbol{D_1},\boldsymbol{D_2}}$ (二维指标)， $\boldsymbol{X_i}$ 是第 $i$ 类样本的集合 ，$X_i$ 是第 $i$ 类样本的集合，第 $i$ 个集合样本是数目是 $N_i$ ，$x&#x3D;(d_1,d_2)$。最佳的向量称为 $\boldsymbol{w}$<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/137968371
+<figure>
+<img src="https://s2.loli.net/2022/02/12/Eusi4l2NkGBMZj1.png" srcset="/img/loading.gif" lazyload
+alt="LDA.png" />
+<figcaption aria-hidden="true">LDA.png</figcaption>
+</figure>
+<h2 id="一维压缩的fisher判别模型">一维压缩的Fisher判别模型</h2>
+<p>Fisher判别可以将 <span class="math inline">\(C\)</span> 维指标压缩到
+<span class="math inline">\([1,C-1]\)</span>
+纬空间。这里只解释将样本压缩到一维的情况。</p>
+<p>设样本数据集为 <span
+class="math inline">\(\{\boldsymbol{D_1},\boldsymbol{D_2}\}\)</span>
+(二维指标)， <span class="math inline">\(\boldsymbol{X_i}\)</span> 是第
+<span class="math inline">\(i\)</span> 类样本的集合 ，<span
+class="math inline">\(X_i\)</span> 是第 <span
+class="math inline">\(i\)</span> 类样本的集合，第 <span
+class="math inline">\(i\)</span> 个集合样本是数目是 <span
+class="math inline">\(N_i\)</span> ，<span
+class="math inline">\(x=(d_1,d_2)\)</span>。最佳的向量称为 <span
+class="math inline">\(\boldsymbol{w}\)</span><sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/137968371
 ">[4]</span></a></sup>。</p>
-<p>记 $\mu_i$ 为第i类样本质心，为<br>$$\mu_{i}&#x3D;\frac{1}{N_{i}} \sum_{x \in \boldsymbol{X_{i}}} x$$</p>
-<p>$x$ 到 $\boldsymbol{w}$ 投影后的样本点均值为</p>
-<p>$$\tilde{\mu}<em>{i}&#x3D;\frac{1}{N</em>{i}} \sum_{x \in  \boldsymbol{X}<em>{i}} y&#x3D;\frac{1}{N</em>{i}} \sum_{x \in  \boldsymbol{X}<em>{i}} \boldsymbol{w}^{T} x&#x3D;\boldsymbol{w}^{T} \mu</em>{i}$$</p>
-<p><strong>类间方差最大化</strong>，那么就是要让 $J(\boldsymbol{w})$ 最大</p>
-<p>$$J(\boldsymbol{w})&#x3D;\left|\tilde{\mu}<em>{1}-\tilde{\mu}</em>{2}\right|&#x3D;\left|\boldsymbol{w}^{T}\left(\mu_{1}-\mu_{2}\right)\right|$$</p>
+<p>记 <span class="math inline">\(\mu_i\)</span> 为第i类样本质心，为
+<span class="math display">\[\mu_{i}=\frac{1}{N_{i}} \sum_{x \in
+\boldsymbol{X_{i}}} x\]</span></p>
+<p><span class="math inline">\(x\)</span> 到 <span
+class="math inline">\(\boldsymbol{w}\)</span> 投影后的样本点均值为</p>
+<p><span class="math display">\[\tilde{\mu}_{i}=\frac{1}{N_{i}} \sum_{x
+\in  \boldsymbol{X}_{i}} y=\frac{1}{N_{i}} \sum_{x
+\in  \boldsymbol{X}_{i}} \boldsymbol{w}^{T} x=\boldsymbol{w}^{T}
+\mu_{i}\]</span></p>
+<p><strong>类间方差最大化</strong>，那么就是要让 <span
+class="math inline">\(J(\boldsymbol{w})\)</span> 最大</p>
+<p><span
+class="math display">\[J(\boldsymbol{w})=\left|\tilde{\mu}_{1}-\tilde{\mu}_{2}\right|=\left|\boldsymbol{w}^{T}\left(\mu_{1}-\mu_{2}\right)\right|\]</span></p>
 <p>但是只满足这一个条件并不行，两个类达到了类间方差最大化的条件，但是可能轴上的投影两个类重合的部分太多，无法进行有效的区分。</p>
 <p><strong>类内方差最小化</strong></p>
 <p>对于类内方差，使用另外一个值<strong>散列值（scatter）</strong>，计算方法如果下，其实就是投影值与中心之间的方差和。目的就是使这个值最小。</p>
-<p>$$\tilde{s_{i}}^{2}&#x3D;\sum_{y \in \boldsymbol{Y}<em>{i}}\left(y-\tilde{\mu}</em>{i}\right)^{2},(y&#x3D;\boldsymbol{w}^Tx)$$</p>
+<p><span class="math display">\[\tilde{s_{i}}^{2}=\sum_{y \in
+\boldsymbol{Y}_{i}}\left(y-\tilde{\mu}_{i}\right)^{2},(y=\boldsymbol{w}^Tx)\]</span></p>
 <p>最后，我们结合这两个条件</p>
-<p>$$J(\boldsymbol{w})&#x3D;\frac{\left|\tilde{\mu_{1}}-\tilde{\mu_{2}}\right|}{\tilde{s_{1}}^{2}+\tilde{s_{2}}^{2}}$$</p>
-<p>我们要做的就是让 $J(\boldsymbol{w})$ 最大。<a target="_blank" rel="noopener" href="https://blog.csdn.net/antkillerfarm/article/details/80880221">推导过程</a></p>
+<p><span
+class="math display">\[J(\boldsymbol{w})=\frac{\left|\tilde{\mu_{1}}-\tilde{\mu_{2}}\right|}{\tilde{s_{1}}^{2}+\tilde{s_{2}}^{2}}\]</span></p>
+<p>我们要做的就是让 <span
+class="math inline">\(J(\boldsymbol{w})\)</span> 最大。<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/antkillerfarm/article/details/80880221">推导过程</a></p>
 <p>结论：</p>
-<p>$$S_{i}&#x3D;\sum_{x \in \omega_{i}}\left(x-\mu_{i}\right)\left(x-\mu_{i}\right)^{T}$$</p>
-<p>$$S_{W}&#x3D;S_{1}+S_{2}$$</p>
-<p>$$\boldsymbol{w}&#x3D;S_{W}^{-1}\left(\mu_{1}-\mu_{2}\right)$$</p>
-<h2 id="思考-1"><a href="#思考-1" class="headerlink" title="思考"></a>思考</h2><p><img src="https://img-blog.csdnimg.cn/20190516120230815.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1BpbmFwcGxlTWk=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload></p>
+<p><span class="math display">\[S_{i}=\sum_{x \in
+\omega_{i}}\left(x-\mu_{i}\right)\left(x-\mu_{i}\right)^{T}\]</span></p>
+<p><span class="math display">\[S_{W}=S_{1}+S_{2}\]</span></p>
+<p><span
+class="math display">\[\boldsymbol{w}=S_{W}^{-1}\left(\mu_{1}-\mu_{2}\right)\]</span></p>
+<h2 id="思考-1">思考</h2>
+<p><img
+src="https://img-blog.csdnimg.cn/20190516120230815.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1BpbmFwcGxlTWk=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload /></p>
 <p><strong>主成分分析(PCA)</strong>:是找到方差尽可能大的维度，使得信息尽可能都保存，不考虑样本的可分离性，不具备预测功能。</p>
-<p><strong>线性判别分析(LAD)</strong>:是找到一个低维的空间，投影后，使得可分离性最佳(保留信息趋少)，投影后可进行判别以及对新的样本进行预测<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://blog.csdn.net/PinappleMi/article/details/90261680
+<p><strong>线性判别分析(LAD)</strong>:是找到一个低维的空间，投影后，使得可分离性最佳(保留信息趋少)，投影后可进行判别以及对新的样本进行预测<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://blog.csdn.net/PinappleMi/article/details/90261680
 ">[3]</span></a></sup>。</p>
-<p>相较于压缩至一维空间，压缩到二维平面或超平面上常常更能分离出不同的样本。<br><img src="https://s2.loli.net/2022/02/12/6gjoFQa8Hy5NWR9.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>清风数学建模
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cd5ac0b95c03">https://www.jianshu.com/p/cd5ac0b95c03</a>
-<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.csdn.net/PinappleMi/article/details/90261680">https://blog.csdn.net/PinappleMi/article/details/90261680</a>
-<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/137968371">https://zhuanlan.zhihu.com/p/137968371</a>
-<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<p>相较于压缩至一维空间，压缩到二维平面或超平面上常常更能分离出不同的样本。
+<img src="https://s2.loli.net/2022/02/12/6gjoFQa8Hy5NWR9.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="参考">参考</h1>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>清风数学建模
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2"
+class="footnote-text"><span>https://www.jianshu.com/p/cd5ac0b95c03
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3"
+class="footnote-text"><span>https://blog.csdn.net/PinappleMi/article/details/90261680
+<a href="#fnref:3" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:4"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/137968371
+<a href="#fnref:4" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
             <hr>
             <div>
@@ -514,8 +659,43 @@
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 

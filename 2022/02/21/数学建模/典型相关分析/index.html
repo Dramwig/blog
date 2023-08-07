@@ -18,12 +18,12 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="典型相关分析 （Canonical Correlation Analysis ，CCA）是为了研究两组变量（向量）之间的关联关系，其目的是找出两组变量的各自的 $r$ 组线性组合，线性组合的相关性从大到小排列，以主成分思想衡量两组变量之间的线性关系。 $$[\boldsymbol{x}_1,\boldsymbol{x}_2,\dotsb,\boldsymbol{x}_p] , [\boldsymb">
+  <meta name="description" content="典型相关分析 （Canonical Correlation Analysis ，CCA） 是为了研究两组变量（向量）之间的关联关系，其目的是找出两组变量的各自的 \(r\) 组线性组合，线性组合的相关性从大到小排列，以主成分思想衡量两组变量之间的线性关系。 \[[\boldsymbol{x}_1,\boldsymbol{x}_2,\dotsb,\boldsymbol{x}_p] , [">
 <meta property="og:type" content="article">
 <meta property="og:title" content="典型相关分析">
 <meta property="og:url" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%85%B8%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="典型相关分析 （Canonical Correlation Analysis ，CCA）是为了研究两组变量（向量）之间的关联关系，其目的是找出两组变量的各自的 $r$ 组线性组合，线性组合的相关性从大到小排列，以主成分思想衡量两组变量之间的线性关系。 $$[\boldsymbol{x}_1,\boldsymbol{x}_2,\dotsb,\boldsymbol{x}_p] , [\boldsymb">
+<meta property="og:description" content="典型相关分析 （Canonical Correlation Analysis ，CCA） 是为了研究两组变量（向量）之间的关联关系，其目的是找出两组变量的各自的 \(r\) 组线性组合，线性组合的相关性从大到小排列，以主成分思想衡量两组变量之间的线性关系。 \[[\boldsymbol{x}_1,\boldsymbol{x}_2,\dotsb,\boldsymbol{x}_p] , [">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-21T04:20:43.129Z">
 <meta property="article:modified_time" content="2022-09-13T08:16:27.033Z">
@@ -180,7 +180,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      12k 字
+      11k 字
     </span>
   
 
@@ -232,83 +232,363 @@
               </p>
             
             <div class="markdown-body">
-              <p>典型相关分析 （Canonical Correlation Analysis ，CCA）<br>是为了研究两组变量（向量）之间的关联关系，其目的是找出两组变量的各自的 $r$ 组线性组合，线性组合的相关性从大到小排列，以主成分思想衡量两组变量之间的线性关系。</p>
-<p>$$[\boldsymbol{x}_1,\boldsymbol{x}_2,\dotsb,\boldsymbol{x}_p] , [\boldsymbol{y}_1,\boldsymbol{y}_2,\dotsb,\boldsymbol{y}_q]$$</p>
-<p>首先分别在每组变量中找出第 $k$ 对线性组合，使其具有第 $k$ 大最大相关性，即</p>
-<p>$$\left{\begin{matrix}<br>  \boldsymbol{u}<em>k&#x3D;\alpha</em>{k1}\boldsymbol{x}<em>1+\alpha</em>{k2}\boldsymbol{x}<em>2+\dotsb+\alpha</em>{kp}\boldsymbol{x}_p\<br>\boldsymbol{v}<em>k&#x3D;\alpha</em>{k1}\boldsymbol{y}<em>1+\alpha</em>{k2}\boldsymbol{y}<em>2+\dotsb+\alpha</em>{kq}\boldsymbol{y}_q<br>\end{matrix}\right. $$<br>$$\left(k&#x3D;1,2,\dotsb,r \small \leqslant \min(p,q)\right)$$</p>
-<p>其中 $\boldsymbol{u}_k$ 与  $\boldsymbol{u}_1,\boldsymbol{u}<em>2,\dots,\boldsymbol{u}</em>{k-1}$ 线性无关， $\boldsymbol{v}_k$ 与 $\boldsymbol{v}_1,\boldsymbol{v}<em>2,\dots,\boldsymbol{v}</em>{k-1}$ 线性无关，且相关性从小到大依次排列。</p>
-<h1 id="典型相关分析数学模型"><a href="#典型相关分析数学模型" class="headerlink" title="典型相关分析数学模型"></a>典型相关分析数学模型</h1><h2 id="典型相关和典型相关变量定义"><a href="#典型相关和典型相关变量定义" class="headerlink" title="典型相关和典型相关变量定义"></a>典型相关和典型相关变量定义</h2><p>设两组随机变量为 $\small \boldsymbol{X}&#x3D;[\boldsymbol{x}_1,\boldsymbol{x}_2,\dotsb,\boldsymbol{x}_p]^T , \boldsymbol{Y}&#x3D;[\boldsymbol{y}_1,\boldsymbol{y}_2,\dotsb,\boldsymbol{y}_q]^T$ 。我们希望找到 $\small \boldsymbol{\alpha}&#x3D;[\alpha_1,\dotsb,\alpha_p] ,\boldsymbol{\beta}&#x3D;[\beta_1,\dotsb,\beta_p]$ 使得 $\small \rho(\boldsymbol{\alpha}\boldsymbol{X},\boldsymbol{\beta}\boldsymbol{Y})$ 最大。由相关系数定义：</p>
-<p>$$\rho\left(\boldsymbol{\alpha X}, \boldsymbol{\beta Y}\right)&#x3D;\frac{\operatorname{Cov}\left(\boldsymbol{\alpha X},\boldsymbol{ \beta Y}\right)}{\sqrt{\operatorname{Var}\left(\boldsymbol{\alpha X}\right)} \sqrt{\operatorname{Var}\left(\boldsymbol{\beta Y}\right)}}$$</p>
-<p>对于任意常数 $k_1,k_2,c_1,c_2$ 有<br>$$\rho(k_1\boldsymbol{\alpha X}+c_1,k_2\boldsymbol{\beta Y}+c_2)&#x3D;\rho(\boldsymbol{\alpha X},\boldsymbol{\beta Y})$$</p>
-<p>说明 $\boldsymbol{\alpha X},\boldsymbol{\beta Y}$ 不唯一，故限定 $\small{Var}(\boldsymbol{\alpha X})&#x3D;1,Var(\boldsymbol{\beta Y})&#x3D;1$ 即满足与协方差矩阵的关系 $\small \boldsymbol{\alpha}\boldsymbol{\Sigma}<em>{\tiny \boldsymbol{XX}}\boldsymbol{\alpha}^T&#x3D;1,\boldsymbol{\beta}\boldsymbol{\Sigma}</em>{\tiny \boldsymbol{YY}}\boldsymbol{\beta}^T&#x3D;1$ 。</p>
-<p>如果存在 $\boldsymbol{\alpha}<em>k&#x3D;[\alpha</em>{k1},\alpha_{k2},\dotsb,\alpha_{kp}],\boldsymbol{\beta}<em>k&#x3D;[\beta</em>{k1},\beta_{k2},\dotsb,\beta_{kq}]$ 使得</p>
-<p>$$<br>\left{\begin{array}{l}<br>\rho(\boldsymbol{\alpha}_k\boldsymbol{X},\boldsymbol{\alpha}_j\boldsymbol{X})&#x3D;0,\rho(\boldsymbol{\beta}_k\boldsymbol{Y},\boldsymbol{\beta}_j\boldsymbol{Y})&#x3D;0,\small j&#x3D;1,2,\dots,k-1&amp;\</p>
-<p>\rho(\boldsymbol{\alpha}<em>k\boldsymbol{X},\boldsymbol{\beta}<em>k\boldsymbol{Y})&#x3D;\max</em>{} \rho(\boldsymbol{\alpha}\boldsymbol{X},\boldsymbol{\beta}\boldsymbol{Y}) &lt; \rho(\boldsymbol{\alpha}</em>{k-1}\boldsymbol{X},\boldsymbol{\beta}_{k-1}\boldsymbol{Y})\</p>
-<p>\boldsymbol{\alpha}<em>k\boldsymbol{\Sigma}</em>{\tiny \boldsymbol{XX}}\boldsymbol{\alpha}_k^T&#x3D;1,\boldsymbol{\beta}<em>k\boldsymbol{\Sigma}</em>{\tiny \boldsymbol{YY}}\boldsymbol{\beta}_k^T&#x3D;1\<br>\end{array}\right.<br>$$</p>
-<p>则称 $\boldsymbol{\alpha}_k\boldsymbol{X},\boldsymbol{\beta}_k\boldsymbol{Y}$ 是 $\boldsymbol{X},\boldsymbol{Y}$ 的<strong>第 $k$ 对（组）典型相关变量</strong>，他们之间的相关系数称之为<strong>第 $k$ 个典型相关系数</strong> $\small \left(k&#x3D;1,2,\dots,min(p,q)\right)$。</p>
-<h2 id="典型相关变量的解法"><a href="#典型相关变量的解法" class="headerlink" title="典型相关变量的解法"></a>典型相关变量的解法</h2><p>将两组变量的协方差矩阵分块得</p>
-<p>$$Cov\begin{bmatrix}\boldsymbol{X} \ \boldsymbol{Y} \\end{bmatrix}     &#x3D;\begin{bmatrix}  Var(\boldsymbol{X}) &amp; Cov(\boldsymbol{X},\boldsymbol{Y})   \ Cov(\boldsymbol{Y},\boldsymbol{X}) &amp; Var(\boldsymbol{Y})  \     \end{bmatrix} &#x3D;\begin{bmatrix}  \boldsymbol{\Sigma_{XX}} &amp; \boldsymbol{\Sigma_{XY}}   \ \boldsymbol{\Sigma_{YX}} &amp;  \boldsymbol{\Sigma_{YY}} \     \end{bmatrix}$$</p>
+              <p>典型相关分析 （Canonical Correlation Analysis ，CCA）<br />
+是为了研究两组变量（向量）之间的关联关系，其目的是找出两组变量的各自的
+<span class="math inline">\(r\)</span>
+组线性组合，线性组合的相关性从大到小排列，以主成分思想衡量两组变量之间的线性关系。</p>
+<p><span
+class="math display">\[[\boldsymbol{x}_1,\boldsymbol{x}_2,\dotsb,\boldsymbol{x}_p]
+,
+[\boldsymbol{y}_1,\boldsymbol{y}_2,\dotsb,\boldsymbol{y}_q]\]</span></p>
+<p>首先分别在每组变量中找出第 <span class="math inline">\(k\)</span>
+对线性组合，使其具有第 <span class="math inline">\(k\)</span>
+大最大相关性，即</p>
+<p><span class="math display">\[\left\{\begin{matrix}
+  \boldsymbol{u}_k=\alpha_{k1}\boldsymbol{x}_1+\alpha_{k2}\boldsymbol{x}_2+\dotsb+\alpha_{kp}\boldsymbol{x}_p\\
+\boldsymbol{v}_k=\alpha_{k1}\boldsymbol{y}_1+\alpha_{k2}\boldsymbol{y}_2+\dotsb+\alpha_{kq}\boldsymbol{y}_q
+\end{matrix}\right. \]</span> <span
+class="math display">\[\left(k=1,2,\dotsb,r \small \leqslant
+\min(p,q)\right)\]</span></p>
+<p>其中 <span class="math inline">\(\boldsymbol{u}_k\)</span> 与 <span
+class="math inline">\(\boldsymbol{u}_1,\boldsymbol{u}_2,\dots,\boldsymbol{u}_{k-1}\)</span>
+线性无关， <span class="math inline">\(\boldsymbol{v}_k\)</span> 与
+<span
+class="math inline">\(\boldsymbol{v}_1,\boldsymbol{v}_2,\dots,\boldsymbol{v}_{k-1}\)</span>
+线性无关，且相关性从小到大依次排列。</p>
+<h1 id="典型相关分析数学模型">典型相关分析数学模型</h1>
+<h2 id="典型相关和典型相关变量定义">典型相关和典型相关变量定义</h2>
+<p>设两组随机变量为 <span class="math inline">\(\small
+\boldsymbol{X}=[\boldsymbol{x}_1,\boldsymbol{x}_2,\dotsb,\boldsymbol{x}_p]^T
+,
+\boldsymbol{Y}=[\boldsymbol{y}_1,\boldsymbol{y}_2,\dotsb,\boldsymbol{y}_q]^T\)</span>
+。我们希望找到 <span class="math inline">\(\small
+\boldsymbol{\alpha}=[\alpha_1,\dotsb,\alpha_p]
+,\boldsymbol{\beta}=[\beta_1,\dotsb,\beta_p]\)</span> 使得 <span
+class="math inline">\(\small
+\rho(\boldsymbol{\alpha}\boldsymbol{X},\boldsymbol{\beta}\boldsymbol{Y})\)</span>
+最大。由相关系数定义：</p>
+<p><span class="math display">\[\rho\left(\boldsymbol{\alpha X},
+\boldsymbol{\beta
+Y}\right)=\frac{\operatorname{Cov}\left(\boldsymbol{\alpha
+X},\boldsymbol{ \beta
+Y}\right)}{\sqrt{\operatorname{Var}\left(\boldsymbol{\alpha X}\right)}
+\sqrt{\operatorname{Var}\left(\boldsymbol{\beta Y}\right)}}\]</span></p>
+<p>对于任意常数 <span class="math inline">\(k_1,k_2,c_1,c_2\)</span> 有
+<span class="math display">\[\rho(k_1\boldsymbol{\alpha
+X}+c_1,k_2\boldsymbol{\beta Y}+c_2)=\rho(\boldsymbol{\alpha
+X},\boldsymbol{\beta Y})\]</span></p>
+<p>说明 <span class="math inline">\(\boldsymbol{\alpha
+X},\boldsymbol{\beta Y}\)</span> 不唯一，故限定 <span
+class="math inline">\(\small{Var}(\boldsymbol{\alpha
+X})=1,Var(\boldsymbol{\beta Y})=1\)</span> 即满足与协方差矩阵的关系
+<span class="math inline">\(\small
+\boldsymbol{\alpha}\boldsymbol{\Sigma}_{\tiny
+\boldsymbol{XX}}\boldsymbol{\alpha}^T=1,\boldsymbol{\beta}\boldsymbol{\Sigma}_{\tiny
+\boldsymbol{YY}}\boldsymbol{\beta}^T=1\)</span> 。</p>
+<p>如果存在 <span
+class="math inline">\(\boldsymbol{\alpha}_k=[\alpha_{k1},\alpha_{k2},\dotsb,\alpha_{kp}],\boldsymbol{\beta}_k=[\beta_{k1},\beta_{k2},\dotsb,\beta_{kq}]\)</span>
+使得</p>
+$$ {
+<span class="math display">\[\begin{array}{l}
+\rho(\boldsymbol{\alpha}_k\boldsymbol{X},\boldsymbol{\alpha}_j\boldsymbol{X})=0,\rho(\boldsymbol{\beta}_k\boldsymbol{Y},\boldsymbol{\beta}_j\boldsymbol{Y})=0,\small
+j=1,2,\dots,k-1&amp;\\
+
+\rho(\boldsymbol{\alpha}_k\boldsymbol{X},\boldsymbol{\beta}_k\boldsymbol{Y})=\max_{}
+\rho(\boldsymbol{\alpha}\boldsymbol{X},\boldsymbol{\beta}\boldsymbol{Y})
+&lt;
+\rho(\boldsymbol{\alpha}_{k-1}\boldsymbol{X},\boldsymbol{\beta}_{k-1}\boldsymbol{Y})\\
+
+\boldsymbol{\alpha}_k\boldsymbol{\Sigma}_{\tiny
+\boldsymbol{XX}}\boldsymbol{\alpha}_k^T=1,\boldsymbol{\beta}_k\boldsymbol{\Sigma}_{\tiny
+\boldsymbol{YY}}\boldsymbol{\beta}_k^T=1\\
+\end{array}\]</span>
+<p>. $$</p>
+<p>则称 <span
+class="math inline">\(\boldsymbol{\alpha}_k\boldsymbol{X},\boldsymbol{\beta}_k\boldsymbol{Y}\)</span>
+是 <span class="math inline">\(\boldsymbol{X},\boldsymbol{Y}\)</span>
+的<strong>第 <span class="math inline">\(k\)</span>
+对（组）典型相关变量</strong>，他们之间的相关系数称之为<strong>第 <span
+class="math inline">\(k\)</span> 个典型相关系数</strong> <span
+class="math inline">\(\small
+\left(k=1,2,\dots,min(p,q)\right)\)</span>。</p>
+<h2 id="典型相关变量的解法">典型相关变量的解法</h2>
+<p>将两组变量的协方差矩阵分块得</p>
+<p><span class="math display">\[Cov\begin{bmatrix}\boldsymbol{X} \\
+\boldsymbol{Y} \\\end{bmatrix}     =\begin{bmatrix}  Var(\boldsymbol{X})
+&amp; Cov(\boldsymbol{X},\boldsymbol{Y})   \\
+Cov(\boldsymbol{Y},\boldsymbol{X}) &amp;
+Var(\boldsymbol{Y})  \\     \end{bmatrix}
+=\begin{bmatrix}  \boldsymbol{\Sigma_{XX}} &amp;
+\boldsymbol{\Sigma_{XY}}   \\ \boldsymbol{\Sigma_{YX}}
+&amp;  \boldsymbol{\Sigma_{YY}} \\     \end{bmatrix}\]</span></p>
 <p>此时</p>
-<p>$$\rho(\boldsymbol{u},\boldsymbol{v})&#x3D;\frac{Cov(\boldsymbol{\alpha X},\boldsymbol{\beta Y})}{\sqrt{D(\boldsymbol{\alpha X})}\sqrt{D(\boldsymbol{\beta Y})}}&#x3D;\boldsymbol{\alpha\Sigma_{\tiny XY}\beta^T}$$</p>
-<p>此问题转换为在 $\small \boldsymbol{\alpha}\boldsymbol{\Sigma}<em>{\tiny \boldsymbol{XX}}\boldsymbol{\alpha}^T&#x3D;1,\boldsymbol{\beta}\boldsymbol{\Sigma}</em>{\tiny \boldsymbol{YY}}\boldsymbol{\beta}^T&#x3D;1$ 条件下求 $\small \boldsymbol{\alpha\Sigma_{\tiny XY} \beta^T}$ 的极大值。</p>
-<p>引入拉格朗日乘数 $\lambda,\omega$ 即问题为求下式的最大值。</p>
-<p>$$S(\boldsymbol{\alpha},\boldsymbol{\beta})&#x3D;\boldsymbol{\alpha\Sigma_{\tiny XY} \beta^T}-\frac{\lambda}{2}(\boldsymbol{\alpha}\boldsymbol{\Sigma}<em>{\tiny \boldsymbol{XX}}\boldsymbol{\alpha}^T-1)-\frac{\omega}{2}(\boldsymbol{\beta}\boldsymbol{\Sigma}</em>{\tiny \boldsymbol{YY}}\boldsymbol{\beta}^T-1)$$</p>
+<p><span
+class="math display">\[\rho(\boldsymbol{u},\boldsymbol{v})=\frac{Cov(\boldsymbol{\alpha
+X},\boldsymbol{\beta Y})}{\sqrt{D(\boldsymbol{\alpha
+X})}\sqrt{D(\boldsymbol{\beta Y})}}=\boldsymbol{\alpha\Sigma_{\tiny
+XY}\beta^T}\]</span></p>
+<p>此问题转换为在 <span class="math inline">\(\small
+\boldsymbol{\alpha}\boldsymbol{\Sigma}_{\tiny
+\boldsymbol{XX}}\boldsymbol{\alpha}^T=1,\boldsymbol{\beta}\boldsymbol{\Sigma}_{\tiny
+\boldsymbol{YY}}\boldsymbol{\beta}^T=1\)</span> 条件下求 <span
+class="math inline">\(\small \boldsymbol{\alpha\Sigma_{\tiny XY}
+\beta^T}\)</span> 的极大值。</p>
+<p>引入拉格朗日乘数 <span class="math inline">\(\lambda,\omega\)</span>
+即问题为求下式的最大值。</p>
+<p><span
+class="math display">\[S(\boldsymbol{\alpha},\boldsymbol{\beta})=\boldsymbol{\alpha\Sigma_{\tiny
+XY}
+\beta^T}-\frac{\lambda}{2}(\boldsymbol{\alpha}\boldsymbol{\Sigma}_{\tiny
+\boldsymbol{XX}}\boldsymbol{\alpha}^T-1)-\frac{\omega}{2}(\boldsymbol{\beta}\boldsymbol{\Sigma}_{\tiny
+\boldsymbol{YY}}\boldsymbol{\beta}^T-1)\]</span></p>
 <p>由极值的必要条件得到偏导方程组</p>
-<p>$$\left{\begin{matrix}<br>  \frac{\partial S}{\partial \boldsymbol{\alpha }}&#x3D;\boldsymbol{\Sigma_{\tiny XY}\beta }-\lambda \boldsymbol{\Sigma_{\tiny XX}\alpha }&#x3D;0\<br>  \frac{\partial S}{\partial \boldsymbol{\beta }}&#x3D;\boldsymbol{\Sigma_{\tiny YX}\alpha }-\omega \boldsymbol{\Sigma_{\tiny YY}\beta }&#x3D;0\<br>\end{matrix}\right.$$</p>
-<p>中间过程略，详见<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第268页.
-">[1]</span></a></sup>或<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="高惠璇. 应用多元统计分析[M]. 第2版. 第354页.
+<p><span class="math display">\[\left\{\begin{matrix}
+  \frac{\partial S}{\partial \boldsymbol{\alpha
+}}=\boldsymbol{\Sigma_{\tiny XY}\beta }-\lambda
+\boldsymbol{\Sigma_{\tiny XX}\alpha }=0\\
+  \frac{\partial S}{\partial \boldsymbol{\beta
+}}=\boldsymbol{\Sigma_{\tiny YX}\alpha }-\omega
+\boldsymbol{\Sigma_{\tiny YY}\beta }=0\\
+\end{matrix}\right.\]</span></p>
+<p>中间过程略，详见<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第268页.
+">[1]</span></a></sup>或<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="高惠璇. 应用多元统计分析[M]. 第2版. 第354页.
 ">[3]</span></a></sup>。得</p>
-<p>$$\left{\begin{matrix}<br>  \left(\boldsymbol{\Sigma_{XY}}\boldsymbol{\Sigma_{YY}^{-1}}\boldsymbol{\Sigma_{YX}}-\lambda^2\boldsymbol{\Sigma_{XX}}\right)\boldsymbol{\alpha}&#x3D;0\<br>  \left(\boldsymbol{\Sigma_{YX}}\boldsymbol{\Sigma_{XX}^{-1}}\boldsymbol{\Sigma_{XY}}-\lambda^2\boldsymbol{\Sigma_{YY}}\right)\boldsymbol{\beta}&#x3D;0\<br>\end{matrix}\right.$$</p>
+<p><span class="math display">\[\left\{\begin{matrix}
+  \left(\boldsymbol{\Sigma_{XY}}\boldsymbol{\Sigma_{YY}^{-1}}\boldsymbol{\Sigma_{YX}}-\lambda^2\boldsymbol{\Sigma_{XX}}\right)\boldsymbol{\alpha}=0\\
+  \left(\boldsymbol{\Sigma_{YX}}\boldsymbol{\Sigma_{XX}^{-1}}\boldsymbol{\Sigma_{XY}}-\lambda^2\boldsymbol{\Sigma_{YY}}\right)\boldsymbol{\beta}=0\\
+\end{matrix}\right.\]</span></p>
 <p>记</p>
-<p>$$M_1&#x3D;\boldsymbol{\Sigma_{XX}^{-1}}\boldsymbol{\Sigma_{XY}}\boldsymbol{\Sigma_{YY}^{-1}}\boldsymbol{\Sigma_{YX}},M_{2}&#x3D;\boldsymbol{\Sigma_{YY}^{-1}}\boldsymbol{\Sigma_{YX}}\boldsymbol{\Sigma_{XX}^{-1}}\boldsymbol{\Sigma_{XY}}$$</p>
+<p><span
+class="math display">\[M_1=\boldsymbol{\Sigma_{XX}^{-1}}\boldsymbol{\Sigma_{XY}}\boldsymbol{\Sigma_{YY}^{-1}}\boldsymbol{\Sigma_{YX}},M_{2}=\boldsymbol{\Sigma_{YY}^{-1}}\boldsymbol{\Sigma_{YX}}\boldsymbol{\Sigma_{XX}^{-1}}\boldsymbol{\Sigma_{XY}}\]</span></p>
 <p>得</p>
-<p>$$M_1\boldsymbol{\alpha}&#x3D;\lambda^2\boldsymbol{\alpha},M_2\boldsymbol{\beta}&#x3D;\lambda^2\boldsymbol{\beta}$$</p>
-<p>记 $\small T&#x3D;\boldsymbol{\Sigma_{XX}^{-1&#x2F;2}\Sigma_{XY}\Sigma_{YY}^{-1&#x2F;2}}$ 有 $\small M_1&#x3D;TT^{\prime},M_2&#x3D;T^{\prime}T$ 故 $M_1,M_2$ 有相同的非零特征值</p>
-<p>说明 $\lambda^2$ 既是 $M_1$ 又是 $M_2$ 的特征根， $\boldsymbol{\alpha},\boldsymbol{\beta}$ 是对应的特征向量， $M_1,M_2$ 的特征根非负数且在区间 $[0,1]$ 上，非零特征根的数量不妨设为 $\small r&#x3D;\min(p,q)$。</p>
-<p>设特征根排列为 $\small \lambda_1^2 \ge \lambda_2^2 \ge \dotsb \ge \lambda_r^2$ 其余特征根为 $0$ ,称 $\lambda_1,\lambda_2,\dotsb,\lambda_r$ 为典型相关系数。对应从 $\small M_1\boldsymbol{\alpha}&#x3D;\lambda^2\boldsymbol{\alpha}$ 解出的特征向量为 $\small \boldsymbol{\alpha}_1,\dotsb,\boldsymbol{\alpha}_r$ ；从 $\small  M_2\boldsymbol{\beta}&#x3D;\lambda^2\boldsymbol{\beta}$ 解出的特征向量为 $\small \boldsymbol{\beta}_1,\dotsb,\boldsymbol{\beta}_r$ 。可得到 $\boldsymbol{u_k}$ $\boldsymbol{v_k}$ 的线性组合：<br>$$\boldsymbol{u}_k&#x3D;\boldsymbol{\alpha}_k\boldsymbol{X},\boldsymbol{v}_k&#x3D;\boldsymbol{\beta}_k\boldsymbol{X},k&#x3D;1,2,\dotsb,r,$$</p>
+<p><span
+class="math display">\[M_1\boldsymbol{\alpha}=\lambda^2\boldsymbol{\alpha},M_2\boldsymbol{\beta}=\lambda^2\boldsymbol{\beta}\]</span></p>
+<p>记 <span class="math inline">\(\small
+T=\boldsymbol{\Sigma_{XX}^{-1/2}\Sigma_{XY}\Sigma_{YY}^{-1/2}}\)</span>
+有 <span class="math inline">\(\small
+M_1=TT^{\prime},M_2=T^{\prime}T\)</span> 故 <span
+class="math inline">\(M_1,M_2\)</span> 有相同的非零特征值</p>
+<p>说明 <span class="math inline">\(\lambda^2\)</span> 既是 <span
+class="math inline">\(M_1\)</span> 又是 <span
+class="math inline">\(M_2\)</span> 的特征根， <span
+class="math inline">\(\boldsymbol{\alpha},\boldsymbol{\beta}\)</span>
+是对应的特征向量， <span class="math inline">\(M_1,M_2\)</span>
+的特征根非负数且在区间 <span class="math inline">\([0,1]\)</span>
+上，非零特征根的数量不妨设为 <span class="math inline">\(\small
+r=\min(p,q)\)</span>。</p>
+<p>设特征根排列为 <span class="math inline">\(\small \lambda_1^2 \ge
+\lambda_2^2 \ge \dotsb \ge \lambda_r^2\)</span> 其余特征根为 <span
+class="math inline">\(0\)</span> ,称 <span
+class="math inline">\(\lambda_1,\lambda_2,\dotsb,\lambda_r\)</span>
+为典型相关系数。对应从 <span class="math inline">\(\small
+M_1\boldsymbol{\alpha}=\lambda^2\boldsymbol{\alpha}\)</span>
+解出的特征向量为 <span class="math inline">\(\small
+\boldsymbol{\alpha}_1,\dotsb,\boldsymbol{\alpha}_r\)</span> ；从 <span
+class="math inline">\(\small
+M_2\boldsymbol{\beta}=\lambda^2\boldsymbol{\beta}\)</span>
+解出的特征向量为 <span class="math inline">\(\small
+\boldsymbol{\beta}_1,\dotsb,\boldsymbol{\beta}_r\)</span> 。可得到 <span
+class="math inline">\(\boldsymbol{u_k}\)</span> <span
+class="math inline">\(\boldsymbol{v_k}\)</span> 的线性组合： <span
+class="math display">\[\boldsymbol{u}_k=\boldsymbol{\alpha}_k\boldsymbol{X},\boldsymbol{v}_k=\boldsymbol{\beta}_k\boldsymbol{X},k=1,2,\dotsb,r,\]</span></p>
 <p>满足：</p>
-<p>$$Cov(\boldsymbol{u}_i,\boldsymbol{u}_j)&#x3D;0,Cov(\boldsymbol{v}_i,\boldsymbol{v}_j)&#x3D;0,{\small i \ne j}\<br>Cov(\boldsymbol{u}_i,\boldsymbol{v}_i)&#x3D;\lambda_i,Cov(\boldsymbol{u}_i,\boldsymbol{v}_j)&#x3D;0,\small i \ne j<br>$$</p>
-<h1 id="样本典型相关分析步骤"><a href="#样本典型相关分析步骤" class="headerlink" title="样本典型相关分析步骤"></a>样本典型相关分析步骤</h1><p>设样本总体 $\small \boldsymbol{Z}&#x3D;[\boldsymbol{x}_1,\dotsb,\boldsymbol{x}_p,\boldsymbol{y}_1,\dotsb,\boldsymbol{y}_q]^T$</p>
+<p><span
+class="math display">\[Cov(\boldsymbol{u}_i,\boldsymbol{u}_j)=0,Cov(\boldsymbol{v}_i,\boldsymbol{v}_j)=0,{\small
+i \ne j}\\
+Cov(\boldsymbol{u}_i,\boldsymbol{v}_i)=\lambda_i,Cov(\boldsymbol{u}_i,\boldsymbol{v}_j)=0,\small
+i \ne j
+\]</span></p>
+<h1 id="样本典型相关分析步骤">样本典型相关分析步骤</h1>
+<p>设样本总体 <span class="math inline">\(\small
+\boldsymbol{Z}=[\boldsymbol{x}_1,\dotsb,\boldsymbol{x}_p,\boldsymbol{y}_1,\dotsb,\boldsymbol{y}_q]^T\)</span></p>
 <p>对于每次观测</p>
-<p>$$Z_{(t)}&#x3D;\left[\begin{array}{l}<br>\boldsymbol{X}<em>{(t)} \<br>\boldsymbol{Y}</em>{(t)}<br>\end{array}\right]_{(p+q) \times 1} \quad(t&#x3D;1,2, \cdots, n)$$</p>
+<p><span class="math display">\[Z_{(t)}=\left[\begin{array}{l}
+\boldsymbol{X}_{(t)} \\
+\boldsymbol{Y}_{(t)}
+\end{array}\right]_{(p+q) \times 1} \quad(t=1,2, \cdots, n)\]</span></p>
 <p>于是样本数据矩阵为</p>
-<p>$$\left(\left[\begin{array}{cccc:cccc}<br>x_{11} &amp; x_{21} &amp; \cdots &amp; x_{p1} &amp; y_{11} &amp; y_{21} &amp; \cdots &amp; y_{q1} \<br>x_{12} &amp; x_{22} &amp; \cdots &amp; x_{p2} &amp; y_{12} &amp; y_{22} &amp; \cdots &amp; y_{q2} \<br>\vdots &amp; \vdots &amp; &amp; \vdots &amp; \vdots &amp; \vdots &amp; &amp; \vdots \<br>x_{1n} &amp; x_{2n} &amp; \cdots &amp; x_{pn} &amp; y_{1n} &amp; y_{2n} &amp; \cdots &amp; y_{qn}<br>\end{array}\right]^T\right)_{(p+q)\times n}$$</p>
+<p><span class="math display">\[\left(\left[\begin{array}{cccc:cccc}
+x_{11} &amp; x_{21} &amp; \cdots &amp; x_{p1} &amp; y_{11} &amp; y_{21}
+&amp; \cdots &amp; y_{q1} \\
+x_{12} &amp; x_{22} &amp; \cdots &amp; x_{p2} &amp; y_{12} &amp; y_{22}
+&amp; \cdots &amp; y_{q2} \\
+\vdots &amp; \vdots &amp; &amp; \vdots &amp; \vdots &amp; \vdots &amp;
+&amp; \vdots \\
+x_{1n} &amp; x_{2n} &amp; \cdots &amp; x_{pn} &amp; y_{1n} &amp; y_{2n}
+&amp; \cdots &amp; y_{qn}
+\end{array}\right]^T\right)_{(p+q)\times n}\]</span></p>
 <p>协方差矩阵的无偏估计为</p>
-<p>$$\boldsymbol{\hat{\Sigma}}&#x3D;\frac{1}{n-1} \sum_{t&#x3D;1}^{n}\left(Z_{(t)}-\bar{Z}\right)\left(Z_{(t)}-\bar{Z}\right)^{\prime}$$</p>
-<p>其中 $\bar{Z}&#x3D;\frac{1}{n}\sum\limits_{i&#x3D;1}^nX_{(i)}$</p>
-<p>记样本矩阵 $\boldsymbol{Z}<em>{\tiny (p+q)\times n}$ 每个元素减去每一行的平均值得到矩阵 $\boldsymbol{Z}^*</em>{\tiny (p+q)\times n}$</p>
-<p>$$\boldsymbol{\hat{\Sigma}}&#x3D;\frac{1}{n-1}\boldsymbol{Z}^*(\boldsymbol{Z}^*)^T&#x3D;\left[\begin{array}{c:c}<br>\boldsymbol{\hat{\Sigma}<em>{\tiny XX}} &amp; \boldsymbol{\hat{\Sigma}</em>{\tiny XY}} \<br>\hdashline \boldsymbol{\hat{\Sigma}<em>{\tiny Y X}} &amp; \boldsymbol{\hat{\Sigma}</em>{\tiny YY}}<br>\end{array}\right]\begin{array}{c}<br>\tiny p\<br>\tiny q<br>\end{array}$$</p>
-<h2 id="样本典型相关变量和系数"><a href="#样本典型相关变量和系数" class="headerlink" title="样本典型相关变量和系数"></a>样本典型相关变量和系数</h2><p>以下用 $\boldsymbol{\hat{\Sigma}}$ 替换 $\boldsymbol{\Sigma}$ 。</p>
+<p><span class="math display">\[\boldsymbol{\hat{\Sigma}}=\frac{1}{n-1}
+\sum_{t=1}^{n}\left(Z_{(t)}-\bar{Z}\right)\left(Z_{(t)}-\bar{Z}\right)^{\prime}\]</span></p>
+<p>其中 <span
+class="math inline">\(\bar{Z}=\frac{1}{n}\sum\limits_{i=1}^nX_{(i)}\)</span></p>
+<p>记样本矩阵 <span class="math inline">\(\boldsymbol{Z}_{\tiny
+(p+q)\times n}\)</span> 每个元素减去每一行的平均值得到矩阵 <span
+class="math inline">\(\boldsymbol{Z}^*_{\tiny (p+q)\times
+n}\)</span></p>
+<p><span
+class="math display">\[\boldsymbol{\hat{\Sigma}}=\frac{1}{n-1}\boldsymbol{Z}^*(\boldsymbol{Z}^*)^T=\left[\begin{array}{c:c}
+\boldsymbol{\hat{\Sigma}_{\tiny XX}} &amp;
+\boldsymbol{\hat{\Sigma}_{\tiny XY}} \\
+\hdashline \boldsymbol{\hat{\Sigma}_{\tiny Y X}} &amp;
+\boldsymbol{\hat{\Sigma}_{\tiny YY}}
+\end{array}\right]\begin{array}{c}
+\tiny p\\
+\tiny q
+\end{array}\]</span></p>
+<h2 id="样本典型相关变量和系数">样本典型相关变量和系数</h2>
+<p>以下用 <span class="math inline">\(\boldsymbol{\hat{\Sigma}}\)</span>
+替换 <span class="math inline">\(\boldsymbol{\Sigma}\)</span> 。</p>
 <ul>
 <li><strong>方法一</strong></li>
 </ul>
 <p>记</p>
-<p>$$M_1&#x3D;\boldsymbol{\Sigma_{XX}^{-1}}\boldsymbol{\Sigma_{XY}}\boldsymbol{\Sigma_{YY}^{-1}}\boldsymbol{\Sigma_{YX}}\M_{2}&#x3D;\boldsymbol{\Sigma_{YY}^{-1}}\boldsymbol{\Sigma_{YX}}\boldsymbol{\Sigma_{XX}^{-1}}\boldsymbol{\Sigma_{XY}}$$</p>
-<p>分别求出 $M_1,M_2$ 的特征值与特征向量，特征值从大到小排列为 $\lambda_1^2,\lambda_2^2,\dots$ ，其对应的特征向量分别为 $(\boldsymbol{\alpha}_1,\boldsymbol{\alpha}_2,\dots)$ 和 $(\boldsymbol{\beta}_1,\boldsymbol{\beta}_2,\dots)$</p>
+<p><span
+class="math display">\[M_1=\boldsymbol{\Sigma_{XX}^{-1}}\boldsymbol{\Sigma_{XY}}\boldsymbol{\Sigma_{YY}^{-1}}\boldsymbol{\Sigma_{YX}}\\M_{2}=\boldsymbol{\Sigma_{YY}^{-1}}\boldsymbol{\Sigma_{YX}}\boldsymbol{\Sigma_{XX}^{-1}}\boldsymbol{\Sigma_{XY}}\]</span></p>
+<p>分别求出 <span class="math inline">\(M_1,M_2\)</span>
+的特征值与特征向量，特征值从大到小排列为 <span
+class="math inline">\(\lambda_1^2,\lambda_2^2,\dots\)</span>
+，其对应的特征向量分别为 <span
+class="math inline">\((\boldsymbol{\alpha}_1,\boldsymbol{\alpha}_2,\dots)\)</span>
+和 <span
+class="math inline">\((\boldsymbol{\beta}_1,\boldsymbol{\beta}_2,\dots)\)</span></p>
 <ul>
 <li><strong>方法二</strong></li>
 </ul>
-<p>令 $T&#x3D;\boldsymbol{\Sigma_{XX}^{-1&#x2F;2}\Sigma_{XY}\Sigma_{YY}^{-1&#x2F;2}}$ ，计算 $TT^{\prime}$ 的特征值从大到小排列为 $\lambda_1^2,\lambda_2^2,\dots$ ，记 $\boldsymbol{l}_k$ 为 $TT^{\prime}$ 的特征根 $\lambda_k^2$ 对应的单位正交特征向量。令</p>
-<p>$$\left{\begin{array}{c}<br>  \boldsymbol{\alpha}<em>k&#x3D;\boldsymbol{\Sigma</em>{\tiny XX}^{-1&#x2F;2}}\boldsymbol{l}<em>k,\<br>  \boldsymbol{\beta}<em>k&#x3D;\lambda_k^{-1}\boldsymbol{\Sigma</em>{\tiny YY}^{-1}\Sigma</em>{YX}}\boldsymbol{\alpha}_k,<br>\end{array}\right.$$</p>
-<h2 id="原始变量与典型变量相关性"><a href="#原始变量与典型变量相关性" class="headerlink" title="原始变量与典型变量相关性"></a>原始变量与典型变量相关性</h2><h3 id="原始变量与典型变量的相关系数"><a href="#原始变量与典型变量的相关系数" class="headerlink" title="原始变量与典型变量的相关系数"></a>原始变量与典型变量的相关系数</h3><p>$$<br>\begin{array}{l}<br>\rho\left(\boldsymbol{x}<em>{i}, \boldsymbol{u}</em>{j}\right)&#x3D;\sum\limits_{k&#x3D;1}^{p} \alpha_{k j} \operatorname{Cov}\left(\boldsymbol{x}<em>{i}, \boldsymbol{x}</em>{k}\right) &#x2F; \sqrt{D\left(\boldsymbol{x}<em>{i}\right)}, j&#x3D;1, \cdots, s</em>{\circ} \<br>\rho\left(\boldsymbol{x}<em>{i}, \boldsymbol{v}</em>{j}\right)&#x3D;\sum\limits_{k&#x3D;1}^{q} \beta_{k j} \operatorname{Cov}\left(\boldsymbol{x}<em>{i}, \boldsymbol{y}</em>{k}\right) &#x2F; \sqrt{D\left(\boldsymbol{x}<em>{i}\right)}, j&#x3D;1, \cdots, s, \<br>\rho\left(\boldsymbol{y}</em>{i}, \boldsymbol{u}<em>{j}\right)&#x3D;\sum\limits</em>{k&#x3D;1}^{p} \alpha_{k j} \operatorname{Cov}\left(\boldsymbol{y}<em>{i}, \boldsymbol{x}</em>{k}\right) &#x2F; \sqrt{D\left(\boldsymbol{y}<em>{i}\right)}, j&#x3D;1, \cdots, s, \<br>\rho\left(\boldsymbol{y}</em>{i}, \boldsymbol{v}<em>{j}\right)&#x3D;\sum\limits</em>{k&#x3D;1}^{q} \beta_{k j} \operatorname{Cov}\left(\boldsymbol{y}<em>{i}, \boldsymbol{y}</em>{k}\right) &#x2F; \sqrt{D\left(\boldsymbol{y}<em>{i}\right)}, j&#x3D;1, \cdots, s</em>{\circ}<br>\end{array}<br>$$</p>
-<h3 id="各组原始变量被典型变量所解释的方差比例"><a href="#各组原始变量被典型变量所解释的方差比例" class="headerlink" title="各组原始变量被典型变量所解释的方差比例"></a>各组原始变量被典型变量所解释的方差比例</h3><p>原始变量 $\boldsymbol{X}$ 被 $\boldsymbol{u}<em>i$ 解释的方差比例<br>$$m</em>{u_i}&#x3D;\sum_{k&#x3D;1}^p\rho^2(\boldsymbol{u}_i,\boldsymbol{x}_k)&#x2F;p$$</p>
-<p>原始变量 $\boldsymbol{X}$ 被 $\boldsymbol{v}<em>i$ 解释的方差比例<br>$$m</em>{v_i}&#x3D;\sum_{k&#x3D;1}^p\rho^2(\boldsymbol{v}_i,\boldsymbol{x}_k)&#x2F;p$$</p>
-<p>原始变量 $\boldsymbol{Y}$ 被 $\boldsymbol{u}<em>i$ 解释的方差比例<br>$$n</em>{u_i}&#x3D;\sum_{k&#x3D;1}^q\rho^2(\boldsymbol{u}_i,\boldsymbol{y}_k)&#x2F;q$$</p>
-<p>原始变量 $\boldsymbol{Y}$ 被 $\boldsymbol{v}<em>i$ 解释的方差比例<br>$$n</em>{v_i}&#x3D;\sum_{k&#x3D;1}^q\rho^2(\boldsymbol{v}_i,\boldsymbol{y}_k)&#x2F;q$$</p>
-<h2 id="样本典型相关系数显著性检验"><a href="#样本典型相关系数显著性检验" class="headerlink" title="样本典型相关系数显著性检验"></a>样本典型相关系数显著性检验</h2><h3 id="整体检验"><a href="#整体检验" class="headerlink" title="整体检验"></a>整体检验</h3><p>$$H_0:\lambda_1&#x3D;\lambda_2&#x3D;\dotsb&#x3D;\lambda_r&#x3D;0\quad ,{\tiny即\boldsymbol{\Sigma_{\tiny XY}}&#x3D;0}\<br>H_1:\lambda_i \small(i&#x3D;1,2,\dots,r)中至少有一个非0,{\tiny即\boldsymbol{\Sigma_{\tiny XY}}\ne0}$$</p>
-<p>记<br>$$\Lambda_{1}&#x3D;\frac{|\hat{\boldsymbol{\Sigma}}|}{\left|\hat{\boldsymbol{\Sigma}}<em>{X X}\right|\left|\hat{\boldsymbol{\Sigma}}</em>{Y Y}\right|}\$$<br>得<br>$$\Lambda_{1}&#x3D;\left|\boldsymbol{I}<em>{p}-\hat{\boldsymbol{\Sigma}}</em>{X X}^{-1} \hat{\boldsymbol{\Sigma}}<em>{X Y} \hat{\boldsymbol{\Sigma}}</em>{Y Y}^{-1} \hat{\boldsymbol{\Sigma}}<em>{Y X}\right|&#x3D;\prod</em>{i&#x3D;1}^{r}\left(1-\lambda_{i}^{2}\right)$$</p>
-<p>验证统计量<br>$$Q_{1}&#x3D;-\left[n-1-\frac{1}{2}(p+q+1)\right] \ln \Lambda_{1}$$</p>
-<p>近似服从自由度为 $pq$ 的 $\chi ^2$ 分布，在给定的显著性水平 $\alpha$ 下，若 $Q_1\ge \chi_\alpha^2(pq)$ ，则拒绝原假设，认为至少第一对典型变量之间相关性显著。</p>
-<h3 id="部分总体为零的检验"><a href="#部分总体为零的检验" class="headerlink" title="部分总体为零的检验"></a>部分总体为零的检验</h3><p>$$H_0:\lambda_2&#x3D;\lambda_3&#x3D;\dotsb&#x3D;\lambda_r&#x3D;0,\<br>H_1:\lambda_2,\lambda_3,\dotsb,\lambda_r\small至少有一个非零$$</p>
-<p>若原假设 $H_0$ 被接受，则认为只有第一对典型变量有用；若 $H_0$ 被拒绝，则第二对典型变量也有用，并进行进一步假设</p>
-<p>$$H_0:\lambda_3&#x3D;\lambda_4&#x3D;\dotsb&#x3D;\lambda_r&#x3D;0,\<br>H_1:\lambda_3,\lambda_4,\dotsb,\lambda_r\small至少有一个非零$$</p>
-<p>如此进行下去直到对于某个 $k$<br>$$H_0:\lambda_k&#x3D;\lambda_{k+1}&#x3D;\dotsb&#x3D;\lambda_r&#x3D;0,\<br>H_1:\lambda_k,\lambda_{k+1},\dotsb,\lambda_r\small至少有一个非零$$</p>
+<p>令 <span
+class="math inline">\(T=\boldsymbol{\Sigma_{XX}^{-1/2}\Sigma_{XY}\Sigma_{YY}^{-1/2}}\)</span>
+，计算 <span class="math inline">\(TT^{\prime}\)</span>
+的特征值从大到小排列为 <span
+class="math inline">\(\lambda_1^2,\lambda_2^2,\dots\)</span> ，记 <span
+class="math inline">\(\boldsymbol{l}_k\)</span> 为 <span
+class="math inline">\(TT^{\prime}\)</span> 的特征根 <span
+class="math inline">\(\lambda_k^2\)</span>
+对应的单位正交特征向量。令</p>
+<p><span class="math display">\[\left\{\begin{array}{c}
+  \boldsymbol{\alpha}_k=\boldsymbol{\Sigma_{\tiny
+XX}^{-1/2}}\boldsymbol{l}_k,\\
+  \boldsymbol{\beta}_k=\lambda_k^{-1}\boldsymbol{\Sigma_{\tiny
+YY}^{-1}\Sigma_{YX}}\boldsymbol{\alpha}_k,
+\end{array}\right.\]</span></p>
+<h2 id="原始变量与典型变量相关性">原始变量与典型变量相关性</h2>
+<h3 id="原始变量与典型变量的相关系数">原始变量与典型变量的相关系数</h3>
+<p><span class="math display">\[
+\begin{array}{l}
+\rho\left(\boldsymbol{x}_{i},
+\boldsymbol{u}_{j}\right)=\sum\limits_{k=1}^{p} \alpha_{k j}
+\operatorname{Cov}\left(\boldsymbol{x}_{i}, \boldsymbol{x}_{k}\right) /
+\sqrt{D\left(\boldsymbol{x}_{i}\right)}, j=1, \cdots, s_{\circ} \\
+\rho\left(\boldsymbol{x}_{i},
+\boldsymbol{v}_{j}\right)=\sum\limits_{k=1}^{q} \beta_{k j}
+\operatorname{Cov}\left(\boldsymbol{x}_{i}, \boldsymbol{y}_{k}\right) /
+\sqrt{D\left(\boldsymbol{x}_{i}\right)}, j=1, \cdots, s, \\
+\rho\left(\boldsymbol{y}_{i},
+\boldsymbol{u}_{j}\right)=\sum\limits_{k=1}^{p} \alpha_{k j}
+\operatorname{Cov}\left(\boldsymbol{y}_{i}, \boldsymbol{x}_{k}\right) /
+\sqrt{D\left(\boldsymbol{y}_{i}\right)}, j=1, \cdots, s, \\
+\rho\left(\boldsymbol{y}_{i},
+\boldsymbol{v}_{j}\right)=\sum\limits_{k=1}^{q} \beta_{k j}
+\operatorname{Cov}\left(\boldsymbol{y}_{i}, \boldsymbol{y}_{k}\right) /
+\sqrt{D\left(\boldsymbol{y}_{i}\right)}, j=1, \cdots, s_{\circ}
+\end{array}
+\]</span></p>
+<h3
+id="各组原始变量被典型变量所解释的方差比例">各组原始变量被典型变量所解释的方差比例</h3>
+<p>原始变量 <span class="math inline">\(\boldsymbol{X}\)</span> 被 <span
+class="math inline">\(\boldsymbol{u}_i\)</span> 解释的方差比例 <span
+class="math display">\[m_{u_i}=\sum_{k=1}^p\rho^2(\boldsymbol{u}_i,\boldsymbol{x}_k)/p\]</span></p>
+<p>原始变量 <span class="math inline">\(\boldsymbol{X}\)</span> 被 <span
+class="math inline">\(\boldsymbol{v}_i\)</span> 解释的方差比例 <span
+class="math display">\[m_{v_i}=\sum_{k=1}^p\rho^2(\boldsymbol{v}_i,\boldsymbol{x}_k)/p\]</span></p>
+<p>原始变量 <span class="math inline">\(\boldsymbol{Y}\)</span> 被 <span
+class="math inline">\(\boldsymbol{u}_i\)</span> 解释的方差比例 <span
+class="math display">\[n_{u_i}=\sum_{k=1}^q\rho^2(\boldsymbol{u}_i,\boldsymbol{y}_k)/q\]</span></p>
+<p>原始变量 <span class="math inline">\(\boldsymbol{Y}\)</span> 被 <span
+class="math inline">\(\boldsymbol{v}_i\)</span> 解释的方差比例 <span
+class="math display">\[n_{v_i}=\sum_{k=1}^q\rho^2(\boldsymbol{v}_i,\boldsymbol{y}_k)/q\]</span></p>
+<h2 id="样本典型相关系数显著性检验">样本典型相关系数显著性检验</h2>
+<h3 id="整体检验">整体检验</h3>
+<p><span
+class="math display">\[H_0:\lambda_1=\lambda_2=\dotsb=\lambda_r=0\quad
+,{\tiny即\boldsymbol{\Sigma_{\tiny XY}}=0}\\
+H_1:\lambda_i
+\small(i=1,2,\dots,r)中至少有一个非0,{\tiny即\boldsymbol{\Sigma_{\tiny
+XY}}\ne0}\]</span></p>
+<p>记 <span
+class="math display">\[\Lambda_{1}=\frac{|\hat{\boldsymbol{\Sigma}}|}{\left|\hat{\boldsymbol{\Sigma}}_{X
+X}\right|\left|\hat{\boldsymbol{\Sigma}}_{Y Y}\right|}\\\]</span> 得
+<span
+class="math display">\[\Lambda_{1}=\left|\boldsymbol{I}_{p}-\hat{\boldsymbol{\Sigma}}_{X
+X}^{-1} \hat{\boldsymbol{\Sigma}}_{X Y} \hat{\boldsymbol{\Sigma}}_{Y
+Y}^{-1} \hat{\boldsymbol{\Sigma}}_{Y
+X}\right|=\prod_{i=1}^{r}\left(1-\lambda_{i}^{2}\right)\]</span></p>
+<p>验证统计量 <span
+class="math display">\[Q_{1}=-\left[n-1-\frac{1}{2}(p+q+1)\right] \ln
+\Lambda_{1}\]</span></p>
+<p>近似服从自由度为 <span class="math inline">\(pq\)</span> 的 <span
+class="math inline">\(\chi ^2\)</span> 分布，在给定的显著性水平 <span
+class="math inline">\(\alpha\)</span> 下，若 <span
+class="math inline">\(Q_1\ge \chi_\alpha^2(pq)\)</span>
+，则拒绝原假设，认为至少第一对典型变量之间相关性显著。</p>
+<h3 id="部分总体为零的检验">部分总体为零的检验</h3>
+<p><span
+class="math display">\[H_0:\lambda_2=\lambda_3=\dotsb=\lambda_r=0,\\
+H_1:\lambda_2,\lambda_3,\dotsb,\lambda_r\small至少有一个非零\]</span></p>
+<p>若原假设 <span class="math inline">\(H_0\)</span>
+被接受，则认为只有第一对典型变量有用；若 <span
+class="math inline">\(H_0\)</span>
+被拒绝，则第二对典型变量也有用，并进行进一步假设</p>
+<p><span
+class="math display">\[H_0:\lambda_3=\lambda_4=\dotsb=\lambda_r=0,\\
+H_1:\lambda_3,\lambda_4,\dotsb,\lambda_r\small至少有一个非零\]</span></p>
+<p>如此进行下去直到对于某个 <span class="math inline">\(k\)</span><br />
+<span
+class="math display">\[H_0:\lambda_k=\lambda_{k+1}=\dotsb=\lambda_r=0,\\
+H_1:\lambda_k,\lambda_{k+1},\dotsb,\lambda_r\small至少有一个非零\]</span></p>
 <p>记</p>
-<p>$$\Lambda_{k}&#x3D;\prod_{i&#x3D;k}^{r}\left(1-\lambda_{i}^{2}\right)$$<br>在原假设为真的情况下<br>$$Q_k&#x3D;-\left[n-k-\frac{1}{2}(p+q+1)\right] \ln \Lambda_{k}$$<br>近似服从自由度为 $(p-k+1)(p-k+1)$ 的 $\chi ^2$ 分布。在显著性水平 $\alpha$ 下若 $Q_k\ge \chi_\alpha^2\left[(p-k+1)(p-k+1)\right]$ ，则拒绝原假设，则至少认为第 $k$ 对典型变量之间相关性显著。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第268页.
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/372774724">https://zhuanlan.zhihu.com/p/372774724</a>
-<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>高惠璇. 应用多元统计分析[M]. 第2版. 第354页.
-<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+<p><span
+class="math display">\[\Lambda_{k}=\prod_{i=k}^{r}\left(1-\lambda_{i}^{2}\right)\]</span>
+在原假设为真的情况下 <span
+class="math display">\[Q_k=-\left[n-k-\frac{1}{2}(p+q+1)\right] \ln
+\Lambda_{k}\]</span> 近似服从自由度为 <span
+class="math inline">\((p-k+1)(p-k+1)\)</span> 的 <span
+class="math inline">\(\chi ^2\)</span> 分布。在显著性水平 <span
+class="math inline">\(\alpha\)</span> 下若 <span
+class="math inline">\(Q_k\ge
+\chi_\alpha^2\left[(p-k+1)(p-k+1)\right]\)</span>
+，则拒绝原假设，则至少认为第 <span class="math inline">\(k\)</span>
+对典型变量之间相关性显著。</p>
+<h1 id="参考">参考</h1>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>司守奎 孙兆亮.
+数学建模算法与运用[M]. 第2版. 第268页.
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2"
+class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/372774724"
+class="uri">https://zhuanlan.zhihu.com/p/372774724</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3" class="footnote-text"><span>高惠璇. 应用多元统计分析[M].
+第2版. 第354页.
+<a href="#fnref:3" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
             </div>
             <hr>
             <div>
@@ -535,8 +815,43 @@
   
 
   
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
   
 
 
