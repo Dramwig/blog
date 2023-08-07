@@ -1,333 +1,4 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png">
-  <link rel="icon" href="/img/logo/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="一个神秘的人">
-  <meta name="author" content="epochxi">
-  <meta name="keywords" content="dramwig">
-  <meta name="description" content="实验内容 实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。 R0-R3:    寄存器 控制信号 RA1 RA0 Wr Rd 操作     R0 0 0 0 1 写入   R0 0 0 1 0">
-<meta property="og:type" content="article">
-<meta property="og:title" content="计算机组成原理实验 - 实验五：CPU寄存器组的设计">
-<meta property="og:url" content="http://example.com/2023/05/10/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%20-%20%E5%AE%9E%E9%AA%8C%E4%BA%94%EF%BC%9ACPU%E5%AF%84%E5%AD%98%E5%99%A8%E7%BB%84%E7%9A%84%E8%AE%BE%E8%AE%A1/index.html">
-<meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="实验内容 实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。 R0-R3:    寄存器 控制信号 RA1 RA0 Wr Rd 操作     R0 0 0 0 1 写入   R0 0 0 1 0">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic2.imgdb.cn/item/645afa090d2dde577701fd6c.png">
-<meta property="og:image" content="https://pic2.imgdb.cn/item/645afa090d2dde577701fcfd.png">
-<meta property="article:published_time" content="2023-05-10T01:24:00.000Z">
-<meta property="article:modified_time" content="2023-05-10T02:03:02.470Z">
-<meta property="article:author" content="epochxi">
-<meta property="article:tag" content="计算机组成原理实验">
-<meta property="article:tag" content="verilog">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pic2.imgdb.cn/item/645afa090d2dde577701fd6c.png">
-  
-  <title>计算机组成原理实验 - 实验五：CPU寄存器组的设计 &lt; 风倾客栈 ✧</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hovor","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"fa7203cd147458a2bb6b7c7fc7bd03a3","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-
-<body>
-  <header style="height: 70vh;">
-    <!--菜单栏-->
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <i class="iconfont icon-home-fill"></i> <!-- homeͼ�� -->
-      <strong>风倾客栈</strong> <!-- �������� -->
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content --> <!-- �˵��б� -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                
-                关于
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                
-                朋友
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
- 
-    <!--视差滚动-->
-    <div class="banner" id="banner" parallax=true   
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <!--副标题 (打字机)-->
-            <span class="h2" id="subtitle" title="计算机组成原理实验 - 实验五：CPU寄存器组的设计">
-              <!--typing打字机-->
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-05-10 09:24" pubdate>
-        2023年5月10日 上午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      4.8k 字
-    </span>
-  
-
-  
-
-  
-  
-    
-      <!-- 不蒜子统计文章PV -->
-      <span id="busuanzi_container_page_pv" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="busuanzi_value_page_pv"></span> 次
-      </span>
-    
-  
-</div>
-
-            
-          </div>
-
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">计算机组成原理实验 - 实验五：CPU寄存器组的设计</h1>
-            
-              <p class="note note-info">
-                
-                  请注意，文章中部分理解可能已被笔者废弃，本文最后更新于：3 个月前
-                
-              </p>
-            
-            <div class="markdown-body">
-              <h1 id="实验内容">实验内容</h1>
-<p>实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC,
-R0-R3&amp;PC
-操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。
-<strong>R0-R3</strong>:</p>
-<table>
-<thead>
-<tr class="header">
-<th>寄存器</th>
-<th style="text-align: center;">控制信号 RA1 RA0 Wr Rd</th>
-<th>操作</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>R0</td>
-<td style="text-align: center;">0 0 0 1</td>
-<td>写入</td>
-</tr>
-<tr class="even">
-<td>R0</td>
-<td style="text-align: center;">0 0 1 0</td>
-<td>读出</td>
-</tr>
-<tr class="odd">
-<td>R1</td>
-<td style="text-align: center;">0 1 0 1</td>
-<td>写入</td>
-</tr>
-<tr class="even">
-<td>R1</td>
-<td style="text-align: center;">0 1 1 0</td>
-<td>读出</td>
-</tr>
-<tr class="odd">
-<td>R2</td>
-<td style="text-align: center;">1 0 0 1</td>
-<td>写入</td>
-</tr>
-<tr class="even">
-<td>R2</td>
-<td style="text-align: center;">1 0 1 0</td>
-<td>读出</td>
-</tr>
-<tr class="odd">
-<td>R3</td>
-<td style="text-align: center;">1 1 0 1</td>
-<td>写入</td>
-</tr>
-<tr class="even">
-<td>R3</td>
-<td style="text-align: center;">11 1 0</td>
-<td>读出</td>
-</tr>
-</tbody>
-</table>
-<p>RA控制R0~R3的选择，Wr和Rd控制输入和输出。</p>
-<p><strong>PC</strong>：</p>
-<table>
-<thead>
-<tr class="header">
-<th>寄存器</th>
-<th style="text-align: center;">控制信号 M1 M0</th>
-<th>操作</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>PC</td>
-<td style="text-align: center;">0 0</td>
-<td>置数</td>
-</tr>
-<tr class="even">
-<td>PC</td>
-<td style="text-align: center;">0 1</td>
-<td>加一计数</td>
-</tr>
-<tr class="odd">
-<td>PC</td>
-<td style="text-align: center;">1 0</td>
-<td>减一计数</td>
-</tr>
-<tr class="even">
-<td>PC</td>
-<td style="text-align: center;">1 1</td>
-<td>保持</td>
-</tr>
-</tbody>
-</table>
-<p>reset为低电平有效的PC清零信号。</p>
-<h1 id="实验代码">实验代码</h1>
-<h2 id="顶层设计-exp5">顶层设计 exp5</h2>
-<div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> exp5(
+<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png"><link rel="icon" href="/img/logo/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><meta name="theme-color" content="#2f4154"><meta name="description" content="一个神秘的人"><meta name="author" content="epochxi"><meta name="keywords" content="dramwig"><meta name="description" content="实验内容 实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。 R0-R3:    寄存器 控制信号 RA1 RA0 Wr Rd 操作     R0 0 0 0 1 写入   R0 0 0 1 0"><meta property="og:type" content="article"><meta property="og:title" content="计算机组成原理实验 - 实验五：CPU寄存器组的设计"><meta property="og:url" content="http://example.com/2023/05/10/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%20-%20%E5%AE%9E%E9%AA%8C%E4%BA%94%EF%BC%9ACPU%E5%AF%84%E5%AD%98%E5%99%A8%E7%BB%84%E7%9A%84%E8%AE%BE%E8%AE%A1/index.html"><meta property="og:site_name" content="风倾客栈 ✧"><meta property="og:description" content="实验内容 实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。 R0-R3:    寄存器 控制信号 RA1 RA0 Wr Rd 操作     R0 0 0 0 1 写入   R0 0 0 1 0"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://pic2.imgdb.cn/item/645afa090d2dde577701fd6c.png"><meta property="og:image" content="https://pic2.imgdb.cn/item/645afa090d2dde577701fcfd.png"><meta property="article:published_time" content="2023-05-10T01:24:00.000Z"><meta property="article:modified_time" content="2023-05-10T02:03:02.470Z"><meta property="article:author" content="epochxi"><meta property="article:tag" content="计算机组成原理实验"><meta property="article:tag" content="verilog"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://pic2.imgdb.cn/item/645afa090d2dde577701fd6c.png"><title>计算机组成原理实验 - 实验五：CPU寄存器组的设计 &lt; 风倾客栈 ✧</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css"><link rel="stylesheet" href="/lib/hint/hint.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css"><link rel="stylesheet" href="/css/main.css"><script id="fluid-configs">var Fluid=window.Fluid||{},CONFIG={hostname:"example.com",root:"/",version:"1.8.12",typing:{enable:!0,typeSpeed:100,cursorChar:"_",loop:!1},anchorjs:{enable:!1,element:"h1,h2,h3,h4,h5,h6",placement:"right",visible:"hovor",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},copy_btn:!1,image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:1},lazyload:{enable:!0,loading_img:"/img/loading.gif",onlypost:!1,offset_factor:2},web_analytics:{enable:!0,baidu:"fa7203cd147458a2bb6b7c7fc7bd03a3",google:null,gtag:null,tencent:{sid:null,cid:null},woyaola:null,cnzz:null,leancloud:{app_id:null,app_key:null,server_url:null,path:"window.location.pathname"}},search_path:"/local-search.xml"}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><header style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><i class="iconfont icon-home-fill"></i><strong>风倾客栈</strong></a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/categories/">分类</a></li><li class="nav-item"><a class="nav-link" href="/about/">关于</a></li><li class="nav-item"><a class="nav-link" href="/links/">朋友</a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">&nbsp;<i class="iconfont icon-search"></i>&nbsp;</a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a></li></ul></div></div></nav><div class="banner" id="banner" parallax="true" style="background:url(/img/default.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="page-header text-center fade-in-up"><span class="h2" id="subtitle" title="计算机组成原理实验 - 实验五：CPU寄存器组的设计"></span><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2023-05-10 09:24" pubdate>2023年5月10日 上午</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 4.8k 字 </span><span id="busuanzi_container_page_pv" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span> 次</span></div></div><div class="scroll-down-bar"><i class="iconfont icon-arrowdown"></i></div></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div class="py-5" id="board"><article class="post-content mx-auto"><h1 style="display:none">计算机组成原理实验 - 实验五：CPU寄存器组的设计</h1><div class="markdown-body"><h1 id="实验内容">实验内容</h1><p>实验要求:用VDH语言设计CPU寄存器组,其包括4个8位通用寄存器(R0~R3)和一个8位专用寄存器PC, R0-R3&amp;PC 操作方式见下表格，之后要将PC和R0-R3(其中一个)输出并用4个数码管显示。 <strong>R0-R3</strong>:</p><table><thead><tr class="header"><th>寄存器</th><th style="text-align:center">控制信号 RA1 RA0 Wr Rd</th><th>操作</th></tr></thead><tbody><tr class="odd"><td>R0</td><td style="text-align:center">0 0 0 1</td><td>写入</td></tr><tr class="even"><td>R0</td><td style="text-align:center">0 0 1 0</td><td>读出</td></tr><tr class="odd"><td>R1</td><td style="text-align:center">0 1 0 1</td><td>写入</td></tr><tr class="even"><td>R1</td><td style="text-align:center">0 1 1 0</td><td>读出</td></tr><tr class="odd"><td>R2</td><td style="text-align:center">1 0 0 1</td><td>写入</td></tr><tr class="even"><td>R2</td><td style="text-align:center">1 0 1 0</td><td>读出</td></tr><tr class="odd"><td>R3</td><td style="text-align:center">1 1 0 1</td><td>写入</td></tr><tr class="even"><td>R3</td><td style="text-align:center">11 1 0</td><td>读出</td></tr></tbody></table><p>RA控制R0~R3的选择，Wr和Rd控制输入和输出。</p><p><strong>PC</strong>：</p><table><thead><tr class="header"><th>寄存器</th><th style="text-align:center">控制信号 M1 M0</th><th>操作</th></tr></thead><tbody><tr class="odd"><td>PC</td><td style="text-align:center">0 0</td><td>置数</td></tr><tr class="even"><td>PC</td><td style="text-align:center">0 1</td><td>加一计数</td></tr><tr class="odd"><td>PC</td><td style="text-align:center">1 0</td><td>减一计数</td></tr><tr class="even"><td>PC</td><td style="text-align:center">1 1</td><td>保持</td></tr></tbody></table><p>reset为低电平有效的PC清零信号。</p><h1 id="实验代码">实验代码</h1><h2 id="顶层设计-exp5">顶层设计 exp5</h2><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> exp5(
 	<span class="hljs-keyword">input</span> clk,
 	<span class="hljs-keyword">input</span> [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] KEY_C,
 	<span class="hljs-keyword">input</span> clr, <span class="hljs-comment">//K[0]</span>
@@ -351,10 +22,7 @@ CPU_register_group(M,RA,key_out[<span class="hljs-number">7</span>:<span class="
 segment_displays( clk,&#123;key_out,PC,res&#125;,seg,sel);
 
 
-<span class="hljs-keyword">endmodule</span></code></pre></div>
-<h2 id="cpu寄存器-cpu_register_group">CPU寄存器 CPU_register_group</h2>
-<p>注：l用于分频，clk_alt是分频时钟信号。仿真时设置clk_alt&lt;=l[0]，实验时clk_alt&lt;=l[9]，l[9]可能还是太快了，可以设置的更高。</p>
-<div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> CPU_register_group(
+<span class="hljs-keyword">endmodule</span></code></pre></div><h2 id="cpu寄存器-cpu_register_group">CPU寄存器 CPU_register_group</h2><p>注：l用于分频，clk_alt是分频时钟信号。仿真时设置clk_alt&lt;=l[0]，实验时clk_alt&lt;=l[9]，l[9]可能还是太快了，可以设置的更高。</p><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> CPU_register_group(
 	<span class="hljs-keyword">input</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] M,RA,
 	<span class="hljs-keyword">input</span> [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] D,
 	<span class="hljs-keyword">input</span> wr,rd,reset,
@@ -419,10 +87,7 @@ segment_displays( clk,&#123;key_out,PC,res&#125;,seg,sel);
 
 <span class="hljs-keyword">end</span>
 
-<span class="hljs-keyword">endmodule</span></code></pre></div>
-<h2 id="矩阵键盘-keymodule">矩阵键盘 keymodule</h2>
-<p>注：COUNT_MAX用于防抖，当其小于10左右会出现抬起抖动读取，建议在实验时设置为100或1000；在仿真时设置为1。</p>
-<div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> keymodule(
+<span class="hljs-keyword">endmodule</span></code></pre></div><h2 id="矩阵键盘-keymodule">矩阵键盘 keymodule</h2><p>注：COUNT_MAX用于防抖，当其小于10左右会出现抬起抖动读取，建议在实验时设置为100或1000；在仿真时设置为1。</p><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> keymodule(
 	<span class="hljs-keyword">input</span> clk,
 	<span class="hljs-keyword">input</span> [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] KEY_C,
 	<span class="hljs-keyword">input</span> clr,
@@ -498,9 +163,7 @@ segment_displays( clk,&#123;key_out,PC,res&#125;,seg,sel);
 	<span class="hljs-keyword">end</span> <span class="hljs-comment">//end if(clr) else</span>
 	
 <span class="hljs-keyword">end</span> <span class="hljs-comment">//end always</span>
-<span class="hljs-keyword">endmodule</span></code></pre></div>
-<h2 id="数码管输出-segment_displays">数码管输出 segment_displays</h2>
-<div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> segment_displays(
+<span class="hljs-keyword">endmodule</span></code></pre></div><h2 id="数码管输出-segment_displays">数码管输出 segment_displays</h2><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> segment_displays(
 	<span class="hljs-keyword">input</span> clk,
 	<span class="hljs-keyword">input</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] N,
 	<span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span> [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] seg,
@@ -546,449 +209,4 @@ segment_displays( clk,&#123;key_out,PC,res&#125;,seg,sel);
 	<span class="hljs-keyword">endcase</span>
 <span class="hljs-keyword">end</span>
 	
-<span class="hljs-keyword">endmodule</span></code></pre></div>
-<h1 id="仿真波形">仿真波形</h1>
-<figure>
-<img src="https://pic2.imgdb.cn/item/645afa090d2dde577701fd6c.png" srcset="/img/loading.gif" lazyload
-alt="仿真波形" />
-<figcaption aria-hidden="true">仿真波形</figcaption>
-</figure>
-<h1 id="引脚配置">引脚配置</h1>
-<table>
-<thead>
-<tr class="header">
-<th>信号</th>
-<th>输出/输出</th>
-<th>引脚</th>
-<th>信号</th>
-<th>输出/输出</th>
-<th>引脚</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>KEY_C[3]</td>
-<td>Input</td>
-<td>PIN_AE14</td>
-<td>rd</td>
-<td>Input</td>
-<td>PIN_AC5</td>
-</tr>
-<tr class="even">
-<td>KEY_C[2]</td>
-<td>Input</td>
-<td>PIN_AF13</td>
-<td>reset</td>
-<td>Input</td>
-<td>PIN_AA10</td>
-</tr>
-<tr class="odd">
-<td>KEY_C[1]</td>
-<td>Input</td>
-<td>PIN_AD12</td>
-<td>seg[7]</td>
-<td>Output</td>
-<td>PIN_M21</td>
-</tr>
-<tr class="even">
-<td>KEY_C[0]</td>
-<td>Input</td>
-<td>PIN_AD11</td>
-<td>seg[6]</td>
-<td>Output</td>
-<td>PIN_G12</td>
-</tr>
-<tr class="odd">
-<td>KEY_R[3]</td>
-<td>Output</td>
-<td>PIN_AE11</td>
-<td>seg[5]</td>
-<td>Output</td>
-<td>PIN_G14</td>
-</tr>
-<tr class="even">
-<td>KEY_R[2]</td>
-<td>Output</td>
-<td>PIN_AF11</td>
-<td>seg[4]</td>
-<td>Output</td>
-<td>PIN_G15</td>
-</tr>
-<tr class="odd">
-<td>KEY_R[1]</td>
-<td>Output</td>
-<td>PIN_AE12</td>
-<td>seg[3]</td>
-<td>Output</td>
-<td>PIN_G18</td>
-</tr>
-<tr class="even">
-<td>KEY_R[0]</td>
-<td>Output</td>
-<td>PIN_AE13</td>
-<td>seg[2]</td>
-<td>Output</td>
-<td>PIN_F18</td>
-</tr>
-<tr class="odd">
-<td>M[1]</td>
-<td>Input</td>
-<td>PIN_AF12</td>
-<td>seg[1]</td>
-<td>Output</td>
-<td>PIN_G17</td>
-</tr>
-<tr class="even">
-<td>M[0]</td>
-<td>Input</td>
-<td>PIN_AG12</td>
-<td>seg[0]</td>
-<td>Output</td>
-<td>PIN_G16</td>
-</tr>
-<tr class="odd">
-<td>RA[1]</td>
-<td>Input</td>
-<td>PIN_AA8</td>
-<td>sel[2]</td>
-<td>Output</td>
-<td>PIN_G9</td>
-</tr>
-<tr class="even">
-<td>RA[0]</td>
-<td>Input</td>
-<td>PIN_AB8</td>
-<td>sel[1]</td>
-<td>Output</td>
-<td>PIN_D22</td>
-</tr>
-<tr class="odd">
-<td>clk</td>
-<td>Input</td>
-<td>PIN_A14</td>
-<td>sel[0]</td>
-<td>Output</td>
-<td>PIN_C22</td>
-</tr>
-<tr class="even">
-<td>clr</td>
-<td>Input</td>
-<td>PIN_AH12</td>
-<td>wr</td>
-<td>Input</td>
-<td>PIN_AE4</td>
-</tr>
-</tbody>
-</table>
-<h1 id="解释说明">解释说明</h1>
-<figure>
-<img src="https://pic2.imgdb.cn/item/645afa090d2dde577701fcfd.png" srcset="/img/loading.gif" lazyload
-alt="RTL" />
-<figcaption aria-hidden="true">RTL</figcaption>
-</figure>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E7%9B%B8%E5%85%B3/">大学相关</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/">计算机组成原理实验</a>
-                    
-                      <a class="hover-with-bg" href="/tags/verilog/">verilog</a>
-                    
-                  </div>
-                
-              </div>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/05/17/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%20-%20%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9A%E8%BF%90%E7%AE%97%E5%99%A8%E8%AE%BE%E8%AE%A1/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">计算机组成原理实验 - 实验六：运算器设计</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/05/06/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%20-%20%E5%AE%9E%E9%AA%8C%E5%9B%9B%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E5%8D%95%E5%85%83%E8%AE%BE%E8%AE%A1/">
-                        <span class="hidden-mobile">计算机组成原理实验 - 实验四：算数逻辑单元设计</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <!-- begin 评论 -->
-  <div id="valine"></div> 
-  <!-- end 评论 -->
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
-       
-        var options = Object.assign(
-          {"appId":"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz","appKey":"IVwl94UT4wnOPWUgwn4AfOCE","path":"window.location.pathname","placeholder":"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…","avatar":"robohash","avatarForce":true,"meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","admin_email_hash":"393669798@qq.com","enableQQ":true,"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        ) 
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
-        })
-      });
-    });
- 
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
-    
-
-    <!--向顶部滚动的箭头-->
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    <!--自定义底部 HTML 内容-->
-    
-  </main>
-  
-  <!--页脚-->
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-    <!---->
-     &copy; <script type="text/javascript"> var myDate = new Date().getFullYear(); document.write(myDate) </script> <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
-  </div>
-  
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-  
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-
-      <!--通过API接口作为首页副标题的内容-->
-      
-        typing(title)  //tying打字机
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-  
-
-  
-    <!-- MathJax -->
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']]
-        },
-        loader: {
-          load: ['ui/lazy']
-        },
-        options: {
-          renderActions: {
-            findScript: [10, doc => {
-              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-                const display = !!node.type.match(/; *mode=display/);
-                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-                const text = document.createTextNode('');
-                node.parentNode.replaceChild(text, node);
-                math.start = { node: text, delim: '', n: 0 };
-                math.end = { node: text, delim: '', n: 0 };
-                doc.math.push(math);
-              });
-            }, '', false],
-            insertedScript: [200, () => {
-              document.querySelectorAll('mjx-container').forEach(node => {
-                let target = node.parentNode;
-                if (target.nodeName.toLowerCase() === 'li') {
-                  target.parentNode.classList.add('has-jax');
-                }
-              });
-            }, '', false]
-          }
-        }
-      };
-    </script>
-
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
-
-  
-
-
-
-
-
-
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-</body>
-</html>
+<span class="hljs-keyword">endmodule</span></code></pre></div><h1 id="仿真波形">仿真波形</h1><figure><img src="https://pic2.imgdb.cn/item/645afa090d2dde577701fd6c.png" srcset="/img/loading.gif" lazyload alt="仿真波形"><figcaption aria-hidden="true">仿真波形</figcaption></figure><h1 id="引脚配置">引脚配置</h1><table><thead><tr class="header"><th>信号</th><th>输出/输出</th><th>引脚</th><th>信号</th><th>输出/输出</th><th>引脚</th></tr></thead><tbody><tr class="odd"><td>KEY_C[3]</td><td>Input</td><td>PIN_AE14</td><td>rd</td><td>Input</td><td>PIN_AC5</td></tr><tr class="even"><td>KEY_C[2]</td><td>Input</td><td>PIN_AF13</td><td>reset</td><td>Input</td><td>PIN_AA10</td></tr><tr class="odd"><td>KEY_C[1]</td><td>Input</td><td>PIN_AD12</td><td>seg[7]</td><td>Output</td><td>PIN_M21</td></tr><tr class="even"><td>KEY_C[0]</td><td>Input</td><td>PIN_AD11</td><td>seg[6]</td><td>Output</td><td>PIN_G12</td></tr><tr class="odd"><td>KEY_R[3]</td><td>Output</td><td>PIN_AE11</td><td>seg[5]</td><td>Output</td><td>PIN_G14</td></tr><tr class="even"><td>KEY_R[2]</td><td>Output</td><td>PIN_AF11</td><td>seg[4]</td><td>Output</td><td>PIN_G15</td></tr><tr class="odd"><td>KEY_R[1]</td><td>Output</td><td>PIN_AE12</td><td>seg[3]</td><td>Output</td><td>PIN_G18</td></tr><tr class="even"><td>KEY_R[0]</td><td>Output</td><td>PIN_AE13</td><td>seg[2]</td><td>Output</td><td>PIN_F18</td></tr><tr class="odd"><td>M[1]</td><td>Input</td><td>PIN_AF12</td><td>seg[1]</td><td>Output</td><td>PIN_G17</td></tr><tr class="even"><td>M[0]</td><td>Input</td><td>PIN_AG12</td><td>seg[0]</td><td>Output</td><td>PIN_G16</td></tr><tr class="odd"><td>RA[1]</td><td>Input</td><td>PIN_AA8</td><td>sel[2]</td><td>Output</td><td>PIN_G9</td></tr><tr class="even"><td>RA[0]</td><td>Input</td><td>PIN_AB8</td><td>sel[1]</td><td>Output</td><td>PIN_D22</td></tr><tr class="odd"><td>clk</td><td>Input</td><td>PIN_A14</td><td>sel[0]</td><td>Output</td><td>PIN_C22</td></tr><tr class="even"><td>clr</td><td>Input</td><td>PIN_AH12</td><td>wr</td><td>Input</td><td>PIN_AE4</td></tr></tbody></table><h1 id="解释说明">解释说明</h1><figure><img src="https://pic2.imgdb.cn/item/645afa090d2dde577701fcfd.png" srcset="/img/loading.gif" lazyload alt="RTL"><figcaption aria-hidden="true">RTL</figcaption></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></div><hr><div><div class="post-metas mb-3"><div class="post-meta mr-3"><i class="iconfont icon-category"></i> <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E7%9B%B8%E5%85%B3/">大学相关</a></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/">计算机组成原理实验</a> <a class="hover-with-bg" href="/tags/verilog/">verilog</a></div></div><div class="post-prevnext"><article class="post-prev col-6"><a href="/2023/05/17/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%20-%20%E5%AE%9E%E9%AA%8C%E5%85%AD%EF%BC%9A%E8%BF%90%E7%AE%97%E5%99%A8%E8%AE%BE%E8%AE%A1/"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">计算机组成原理实验 - 实验六：运算器设计</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/2023/05/06/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%20-%20%E5%AE%9E%E9%AA%8C%E5%9B%9B%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E5%8D%95%E5%85%83%E8%AE%BE%E8%AE%A1/"><span class="hidden-mobile">计算机组成原理实验 - 实验四：算数逻辑单元设计</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article class="comments" id="comments" lazyload><div id="valine"></div><script type="text/javascript">Fluid.utils.loadComments("#valine",(function(){Fluid.utils.createScript("https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js",(function(){var e=Object.assign({appId:"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz",appKey:"IVwl94UT4wnOPWUgwn4AfOCE",path:"window.location.pathname",placeholder:"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…",avatar:"robohash",avatarForce:!0,meta:["nick","mail","link"],requiredFields:[],pageSize:10,lang:"zh-CN",highlight:!0,recordIP:!0,serverURLs:"",admin_email_hash:"393669798@qq.com",enableQQ:!0,emojiCDN:"//i0.hdslb.com/bfs/emote/",emojiMaps:{tv_doge:"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},{el:"#valine",path:window.location.pathname});new Valine(e),Fluid.utils.waitElementVisible("#valine .vcontent",()=>{Fluid.plugins.initFancyBox("#valine .vcontent img:not(.vemoji)")})}))}))</script><noscript>Please enable JavaScript to view the comments</noscript></article></article></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div class="toc-body" id="toc-body"></div></div></div></div></div><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer class="text-center mt-5 py-3"><div class="footer-content">&copy;<script type="text/javascript">var myDate=(new Date).getFullYear();document.write(myDate)</script><a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black">风倾</a> | 船动莲开</div></footer><script src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="/js/local-search.js"></script><script src="/js/img-lazyload.js"></script><script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js"></script><script>!function(t,i){(0,Fluid.plugins.typing)(i.getElementById("subtitle").title)}(window,document)</script><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},loader:{load:["ui/lazy"]},options:{renderActions:{findScript:[10,e=>{document.querySelectorAll('script[type^="math/tex"]').forEach(t=>{const a=!!t.type.match(/; *mode=display/),n=new e.options.MathItem(t.textContent,e.inputJax[0],a),o=document.createTextNode("");t.parentNode.replaceChild(o,t),n.start={node:o,delim:"",n:0},n.end={node:o,delim:"",n:0},e.math.push(n)})},"",!1],insertedScript:[200,()=>{document.querySelectorAll("mjx-container").forEach(e=>{let t=e.parentNode;"li"===t.nodeName.toLowerCase()&&t.parentNode.classList.add("has-jax")})},"",!1]}}}</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><script defer>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script src="/js/boot.js"></script></body></html>

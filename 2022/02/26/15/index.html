@@ -1,268 +1,4 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png">
-  <link rel="icon" href="/img/logo/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="一个神秘的人">
-  <meta name="author" content="epochxi">
-  <meta name="keywords" content="dramwig">
-  <meta name="description" content="又是一篇迟到许久的复盘，终于在回到学校的第一天补上了。 链接              2022—SWJTU寒假选拔赛第五场               题目列表   RANK  A - CodeForces 114E 很强的素数 × 题目大意： 　　　　给定区间[L,R]，求区间内满足条件的数的个数： 　　　　条件1）z是素数 　　　　条件2）z&#x3D;x2+y2 x">
-<meta property="og:type" content="article">
-<meta property="og:title" content="2022—SWJTU寒假选拔赛第五场复盘">
-<meta property="og:url" content="http://example.com/2022/02/26/15/index.html">
-<meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="又是一篇迟到许久的复盘，终于在回到学校的第一天补上了。 链接              2022—SWJTU寒假选拔赛第五场               题目列表   RANK  A - CodeForces 114E 很强的素数 × 题目大意： 　　　　给定区间[L,R]，求区间内满足条件的数的个数： 　　　　条件1）z是素数 　　　　条件2）z&#x3D;x2+y2 x">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic.imgdb.cn/item/621a02102ab3f51d915a71aa.png">
-<meta property="article:published_time" content="2022-02-26T10:26:00.000Z">
-<meta property="article:modified_time" content="2022-02-28T05:09:21.624Z">
-<meta property="article:author" content="epochxi">
-<meta property="article:tag" content="日志">
-<meta property="article:tag" content="C++">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pic.imgdb.cn/item/621a02102ab3f51d915a71aa.png">
-  
-  <title>2022—SWJTU寒假选拔赛第五场复盘 &lt; 风倾客栈 ✧</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hovor","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"fa7203cd147458a2bb6b7c7fc7bd03a3","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-
-<body>
-  <header style="height: 70vh;">
-    <!--菜单栏-->
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <i class="iconfont icon-home-fill"></i> <!-- homeͼ�� -->
-      <strong>风倾客栈</strong> <!-- �������� -->
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content --> <!-- �˵��б� -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                
-                关于
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                
-                朋友
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
- 
-    <!--视差滚动-->
-    <div class="banner" id="banner" parallax=true   
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <!--副标题 (打字机)-->
-            <span class="h2" id="subtitle" title="2022—SWJTU寒假选拔赛第五场复盘">
-              <!--typing打字机-->
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-26 18:26" pubdate>
-        2022年2月26日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      13k 字
-    </span>
-  
-
-  
-
-  
-  
-    
-      <!-- 不蒜子统计文章PV -->
-      <span id="busuanzi_container_page_pv" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="busuanzi_value_page_pv"></span> 次
-      </span>
-    
-  
-</div>
-
-            
-          </div>
-
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">2022—SWJTU寒假选拔赛第五场复盘</h1>
-            
-              <p class="note note-info">
-                
-                  请注意，文章中部分理解可能已被笔者废弃，本文最后更新于：1 年前
-                
-              </p>
-            
-            <div class="markdown-body">
-              <p>又是一篇迟到许久的复盘，终于在回到学校的第一天补上了。</p>
-<h1 id="链接">链接</h1>
-<div class="note note-info">
-            <p><atarget="_blank" rel="noopener" href="https://vjudge.net/contest/480842"><b>2022—SWJTU寒假选拔赛第五场</b></a></p>
-          </div>
-<center>
-<hr width=100px>
-</center>
-<h1 id="题目列表">题目列表</h1>
-<figure>
-<img src="https://pic.imgdb.cn/item/621a02102ab3f51d915a71aa.png" srcset="/img/loading.gif" lazyload
-alt="RANK" />
-<figcaption aria-hidden="true">RANK</figcaption>
-</figure>
-<h2 id="a---codeforces-114e-很强的素数">A - CodeForces 114E 很强的素数
-×</h2>
-<p><strong>题目大意：</strong></p>
-<p>　　　　给定区间[L,R]，求区间内满足条件的数的个数：</p>
-<p>　　　　条件1）z是素数</p>
-<p>　　　　条件2）z=x<sup>2+y</sup>2 x和y为任意的正整数</p>
-<p><strong>解题思路：</strong></p>
-<p>　　　　其实就是求满足费马定理的数的个数。</p>
-<p>　　　**费马定理：
-一个奇素数z可以表示成z=x<sup>2+y</sup>2的形式,当且仅当z可以表示成4*t+1的时候。（偶素数2=1<sup>2+1</sup>2）**</p>
-<p>　　　　LR的范围是1到3*10^8用普通的筛选法求素数表，时间空间都会超。使用两次筛选来求素数。</p>
-<p>　　　　3*10^8的平方根小于17500，用17500以内的素数可以筛出范围内的所有素数。在通过判断是否满足z=t%4+1来累加。</p>
-<p>　　　　又由于z的范围过大，但对于唯一确定的z来说，t也唯一确定，故可以用t作为数组下标即(z-1)/4。数组大小就会小4倍左右。</p>
-<p>　　　　具体细节看代码备注。</p>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png"><link rel="icon" href="/img/logo/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><meta name="theme-color" content="#2f4154"><meta name="description" content="一个神秘的人"><meta name="author" content="epochxi"><meta name="keywords" content="dramwig"><meta name="description" content="又是一篇迟到许久的复盘，终于在回到学校的第一天补上了。 链接              2022—SWJTU寒假选拔赛第五场               题目列表   RANK  A - CodeForces 114E 很强的素数 × 题目大意： 　　　　给定区间[L,R]，求区间内满足条件的数的个数： 　　　　条件1）z是素数 　　　　条件2）z&#x3D;x2+y2 x"><meta property="og:type" content="article"><meta property="og:title" content="2022—SWJTU寒假选拔赛第五场复盘"><meta property="og:url" content="http://example.com/2022/02/26/15/index.html"><meta property="og:site_name" content="风倾客栈 ✧"><meta property="og:description" content="又是一篇迟到许久的复盘，终于在回到学校的第一天补上了。 链接              2022—SWJTU寒假选拔赛第五场               题目列表   RANK  A - CodeForces 114E 很强的素数 × 题目大意： 　　　　给定区间[L,R]，求区间内满足条件的数的个数： 　　　　条件1）z是素数 　　　　条件2）z&#x3D;x2+y2 x"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://pic.imgdb.cn/item/621a02102ab3f51d915a71aa.png"><meta property="article:published_time" content="2022-02-26T10:26:00.000Z"><meta property="article:modified_time" content="2022-02-28T05:09:21.624Z"><meta property="article:author" content="epochxi"><meta property="article:tag" content="日志"><meta property="article:tag" content="C++"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://pic.imgdb.cn/item/621a02102ab3f51d915a71aa.png"><title>2022—SWJTU寒假选拔赛第五场复盘 &lt; 风倾客栈 ✧</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css"><link rel="stylesheet" href="/lib/hint/hint.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css"><link rel="stylesheet" href="/css/main.css"><script id="fluid-configs">var Fluid=window.Fluid||{},CONFIG={hostname:"example.com",root:"/",version:"1.8.12",typing:{enable:!0,typeSpeed:100,cursorChar:"_",loop:!1},anchorjs:{enable:!1,element:"h1,h2,h3,h4,h5,h6",placement:"right",visible:"hovor",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},copy_btn:!1,image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:1},lazyload:{enable:!0,loading_img:"/img/loading.gif",onlypost:!1,offset_factor:2},web_analytics:{enable:!0,baidu:"fa7203cd147458a2bb6b7c7fc7bd03a3",google:null,gtag:null,tencent:{sid:null,cid:null},woyaola:null,cnzz:null,leancloud:{app_id:null,app_key:null,server_url:null,path:"window.location.pathname"}},search_path:"/local-search.xml"}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><header style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><i class="iconfont icon-home-fill"></i><strong>风倾客栈</strong></a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/categories/">分类</a></li><li class="nav-item"><a class="nav-link" href="/about/">关于</a></li><li class="nav-item"><a class="nav-link" href="/links/">朋友</a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">&nbsp;<i class="iconfont icon-search"></i>&nbsp;</a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a></li></ul></div></div></nav><div class="banner" id="banner" parallax="true" style="background:url(/img/default.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="page-header text-center fade-in-up"><span class="h2" id="subtitle" title="2022—SWJTU寒假选拔赛第五场复盘"></span><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2022-02-26 18:26" pubdate>2022年2月26日 晚上</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 13k 字 </span><span id="busuanzi_container_page_pv" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span> 次</span></div></div><div class="scroll-down-bar"><i class="iconfont icon-arrowdown"></i></div></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div class="py-5" id="board"><article class="post-content mx-auto"><h1 style="display:none">2022—SWJTU寒假选拔赛第五场复盘</h1><div class="markdown-body"><p>又是一篇迟到许久的复盘，终于在回到学校的第一天补上了。</p><h1 id="链接">链接</h1><div class="note note-info"><p><a target="_blank" rel="noopener" href="https://vjudge.net/contest/480842"><b>2022—SWJTU寒假选拔赛第五场</b></a></p></div><center><hr width="100px"></center><h1 id="题目列表">题目列表</h1><figure><img src="https://pic.imgdb.cn/item/621a02102ab3f51d915a71aa.png" srcset="/img/loading.gif" lazyload alt="RANK"><figcaption aria-hidden="true">RANK</figcaption></figure><h2 id="a---codeforces-114e-很强的素数">A - CodeForces 114E 很强的素数 ×</h2><p><strong>题目大意：</strong></p><p>　　　　给定区间[L,R]，求区间内满足条件的数的个数：</p><p>　　　　条件1）z是素数</p><p>　　　　条件2）z=x<sup>2+y</sup>2 x和y为任意的正整数</p><p><strong>解题思路：</strong></p><p>　　　　其实就是求满足费马定理的数的个数。</p><p>　　　**费马定理： 一个奇素数z可以表示成z=x<sup>2+y</sup>2的形式,当且仅当z可以表示成4*t+1的时候。（偶素数2=1<sup>2+1</sup>2）**</p><p>　　　　LR的范围是1到3*10^8用普通的筛选法求素数表，时间空间都会超。使用两次筛选来求素数。</p><p>　　　　3*10^8的平方根小于17500，用17500以内的素数可以筛出范围内的所有素数。在通过判断是否满足z=t%4+1来累加。</p><p>　　　　又由于z的范围过大，但对于唯一确定的z来说，t也唯一确定，故可以用t作为数组下标即(z-1)/4。数组大小就会小4倍左右。</p><p>　　　　具体细节看代码备注。</p><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
@@ -317,16 +53,7 @@ bitset&lt;300000000/4+10&gt;result;
         R--;
     cout&lt;&lt;<span class="hljs-built_in">cnt</span>(L,R)+ok;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div>
-<h2 id="b---codeforces-514c-字符串">B - CodeForces 514C 字符串</h2>
-<p><strong>思路一：哈希表</strong></p>
-<p>字符串hash<br />
-因为只有3个字符<br />
-所以权值就为3^x;<br />
-找个大质数取模就好；<br />
-不够大就再大一点。。<br />
-然后对于每一位,尝试换成其他两个字母,看看存不存在</p>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+&#125;</code></pre></div><h2 id="b---codeforces-514c-字符串">B - CodeForces 514C 字符串</h2><p><strong>思路一：哈希表</strong></p><p>字符串hash<br>因为只有3个字符<br>所以权值就为3^x;<br>找个大质数取模就好；<br>不够大就再大一点。。<br>然后对于每一位,尝试换成其他两个字母,看看存不存在</p><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> lson l,m,rt&lt;&lt;1</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rson m+1,r,rt&lt;&lt;1|1</span>
@@ -404,14 +131,7 @@ set&lt;LL&gt; myset;
     &#125;
     <span class="hljs-comment">//printf(&quot;\n%.2lf sec \n&quot;, (double)clock() / CLOCKS_PER_SEC);</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div>
-<p><strong>思路二：字典树</strong></p>
-<p>考虑字典树。</p>
-<p>首先把n个单词插入字典树中。</p>
-<p>询问的时候用dfs，flag表示搜索到当前是否已经改变过一个字符。</p>
-<p>如果已经改变过那只能按照当前剩下的字符串一条路查询下去。</p>
-<p>否则可以按老字符或新字符进行查询。</p>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+&#125;</code></pre></div><p><strong>思路二：字典树</strong></p><p>考虑字典树。</p><p>首先把n个单词插入字典树中。</p><p>询问的时候用dfs，flag表示搜索到当前是否已经改变过一个字符。</p><p>如果已经改变过那只能按照当前剩下的字符串一条路查询下去。</p><p>否则可以按老字符或新字符进行查询。</p><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
  
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
  
@@ -484,15 +204,7 @@ bitset &lt;N&gt; cnt;
     &#125;
  
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div>
-<h2 id="c---codeforces-243a-或">C - CodeForces 243A 或 ×</h2>
-<p>我着实没想到真的用枚举</p>
-<p><strong>思路一: 枚举+剪枝</strong></p>
-<p>枚举左端点,在枚举 <code>&gt;i</code> 的每一个 <code>j</code>
-。求两个值，以i为起点的和，与以 <code>i+1</code>
-为起点的或和。如果两个值是一样的说明没必要 <code>a[i]</code>
-没必要在此区间存在</p>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+&#125;</code></pre></div><h2 id="c---codeforces-243a-或">C - CodeForces 243A 或 ×</h2><p>我着实没想到真的用枚举</p><p><strong>思路一: 枚举+剪枝</strong></p><p>枚举左端点,在枚举 <code>&gt;i</code> 的每一个 <code>j</code> 。求两个值，以i为起点的和，与以 <code>i+1</code> 为起点的或和。如果两个值是一样的说明没必要 <code>a[i]</code> 没必要在此区间存在</p><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 <span class="hljs-keyword">int</span> a[<span class="hljs-number">200005</span>];
 set&lt;<span class="hljs-keyword">int</span>&gt;s;
@@ -513,20 +225,7 @@ set&lt;<span class="hljs-keyword">int</span>&gt;s;
     &#125;
     cout &lt;&lt; s.<span class="hljs-built_in">size</span>() &lt;&lt; endl;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div>
-<p><strong>思路二:st表+贪心.</strong></p>
-<p>st表可以求出每个区间的或和.我们枚举点,再枚举每一位 <code>j</code>
-,对于点的第 <code>j</code> 位为 <code>i</code>
-的点,我们直接记录当前最右的第 <code>j</code> 位为 1 的位置是
-<code>i</code> , <code>last[j]=i</code>.如果 <code>i</code> 的第
-<code>j</code> 位不为 1 ,那么求 <code>(last[j],i)</code> 之间的或和,用
-<code>set</code> 记录.这样是不会漏解的.</p>
-<p>相当于把每个点作为右端点 <code>r</code>，找到能使得
-<code>(l,r)</code> 间的亦或与 <code>r</code> 的第 <code>j</code>
-位相异的最靠右的左端点，即 <code>last[j]</code>。本质是每次的记录
-<code>ask(last[j],i)</code> 都是能改变(相异于) <code>a[i]</code>
-的。</p>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+&#125;</code></pre></div><p><strong>思路二:st表+贪心.</strong></p><p>st表可以求出每个区间的或和.我们枚举点,再枚举每一位 <code>j</code> ,对于点的第 <code>j</code> 位为 <code>i</code> 的点,我们直接记录当前最右的第 <code>j</code> 位为 1 的位置是 <code>i</code> , <code>last[j]=i</code>.如果 <code>i</code> 的第 <code>j</code> 位不为 1 ,那么求 <code>(last[j],i)</code> 之间的或和,用 <code>set</code> 记录.这样是不会漏解的.</p><p>相当于把每个点作为右端点 <code>r</code>，找到能使得 <code>(l,r)</code> 间的亦或与 <code>r</code> 的第 <code>j</code> 位相异的最靠右的左端点，即 <code>last[j]</code>。本质是每次的记录 <code>ask(last[j],i)</code> 都是能改变(相异于) <code>a[i]</code> 的。</p><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span>
@@ -566,19 +265,7 @@ set&lt;<span class="hljs-keyword">int</span>&gt; s;
 	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,s.<span class="hljs-built_in">size</span>());
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
-</code></pre></div>
-<h2 id="d---codeforces-864c-校车">D - CodeForces 864C 校车 √</h2>
-<p>其实是用省略重复情况的模拟，经常遇到，但是我经常被卡很久，因为各种细节考虑情况。</p>
-<p><strong>题面：</strong> 一辆校车的路线是在坐标轴上的 0 点到 a
-点之间往返，每消耗一升汽油能行驶一个单位长度。油箱容量为 b ，在 0 点和 a
-点之间有一个加油站，位置是 f 点，在加油站，校车能把油加满。校车从 0
-点出发，出发时油是满的。我们称校车从 0 点到 a 点或者从 a 点到 0
-点为一趟，请问要进行 k 趟，校车最少要加几次油。</p>
-<p>将 0 - a 的 k 次往返的路径展开为一条轴，则题目变成小车从 0 驶向 k·a
-的单项行驶，再考虑加油站与油箱最大容积的问题。每次 while
-循环为当前点加满油驶向下一个最远的加油站的计算，若移动后位置不变，则为无法驶向下一个加油站，若情况满足直接输出“无解”；还要考虑是否为起步，是否已经为第
-k 趟，能否直接到达终点。</p>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+</code></pre></div><h2 id="d---codeforces-864c-校车">D - CodeForces 864C 校车 √</h2><p>其实是用省略重复情况的模拟，经常遇到，但是我经常被卡很久，因为各种细节考虑情况。</p><p><strong>题面：</strong> 一辆校车的路线是在坐标轴上的 0 点到 a 点之间往返，每消耗一升汽油能行驶一个单位长度。油箱容量为 b ，在 0 点和 a 点之间有一个加油站，位置是 f 点，在加油站，校车能把油加满。校车从 0 点出发，出发时油是满的。我们称校车从 0 点到 a 点或者从 a 点到 0 点为一趟，请问要进行 k 趟，校车最少要加几次油。</p><p>将 0 - a 的 k 次往返的路径展开为一条轴，则题目变成小车从 0 驶向 k·a 的单项行驶，再考虑加油站与油箱最大容积的问题。每次 while 循环为当前点加满油驶向下一个最远的加油站的计算，若移动后位置不变，则为无法驶向下一个加油站，若情况满足直接输出“无解”；还要考虑是否为起步，是否已经为第 k 趟，能否直接到达终点。</p><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>&#123;
@@ -655,11 +342,7 @@ k 趟，能否直接到达终点。</p>
 <span class="hljs-comment">/*</span>
 <span class="hljs-comment"></span>
 <span class="hljs-comment"></span>
-<span class="hljs-comment">*/</span></code></pre></div>
-<h2 id="e---codeforces-753a-送给你的新年礼物">E - CodeForces 753A
-送给你的新年礼物 √</h2>
-<p>签到题，构造红包数最多的情况</p>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-comment">*/</span></code></pre></div><h2 id="e---codeforces-753a-送给你的新年礼物">E - CodeForces 753A 送给你的新年礼物 √</h2><p>签到题，构造红包数最多的情况</p><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>&#123;
@@ -692,18 +375,7 @@ k 趟，能否直接到达终点。</p>
 <span class="hljs-comment">/*</span>
 <span class="hljs-comment"></span>
 <span class="hljs-comment"></span>
-<span class="hljs-comment">*/</span></code></pre></div>
-<h2 id="f---codeforces-923a-升级">F - CodeForces 923A 升级 ×</h2>
-<p>一个数论</p>
-<p>【题解】</p>
-<blockquote>
-<p>考虑怎么得到数字x2=N,假设是质数p的倍数
-那么x1肯定在x2-p+1~x2这个范围内才行 因为p的倍数要刚好大于等于x1,
-所以x1肯定是在这两个倍数之间才行 结果已经很显然了 肯定让p的值越大越好。
-这样得到的x1才可能越小。 枚举x1在x2-p+1~x2之间。
-用同样的方式得到x0就好。</p>
-</blockquote>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-comment">*/</span></code></pre></div><h2 id="f---codeforces-923a-升级">F - CodeForces 923A 升级 ×</h2><p>一个数论</p><p>【题解】</p><blockquote><p>考虑怎么得到数字x2=N,假设是质数p的倍数 那么x1肯定在x2-p+1~x2这个范围内才行 因为p的倍数要刚好大于等于x1, 所以x1肯定是在这两个倍数之间才行 结果已经很显然了 肯定让p的值越大越好。 这样得到的x1才可能越小。 枚举x1在x2-p+1~x2之间。 用同样的方式得到x0就好。</p></blockquote><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1e5</span>;
 <span class="hljs-keyword">int</span> n;
@@ -736,8 +408,7 @@ k 趟，能否直接到达终点。</p>
     cout&lt;&lt;ans&lt;&lt;endl;
  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
-</code></pre></div>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
+</code></pre></div><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
  
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn = <span class="hljs-number">1e6</span>+<span class="hljs-number">10</span>;
@@ -758,13 +429,7 @@ k 趟，能否直接到达终点。</p>
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=f[n]; i&lt;=n; i++) ans = <span class="hljs-built_in">Min</span>(ans,f[i]);
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div>
-<h2 id="g---codeforces-961d-贯穿">G - CodeForces 961D 贯穿 √</h2>
-<p><strong>题目复述：</strong>
-对于二维坐标系上的给出的一系列点，是否能用两条直线涵盖所有点。（n&lt;100000）</p>
-<p><strong>解题思路：</strong>
-我们假设题目成立，在条件成立的情况下，尝试找到这两条直线。对于这一系列点的任意三个点，三个点表示的三条直线中一定有一条为两条直线中的一条。即，对次三条线各做一次尝试，若被第一条线排除后的点能被另一条线贯穿则题目成立。三条线都不满足则题目不成立。</p>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+&#125;</code></pre></div><h2 id="g---codeforces-961d-贯穿">G - CodeForces 961D 贯穿 √</h2><p><strong>题目复述：</strong> 对于二维坐标系上的给出的一系列点，是否能用两条直线涵盖所有点。（n&lt;100000）</p><p><strong>解题思路：</strong> 我们假设题目成立，在条件成立的情况下，尝试找到这两条直线。对于这一系列点的任意三个点，三个点表示的三条直线中一定有一条为两条直线中的一条。即，对次三条线各做一次尝试，若被第一条线排除后的点能被另一条线贯穿则题目成立。三条线都不满足则题目不成立。</p><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span>
@@ -818,17 +483,7 @@ ll n;
         <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;YES\n&quot;</span>);
     &#125;<span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NO\n&quot;</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div>
-<h2 id="h---codeforces-733d-球球人">H - CodeForces 733D 球球人 √</h2>
-<p><strong>题目复述：</strong> 对于 n
-个长方体，输出能使得单个或两个长方体拼合的新长方体的最短棱长最长的情况。（n&lt;100000）</p>
-<p>我最开始以为可以无数个长方体拼在一起，就放了，后来才发现只能两个或一个。</p>
-<p><strong>解题思路：</strong></p>
-<p>考虑单个：直接一边读入，一边记录长方体的最短棱长的最长值和长方体对应编号</p>
-<p>考虑两个：两个长方体能拼合当且仅当两个长方体各有两条棱长对应相等，而为了使得拼合后超越单个的情况，拼合的两个长方体一定是补短，即拼合的面是最长棱和第二长棱构成的面。考虑时间复杂度不能两两匹配尝试，考虑将最长棱和第二长棱相同的长方体聚集在一起，考虑以第二棱长、第一棱长、第三棱长的优先级排序
-O(nlogn)
-，再线性的扫描一遍，因为能拼合的一定相邻，最大的情况只可能为第二棱长、第一棱长相同的，且第三棱长在此基础上最长的两个，一定相邻。</p>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+&#125;</code></pre></div><h2 id="h---codeforces-733d-球球人">H - CodeForces 733D 球球人 √</h2><p><strong>题目复述：</strong> 对于 n 个长方体，输出能使得单个或两个长方体拼合的新长方体的最短棱长最长的情况。（n&lt;100000）</p><p>我最开始以为可以无数个长方体拼在一起，就放了，后来才发现只能两个或一个。</p><p><strong>解题思路：</strong></p><p>考虑单个：直接一边读入，一边记录长方体的最短棱长的最长值和长方体对应编号</p><p>考虑两个：两个长方体能拼合当且仅当两个长方体各有两条棱长对应相等，而为了使得拼合后超越单个的情况，拼合的两个长方体一定是补短，即拼合的面是最长棱和第二长棱构成的面。考虑时间复杂度不能两两匹配尝试，考虑将最长棱和第二长棱相同的长方体聚集在一起，考虑以第二棱长、第一棱长、第三棱长的优先级排序 O(nlogn) ，再线性的扫描一遍，因为能拼合的一定相邻，最大的情况只可能为第二棱长、第一棱长相同的，且第三棱长在此基础上最长的两个，一定相邻。</p><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>&#123;
@@ -892,21 +547,7 @@ O(nlogn)
 <span class="hljs-comment">/*</span>
 <span class="hljs-comment"></span>
 <span class="hljs-comment"></span>
-<span class="hljs-comment">*/</span></code></pre></div>
-<h2 id="i---codeforces-687c-经验书">I - CodeForces 687C 经验书</h2>
-<p>题意：
-给你n个数，然后让这些数相加组合，然后在这些组合的数里可以再相加组合搞出给定
-k，输出这些组合的数。</p>
-<p>思路： DP。 <code>dp[i][j]</code>
-代表数值为i时值为j能否被构成那么如果<code>dp[i][j]</code>能被构成那么
-<code>dp[i+x][j]</code> <code>dp[i+x][j+x]</code>
-都能被构成，这样状态转移方程就出来了</p>
-<p>在枚举到第i个coin的时，<code>dp[i][j]</code>,i
-肯定能被<code>a[i]</code>组合，<br />
-然后再枚举<code>&lt;=a[i]</code>的部分，<code>dp[i][j]</code>的具体意义就是在coin值是i的时候，能用j去组合。<br />
-为了防止重复利用coin，从j枚举到<code>a[i]</code>;<br />
-最后<code>dp[k][h]==1</code>的把h塞到容器里去，最后输出。</p>
-<div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cmath&gt;</span></span>
+<span class="hljs-comment">*/</span></code></pre></div><h2 id="i---codeforces-687c-经验书">I - CodeForces 687C 经验书</h2><p>题意： 给你n个数，然后让这些数相加组合，然后在这些组合的数里可以再相加组合搞出给定 k，输出这些组合的数。</p><p>思路： DP。 <code>dp[i][j]</code> 代表数值为i时值为j能否被构成那么如果<code>dp[i][j]</code>能被构成那么 <code>dp[i+x][j]</code> <code>dp[i+x][j+x]</code> 都能被构成，这样状态转移方程就出来了</p><p>在枚举到第i个coin的时，<code>dp[i][j]</code>,i 肯定能被<code>a[i]</code>组合，<br>然后再枚举<code>&lt;=a[i]</code>的部分，<code>dp[i][j]</code>的具体意义就是在coin值是i的时候，能用j去组合。<br>为了防止重复利用coin，从j枚举到<code>a[i]</code>;<br>最后<code>dp[k][h]==1</code>的把h塞到容器里去，最后输出。</p><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cmath&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstring&gt;</span></span>
@@ -934,310 +575,4 @@ k，输出这些组合的数。</p>
 		cout &lt;&lt; num[i] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;
 	cout &lt;&lt; endl;
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; 
-&#125;</code></pre></div>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/ACM/">ACM</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%97%A5%E5%BF%97/">日志</a>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/27/17%E5%A4%A9%E6%A2%AF%E8%B5%9B/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2022—GPLT程序设计天梯赛复盘</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/02/21/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%85%B8%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/">
-                        <span class="hidden-mobile">典型相关分析</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <!-- begin 评论 -->
-  <div id="valine"></div> 
-  <!-- end 评论 -->
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
-       
-        var options = Object.assign(
-          {"appId":"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz","appKey":"IVwl94UT4wnOPWUgwn4AfOCE","path":"window.location.pathname","placeholder":"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…","avatar":"robohash","avatarForce":true,"meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","admin_email_hash":"393669798@qq.com","enableQQ":true,"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        ) 
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
-        })
-      });
-    });
- 
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
-        </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
-    
-
-    <!--向顶部滚动的箭头-->
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    <!--自定义底部 HTML 内容-->
-    
-  </main>
-  
-  <!--页脚-->
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-    <!---->
-     &copy; <script type="text/javascript"> var myDate = new Date().getFullYear(); document.write(myDate) </script> <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
-  </div>
-  
-
-  
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-  
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-
-      <!--通过API接口作为首页副标题的内容-->
-      
-        typing(title)  //tying打字机
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-  
-
-  
-    <!-- MathJax -->
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']]
-        },
-        loader: {
-          load: ['ui/lazy']
-        },
-        options: {
-          renderActions: {
-            findScript: [10, doc => {
-              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-                const display = !!node.type.match(/; *mode=display/);
-                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-                const text = document.createTextNode('');
-                node.parentNode.replaceChild(text, node);
-                math.start = { node: text, delim: '', n: 0 };
-                math.end = { node: text, delim: '', n: 0 };
-                doc.math.push(math);
-              });
-            }, '', false],
-            insertedScript: [200, () => {
-              document.querySelectorAll('mjx-container').forEach(node => {
-                let target = node.parentNode;
-                if (target.nodeName.toLowerCase() === 'li') {
-                  target.parentNode.classList.add('has-jax');
-                }
-              });
-            }, '', false]
-          }
-        }
-      };
-    </script>
-
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
-
-  
-
-
-
-
-
-
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
-</body>
-</html>
+&#125;</code></pre></div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></div><hr><div><div class="post-metas mb-3"><div class="post-meta mr-3"><i class="iconfont icon-category"></i> <a class="hover-with-bg" href="/categories/ACM/">ACM</a></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/%E6%97%A5%E5%BF%97/">日志</a> <a class="hover-with-bg" href="/tags/C/">C++</a></div></div><div class="post-prevnext"><article class="post-prev col-6"><a href="/2022/04/27/17%E5%A4%A9%E6%A2%AF%E8%B5%9B/"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">2022—GPLT程序设计天梯赛复盘</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/2022/02/21/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%85%B8%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/"><span class="hidden-mobile">典型相关分析</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article class="comments" id="comments" lazyload><div id="valine"></div><script type="text/javascript">Fluid.utils.loadComments("#valine",(function(){Fluid.utils.createScript("https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js",(function(){var e=Object.assign({appId:"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz",appKey:"IVwl94UT4wnOPWUgwn4AfOCE",path:"window.location.pathname",placeholder:"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…",avatar:"robohash",avatarForce:!0,meta:["nick","mail","link"],requiredFields:[],pageSize:10,lang:"zh-CN",highlight:!0,recordIP:!0,serverURLs:"",admin_email_hash:"393669798@qq.com",enableQQ:!0,emojiCDN:"//i0.hdslb.com/bfs/emote/",emojiMaps:{tv_doge:"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},{el:"#valine",path:window.location.pathname});new Valine(e),Fluid.utils.waitElementVisible("#valine .vcontent",()=>{Fluid.plugins.initFancyBox("#valine .vcontent img:not(.vemoji)")})}))}))</script><noscript>Please enable JavaScript to view the comments</noscript></article></article></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div class="toc-body" id="toc-body"></div></div></div></div></div><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer class="text-center mt-5 py-3"><div class="footer-content">&copy;<script type="text/javascript">var myDate=(new Date).getFullYear();document.write(myDate)</script><a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black">风倾</a> | 船动莲开</div></footer><script src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="/js/local-search.js"></script><script src="/js/img-lazyload.js"></script><script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js"></script><script>!function(t,i){(0,Fluid.plugins.typing)(i.getElementById("subtitle").title)}(window,document)</script><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},loader:{load:["ui/lazy"]},options:{renderActions:{findScript:[10,e=>{document.querySelectorAll('script[type^="math/tex"]').forEach(t=>{const a=!!t.type.match(/; *mode=display/),n=new e.options.MathItem(t.textContent,e.inputJax[0],a),o=document.createTextNode("");t.parentNode.replaceChild(o,t),n.start={node:o,delim:"",n:0},n.end={node:o,delim:"",n:0},e.math.push(n)})},"",!1],insertedScript:[200,()=>{document.querySelectorAll("mjx-container").forEach(e=>{let t=e.parentNode;"li"===t.nodeName.toLowerCase()&&t.parentNode.classList.add("has-jax")})},"",!1]}}}</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><script defer>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script src="/js/boot.js"></script></body></html>
