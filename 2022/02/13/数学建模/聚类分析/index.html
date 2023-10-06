@@ -1,10 +1,921 @@
-<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png"><link rel="icon" href="/img/logo/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><meta name="theme-color" content="#2f4154"><meta name="description" content="一个神秘的人"><meta name="author" content="epochxi"><meta name="keywords" content="dramwig"><meta name="description" content="聚类分析（Cluster Analysis） 又称为群分析，是对多个样本(或指标)进行定量分类的一种多元统计分析。对样本进行分析称为Q型聚类分析，对指标进行分类称为R型聚类分析[1]。聚类与分类的不同在于，聚类所要求划分的类是未知的。 聚类是将数据分类到不同的类或者簇这样的一个过程，所以同一个簇中的对象有很大的相似性，而不同簇间的对象有很大的相异性[2]。组内相似性越大，组间差距越大，说明聚类"><meta property="og:type" content="article"><meta property="og:title" content="聚类分析"><meta property="og:url" content="http://example.com/2022/02/13/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/index.html"><meta property="og:site_name" content="风倾客栈 ✧"><meta property="og:description" content="聚类分析（Cluster Analysis） 又称为群分析，是对多个样本(或指标)进行定量分类的一种多元统计分析。对样本进行分析称为Q型聚类分析，对指标进行分类称为R型聚类分析[1]。聚类与分类的不同在于，聚类所要求划分的类是未知的。 聚类是将数据分类到不同的类或者簇这样的一个过程，所以同一个簇中的对象有很大的相似性，而不同簇间的对象有很大的相异性[2]。组内相似性越大，组间差距越大，说明聚类"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.loli.net/2022/02/13/wtx935INsrcuWZA.png"><meta property="og:image" content="https://s2.loli.net/2022/02/13/1RztJXYsvk2j735.png"><meta property="og:image" content="https://s2.loli.net/2022/02/13/xIaSo6GKqC71tJr.png"><meta property="og:image" content="https://s2.loli.net/2022/02/13/JF8HMDxkIcdKlwf.png"><meta property="article:published_time" content="2022-02-13T01:57:00.000Z"><meta property="article:modified_time" content="2022-02-21T10:03:55.182Z"><meta property="article:author" content="epochxi"><meta property="article:tag" content="类距离"><meta property="article:tag" content="K-均值聚类"><meta property="article:tag" content="层次聚类"><meta property="article:tag" content="DBSCAN算法"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://s2.loli.net/2022/02/13/wtx935INsrcuWZA.png"><title>聚类分析 &lt; 风倾客栈 ✧</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css"><link rel="stylesheet" href="/lib/hint/hint.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css"><link rel="stylesheet" href="/css/main.css"><script id="fluid-configs">var Fluid=window.Fluid||{},CONFIG={hostname:"example.com",root:"/",version:"1.8.12",typing:{enable:!0,typeSpeed:100,cursorChar:"_",loop:!1},anchorjs:{enable:!1,element:"h1,h2,h3,h4,h5,h6",placement:"right",visible:"hovor",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},copy_btn:!1,image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:1},lazyload:{enable:!0,loading_img:"/img/loading.gif",onlypost:!1,offset_factor:2},web_analytics:{enable:!0,baidu:"fa7203cd147458a2bb6b7c7fc7bd03a3",google:null,gtag:null,tencent:{sid:null,cid:null},woyaola:null,cnzz:null,leancloud:{app_id:null,app_key:null,server_url:null,path:"window.location.pathname"}},search_path:"/local-search.xml"}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><header style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><i class="iconfont icon-home-fill"></i><strong>风倾客栈</strong></a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/categories/">分类</a></li><li class="nav-item"><a class="nav-link" href="/about/">关于</a></li><li class="nav-item"><a class="nav-link" href="/links/">朋友</a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">&nbsp;<i class="iconfont icon-search"></i>&nbsp;</a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a></li></ul></div></div></nav><div class="banner" id="banner" parallax="true" style="background:url(/img/default.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="page-header text-center fade-in-up"><span class="h2" id="subtitle" title="聚类分析"></span><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2022-02-13 09:57" pubdate>2022年2月13日 上午</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 6.1k 字 </span><span id="busuanzi_container_page_pv" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span> 次</span></div></div><div class="scroll-down-bar"><i class="iconfont icon-arrowdown"></i></div></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div class="py-5" id="board"><article class="post-content mx-auto"><h1 style="display:none">聚类分析</h1><div class="markdown-body"><p>聚类分析（Cluster Analysis）<br>又称为群分析，是对多个样本(或指标)进行定量分类的一种多元统计分析。对样本进行分析称为<strong>Q型聚类分析</strong>，对指标进行分类称为<strong>R型聚类分析</strong><sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第216页.
-">[1]</span></a></sup>。聚类与分类的不同在于，聚类所要求划分的类是未知的。</p><p>聚类是将数据分类到不同的类或者簇这样的一个过程，所以同一个簇中的对象有很大的相似性，而不同簇间的对象有很大的相异性<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://baike.baidu.com/item/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/3450227
-">[2]</span></a></sup>。组内相似性越大，组间差距越大，说明聚类效果越好。</p><p>聚类效果的好坏依赖于两个因素：1.<strong>衡量距离的方法（distance measurement）</strong> 2.<strong>聚类算法（algorithm）</strong><sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/37856153
-">[3]</span></a></sup></p><h1 id="相似性衡量">相似性衡量</h1><p>相似性衡量（similarity measurement）<br>可近似为距离的计算（distance measurement）<br>距离，是抽象化的相似程度度量，不同的数据类型有着不同的距离计算方法，我们需要用数量化的方法刻画事物之间的相似程度。</p><h2 id="样本间距离度量">1. 样本间距离度量</h2><p>对于 <span class="math inline">\(m\)</span> 个指标描述的样本可以看成是 <span class="math inline">\(\bold{R}^m\)</span> 空间中的一个点，自然用距离衡量样本的相似度。</p><h3 id="数值变量">1.1 数值变量</h3><p>在做距离计算前，还需要对数据做<strong>标准化</strong>处理 <span class="math inline">\(x_i^*=\frac{x_i-mean_x}{S_x}\)</span> ，以防止量纲的不同导致空间拉伸距离失真。</p><p><strong>闵氏(Minkowski)距离</strong>： <span class="math display">\[dis_q(\boldsymbol{x},\boldsymbol{y})=[\sum_{k=1}^{m}|x_k-y_k|^q]^{\frac{1}{q}}\]</span></p><p>以下均为闵氏(Minkowski)距离的子式</p><ul><li><p>曼哈顿(Manhattan)距离：<span class="math inline">\(q=1\)</span> 时 <span class="math display">\[dis_q(\boldsymbol{x},\boldsymbol{y})=\sum_{k=1}^{m}|x_k-y_k|\]</span></p></li><li><p>欧几里得(Euclid)距离：<span class="math inline">\(q=2\)</span> 时 （<strong>坐标轴正交旋后转保持不变</strong>） <span class="math display">\[dis_q(\boldsymbol{x},\boldsymbol{y})=\sqrt{\sum_{k=1}^{m}|x_k-y_k|^2}\]</span></p></li><li><p>切比雪夫(Chebyshev)距离：<span class="math inline">\(q\to+\infty\)</span> 时 <span class="math display">\[dis(\boldsymbol{x},\boldsymbol{y})=\max_{1\leqslant k\leqslant m}|x_k-y_k|\]</span></p></li></ul><p>对于不同的指标有不同的权重，还可以对上述公式的距离加权。将上述式子中 <span class="math inline">\(|x_k-y_k|\)</span> 替换为 <span class="math inline">\(w_k|x_k-y_k|\)</span> (第一个和第三个式子会使加权与结果非线性)。此外使用闵氏(Minkowski)距离时，变量的多重相关性(Multicollinearity)会导致信息重叠，片面强调某些变量的重要性。因为上述缺点，一种改进的距离是马氏距离<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第216页.
-">[1]</span></a></sup>。</p><ul><li>马氏(Mahalanobis)距离： <span class="math display">\[dis(\boldsymbol{x},\boldsymbol{y})=\sqrt{(\boldsymbol{x}-\boldsymbol{y})^{T}\boldsymbol{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{y})}\]</span> 其中：<span class="math inline">\(\boldsymbol{x},\boldsymbol{y}\)</span> 来自总体 <span class="math inline">\(Z\)</span> 的样本观测值；<span class="math inline">\(\boldsymbol{\Sigma}\)</span> 为 <span class="math inline">\(Z\)</span> 的协方差矩阵。</li></ul><p><strong>马氏距离对一切线性变换是不变的</strong>，故而不受量纲影响。</p><p>根据聚类分析目的或者指标的不同，还可以使用夹角余弦等方法度量相似度（数据挖掘拓展）。</p><h3 id="二元变量">1.2 二元变量</h3><p>构造二元变量为0-1虚拟变量 |Name|指标1|指标2|指标3|指标4|指标5|指标6| |:-:|:-:|:-:|:-:|:-:|:-:|:-:| |Eirc|1|0|1|1|0|0| |Freddie|1|0|0|1|1|1| |Dramwig|0|1|1|1|1|0|</p><p>构造列联表</p><table><thead><tr class="header"><th style="text-align:center">X</th><th style="text-align:center">1</th><th style="text-align:center">0</th><th style="text-align:center">sum</th></tr></thead><tbody><tr class="odd"><td style="text-align:center">1</td><td style="text-align:center">a</td><td style="text-align:center">b</td><td style="text-align:center">a+b</td></tr><tr class="even"><td style="text-align:center">0</td><td style="text-align:center">c</td><td style="text-align:center">d</td><td style="text-align:center">c+d</td></tr><tr class="odd"><td style="text-align:center">sum</td><td style="text-align:center">a+c</td><td style="text-align:center">b+d</td><td style="text-align:center">a+b+c+d</td></tr></tbody></table><p>构造 <span class="math display">\[dis(X,Y)=\frac{b+c}{a+b+c}\]</span></p><h3 id="分类变量">1.3 分类变量</h3><ul><li>简单匹配：<span class="math inline">\(dis(X,Y)=\frac{p-m}{p}\)</span> p为类别数，m为配对数</li><li>二元化：<span class="math inline">\(Categories:\{C_1,C_2,C_3\}\)</span> <span class="math inline">\(\to\)</span> <span class="math inline">\(C_1:\{0,1\}\)</span> ; <span class="math inline">\(C_2:\{0,1\}\)</span> ; <span class="math inline">\(C_3:\{0,1\}\)</span>,</li></ul><h3 id="有序变量">1.4 有序变量</h3><ol type="1"><li>记序列为<span class="math inline">\(rank\to[1\dots N]\)</span></li><li>z-scores来标准化 <span class="math inline">\(r_i/N\)</span> 得 <span class="math inline">\(r\in [0,1]\)</span></li><li>计算马氏(Minkowski)距离</li></ol><h2 id="类与类间距度量">2. 类与类间距度量</h2><p>记两个类分别为 <span class="math inline">\(G_1\)</span>、<span class="math inline">\(G_2\)</span>，有以下方法度量类间距。</p><ul><li><p>最短距离法（Nearest Neighbor or Single Linkage Method）： <span class="math display">\[D(G_1,G_2)=\min_{\tiny{\boldsymbol{x_i}\in G_1,\boldsymbol{y_j}\in G_2}}{dis(\boldsymbol{x_i},\boldsymbol{y_j})} \]</span></p></li><li><p>最长距离法（Farthest Neighbor or Complete Linkage Method）： <span class="math display">\[D(G_1,G_2)=\max_{\tiny{\boldsymbol{x_i}\in G_1,\boldsymbol{y_j}\in G_2}}{dis(\boldsymbol{x_i},\boldsymbol{y_j})} \]</span></p></li><li><p>重心法（Centetoid Method） <span class="math display">\[D(G_1,G_2)=dis(\boldsymbol{\bar{x}},\boldsymbol{\bar{y}})\]</span></p></li><li><p>类平均法（Group Average Method）(被<strong>认为是最常用也最好用的方法</strong>其单调性良好，空间扩张/浓缩的程度适中) <span class="math display">\[D(G_1,G_2)=\frac{1}{n_1n_2}\sum_{\boldsymbol{x_i}\in G_1}\sum_{\boldsymbol{y_j}\in G_2}dis(\boldsymbol{x_i},\boldsymbol{y_j})\]</span></p></li><li><p>离差平方和法（Sum of Squares Method）又称 Ward 方法</p></li></ul><p>记 <span class="math display">\[D_1=\sum_{\boldsymbol{x_i}\in G_1}(\boldsymbol{x_i-\boldsymbol{\bar{x}}})^{T}(\boldsymbol{x_i-\boldsymbol{\bar{x}}}),D_2=\sum_{\boldsymbol{y_j}\in G_2}(\boldsymbol{y_j-\boldsymbol{\bar{y}}})^{T}(\boldsymbol{y_j-\boldsymbol{\bar{y}}})\]</span></p><p><span class="math display">\[D_{12}=\sum_{\boldsymbol{z_k}\in G_1\cup G_2}(\boldsymbol{z_k-\boldsymbol{\bar{z}}})^{T}(\boldsymbol{z_k-\boldsymbol{\bar{z}}})\]</span></p><p>定义 <span class="math display">\[D(G_1,G_2)=D_{12}-D_1-D_2\]</span></p><p>含义：<span class="math inline">\(G_1\)</span>、<span class="math inline">\(G_2\)</span> 内点很聚集 <span class="math inline">\(D_1\)</span>、<span class="math inline">\(D_2\)</span> 就会很小，即自聚为一类；<span class="math inline">\(G_1\)</span>、<span class="math inline">\(G_2\)</span> 相聚很远则 <span class="math inline">\(D_{12}\)</span> 很大，即 <span class="math inline">\(G_1\)</span>、<span class="math inline">\(G_2\)</span> 充分分离。</p><h2 id="指标间距离度量">3. 指标间距离度量</h2><ul><li>相关系数</li></ul><p><span class="math display">\[r_{jk}=\frac{\sum\limits_{i=1}^{n}(x_{ij}-\bar{x}_j)(x_{ik}-\bar{x}_k)}{[\sum\limits_{i=1}^{n}(x_{ij}-\bar{x}_j)^2\sum\limits_{i=1}^{n}(x_{ik}-\bar{x}_k)^2]^{\frac{1}{2}}}\]</span></p><ul><li>夹角余弦</li></ul><p><span class="math display">\[r_{jk}=\frac{\sum\limits_{i=1}^{n}x_{ij}x_{ik}}{(\sum\limits_{i=1}^{n}x_{ij}^2\sum\limits_{i=1}^{n}x_{ik}^2)^{\frac{1}{2}}}\]</span></p><h1 id="聚类算法">聚类算法</h1><p>聚类算法多种多样，搭配上不同的相似性衡量算法对于聚类结果有巨大的差异。一下只给出了几种最根本的聚类算法，其他算法大都是在此基础上的优化与改进。<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/34554321/answer/64372216">这个回答</a>可以窥视向外的拓展。</p><h2 id="k-均值聚类k-means">K-均值聚类(k-means)</h2><h3 id="步骤">步骤</h3><p>迭代算法如下： 1. 随机得到 K 个初始质心，每一个质心代表一个类 2. 扫描所有样本点，把每个点划归到到离它最近的质心的簇类中 3. 重新计算每个类的质心。 4. 重复 2. 和 3. 5. 直到分类/质心不在发生变化时结束</p><figure><img src="https://s2.loli.net/2022/02/13/wtx935INsrcuWZA.png" srcset="/img/loading.gif" lazyload alt="迭代"><figcaption aria-hidden="true">迭代</figcaption></figure><h3 id="spss">SPSS</h3><p>SPSS-分析-分类-K均值聚类</p><h3 id="缺陷">缺陷</h3><ol type="1"><li>每次计算需要给定簇数目K</li><li>对孤立点（异常点）敏感，（会产生孤立点为单独一类的情况）</li><li>对于初始值敏感</li><li>k-means不能解决非凸（non-convex）数据（不规则形状聚类）</li></ol><h2 id="层次系统聚类hierarchical">层次(系统)聚类(Hierarchical)</h2><h3 id="步骤-1">步骤</h3><ol type="1"><li>迭代步骤<ol type="1"><li>把每个样本作为单独一个类，计算类与类之间的距离，用邻近度矩阵记录</li><li>将邻接矩阵中最小的距离连接的类归为一类</li><li>根据新的类，更新邻近度矩阵（若以类中样本间最短距离为类距离则不需要更新）</li><li>重复2. 3.</li><li>到只只剩下一个类的时候，停止</li></ol></li><li>画出<strong>聚类谱系图</strong>（SPSS自带）</li><li>画出<strong>聚合系数折线图</strong><ol type="1"><li>对于每个聚合类别，计算每个类 <span class="math inline">\(C_k\)</span> 的畸变程度：<span class="math inline">\(\sum\limits_{\tiny\boldsymbol{x}_i\in C_k}|\boldsymbol{x}_i-\boldsymbol{\bar{x}}|^2\)</span></li><li>计算所有类的总畸变程度，即聚合系数：<span class="math inline">\(J=\sum\limits_{k=1}^{K}\sum\limits_{\tiny\boldsymbol{x}_i\in C_k}|\boldsymbol{x}_i-\boldsymbol{\bar{x}}|^2\)</span></li><li>以聚合类别数 <span class="math inline">\(K\)</span> 为横坐标，以聚合系数 <span class="math inline">\(J\)</span> 为纵坐标</li></ol></li><li>通过肘部法则（Elbow Method）判断最优聚合数量，得到聚类结果</li></ol><p><img src="https://s2.loli.net/2022/02/13/1RztJXYsvk2j735.png" srcset="/img/loading.gif" lazyload></p><p>以上是凝聚(agglomerative)途径，即自下而上方法，还可以使用分裂(divisive)的途径。</p><p>自下而上法就是一开始每个个体（object）都是一个类，然后根据linkage寻找同类，最后形成一个“类”；自上而下法就是反过来，一开始所有个体都属于一个“类”，然后根据linkage排除异己，最后每个个体都成为一个“类”<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://www.zhihu.com/question/34554321/answer/64372216
-">[4]</span></a></sup>。</p><h3 id="spss-1">SPSS</h3><p>SPSS-分析-分类-系统聚类</p><h2 id="基于密度的dbscan算法">基于密度的DBSCAN算法</h2><p>DBSCAN(Density-based spatial clustering of applications with noise)<br>是一种基于密度的聚类方法，该方法能在具有噪声的空间数据库中发现任意形状的簇，可将密度足够大的相邻区域连接，能有效处理异常数据。</p><p><img src="https://s2.loli.net/2022/02/13/xIaSo6GKqC71tJr.png" srcset="/img/loading.gif" lazyload></p><h3 id="基本概念">基本概念</h3><ul><li>核心点：在该点半径 <span class="math inline">\(Eps\)</span> 内含的点数不少于 <span class="math inline">\(MinPts\)</span></li><li>边界点：在该点半径 <span class="math inline">\(Eps\)</span> 内点的数量小于 <span class="math inline">\(MinPts\)</span>，但是落在核心点的半径 <span class="math inline">\(Eps\)</span> 邻域内</li><li>噪音点：既不是核心点也不是边界点的点，即不在核心点的半径 <span class="math inline">\(Eps\)</span> 邻域内的点</li></ul><p><a target="_blank" rel="noopener" href="https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/">DBSCAN密度聚类可视化</a></p><figure><img src="https://s2.loli.net/2022/02/13/JF8HMDxkIcdKlwf.png" srcset="/img/loading.gif" lazyload alt="密度聚类"><figcaption aria-hidden="true">密度聚类</figcaption></figure><h3 id="缺点">缺点</h3><ul><li>对输入参数 <code>Eps</code> 和 <code>Minpts</code> 敏感，确定参数困难，不同参数相差很大</li><li>时间复杂度高，处理大量数据时慢</li></ul><h2 id="根据网格单元的聚类">根据网格单元的聚类</h2><p>其原理是将数据空间划分为网格单元，将数据对象映射到网格单元中，并计算每个单元的密度。根据预设阈值来判断每个网格单元是不是高密度单元，由邻近的稠密单元组成“类”<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/37856153
-">[3]</span></a></sup>。</p><p><img src="https://pic3.zhimg.com/e76863bafda37b0313d39f5338540488_r.jpg?source=1940ef5c" srcset="/img/loading.gif" lazyload></p><h3 id="步骤-2">步骤</h3><p>1.将数据空间划分为网格单元 2.依照设置的阈值，判定网格单元是否稠密 3.合并相邻稠密的网格单元为一类</p><h3 id="特点">特点</h3><ul><li>优点<ul><li>效率快速度快</li><li>直观易于理解</li></ul></li><li>缺点<ul><li>拟合较为粗糙，分类不精确，无法处理不规则分布的数据</li><li>对输入参数敏感，难以确定方格宽以及稠密阈值，方格宽以及稠密阈值对结果影响很大</li></ul></li></ul><h2 id="基于概率的聚类">基于概率的聚类</h2><p>Model-based methods<br>这一类方法主要是指基于概率模型的方法和基于神经网络模型的方法，尤其以基于概率模型的方法居多。这里的概率模型主要指概率生成模型（generative Model），同一”类“的数据属于同一种概率分布<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://www.zhihu.com/question/34554321/answer/64372216
-">[4]</span></a></sup>。</p><p><img src="https://pic3.zhimg.com/2bf5b20d2e44e3db4c55efde8209558c_r.jpg?source=1940ef5c" srcset="/img/loading.gif" lazyload></p><h1 id="数据简化">数据简化</h1><ul><li><strong>变换（Data Transformation）</strong>：<ul><li>离散傅里叶变换（Discrete Fourier Transformation）可以提取数据的频域（frequency domain）信息</li><li>离散小波变换（Discrete Wavelet Transformation）除了频域之外，还可以提取到时域（temporal domain）信息<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://www.zhihu.com/question/34554321/answer/64372216
-">[4]</span></a></sup></li></ul></li><li><strong>降维（Dimensionality Reduction）</strong>：<ul><li>线性方法<ul><li>PCA（Principle Component Analysis）</li><li>SVD（Singular Value Decomposition）</li><li>MDS（Multi-Dimensional Scaling）PCA拓展</li></ul></li><li>非线性降维的算法<ul><li>流形学习（Manifold Learning）<ul><li>ISOMAP、</li><li>LLE（Locally Linear Embedding）、</li><li>MVU（Maximum variance unfolding）、</li><li>Laplacian eigenmaps、Hessian eigenmaps、</li><li>Kernel PCA、</li><li>Probabilistic PCA</li></ul></li></ul></li></ul></li><li><strong>抽样（Sampling）</strong>：<ul><li>随机抽样</li></ul></li></ul><h1 id="三大步骤的综合">三大步骤的综合</h1><p>对于聚类分析三大步骤：</p><ol type="1"><li>相似性衡量：距离、相似系数、核函数、DTW（dynamic time warping）</li><li>聚类算法：Hierarchical methods、Partition-based methods、Density-based methods、Grid-based methods、Model-based methods</li><li>数据简化：变换、降维、抽样</li></ol><p>其中每个二级分类下含有多种方法。三个步骤每个选择一个方法可以组合出庞大数量的聚类模型。</p><p>例如：<strong>谱聚类（Spectral Clustering）</strong>，就是先用Laplacian eigenmaps对数据降维（简单地说，就是先将数据转换成邻接矩阵或相似性矩阵，再转换成Laplacian矩阵，再对Laplacian矩阵进行特征分解，把最小的K个特征向量排列在一起），然后再使用k-means完成聚类。谱聚类是个很好的方法，效果通常比k-means好，计算复杂度还低，这都要归功于降维的作用<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://www.zhihu.com/question/34554321/answer/64372216
-">[4]</span></a></sup>。</p><h1 id="参考">参考</h1><ul><li>这里非常感谢知乎答主<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/guo-xiao-xian-24"><span class="citation" data-cites="郭小天">@郭小天</span></a>的分享给了我很大启发</li></ul><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第216页. <a href="#fnref:1" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>https://baike.baidu.com/item/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/3450227 <a href="#fnref:2" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>https://zhuanlan.zhihu.com/p/37856153 <a href="#fnref:3" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:4" class="footnote-text"><span>https://www.zhihu.com/question/34554321/answer/64372216 <a href="#fnref:4" rev="footnote" class="footnote-backref">↩︎</a></span></span></li></ol></div></section><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></div><hr><div><div class="post-metas mb-3"><div class="post-meta mr-3"><i class="iconfont icon-category"></i> <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/%E7%B1%BB%E8%B7%9D%E7%A6%BB/">类距离</a> <a class="hover-with-bg" href="/tags/K-%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/">K-均值聚类</a> <a class="hover-with-bg" href="/tags/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB/">层次聚类</a> <a class="hover-with-bg" href="/tags/DBSCAN%E7%AE%97%E6%B3%95/">DBSCAN算法</a></div></div><div class="post-prevnext"><article class="post-prev col-6"><a href="/2022/02/15/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">主成分分析</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/2022/02/12/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/"><span class="hidden-mobile">分类模型</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article class="comments" id="comments" lazyload><div id="valine"></div><script type="text/javascript">Fluid.utils.loadComments("#valine",(function(){Fluid.utils.createScript("https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js",(function(){var e=Object.assign({appId:"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz",appKey:"IVwl94UT4wnOPWUgwn4AfOCE",path:"window.location.pathname",placeholder:"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…",avatar:"robohash",avatarForce:!0,meta:["nick","mail","link"],requiredFields:[],pageSize:10,lang:"zh-CN",highlight:!0,recordIP:!0,serverURLs:"",admin_email_hash:"393669798@qq.com",enableQQ:!0,emojiCDN:"//i0.hdslb.com/bfs/emote/",emojiMaps:{tv_doge:"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},{el:"#valine",path:window.location.pathname});new Valine(e),Fluid.utils.waitElementVisible("#valine .vcontent",()=>{Fluid.plugins.initFancyBox("#valine .vcontent img:not(.vemoji)")})}))}))</script><noscript>Please enable JavaScript to view the comments</noscript></article></article></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div class="toc-body" id="toc-body"></div></div></div></div></div><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer class="text-center mt-5 py-3"><div class="footer-content">&copy;<script type="text/javascript">var myDate=(new Date).getFullYear();document.write(myDate)</script><a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black">风倾</a> | 船动莲开</div></footer><script src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="/js/local-search.js"></script><script src="/js/img-lazyload.js"></script><script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js"></script><script>!function(t,i){(0,Fluid.plugins.typing)(i.getElementById("subtitle").title)}(window,document)</script><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},loader:{load:["ui/lazy"]},options:{renderActions:{findScript:[10,e=>{document.querySelectorAll('script[type^="math/tex"]').forEach(t=>{const a=!!t.type.match(/; *mode=display/),n=new e.options.MathItem(t.textContent,e.inputJax[0],a),o=document.createTextNode("");t.parentNode.replaceChild(o,t),n.start={node:o,delim:"",n:0},n.end={node:o,delim:"",n:0},e.math.push(n)})},"",!1],insertedScript:[200,()=>{document.querySelectorAll("mjx-container").forEach(e=>{let t=e.parentNode;"li"===t.nodeName.toLowerCase()&&t.parentNode.classList.add("has-jax")})},"",!1]}}}</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><script defer>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script src="/js/boot.js"></script></body></html>
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png">
+  <link rel="icon" href="/img/logo/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个神秘的人">
+  <meta name="author" content="epochxi">
+  <meta name="keywords" content="dramwig">
+  <meta name="description" content="聚类分析（Cluster Analysis） 又称为群分析，是对多个样本(或指标)进行定量分类的一种多元统计分析。对样本进行分析称为Q型聚类分析，对指标进行分类称为R型聚类分析[1]。聚类与分类的不同在于，聚类所要求划分的类是未知的。 聚类是将数据分类到不同的类或者簇这样的一个过程，所以同一个簇中的对象有很大的相似性，而不同簇间的对象有很大的相异性[2]。组内相似性越大，组间差距越大，说明聚类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聚类分析">
+<meta property="og:url" content="http://example.com/2022/02/13/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="风倾客栈 ✧">
+<meta property="og:description" content="聚类分析（Cluster Analysis） 又称为群分析，是对多个样本(或指标)进行定量分类的一种多元统计分析。对样本进行分析称为Q型聚类分析，对指标进行分类称为R型聚类分析[1]。聚类与分类的不同在于，聚类所要求划分的类是未知的。 聚类是将数据分类到不同的类或者簇这样的一个过程，所以同一个簇中的对象有很大的相似性，而不同簇间的对象有很大的相异性[2]。组内相似性越大，组间差距越大，说明聚类">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/02/13/wtx935INsrcuWZA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/13/1RztJXYsvk2j735.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/13/xIaSo6GKqC71tJr.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/13/JF8HMDxkIcdKlwf.png">
+<meta property="article:published_time" content="2022-02-13T01:57:00.000Z">
+<meta property="article:modified_time" content="2022-02-21T10:03:55.182Z">
+<meta property="article:author" content="epochxi">
+<meta property="article:tag" content="类距离">
+<meta property="article:tag" content="K-均值聚类">
+<meta property="article:tag" content="层次聚类">
+<meta property="article:tag" content="DBSCAN算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/02/13/wtx935INsrcuWZA.png">
+  
+  <title>聚类分析 &lt; 风倾客栈 ✧</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hovor","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"fa7203cd147458a2bb6b7c7fc7bd03a3","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <!--菜单栏-->
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="iconfont icon-home-fill"></i> <!-- homeͼ�� -->
+      <strong>风倾客栈</strong> <!-- �������� -->
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content --> <!-- �˵��б� -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                朋友
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+    <!--视差滚动-->
+    <div class="banner" id="banner" parallax=true   
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <!--副标题 (打字机)-->
+            <span class="h2" id="subtitle" title="聚类分析">
+              <!--typing打字机-->
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-13 09:57" pubdate>
+        2022年2月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.1k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">聚类分析</h1>
+            
+            <div class="markdown-body">
+              <p>聚类分析（Cluster Analysis）<br />
+又称为群分析，是对多个样本(或指标)进行定量分类的一种多元统计分析。对样本进行分析称为<strong>Q型聚类分析</strong>，对指标进行分类称为<strong>R型聚类分析</strong><sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第216页.
+">[1]</span></a></sup>。聚类与分类的不同在于，聚类所要求划分的类是未知的。</p>
+<p>聚类是将数据分类到不同的类或者簇这样的一个过程，所以同一个簇中的对象有很大的相似性，而不同簇间的对象有很大的相异性<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://baike.baidu.com/item/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/3450227
+">[2]</span></a></sup>。组内相似性越大，组间差距越大，说明聚类效果越好。</p>
+<p>聚类效果的好坏依赖于两个因素：1.<strong>衡量距离的方法（distance
+measurement）</strong>
+2.<strong>聚类算法（algorithm）</strong><sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/37856153
+">[3]</span></a></sup></p>
+<h1 id="相似性衡量">相似性衡量</h1>
+<p>相似性衡量（similarity measurement）<br />
+可近似为距离的计算（distance measurement）<br />
+距离，是抽象化的相似程度度量，不同的数据类型有着不同的距离计算方法，我们需要用数量化的方法刻画事物之间的相似程度。</p>
+<h2 id="样本间距离度量">1. 样本间距离度量</h2>
+<p>对于 <span class="math inline">\(m\)</span>
+个指标描述的样本可以看成是 <span
+class="math inline">\(\bold{R}^m\)</span>
+空间中的一个点，自然用距离衡量样本的相似度。</p>
+<h3 id="数值变量">1.1 数值变量</h3>
+<p>在做距离计算前，还需要对数据做<strong>标准化</strong>处理 <span
+class="math inline">\(x_i^*=\frac{x_i-mean_x}{S_x}\)</span>
+，以防止量纲的不同导致空间拉伸距离失真。</p>
+<p><strong>闵氏(Minkowski)距离</strong>： <span
+class="math display">\[dis_q(\boldsymbol{x},\boldsymbol{y})=[\sum_{k=1}^{m}|x_k-y_k|^q]^{\frac{1}{q}}\]</span></p>
+<p>以下均为闵氏(Minkowski)距离的子式</p>
+<ul>
+<li><p>曼哈顿(Manhattan)距离：<span class="math inline">\(q=1\)</span>
+时 <span
+class="math display">\[dis_q(\boldsymbol{x},\boldsymbol{y})=\sum_{k=1}^{m}|x_k-y_k|\]</span></p></li>
+<li><p>欧几里得(Euclid)距离：<span class="math inline">\(q=2\)</span> 时
+（<strong>坐标轴正交旋后转保持不变</strong>） <span
+class="math display">\[dis_q(\boldsymbol{x},\boldsymbol{y})=\sqrt{\sum_{k=1}^{m}|x_k-y_k|^2}\]</span></p></li>
+<li><p>切比雪夫(Chebyshev)距离：<span
+class="math inline">\(q\to+\infty\)</span> 时 <span
+class="math display">\[dis(\boldsymbol{x},\boldsymbol{y})=\max_{1\leqslant
+k\leqslant m}|x_k-y_k|\]</span></p></li>
+</ul>
+<p>对于不同的指标有不同的权重，还可以对上述公式的距离加权。将上述式子中
+<span class="math inline">\(|x_k-y_k|\)</span> 替换为 <span
+class="math inline">\(w_k|x_k-y_k|\)</span>
+(第一个和第三个式子会使加权与结果非线性)。此外使用闵氏(Minkowski)距离时，变量的多重相关性(Multicollinearity)会导致信息重叠，片面强调某些变量的重要性。因为上述缺点，一种改进的距离是马氏距离<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第216页.
+">[1]</span></a></sup>。</p>
+<ul>
+<li>马氏(Mahalanobis)距离： <span
+class="math display">\[dis(\boldsymbol{x},\boldsymbol{y})=\sqrt{(\boldsymbol{x}-\boldsymbol{y})^{T}\boldsymbol{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{y})}\]</span>
+其中：<span class="math inline">\(\boldsymbol{x},\boldsymbol{y}\)</span>
+来自总体 <span class="math inline">\(Z\)</span> 的样本观测值；<span
+class="math inline">\(\boldsymbol{\Sigma}\)</span> 为 <span
+class="math inline">\(Z\)</span> 的协方差矩阵。</li>
+</ul>
+<p><strong>马氏距离对一切线性变换是不变的</strong>，故而不受量纲影响。</p>
+<p>根据聚类分析目的或者指标的不同，还可以使用夹角余弦等方法度量相似度（数据挖掘拓展）。</p>
+<h3 id="二元变量">1.2 二元变量</h3>
+<p>构造二元变量为0-1虚拟变量 |Name|指标1|指标2|指标3|指标4|指标5|指标6|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:| |Eirc|1|0|1|1|0|0| |Freddie|1|0|0|1|1|1|
+|Dramwig|0|1|1|1|1|0|</p>
+<p>构造列联表</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">X</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">a</td>
+<td style="text-align: center;">b</td>
+<td style="text-align: center;">a+b</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">c</td>
+<td style="text-align: center;">d</td>
+<td style="text-align: center;">c+d</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">sum</td>
+<td style="text-align: center;">a+c</td>
+<td style="text-align: center;">b+d</td>
+<td style="text-align: center;">a+b+c+d</td>
+</tr>
+</tbody>
+</table>
+<p>构造 <span
+class="math display">\[dis(X,Y)=\frac{b+c}{a+b+c}\]</span></p>
+<h3 id="分类变量">1.3 分类变量</h3>
+<ul>
+<li>简单匹配：<span
+class="math inline">\(dis(X,Y)=\frac{p-m}{p}\)</span>
+p为类别数，m为配对数</li>
+<li>二元化：<span
+class="math inline">\(Categories:\{C_1,C_2,C_3\}\)</span> <span
+class="math inline">\(\to\)</span> <span
+class="math inline">\(C_1:\{0,1\}\)</span> ; <span
+class="math inline">\(C_2:\{0,1\}\)</span> ; <span
+class="math inline">\(C_3:\{0,1\}\)</span>,</li>
+</ul>
+<h3 id="有序变量">1.4 有序变量</h3>
+<ol type="1">
+<li>记序列为<span class="math inline">\(rank\to[1\dots N]\)</span></li>
+<li>z-scores来标准化 <span class="math inline">\(r_i/N\)</span> 得 <span
+class="math inline">\(r\in [0,1]\)</span></li>
+<li>计算马氏(Minkowski)距离</li>
+</ol>
+<h2 id="类与类间距度量">2. 类与类间距度量</h2>
+<p>记两个类分别为 <span class="math inline">\(G_1\)</span>、<span
+class="math inline">\(G_2\)</span>，有以下方法度量类间距。</p>
+<ul>
+<li><p>最短距离法（Nearest Neighbor or Single Linkage Method）： <span
+class="math display">\[D(G_1,G_2)=\min_{\tiny{\boldsymbol{x_i}\in
+G_1,\boldsymbol{y_j}\in G_2}}{dis(\boldsymbol{x_i},\boldsymbol{y_j})}
+\]</span></p></li>
+<li><p>最长距离法（Farthest Neighbor or Complete Linkage Method）：
+<span class="math display">\[D(G_1,G_2)=\max_{\tiny{\boldsymbol{x_i}\in
+G_1,\boldsymbol{y_j}\in G_2}}{dis(\boldsymbol{x_i},\boldsymbol{y_j})}
+\]</span></p></li>
+<li><p>重心法（Centetoid Method） <span
+class="math display">\[D(G_1,G_2)=dis(\boldsymbol{\bar{x}},\boldsymbol{\bar{y}})\]</span></p></li>
+<li><p>类平均法（Group Average
+Method）(被<strong>认为是最常用也最好用的方法</strong>其单调性良好，空间扩张/浓缩的程度适中)
+<span
+class="math display">\[D(G_1,G_2)=\frac{1}{n_1n_2}\sum_{\boldsymbol{x_i}\in
+G_1}\sum_{\boldsymbol{y_j}\in
+G_2}dis(\boldsymbol{x_i},\boldsymbol{y_j})\]</span></p></li>
+<li><p>离差平方和法（Sum of Squares Method）又称 Ward 方法</p></li>
+</ul>
+<p>记 <span class="math display">\[D_1=\sum_{\boldsymbol{x_i}\in
+G_1}(\boldsymbol{x_i-\boldsymbol{\bar{x}}})^{T}(\boldsymbol{x_i-\boldsymbol{\bar{x}}}),D_2=\sum_{\boldsymbol{y_j}\in
+G_2}(\boldsymbol{y_j-\boldsymbol{\bar{y}}})^{T}(\boldsymbol{y_j-\boldsymbol{\bar{y}}})\]</span></p>
+<p><span class="math display">\[D_{12}=\sum_{\boldsymbol{z_k}\in G_1\cup
+G_2}(\boldsymbol{z_k-\boldsymbol{\bar{z}}})^{T}(\boldsymbol{z_k-\boldsymbol{\bar{z}}})\]</span></p>
+<p>定义 <span
+class="math display">\[D(G_1,G_2)=D_{12}-D_1-D_2\]</span></p>
+<p>含义：<span class="math inline">\(G_1\)</span>、<span
+class="math inline">\(G_2\)</span> 内点很聚集 <span
+class="math inline">\(D_1\)</span>、<span
+class="math inline">\(D_2\)</span> 就会很小，即自聚为一类；<span
+class="math inline">\(G_1\)</span>、<span
+class="math inline">\(G_2\)</span> 相聚很远则 <span
+class="math inline">\(D_{12}\)</span> 很大，即 <span
+class="math inline">\(G_1\)</span>、<span
+class="math inline">\(G_2\)</span> 充分分离。</p>
+<h2 id="指标间距离度量">3. 指标间距离度量</h2>
+<ul>
+<li>相关系数</li>
+</ul>
+<p><span
+class="math display">\[r_{jk}=\frac{\sum\limits_{i=1}^{n}(x_{ij}-\bar{x}_j)(x_{ik}-\bar{x}_k)}{[\sum\limits_{i=1}^{n}(x_{ij}-\bar{x}_j)^2\sum\limits_{i=1}^{n}(x_{ik}-\bar{x}_k)^2]^{\frac{1}{2}}}\]</span></p>
+<ul>
+<li>夹角余弦</li>
+</ul>
+<p><span
+class="math display">\[r_{jk}=\frac{\sum\limits_{i=1}^{n}x_{ij}x_{ik}}{(\sum\limits_{i=1}^{n}x_{ij}^2\sum\limits_{i=1}^{n}x_{ik}^2)^{\frac{1}{2}}}\]</span></p>
+<h1 id="聚类算法">聚类算法</h1>
+<p>聚类算法多种多样，搭配上不同的相似性衡量算法对于聚类结果有巨大的差异。一下只给出了几种最根本的聚类算法，其他算法大都是在此基础上的优化与改进。<a
+target="_blank" rel="noopener" href="https://www.zhihu.com/question/34554321/answer/64372216">这个回答</a>可以窥视向外的拓展。</p>
+<h2 id="k-均值聚类k-means">K-均值聚类(k-means)</h2>
+<h3 id="步骤">步骤</h3>
+<p>迭代算法如下： 1. 随机得到 K 个初始质心，每一个质心代表一个类 2.
+扫描所有样本点，把每个点划归到到离它最近的质心的簇类中 3.
+重新计算每个类的质心。 4. 重复 2. 和 3. 5.
+直到分类/质心不在发生变化时结束</p>
+<figure>
+<img src="https://s2.loli.net/2022/02/13/wtx935INsrcuWZA.png" srcset="/img/loading.gif" lazyload
+alt="迭代" />
+<figcaption aria-hidden="true">迭代</figcaption>
+</figure>
+<h3 id="spss">SPSS</h3>
+<p>SPSS-分析-分类-K均值聚类</p>
+<h3 id="缺陷">缺陷</h3>
+<ol type="1">
+<li>每次计算需要给定簇数目K</li>
+<li>对孤立点（异常点）敏感，（会产生孤立点为单独一类的情况）</li>
+<li>对于初始值敏感</li>
+<li>k-means不能解决非凸（non-convex）数据（不规则形状聚类）</li>
+</ol>
+<h2 id="层次系统聚类hierarchical">层次(系统)聚类(Hierarchical)</h2>
+<h3 id="步骤-1">步骤</h3>
+<ol type="1">
+<li>迭代步骤
+<ol type="1">
+<li>把每个样本作为单独一个类，计算类与类之间的距离，用邻近度矩阵记录</li>
+<li>将邻接矩阵中最小的距离连接的类归为一类</li>
+<li>根据新的类，更新邻近度矩阵（若以类中样本间最短距离为类距离则不需要更新）</li>
+<li>重复2. 3.</li>
+<li>到只只剩下一个类的时候，停止</li>
+</ol></li>
+<li>画出<strong>聚类谱系图</strong>（SPSS自带）</li>
+<li>画出<strong>聚合系数折线图</strong>
+<ol type="1">
+<li>对于每个聚合类别，计算每个类 <span
+class="math inline">\(C_k\)</span> 的畸变程度：<span
+class="math inline">\(\sum\limits_{\tiny\boldsymbol{x}_i\in
+C_k}|\boldsymbol{x}_i-\boldsymbol{\bar{x}}|^2\)</span></li>
+<li>计算所有类的总畸变程度，即聚合系数：<span
+class="math inline">\(J=\sum\limits_{k=1}^{K}\sum\limits_{\tiny\boldsymbol{x}_i\in
+C_k}|\boldsymbol{x}_i-\boldsymbol{\bar{x}}|^2\)</span></li>
+<li>以聚合类别数 <span class="math inline">\(K\)</span>
+为横坐标，以聚合系数 <span class="math inline">\(J\)</span>
+为纵坐标</li>
+</ol></li>
+<li>通过肘部法则（Elbow Method）判断最优聚合数量，得到聚类结果</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/02/13/1RztJXYsvk2j735.png" srcset="/img/loading.gif" lazyload /></p>
+<p>以上是凝聚(agglomerative)途径，即自下而上方法，还可以使用分裂(divisive)的途径。</p>
+<p>自下而上法就是一开始每个个体（object）都是一个类，然后根据linkage寻找同类，最后形成一个“类”；自上而下法就是反过来，一开始所有个体都属于一个“类”，然后根据linkage排除异己，最后每个个体都成为一个“类”<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://www.zhihu.com/question/34554321/answer/64372216
+">[4]</span></a></sup>。</p>
+<h3 id="spss-1">SPSS</h3>
+<p>SPSS-分析-分类-系统聚类</p>
+<h2 id="基于密度的dbscan算法">基于密度的DBSCAN算法</h2>
+<p>DBSCAN(Density-based spatial clustering of applications with
+noise)<br />
+是一种基于密度的聚类方法，该方法能在具有噪声的空间数据库中发现任意形状的簇，可将密度足够大的相邻区域连接，能有效处理异常数据。</p>
+<p><img src="https://s2.loli.net/2022/02/13/xIaSo6GKqC71tJr.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="基本概念">基本概念</h3>
+<ul>
+<li>核心点：在该点半径 <span class="math inline">\(Eps\)</span>
+内含的点数不少于 <span class="math inline">\(MinPts\)</span></li>
+<li>边界点：在该点半径 <span class="math inline">\(Eps\)</span>
+内点的数量小于 <span
+class="math inline">\(MinPts\)</span>，但是落在核心点的半径 <span
+class="math inline">\(Eps\)</span> 邻域内</li>
+<li>噪音点：既不是核心点也不是边界点的点，即不在核心点的半径 <span
+class="math inline">\(Eps\)</span> 邻域内的点</li>
+</ul>
+<p><a
+target="_blank" rel="noopener" href="https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/">DBSCAN密度聚类可视化</a></p>
+<figure>
+<img src="https://s2.loli.net/2022/02/13/JF8HMDxkIcdKlwf.png" srcset="/img/loading.gif" lazyload
+alt="密度聚类" />
+<figcaption aria-hidden="true">密度聚类</figcaption>
+</figure>
+<h3 id="缺点">缺点</h3>
+<ul>
+<li>对输入参数 <code>Eps</code> 和 <code>Minpts</code>
+敏感，确定参数困难，不同参数相差很大</li>
+<li>时间复杂度高，处理大量数据时慢</li>
+</ul>
+<h2 id="根据网格单元的聚类">根据网格单元的聚类</h2>
+<p>其原理是将数据空间划分为网格单元，将数据对象映射到网格单元中，并计算每个单元的密度。根据预设阈值来判断每个网格单元是不是高密度单元，由邻近的稠密单元组成“类”<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/37856153
+">[3]</span></a></sup>。</p>
+<p><img
+src="https://pic3.zhimg.com/e76863bafda37b0313d39f5338540488_r.jpg?source=1940ef5c" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="步骤-2">步骤</h3>
+<p>1.将数据空间划分为网格单元 2.依照设置的阈值，判定网格单元是否稠密
+3.合并相邻稠密的网格单元为一类</p>
+<h3 id="特点">特点</h3>
+<ul>
+<li>优点
+<ul>
+<li>效率快速度快</li>
+<li>直观易于理解</li>
+</ul></li>
+<li>缺点
+<ul>
+<li>拟合较为粗糙，分类不精确，无法处理不规则分布的数据</li>
+<li>对输入参数敏感，难以确定方格宽以及稠密阈值，方格宽以及稠密阈值对结果影响很大</li>
+</ul></li>
+</ul>
+<h2 id="基于概率的聚类">基于概率的聚类</h2>
+<p>Model-based methods<br />
+这一类方法主要是指基于概率模型的方法和基于神经网络模型的方法，尤其以基于概率模型的方法居多。这里的概率模型主要指概率生成模型（generative
+Model），同一”类“的数据属于同一种概率分布<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://www.zhihu.com/question/34554321/answer/64372216
+">[4]</span></a></sup>。</p>
+<p><img
+src="https://pic3.zhimg.com/2bf5b20d2e44e3db4c55efde8209558c_r.jpg?source=1940ef5c" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="数据简化">数据简化</h1>
+<ul>
+<li><strong>变换（Data Transformation）</strong>：
+<ul>
+<li>离散傅里叶变换（Discrete Fourier
+Transformation）可以提取数据的频域（frequency domain）信息</li>
+<li>离散小波变换（Discrete Wavelet
+Transformation）除了频域之外，还可以提取到时域（temporal
+domain）信息<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://www.zhihu.com/question/34554321/answer/64372216
+">[4]</span></a></sup></li>
+</ul></li>
+<li><strong>降维（Dimensionality Reduction）</strong>：
+<ul>
+<li>线性方法
+<ul>
+<li>PCA（Principle Component Analysis）</li>
+<li>SVD（Singular Value Decomposition）</li>
+<li>MDS（Multi-Dimensional Scaling）PCA拓展</li>
+</ul></li>
+<li>非线性降维的算法
+<ul>
+<li>流形学习（Manifold Learning）
+<ul>
+<li>ISOMAP、</li>
+<li>LLE（Locally Linear Embedding）、</li>
+<li>MVU（Maximum variance unfolding）、</li>
+<li>Laplacian eigenmaps、Hessian eigenmaps、</li>
+<li>Kernel PCA、</li>
+<li>Probabilistic PCA</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><strong>抽样（Sampling）</strong>：
+<ul>
+<li>随机抽样</li>
+</ul></li>
+</ul>
+<h1 id="三大步骤的综合">三大步骤的综合</h1>
+<p>对于聚类分析三大步骤：</p>
+<ol type="1">
+<li>相似性衡量：距离、相似系数、核函数、DTW（dynamic time warping）</li>
+<li>聚类算法：Hierarchical methods、Partition-based
+methods、Density-based methods、Grid-based methods、Model-based
+methods</li>
+<li>数据简化：变换、降维、抽样</li>
+</ol>
+<p>其中每个二级分类下含有多种方法。三个步骤每个选择一个方法可以组合出庞大数量的聚类模型。</p>
+<p>例如：<strong>谱聚类（Spectral
+Clustering）</strong>，就是先用Laplacian
+eigenmaps对数据降维（简单地说，就是先将数据转换成邻接矩阵或相似性矩阵，再转换成Laplacian矩阵，再对Laplacian矩阵进行特征分解，把最小的K个特征向量排列在一起），然后再使用k-means完成聚类。谱聚类是个很好的方法，效果通常比k-means好，计算复杂度还低，这都要归功于降维的作用<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://www.zhihu.com/question/34554321/answer/64372216
+">[4]</span></a></sup>。</p>
+<h1 id="参考">参考</h1>
+<ul>
+<li>这里非常感谢知乎答主<a
+target="_blank" rel="noopener" href="https://www.zhihu.com/people/guo-xiao-xian-24"><span
+class="citation"
+data-cites="郭小天">@郭小天</span></a>的分享给了我很大启发</li>
+</ul>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>司守奎 孙兆亮.
+数学建模算法与运用[M]. 第2版. 第216页.
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2"
+class="footnote-text"><span>https://baike.baidu.com/item/%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/3450227
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/37856153
+<a href="#fnref:3" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:4"
+class="footnote-text"><span>https://www.zhihu.com/question/34554321/answer/64372216
+<a href="#fnref:4" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%B1%BB%E8%B7%9D%E7%A6%BB/">类距离</a>
+                    
+                      <a class="hover-with-bg" href="/tags/K-%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/">K-均值聚类</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB/">层次聚类</a>
+                    
+                      <a class="hover-with-bg" href="/tags/DBSCAN%E7%AE%97%E6%B3%95/">DBSCAN算法</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/15/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">主成分分析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/12/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">
+                        <span class="hidden-mobile">分类模型</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <!-- begin 评论 -->
+  <div id="valine"></div> 
+  <!-- end 评论 -->
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+       
+        var options = Object.assign(
+          {"appId":"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz","appKey":"IVwl94UT4wnOPWUgwn4AfOCE","path":"window.location.pathname","placeholder":"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…","avatar":"robohash","avatarForce":true,"meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","admin_email_hash":"393669798@qq.com","enableQQ":true,"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        ) 
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+ 
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    <!--向顶部滚动的箭头-->
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!--自定义底部 HTML 内容-->
+    
+  </main>
+  
+  <!--页脚-->
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <!---->
+     &copy; <script type="text/javascript"> var myDate = new Date().getFullYear(); document.write(myDate) </script> <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+
+      <!--通过API接口作为首页副标题的内容-->
+      
+        typing(title)  //tying打字机
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,1 +1,860 @@
-<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png"><link rel="icon" href="/img/logo/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><meta name="theme-color" content="#2f4154"><meta name="description" content="一个神秘的人"><meta name="author" content="epochxi"><meta name="keywords" content="dramwig"><meta name="description" content="请注意，本文最后更新于2022.2.28，其中一些理解可能已被笔者推翻或废弃。            优劣解距离法(TOPSIS) TOPSIS法(Technique for Order Preference by Similarity to Ideal Solution) 可翻译为逼近理想解排序法，国内常简称为优劣解距离法。是根据有限个评价对象与理想化目标的接"><meta property="og:type" content="article"><meta property="og:title" content="优劣解距离法"><meta property="og:url" content="http://example.com/2022/01/17/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E4%BC%98%E5%8A%A3%E8%A7%A3%E8%B7%9D%E7%A6%BB%E6%B3%95/index.html"><meta property="og:site_name" content="风倾客栈 ✧"><meta property="og:description" content="请注意，本文最后更新于2022.2.28，其中一些理解可能已被笔者推翻或废弃。            优劣解距离法(TOPSIS) TOPSIS法(Technique for Order Preference by Similarity to Ideal Solution) 可翻译为逼近理想解排序法，国内常简称为优劣解距离法。是根据有限个评价对象与理想化目标的接"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.loli.net/2022/02/28/jRuf16qiWHEZbGm.png"><meta property="og:image" content="https://s2.loli.net/2022/01/18/pqFAbi5Ek4SonVa.png"><meta property="og:image" content="https://pic.imgdb.cn/item/621c62d12ab3f51d911ebe63.png"><meta property="article:published_time" content="2022-01-17T01:45:00.000Z"><meta property="article:modified_time" content="2022-02-28T05:52:14.764Z"><meta property="article:author" content="epochxi"><meta property="article:tag" content="TOPSIS"><meta property="article:tag" content="熵权法"><meta property="article:tag" content="归一化与标准化"><meta property="article:tag" content="综合评价"><meta property="article:tag" content="客观赋权"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://s2.loli.net/2022/02/28/jRuf16qiWHEZbGm.png"><title>优劣解距离法 &lt; 风倾客栈 ✧</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css"><link rel="stylesheet" href="/lib/hint/hint.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css"><link rel="stylesheet" href="/css/main.css"><script id="fluid-configs">var Fluid=window.Fluid||{},CONFIG={hostname:"example.com",root:"/",version:"1.8.12",typing:{enable:!0,typeSpeed:100,cursorChar:"_",loop:!1},anchorjs:{enable:!1,element:"h1,h2,h3,h4,h5,h6",placement:"right",visible:"hovor",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},copy_btn:!1,image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:1},lazyload:{enable:!0,loading_img:"/img/loading.gif",onlypost:!1,offset_factor:2},web_analytics:{enable:!0,baidu:"fa7203cd147458a2bb6b7c7fc7bd03a3",google:null,gtag:null,tencent:{sid:null,cid:null},woyaola:null,cnzz:null,leancloud:{app_id:null,app_key:null,server_url:null,path:"window.location.pathname"}},search_path:"/local-search.xml"}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><header style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><i class="iconfont icon-home-fill"></i><strong>风倾客栈</strong></a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/categories/">分类</a></li><li class="nav-item"><a class="nav-link" href="/about/">关于</a></li><li class="nav-item"><a class="nav-link" href="/links/">朋友</a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">&nbsp;<i class="iconfont icon-search"></i>&nbsp;</a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a></li></ul></div></div></nav><div class="banner" id="banner" parallax="true" style="background:url(/img/default.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="page-header text-center fade-in-up"><span class="h2" id="subtitle" title="优劣解距离法"></span><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2022-01-17 09:45" pubdate>2022年1月17日 上午</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 5.9k 字 </span><span id="busuanzi_container_page_pv" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span> 次</span></div></div><div class="scroll-down-bar"><i class="iconfont icon-arrowdown"></i></div></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div class="py-5" id="board"><article class="post-content mx-auto"><h1 style="display:none">优劣解距离法</h1><div class="markdown-body"><div class="note note-warning"><p>请注意，本文最后更新于2022.2.28，其中一些理解可能已被笔者推翻或废弃。</p></div><h1 id="优劣解距离法topsis">优劣解距离法(TOPSIS)</h1><p>TOPSIS法(Technique for Order Preference by Similarity to Ideal Solution)<br>可翻译为逼近理想解排序法，国内常简称为优劣解距离法。是根据有限个评价对象与理想化目标的接近程度进行排序的方法，是在现有的对象中进行相对优劣的评价。</p><p>TOPSIS 法是一种常用的综合评价方法，其能充分利用原始数据的信息，<br>其结果能精确地反映各评价方案之间的差距。</p><figure><img src="https://s2.loli.net/2022/02/28/jRuf16qiWHEZbGm.png" srcset="/img/loading.gif" lazyload alt="不同压缩因子压缩熵权法的TOPSIS"><figcaption aria-hidden="true">不同压缩因子压缩熵权法的TOPSIS</figcaption></figure><h2 id="基本思想">基本思想</h2><p>构造计算评分公式：<span class="math inline">\(\frac{x-min}{max-min}\)</span></p><p>该公式能够良好的对一个指标下的数据进行评分，反应了单个数据在数据范围区间所处的位置。</p><p><strong>拓展</strong>：将其中 <span class="math inline">\(x-min\)</span> 理解为“x与最小点的距离”；<span class="math inline">\(max-x\)</span> 理解为“x于最大值点的距离”即可得到多指标评价公式</p><h2 id="模型步骤">模型步骤</h2><h3 id="数据处理">数据处理</h3><p>对所有的指标构成进行说明</p><p>对于 <span class="math inline">\(m\)</span> 个评价指标横向排列，<span class="math inline">\(n\)</span> 个评价对象纵向排列的矩阵，记为 <span class="math display">\[X_{nm}=\left[\begin{array}{cccc} x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1 m} \\ x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2 m} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ x_{n 1} &amp; x_{n 2} &amp; \cdots &amp; x_{n m} \end{array}\right]\]</span></p><h3 id="指标正向化">指标正向化</h3><p><strong>描述</strong>：统一指标类型，将为极小型、中间型、区间型等指标转换为极大值指标</p><p><strong>注</strong>：最好不要出现负数(无法求熵权)</p><ol type="1"><li>极小型指标转换为极大型指标的公式</li></ol><p><span class="math display">\[\bar{x}_{i}=max-x_i或\bar{x}_{i}=\frac{1}{x_i}\]</span> <strong>其中</strong>：<span class="math inline">\(\bar{x}_{i}\)</span>代表转化后的结果</p><ol start="2" type="1"><li>中间型指标转化为极大型指标</li></ol><p><span class="math display">\[\bar{x}_{i}=1-\frac{\left|x_{i}-x_{\text {best }}\right|}{\max \left(\left|X-x_{\text {best }}\right|\right)}\]</span> <strong>其中</strong>：<span class="math inline">\(x_{best}\)</span> 指代的是最好的值</p><ol start="3" type="1"><li>区间型指标转化为极大型指标</li></ol><p><span class="math display">\[ \overline{x_{i}}=\left\{\begin{array}{c} 1-\frac{a-x_{i}}{M}, x_{i}&gt;a \\ 1, \quad a&lt;x_{i}&lt;b \\ 1-\frac{x_{i}-b}{M}, x_{i}&gt;b \end{array} \right. \]</span> <strong>其中</strong>：<span class="math inline">\(M=\max \{a-\min (X), \max (X)-b\}\)</span>即偏离最优区间最远的值; <span class="math inline">\(a\)</span>为下界，<span class="math inline">\(b\)</span>为上界</p><h3 id="标准化处理">标准化处理</h3><p><strong>描述</strong>：消去不同指标量纲的影响</p><p>记标准化矩阵为<span class="math inline">\(Z_{nm}\)</span>,有<span class="math inline">\(Z_{i j}=\frac{x_{i j}}{\sqrt{\sum_{i=1}^{n} x_{i j}^{2}}}\)</span></p><h3 id="计算得分">计算得分</h3><p>定义 <span class="math display">\[ \begin{aligned} Z^{+} &amp;=\left(Z_{1}^{+}, Z_{2}^{+}, \cdots, Z_{m}^{+}\right) \\ &amp;=\left(\max \left\{z_{11}, z_{21}, \cdots, z_{n 1}\right\}, \max \left\{z_{12}, z_{22}, \cdots, z_{n 2}\right\}, \cdots, \max \left\{z_{1 m}, z_{2 m}, \cdots, z_{n m}\right\}\right) \\ Z^{-} &amp;=\left(Z_{1}^{-}, Z_{2}^{-}, \cdots, Z_{m}^{-}\right) \\ &amp;=\left(\min \left\{z_{11}, z_{21}, \cdots, z_{n 1}\right\}, \min \left\{z_{12}, z_{22}, \cdots, z_{n 2}\right\}, \cdots, \min \left\{z_{1 m}, z_{2 m}, \cdots, z_{n m}\right\}\right) \end{aligned} \]</span></p><p>定义第 <span class="math inline">\(i(i=1,2, \cdots, n)\)</span> 个评价对象与最大值的距离 <span class="math inline">\(D_{i}^{+}=\sqrt{\sum_{j=1}^{m}\widetilde{w}_{j}\left(Z_{j}^{+}-z_{i j}\right)^{2}}\)</span><br>定义第 <span class="math inline">\(i(i=1,2, \cdots, n)\)</span> 个评价对象与最小值的距离 <span class="math inline">\(D_{i}^{-}=\sqrt{\sum_{j=1}^{m}\widetilde{w}_{j}\left(Z_{j}^{-}-z_{i j}\right)^{2}}\)</span><br>其中 <span class="math inline">\(\widetilde{w}_{j}\)</span> 为加权的指标权重，权重默认为1(因为除法，权重单位量对结果无影响)，可以用层次分析法或熵权法确定权重。</p><p>第 <span class="math inline">\(i(i=1,2, \cdots, n)\)</span> 个评价对象未归一化得分<span class="math inline">\(S_{i}=\frac{D_{i}^{-}}{D_{i}^{+}+D_{i}^{-}}\)</span></p><h3 id="结果处理">*结果处理</h3><p>为了比较不同评价模型得到的结果曲线，常常对结果处理。让结果更容易解释，或更好比较。(归一化、标准化)</p><p><span class="math display">\[\widetilde{S_{i}}=\frac{S_{i}}{\sum_{i=1}^{n} S_{i}}\]</span></p><h2 id="更多理解">更多理解</h2><p>对于形如上文 <span class="math inline">\(Z\)</span> 的矩阵，可以将<span class="math inline">\(m\)</span>个评价指标看作<span class="math inline">\(m\)</span>个坐标轴。对于这<span class="math inline">\(m\)</span>个坐标轴的张成空间 <span class="math inline">\(V\)</span> ，每一条横轴（即待评价单元）就可表示为该空间上的一点 <span class="math inline">\(P(x_{i1},x_{i2},...,x_{im})\)</span>。</p><p><span class="math inline">\(Z^{+}(Z_{1}^{+}, Z_{2}^{+}, \cdots, Z_{m}^{+})\)</span> , <span class="math inline">\(Z^{-}(Z_{1}^{-}, Z_{2}^{-}, \cdots, Z_{m}^{-})\)</span> 为包含所有评价点集的最小“<span class="math inline">\(m\)</span>维体”的主对称轴上的两端点。</p><p>对于 <span class="math inline">\(S_{i}=\frac{D_{i}^{-}}{D_{i}^{+}+D_{i}^{-}}=\frac{1}{1+k}\)</span> , <span class="math inline">\(k\)</span> 的含义为点到 <span class="math inline">\(Z^+\)</span> 与 <span class="math inline">\(Z^-\)</span> 的距离比值。形如 <span class="math inline">\(k=\frac{D^+}{D^-}=\frac{dis(X,Z^+)}{dis(X,Z^-)}\)</span> 的式子表示的曲线为<span class="math inline">\(m\)</span>纬的球体。</p><p>以下为2个评价指标时，以 <span class="math inline">\(Z^+(3,2)\)</span> , <span class="math inline">\(Z^-(0,0)\)</span> 为端点，<span class="math inline">\(k=\{2^{-4},2^{-3},...,2^4\}\)</span> 时的函数图像。同一曲线上的点表示的评价结果相同。</p><figure><img src="https://s2.loli.net/2022/01/18/pqFAbi5Ek4SonVa.png" srcset="/img/loading.gif" lazyload alt="二维评价张成空间"><figcaption aria-hidden="true">二维评价张成空间</figcaption></figure><p>如图，可以看出TOPSIS评价对空间进行了扭曲（把<span class="math inline">\(m\)</span>空间非线性压缩为一维评价系）。保留了样本间间距，但损失了原始统计信息。</p><blockquote><p>通过下文解释，所以TOPSIS是高纬的归一化(Normalization)?但下文中说，归一化也是线性放缩。 (22.1.18)</p></blockquote><h1 id="熵权法">熵权法</h1><p>熵权法构建系数利用了信息论的知识。简单的说，数据的变异程度（方差）越大，就说明这个指标蕴含的信息量越大，也就越重要。例如：一个指标都是相同的数值，那么这个指标的变异程度（方差）就超级小，也没对最终的判断做出贡献，所以这个指标的权重就可以赋为0。</p><h2 id="模型思想">模型思想</h2><p>记信息量为<span class="math inline">\(I(p)\)</span>，概率为<span class="math inline">\(p\)</span>，有<span class="math inline">\(I(1)=0\)</span>、<span class="math inline">\(I(0^+)=+\infty\)</span>，可以得到一个<span class="math inline">\(I\)</span>与<span class="math inline">\(p\)</span>呈反比的函数图像。</p><p>构造<span class="math inline">\(I(x)=- \ln{p(x)}\)</span>保证<span class="math inline">\(0 \leqslant p(x) \leqslant 1\)</span>。<span class="math inline">\(x\)</span>表示事情发送的情况，<span class="math inline">\(p(x)\)</span>表示事情发生的概率。</p><p>可定义事件<span class="math inline">\(X={x_1,x_2,...,x_n}\)</span>(<span class="math inline">\(x_i\)</span>为发生情况)的信息熵为： <span class="math display">\[H(X)=\sum_{i=1}^{n}\left[p\left(x_{i}\right) I\left(x_{i}\right)\right]=-\sum_{i=1}^{n}\left[p\left(x_{i}\right) \ln \left(p\left(x_{i}\right)\right)\right]\]</span> 信息熵的本质是对信息量的期望值。</p><p><strong>注</strong>：可证当<span class="math inline">\(p(x_1)=p(x_2)=...=p(x_n)=\frac{1}{n}\)</span>时<span class="math inline">\(H(x)\)</span>取得最大值为<span class="math inline">\(\ln n\)</span>。</p><h2 id="基本步骤">基本步骤</h2><ol type="1"><li>矩阵正向化和标准化 <span class="math display">\[Z=\left[\begin{array}{cccc} z_{11} &amp; z_{12} &amp; \cdots &amp; z_{1 m} \\ z_{21} &amp; z_{22} &amp; \cdots &amp; z_{2 m} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ z_{n 1} &amp; z_{n 2} &amp; \cdots &amp; z_{n m} \end{array}\right] \]</span></li><li>对已经正向化和标准化的矩阵，若有负数需再次归一化(另一种标准化) <span class="math display">\[\tilde{z}_{i j}=\frac{x_{i j}-\min \left\{x_{1 j}, x_{2 j}, \cdots, x_{n j}\right\}}{\max \left\{x_{1 j}, x_{2 j}, \cdots, x_{n j}\right\}-\min \left\{x_{1 j}, x_{2 j}, \cdots, x_{n j}\right\}}\]</span></li><li>计算概率矩阵 <span class="math display">\[p_{i j}=\frac{\tilde{z}_{i j}}{\sum_{i=1}^{n} \tilde{z}_{i j}}\]</span></li><li>计算熵值。之所以除以了一个 <span class="math inline">\(ln(n)\)</span> 是为了归一化 <span class="math display">\[e=-\frac{1}{\ln (n)} \times \sum_{i=1}^{n} p_{i} \ln \left(p_{i}\right)\]</span></li><li>构建权重。首先用<span class="math inline">\(1-e_j\)</span>得到信息的效用值，之后因为权重只和为<span class="math inline">\(1\)</span>，在对权重进行归一化即可得到<span class="math inline">\(w_j\)</span>权重 <span class="math display">\[d_j=1-e_j\]</span> <span class="math display">\[w_j=\frac{d_j}{\sum_{j=1}^m d_j}\]</span></li></ol><blockquote><p>熵权法仅仅能反应指标信息量的大小，并不能反应指标的重要程度，所以使用熵权法加权的评价模型得到的结果往往比未加权的结果变化幅度更大，增减趋势更明显。但似乎并不能得到一个客观的评分？ (22.1.21)</p></blockquote><figure><img src="https://pic.imgdb.cn/item/621c62d12ab3f51d911ebe63.png" srcset="/img/loading.gif" lazyload alt="越往右越趋近正常的熵权法权重"><figcaption aria-hidden="true">越往右越趋近正常的熵权法权重</figcaption></figure><h1 id="归一化与标准化">*归一化与标准化</h1><p>它们都是指特征工程中的特征线性缩放过程</p><p><strong>作用</strong>：</p><ol type="1"><li>使不同量纲的特征处于同一数值量级，减少方差大的特征的影响，使模型更准确。</li><li>加快学习算法的收敛速度。</li></ol><p><strong>缩放过程可以分为以下几种</strong>：</p><ol type="1"><li>缩放到均值为0，方差为1（Standardization——StandardScaler()）</li><li>缩放到0和1之间（Standardization——MinMaxScaler()）</li><li>缩放到-1和1之间（Standardization——MaxAbsScaler()）</li><li>缩放到0和1之间，保留原始数据的分布（Normalization——Normalizer()）</li></ol><p>1就是常说的z-score归一化，2是min-max归一化。</p><h2 id="归一化normalization">归一化（Normalization）</h2><h3 id="平均归一化mean-normalization">1.平均归一化（Mean Normalization）</h3><p>这种归一化需防止在线学习或在线推理中，新进样本突破原始min或max数据</p><p><span class="math display">\[\frac{X_{i}-\mu }{X_{\max }-X_{\min }}\]</span></p><p><strong>其中</strong>：<span class="math inline">\(X_{min}\)</span>表示对应矩阵中最小的数;<span class="math inline">\(X_{max}\)</span>表示对应矩阵中最大的数</p><h3 id="minmax归一化rescaling">2.minmax归一化（Rescaling）</h3><p>这种归一化需防止在线学习或在线推理中，新进样本突破原始min或max数据 <span class="math display">\[\frac{X_{i}-X_{\min }}{X_{\max }-X_{\min }}\]</span></p><h3 id="非线性归一化non-linear-normlization">3.非线性归一化（Non-Linear Normlization）</h3><p><span class="math display">\[ \begin{array}{c} \lg x \\ \log _{2} x \\ \frac{2}{\pi} \arctan x \end{array} \]</span> 这种归一化需考虑数据分布，进行适当的非线性函数选取。</p><h2 id="标准化standardization">标准化（Standardization）</h2><h3 id="z-score标准化">1.Z-Score标准化</h3><p><span class="math display">\[\frac{X_{i}-\mu}{\sigma}\]</span> 这种标准化需要要求原数据近似高斯分布。</p><p><strong>其中</strong>：<span class="math inline">\(\mu\)</span>表示矩阵均值;<span class="math inline">\(\sigma\)</span>表示矩阵标准差</p><h2 id="中心化centralization">中心化（Centralization）</h2><p>对于中心化，有的地方成为Mean-Subtraction，表示均值-减去（有点日本话的感觉），有的地方称之为Zero-Mean即零均值化，还有的为Zero-Centered这个只可意会很难翻译。但总而言之，他们都是下面这个形式： <span class="math display">\[x_i-\mu\]</span></p><h2 id="区别和用途">区别和用途</h2><p>归一化和标准化的相同点都是对某个特征（column）进行缩放（scaling）而不是对某个样本的特征向量（row）进行缩放。对特征向量进行缩放是毫无意义的。</p><p>归一化和标准化都保持数据分布不变的情况下（两者本质上都只是对数据进行线性变化），对数据进行处理，但是从公式上面还是能够明显看出来，归一化的处理只是和最大值最小值相关，归一化后样本会失去原始的信息；标准化却是和数据的分布相关（均值，方差）。归一化更好保留了样本间间距；标准化的统计意义更强，是数据缩放的首选。</p><table><colgroup><col style="width:57%"><col style="width:42%"></colgroup><thead><tr class="header"><th style="text-align:center">归一化</th><th style="text-align:left"><font size="1">将一列数据“拍扁”到某个固定区间(常为[0,1]),和最大/小值有关</font></th></tr></thead><tbody><tr class="odd"><td style="text-align:center"><strong>标准化</strong></td><td style="text-align:left"><font size="1"><strong>将数据变换为均值0,标准差为1的分布(并非一定正态),缩放和每个点都有关(通过均值+方差体现)</strong></font></td></tr><tr class="even"><td style="text-align:center"><strong>中心化</strong></td><td style="text-align:left"><font size="1"><strong>变量减去均值，可避免异常值和极端值的影响，本质为口个平移过程，平移后数据中心是原点0</strong></font></td></tr></tbody></table><h1 id="参考">参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>https://www.cnblogs.com/xiashiwendao/p/12130992.html <a href="#fnref:1" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>https://baike.baidu.com/item/TOPSIS%E6%B3%95/3094166?fr=aladdin <a href="#fnref:2" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>https://blog.csdn.net/limiyudianzi/article/details/103410150 <a href="#fnref:3" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:4" class="footnote-text"><span>bilibili:数学建模学习交流 <a href="#fnref:4" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:5" class="footnote-text"><span>https://www.zhihu.com/question/20467170 <a href="#fnref:5" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:6" class="footnote-text"><span>https://zhuanlan.zhihu.com/p/364338617 <a href="#fnref:6" rev="footnote" class="footnote-backref">↩︎</a></span></span></li></ol></div></section><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></div><hr><div><div class="post-metas mb-3"><div class="post-meta mr-3"><i class="iconfont icon-category"></i> <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/TOPSIS/">TOPSIS</a> <a class="hover-with-bg" href="/tags/%E7%86%B5%E6%9D%83%E6%B3%95/">熵权法</a> <a class="hover-with-bg" href="/tags/%E5%BD%92%E4%B8%80%E5%8C%96%E4%B8%8E%E6%A0%87%E5%87%86%E5%8C%96/">归一化与标准化</a> <a class="hover-with-bg" href="/tags/%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7/">综合评价</a> <a class="hover-with-bg" href="/tags/%E5%AE%A2%E8%A7%82%E8%B5%8B%E6%9D%83/">客观赋权</a></div></div><div class="post-prevnext"><article class="post-prev col-6"><a href="/2022/01/17/13/"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">2022—SWJTU寒假选拔赛第二场复盘</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/2022/01/17/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/"><span class="hidden-mobile">层次分析法</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article class="comments" id="comments" lazyload><div id="valine"></div><script type="text/javascript">Fluid.utils.loadComments("#valine",(function(){Fluid.utils.createScript("https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js",(function(){var e=Object.assign({appId:"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz",appKey:"IVwl94UT4wnOPWUgwn4AfOCE",path:"window.location.pathname",placeholder:"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…",avatar:"robohash",avatarForce:!0,meta:["nick","mail","link"],requiredFields:[],pageSize:10,lang:"zh-CN",highlight:!0,recordIP:!0,serverURLs:"",admin_email_hash:"393669798@qq.com",enableQQ:!0,emojiCDN:"//i0.hdslb.com/bfs/emote/",emojiMaps:{tv_doge:"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},{el:"#valine",path:window.location.pathname});new Valine(e),Fluid.utils.waitElementVisible("#valine .vcontent",()=>{Fluid.plugins.initFancyBox("#valine .vcontent img:not(.vemoji)")})}))}))</script><noscript>Please enable JavaScript to view the comments</noscript></article></article></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div class="toc-body" id="toc-body"></div></div></div></div></div><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer class="text-center mt-5 py-3"><div class="footer-content">&copy;<script type="text/javascript">var myDate=(new Date).getFullYear();document.write(myDate)</script><a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black">风倾</a> | 船动莲开</div></footer><script src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="/js/local-search.js"></script><script src="/js/img-lazyload.js"></script><script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js"></script><script>!function(t,i){(0,Fluid.plugins.typing)(i.getElementById("subtitle").title)}(window,document)</script><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},loader:{load:["ui/lazy"]},options:{renderActions:{findScript:[10,e=>{document.querySelectorAll('script[type^="math/tex"]').forEach(t=>{const a=!!t.type.match(/; *mode=display/),n=new e.options.MathItem(t.textContent,e.inputJax[0],a),o=document.createTextNode("");t.parentNode.replaceChild(o,t),n.start={node:o,delim:"",n:0},n.end={node:o,delim:"",n:0},e.math.push(n)})},"",!1],insertedScript:[200,()=>{document.querySelectorAll("mjx-container").forEach(e=>{let t=e.parentNode;"li"===t.nodeName.toLowerCase()&&t.parentNode.classList.add("has-jax")})},"",!1]}}}</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><script defer>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script src="/js/boot.js"></script></body></html>
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png">
+  <link rel="icon" href="/img/logo/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个神秘的人">
+  <meta name="author" content="epochxi">
+  <meta name="keywords" content="dramwig">
+  <meta name="description" content="请注意，本文最后更新于2022.2.28，其中一些理解可能已被笔者推翻或废弃。            优劣解距离法(TOPSIS) TOPSIS法(Technique for Order Preference by Similarity to Ideal Solution) 可翻译为逼近理想解排序法，国内常简称为优劣解距离法。是根据有限个评价对象与理想化目标的接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="优劣解距离法">
+<meta property="og:url" content="http://example.com/2022/01/17/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E4%BC%98%E5%8A%A3%E8%A7%A3%E8%B7%9D%E7%A6%BB%E6%B3%95/index.html">
+<meta property="og:site_name" content="风倾客栈 ✧">
+<meta property="og:description" content="请注意，本文最后更新于2022.2.28，其中一些理解可能已被笔者推翻或废弃。            优劣解距离法(TOPSIS) TOPSIS法(Technique for Order Preference by Similarity to Ideal Solution) 可翻译为逼近理想解排序法，国内常简称为优劣解距离法。是根据有限个评价对象与理想化目标的接">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/02/28/jRuf16qiWHEZbGm.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/18/pqFAbi5Ek4SonVa.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/621c62d12ab3f51d911ebe63.png">
+<meta property="article:published_time" content="2022-01-17T01:45:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T05:52:14.764Z">
+<meta property="article:author" content="epochxi">
+<meta property="article:tag" content="TOPSIS">
+<meta property="article:tag" content="熵权法">
+<meta property="article:tag" content="归一化与标准化">
+<meta property="article:tag" content="综合评价">
+<meta property="article:tag" content="客观赋权">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/02/28/jRuf16qiWHEZbGm.png">
+  
+  <title>优劣解距离法 &lt; 风倾客栈 ✧</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hovor","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"fa7203cd147458a2bb6b7c7fc7bd03a3","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <!--菜单栏-->
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="iconfont icon-home-fill"></i> <!-- homeͼ�� -->
+      <strong>风倾客栈</strong> <!-- �������� -->
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content --> <!-- �˵��б� -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                朋友
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+    <!--视差滚动-->
+    <div class="banner" id="banner" parallax=true   
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <!--副标题 (打字机)-->
+            <span class="h2" id="subtitle" title="优劣解距离法">
+              <!--typing打字机-->
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-17 09:45" pubdate>
+        2022年1月17日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.9k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">优劣解距离法</h1>
+            
+            <div class="markdown-body">
+              <div class="note note-warning">
+            <p>请注意，本文最后更新于2022.2.28，其中一些理解可能已被笔者推翻或废弃。</p>
+          </div>
+<h1 id="优劣解距离法topsis">优劣解距离法(TOPSIS)</h1>
+<p>TOPSIS法(Technique for Order Preference by Similarity to Ideal
+Solution)<br />
+可翻译为逼近理想解排序法，国内常简称为优劣解距离法。是根据有限个评价对象与理想化目标的接近程度进行排序的方法，是在现有的对象中进行相对优劣的评价。</p>
+<p>TOPSIS 法是一种常用的综合评价方法，其能充分利用原始数据的信息，<br />
+其结果能精确地反映各评价方案之间的差距。</p>
+<figure>
+<img src="https://s2.loli.net/2022/02/28/jRuf16qiWHEZbGm.png" srcset="/img/loading.gif" lazyload
+alt="不同压缩因子压缩熵权法的TOPSIS" />
+<figcaption
+aria-hidden="true">不同压缩因子压缩熵权法的TOPSIS</figcaption>
+</figure>
+<h2 id="基本思想">基本思想</h2>
+<p>构造计算评分公式：<span
+class="math inline">\(\frac{x-min}{max-min}\)</span></p>
+<p>该公式能够良好的对一个指标下的数据进行评分，反应了单个数据在数据范围区间所处的位置。</p>
+<p><strong>拓展</strong>：将其中 <span
+class="math inline">\(x-min\)</span> 理解为“x与最小点的距离”；<span
+class="math inline">\(max-x\)</span>
+理解为“x于最大值点的距离”即可得到多指标评价公式</p>
+<h2 id="模型步骤">模型步骤</h2>
+<h3 id="数据处理">数据处理</h3>
+<p>对所有的指标构成进行说明</p>
+<p>对于 <span class="math inline">\(m\)</span> 个评价指标横向排列，<span
+class="math inline">\(n\)</span> 个评价对象纵向排列的矩阵，记为 <span
+class="math display">\[X_{nm}=\left[\begin{array}{cccc}
+x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1 m} \\
+x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2 m} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{n 1} &amp; x_{n 2} &amp; \cdots &amp; x_{n m}
+\end{array}\right]\]</span></p>
+<h3 id="指标正向化">指标正向化</h3>
+<p><strong>描述</strong>：统一指标类型，将为极小型、中间型、区间型等指标转换为极大值指标</p>
+<p><strong>注</strong>：最好不要出现负数(无法求熵权)</p>
+<ol type="1">
+<li>极小型指标转换为极大型指标的公式</li>
+</ol>
+<p><span
+class="math display">\[\bar{x}_{i}=max-x_i或\bar{x}_{i}=\frac{1}{x_i}\]</span>
+<strong>其中</strong>：<span
+class="math inline">\(\bar{x}_{i}\)</span>代表转化后的结果</p>
+<ol start="2" type="1">
+<li>中间型指标转化为极大型指标</li>
+</ol>
+<p><span class="math display">\[\bar{x}_{i}=1-\frac{\left|x_{i}-x_{\text
+{best }}\right|}{\max \left(\left|X-x_{\text {best
+}}\right|\right)}\]</span> <strong>其中</strong>：<span
+class="math inline">\(x_{best}\)</span> 指代的是最好的值</p>
+<ol start="3" type="1">
+<li>区间型指标转化为极大型指标</li>
+</ol>
+<p><span class="math display">\[
+\overline{x_{i}}=\left\{\begin{array}{c}
+1-\frac{a-x_{i}}{M}, x_{i}&gt;a \\
+1, \quad a&lt;x_{i}&lt;b \\
+1-\frac{x_{i}-b}{M}, x_{i}&gt;b
+\end{array}
+\right.
+\]</span> <strong>其中</strong>：<span class="math inline">\(M=\max
+\{a-\min (X), \max (X)-b\}\)</span>即偏离最优区间最远的值; <span
+class="math inline">\(a\)</span>为下界，<span
+class="math inline">\(b\)</span>为上界</p>
+<h3 id="标准化处理">标准化处理</h3>
+<p><strong>描述</strong>：消去不同指标量纲的影响</p>
+<p>记标准化矩阵为<span class="math inline">\(Z_{nm}\)</span>,有<span
+class="math inline">\(Z_{i j}=\frac{x_{i j}}{\sqrt{\sum_{i=1}^{n} x_{i
+j}^{2}}}\)</span></p>
+<h3 id="计算得分">计算得分</h3>
+<p>定义 <span class="math display">\[
+\begin{aligned}
+Z^{+} &amp;=\left(Z_{1}^{+}, Z_{2}^{+}, \cdots, Z_{m}^{+}\right) \\
+&amp;=\left(\max \left\{z_{11}, z_{21}, \cdots, z_{n 1}\right\}, \max
+\left\{z_{12}, z_{22}, \cdots, z_{n 2}\right\}, \cdots, \max \left\{z_{1
+m}, z_{2 m}, \cdots, z_{n m}\right\}\right) \\
+Z^{-} &amp;=\left(Z_{1}^{-}, Z_{2}^{-}, \cdots, Z_{m}^{-}\right) \\
+&amp;=\left(\min \left\{z_{11}, z_{21}, \cdots, z_{n 1}\right\}, \min
+\left\{z_{12}, z_{22}, \cdots, z_{n 2}\right\}, \cdots, \min \left\{z_{1
+m}, z_{2 m}, \cdots, z_{n m}\right\}\right)
+\end{aligned}
+\]</span></p>
+<p>定义第 <span class="math inline">\(i(i=1,2, \cdots, n)\)</span>
+个评价对象与最大值的距离 <span
+class="math inline">\(D_{i}^{+}=\sqrt{\sum_{j=1}^{m}\widetilde{w}_{j}\left(Z_{j}^{+}-z_{i
+j}\right)^{2}}\)</span><br />
+定义第 <span class="math inline">\(i(i=1,2, \cdots, n)\)</span>
+个评价对象与最小值的距离 <span
+class="math inline">\(D_{i}^{-}=\sqrt{\sum_{j=1}^{m}\widetilde{w}_{j}\left(Z_{j}^{-}-z_{i
+j}\right)^{2}}\)</span><br />
+其中 <span class="math inline">\(\widetilde{w}_{j}\)</span>
+为加权的指标权重，权重默认为1(因为除法，权重单位量对结果无影响)，可以用层次分析法或熵权法确定权重。</p>
+<p>第 <span class="math inline">\(i(i=1,2, \cdots, n)\)</span>
+个评价对象未归一化得分<span
+class="math inline">\(S_{i}=\frac{D_{i}^{-}}{D_{i}^{+}+D_{i}^{-}}\)</span></p>
+<h3 id="结果处理">*结果处理</h3>
+<p>为了比较不同评价模型得到的结果曲线，常常对结果处理。让结果更容易解释，或更好比较。(归一化、标准化)</p>
+<p><span
+class="math display">\[\widetilde{S_{i}}=\frac{S_{i}}{\sum_{i=1}^{n}
+S_{i}}\]</span></p>
+<h2 id="更多理解">更多理解</h2>
+<p>对于形如上文 <span class="math inline">\(Z\)</span>
+的矩阵，可以将<span class="math inline">\(m\)</span>个评价指标看作<span
+class="math inline">\(m\)</span>个坐标轴。对于这<span
+class="math inline">\(m\)</span>个坐标轴的张成空间 <span
+class="math inline">\(V\)</span>
+，每一条横轴（即待评价单元）就可表示为该空间上的一点 <span
+class="math inline">\(P(x_{i1},x_{i2},...,x_{im})\)</span>。</p>
+<p><span class="math inline">\(Z^{+}(Z_{1}^{+}, Z_{2}^{+}, \cdots,
+Z_{m}^{+})\)</span> , <span class="math inline">\(Z^{-}(Z_{1}^{-},
+Z_{2}^{-}, \cdots, Z_{m}^{-})\)</span> 为包含所有评价点集的最小“<span
+class="math inline">\(m\)</span>维体”的主对称轴上的两端点。</p>
+<p>对于 <span
+class="math inline">\(S_{i}=\frac{D_{i}^{-}}{D_{i}^{+}+D_{i}^{-}}=\frac{1}{1+k}\)</span>
+, <span class="math inline">\(k\)</span> 的含义为点到 <span
+class="math inline">\(Z^+\)</span> 与 <span
+class="math inline">\(Z^-\)</span> 的距离比值。形如 <span
+class="math inline">\(k=\frac{D^+}{D^-}=\frac{dis(X,Z^+)}{dis(X,Z^-)}\)</span>
+的式子表示的曲线为<span class="math inline">\(m\)</span>纬的球体。</p>
+<p>以下为2个评价指标时，以 <span class="math inline">\(Z^+(3,2)\)</span>
+, <span class="math inline">\(Z^-(0,0)\)</span> 为端点，<span
+class="math inline">\(k=\{2^{-4},2^{-3},...,2^4\}\)</span>
+时的函数图像。同一曲线上的点表示的评价结果相同。</p>
+<figure>
+<img src="https://s2.loli.net/2022/01/18/pqFAbi5Ek4SonVa.png" srcset="/img/loading.gif" lazyload
+alt="二维评价张成空间" />
+<figcaption aria-hidden="true">二维评价张成空间</figcaption>
+</figure>
+<p>如图，可以看出TOPSIS评价对空间进行了扭曲（把<span
+class="math inline">\(m\)</span>空间非线性压缩为一维评价系）。保留了样本间间距，但损失了原始统计信息。</p>
+<blockquote>
+<p>通过下文解释，所以TOPSIS是高纬的归一化(Normalization)?但下文中说，归一化也是线性放缩。
+(22.1.18)</p>
+</blockquote>
+<h1 id="熵权法">熵权法</h1>
+<p>熵权法构建系数利用了信息论的知识。简单的说，数据的变异程度（方差）越大，就说明这个指标蕴含的信息量越大，也就越重要。例如：一个指标都是相同的数值，那么这个指标的变异程度（方差）就超级小，也没对最终的判断做出贡献，所以这个指标的权重就可以赋为0。</p>
+<h2 id="模型思想">模型思想</h2>
+<p>记信息量为<span class="math inline">\(I(p)\)</span>，概率为<span
+class="math inline">\(p\)</span>，有<span
+class="math inline">\(I(1)=0\)</span>、<span
+class="math inline">\(I(0^+)=+\infty\)</span>，可以得到一个<span
+class="math inline">\(I\)</span>与<span
+class="math inline">\(p\)</span>呈反比的函数图像。</p>
+<p>构造<span class="math inline">\(I(x)=- \ln{p(x)}\)</span>保证<span
+class="math inline">\(0 \leqslant p(x) \leqslant 1\)</span>。<span
+class="math inline">\(x\)</span>表示事情发送的情况，<span
+class="math inline">\(p(x)\)</span>表示事情发生的概率。</p>
+<p>可定义事件<span
+class="math inline">\(X={x_1,x_2,...,x_n}\)</span>(<span
+class="math inline">\(x_i\)</span>为发生情况)的信息熵为： <span
+class="math display">\[H(X)=\sum_{i=1}^{n}\left[p\left(x_{i}\right)
+I\left(x_{i}\right)\right]=-\sum_{i=1}^{n}\left[p\left(x_{i}\right) \ln
+\left(p\left(x_{i}\right)\right)\right]\]</span>
+信息熵的本质是对信息量的期望值。</p>
+<p><strong>注</strong>：可证当<span
+class="math inline">\(p(x_1)=p(x_2)=...=p(x_n)=\frac{1}{n}\)</span>时<span
+class="math inline">\(H(x)\)</span>取得最大值为<span
+class="math inline">\(\ln n\)</span>。</p>
+<h2 id="基本步骤">基本步骤</h2>
+<ol type="1">
+<li>矩阵正向化和标准化 <span
+class="math display">\[Z=\left[\begin{array}{cccc}
+z_{11} &amp; z_{12} &amp; \cdots &amp; z_{1 m} \\
+z_{21} &amp; z_{22} &amp; \cdots &amp; z_{2 m} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+z_{n 1} &amp; z_{n 2} &amp; \cdots &amp; z_{n m}
+\end{array}\right]
+\]</span></li>
+<li>对已经正向化和标准化的矩阵，若有负数需再次归一化(另一种标准化) <span
+class="math display">\[\tilde{z}_{i j}=\frac{x_{i j}-\min \left\{x_{1
+j}, x_{2 j}, \cdots, x_{n j}\right\}}{\max \left\{x_{1 j}, x_{2 j},
+\cdots, x_{n j}\right\}-\min \left\{x_{1 j}, x_{2 j}, \cdots, x_{n
+j}\right\}}\]</span></li>
+<li>计算概率矩阵 <span class="math display">\[p_{i j}=\frac{\tilde{z}_{i
+j}}{\sum_{i=1}^{n} \tilde{z}_{i j}}\]</span></li>
+<li>计算熵值。之所以除以了一个 <span
+class="math inline">\(ln(n)\)</span> 是为了归一化 <span
+class="math display">\[e=-\frac{1}{\ln (n)} \times \sum_{i=1}^{n} p_{i}
+\ln \left(p_{i}\right)\]</span></li>
+<li>构建权重。首先用<span
+class="math inline">\(1-e_j\)</span>得到信息的效用值，之后因为权重只和为<span
+class="math inline">\(1\)</span>，在对权重进行归一化即可得到<span
+class="math inline">\(w_j\)</span>权重 <span
+class="math display">\[d_j=1-e_j\]</span> <span
+class="math display">\[w_j=\frac{d_j}{\sum_{j=1}^m d_j}\]</span></li>
+</ol>
+<blockquote>
+<p>熵权法仅仅能反应指标信息量的大小，并不能反应指标的重要程度，所以使用熵权法加权的评价模型得到的结果往往比未加权的结果变化幅度更大，增减趋势更明显。但似乎并不能得到一个客观的评分？
+(22.1.21)</p>
+</blockquote>
+<figure>
+<img src="https://pic.imgdb.cn/item/621c62d12ab3f51d911ebe63.png" srcset="/img/loading.gif" lazyload
+alt="越往右越趋近正常的熵权法权重" />
+<figcaption aria-hidden="true">越往右越趋近正常的熵权法权重</figcaption>
+</figure>
+<h1 id="归一化与标准化">*归一化与标准化</h1>
+<p>它们都是指特征工程中的特征线性缩放过程</p>
+<p><strong>作用</strong>：</p>
+<ol type="1">
+<li>使不同量纲的特征处于同一数值量级，减少方差大的特征的影响，使模型更准确。</li>
+<li>加快学习算法的收敛速度。</li>
+</ol>
+<p><strong>缩放过程可以分为以下几种</strong>：</p>
+<ol type="1">
+<li>缩放到均值为0，方差为1（Standardization——StandardScaler()）</li>
+<li>缩放到0和1之间（Standardization——MinMaxScaler()）</li>
+<li>缩放到-1和1之间（Standardization——MaxAbsScaler()）</li>
+<li>缩放到0和1之间，保留原始数据的分布（Normalization——Normalizer()）</li>
+</ol>
+<p>1就是常说的z-score归一化，2是min-max归一化。</p>
+<h2 id="归一化normalization">归一化（Normalization）</h2>
+<h3 id="平均归一化mean-normalization">1.平均归一化（Mean
+Normalization）</h3>
+<p>这种归一化需防止在线学习或在线推理中，新进样本突破原始min或max数据</p>
+<p><span class="math display">\[\frac{X_{i}-\mu }{X_{\max }-X_{\min
+}}\]</span></p>
+<p><strong>其中</strong>：<span
+class="math inline">\(X_{min}\)</span>表示对应矩阵中最小的数;<span
+class="math inline">\(X_{max}\)</span>表示对应矩阵中最大的数</p>
+<h3 id="minmax归一化rescaling">2.minmax归一化（Rescaling）</h3>
+<p>这种归一化需防止在线学习或在线推理中，新进样本突破原始min或max数据
+<span class="math display">\[\frac{X_{i}-X_{\min }}{X_{\max }-X_{\min
+}}\]</span></p>
+<h3 id="非线性归一化non-linear-normlization">3.非线性归一化（Non-Linear
+Normlization）</h3>
+<p><span class="math display">\[
+\begin{array}{c}
+\lg x \\
+\log _{2} x \\
+\frac{2}{\pi} \arctan x
+\end{array}
+\]</span> 这种归一化需考虑数据分布，进行适当的非线性函数选取。</p>
+<h2 id="标准化standardization">标准化（Standardization）</h2>
+<h3 id="z-score标准化">1.Z-Score标准化</h3>
+<p><span class="math display">\[\frac{X_{i}-\mu}{\sigma}\]</span>
+这种标准化需要要求原数据近似高斯分布。</p>
+<p><strong>其中</strong>：<span
+class="math inline">\(\mu\)</span>表示矩阵均值;<span
+class="math inline">\(\sigma\)</span>表示矩阵标准差</p>
+<h2 id="中心化centralization">中心化（Centralization）</h2>
+<p>对于中心化，有的地方成为Mean-Subtraction，表示均值-减去（有点日本话的感觉），有的地方称之为Zero-Mean即零均值化，还有的为Zero-Centered这个只可意会很难翻译。但总而言之，他们都是下面这个形式：
+<span class="math display">\[x_i-\mu\]</span></p>
+<h2 id="区别和用途">区别和用途</h2>
+<p>归一化和标准化的相同点都是对某个特征（column）进行缩放（scaling）而不是对某个样本的特征向量（row）进行缩放。对特征向量进行缩放是毫无意义的。</p>
+<p>归一化和标准化都保持数据分布不变的情况下（两者本质上都只是对数据进行线性变化），对数据进行处理，但是从公式上面还是能够明显看出来，归一化的处理只是和最大值最小值相关，归一化后样本会失去原始的信息；标准化却是和数据的分布相关（均值，方差）。归一化更好保留了样本间间距；标准化的统计意义更强，是数据缩放的首选。</p>
+<table>
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">归一化</th>
+<th
+style="text-align: left;"><font size=1>将一列数据“拍扁”到某个固定区间(常为[0,1]),和最大/小值有关</font></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>标准化</strong></td>
+<td
+style="text-align: left;"><font size=1><strong>将数据变换为均值0,标准差为1的分布(并非一定正态),缩放和每个点都有关(通过均值+方差体现)</strong></font></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>中心化</strong></td>
+<td
+style="text-align: left;"><font size=1><strong>变量减去均值，可避免异常值和极端值的影响，本质为口个平移过程，平移后数据中心是原点0</strong></font></td>
+</tr>
+</tbody>
+</table>
+<h1 id="参考">参考</h1>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1"
+class="footnote-text"><span>https://www.cnblogs.com/xiashiwendao/p/12130992.html
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2"
+class="footnote-text"><span>https://baike.baidu.com/item/TOPSIS%E6%B3%95/3094166?fr=aladdin
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3"
+class="footnote-text"><span>https://blog.csdn.net/limiyudianzi/article/details/103410150
+<a href="#fnref:3" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:4" class="footnote-text"><span>bilibili:数学建模学习交流
+<a href="#fnref:4" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:5"
+class="footnote-text"><span>https://www.zhihu.com/question/20467170
+<a href="#fnref:5" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:6"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/364338617
+<a href="#fnref:6" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/TOPSIS/">TOPSIS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%86%B5%E6%9D%83%E6%B3%95/">熵权法</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%BD%92%E4%B8%80%E5%8C%96%E4%B8%8E%E6%A0%87%E5%87%86%E5%8C%96/">归一化与标准化</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7/">综合评价</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%A2%E8%A7%82%E8%B5%8B%E6%9D%83/">客观赋权</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/17/13/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2022—SWJTU寒假选拔赛第二场复盘</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/17/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E6%A8%A1%E7%B3%8A%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7/">
+                        <span class="hidden-mobile">模糊综合评价</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <!-- begin 评论 -->
+  <div id="valine"></div> 
+  <!-- end 评论 -->
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+       
+        var options = Object.assign(
+          {"appId":"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz","appKey":"IVwl94UT4wnOPWUgwn4AfOCE","path":"window.location.pathname","placeholder":"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…","avatar":"robohash","avatarForce":true,"meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","admin_email_hash":"393669798@qq.com","enableQQ":true,"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        ) 
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+ 
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    <!--向顶部滚动的箭头-->
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!--自定义底部 HTML 内容-->
+    
+  </main>
+  
+  <!--页脚-->
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <!---->
+     &copy; <script type="text/javascript"> var myDate = new Date().getFullYear(); document.write(myDate) </script> <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+
+      <!--通过API接口作为首页副标题的内容-->
+      
+        typing(title)  //tying打字机
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

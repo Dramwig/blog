@@ -1,11 +1,834 @@
-<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png"><link rel="icon" href="/img/logo/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><meta name="theme-color" content="#2f4154"><meta name="description" content="一个神秘的人"><meta name="author" content="epochxi"><meta name="keywords" content="dramwig"><meta name="description" content="多元线性回归 模型结构 多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下： \[\left\{\begin{matrix} y &#x3D; \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\\ \varepsilon \sim N(0,\sigma ^2) \end{matrix}\right."><meta property="og:type" content="article"><meta property="og:title" content="回归分析"><meta property="og:url" content="http://example.com/2022/02/08/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/index.html"><meta property="og:site_name" content="风倾客栈 ✧"><meta property="og:description" content="多元线性回归 模型结构 多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下： \[\left\{\begin{matrix} y &#x3D; \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\\ \varepsilon \sim N(0,\sigma ^2) \end{matrix}\right."><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.loli.net/2022/02/09/ryLoOf9UKcPJqWg.png"><meta property="og:image" content="https://s2.loli.net/2022/02/08/tOTeL4yjENYF6ld.png"><meta property="og:image" content="https://s2.loli.net/2022/02/09/XOaLo1vwhMDCgbn.jpg"><meta property="article:published_time" content="2022-02-08T06:53:00.000Z"><meta property="article:modified_time" content="2022-02-27T01:38:10.866Z"><meta property="article:author" content="epochxi"><meta property="article:tag" content="多元线性回归"><meta property="article:tag" content="多元二项式回归"><meta property="article:tag" content="非线性回归"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://s2.loli.net/2022/02/09/ryLoOf9UKcPJqWg.png"><title>回归分析 &lt; 风倾客栈 ✧</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css"><link rel="stylesheet" href="/lib/hint/hint.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css"><link rel="stylesheet" href="/css/main.css"><script id="fluid-configs">var Fluid=window.Fluid||{},CONFIG={hostname:"example.com",root:"/",version:"1.8.12",typing:{enable:!0,typeSpeed:100,cursorChar:"_",loop:!1},anchorjs:{enable:!1,element:"h1,h2,h3,h4,h5,h6",placement:"right",visible:"hovor",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},copy_btn:!1,image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:1},lazyload:{enable:!0,loading_img:"/img/loading.gif",onlypost:!1,offset_factor:2},web_analytics:{enable:!0,baidu:"fa7203cd147458a2bb6b7c7fc7bd03a3",google:null,gtag:null,tencent:{sid:null,cid:null},woyaola:null,cnzz:null,leancloud:{app_id:null,app_key:null,server_url:null,path:"window.location.pathname"}},search_path:"/local-search.xml"}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><header style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><i class="iconfont icon-home-fill"></i><strong>风倾客栈</strong></a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/categories/">分类</a></li><li class="nav-item"><a class="nav-link" href="/about/">关于</a></li><li class="nav-item"><a class="nav-link" href="/links/">朋友</a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">&nbsp;<i class="iconfont icon-search"></i>&nbsp;</a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a></li></ul></div></div></nav><div class="banner" id="banner" parallax="true" style="background:url(/img/default.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="page-header text-center fade-in-up"><span class="h2" id="subtitle" title="回归分析"></span><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2022-02-08 14:53" pubdate>2022年2月8日 下午</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 5.7k 字 </span><span id="busuanzi_container_page_pv" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="busuanzi_value_page_pv"></span> 次</span></div></div><div class="scroll-down-bar"><i class="iconfont icon-arrowdown"></i></div></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div class="py-5" id="board"><article class="post-content mx-auto"><h1 style="display:none">回归分析</h1><div class="markdown-body"><h1 id="多元线性回归">多元线性回归</h1><h2 id="模型结构">模型结构</h2><p>多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下：</p><p><span class="math display">\[\left\{\begin{matrix} y = \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\\ \varepsilon \sim N(0,\sigma ^2) \end{matrix}\right.\]</span></p><p>其中：<span class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span> 为回归系数；<span class="math inline">\(x_0,x_1,\dotsb,x_m\)</span> 为变量；<span class="math inline">\(\varepsilon\)</span> 是误差随机项。</p><p>对于 <span class="math inline">\(n\)</span> 组观测，满足 <span class="math inline">\(y_i=\beta_{0} + \beta_1 x_{i1} + \cdots + \beta_mx_{im} + \varepsilon_i\)</span> ,记</p><p><span class="math display">\[\boldsymbol{Y}=\left[\begin{array}{l} y_{1} \\ y_{2} \\ \vdots \\ y_{n} \end{array}\right] \quad, \quad \boldsymbol{X}=\left[\begin{array}{cccc} 1 &amp; x_{11} &amp; \ldots &amp; x_{1m} \\ 1 &amp; x_{21} &amp; \ldots &amp; x_{2m} \\ \vdots &amp; \vdots &amp; &amp; \vdots \\ 1 &amp; x_{n1} &amp; \ldots &amp; x_{nm} \end{array}\right] \quad, \quad \boldsymbol{\beta}=\left[\begin{array}{c} \beta_{0} \\ \beta_{1} \\ \vdots \\ \beta_{k} \end{array}\right] \quad, \quad \boldsymbol{\varepsilon}=\left[\begin{array}{c} \varepsilon_{1} \\ \varepsilon_{2} \\ \vdots \\ \varepsilon_{n} \end{array}\right]\]</span></p><p>这时模型可以写作:</p><p><span class="math display">\[\boldsymbol{Y}=\boldsymbol{X} \boldsymbol{\beta}+\boldsymbol{\varepsilon}\]</span></p><h2 id="参数估计">参数估计</h2><p>模型中的参数 <span class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span> 用最小二乘法估计，得到估计值 <span class="math inline">\(\hat{\beta}_{i}\)</span> 。</p><p>需要最小化的函数是：</p><p><span class="math display">\[SSE = Q\left(\beta_{0}, \beta_{1}, \ldots, \beta_{p}\right)=\sum_{i=1}^{n}(y_i-\hat{y_i})^2=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1} x_{i 1}-\ldots-\beta_{p} x_{i p}\right)^{2}\]</span></p><p>为此，令 <span class="math display">\[\frac{\partial Q}{\partial \beta _j} =0,(j=0,1,\dots ,m)\]</span></p><p>解得(详细过程参考<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/48541799
-">[3]</span></a></sup>或<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
-">[1]</span></a></sup>)： <span class="math display">\[\boldsymbol{\hat{\beta}}=\left(\boldsymbol{X}^{T} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{T} \boldsymbol{Y}\]</span></p><p>记 <span class="math inline">\(\boldsymbol{\hat{Y}}=\boldsymbol{X}\boldsymbol{\hat{\beta}}\)</span> ，<span class="math inline">\(\boldsymbol{e}=\boldsymbol{Y}-\boldsymbol{\hat{Y}}\)</span> 为残差，而 <span class="math inline">\(SSE=\sum e_i^2\)</span> 为残差平方和<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
-">[1]</span></a></sup>。</p><h2 id="显著性检验">显著性检验</h2><h3 id="方程显著性检验">方程显著性检验</h3><p>检验这个回归方程本身是否有效。我们给出下列原假设和备择假设： <span class="math display">\[ H_0: \beta_j=0 , j=1,2,\dots,m\\ H_1: \beta_1,\dots,\beta_m 不全为 0\]</span> 当假设 <span class="math inline">\(H_0\)</span> 成立时，满足： <span class="math display">\[F=\frac{SSR/m}{SSE/(n-m-1)} \sim F(m,n-m-1)\]</span></p><p>式中, <span class="math inline">\(SSR=\sum_{i=1}^{n}\left(\hat{y}_{i}-\bar{y}\right)^{2}\)</span> 是回归平方和； <span class="math inline">\(SSE=\sum_{i=1}^{n}\left(y_{i}-\hat{y}_{i}\right)^{2}\)</span> 是残差平方和。再给定的 显著性水平 <span class="math inline">\(\alpha\)</span> 下，对于上 <span class="math inline">\(\alpha\)</span> 分位数 <span class="math inline">\(F_{\alpha}(k, n-k-1)\)</span> ， 检验的拒绝域为 <span class="math inline">\(F&gt;F_{\alpha}(k, n-k-1)\)</span> 接受域可以为：<span class="math inline">\(F_{1-\alpha/2}(k, n-k-1)&lt;F&lt;F_{\alpha/2}(k, n-k-1)\)</span>。</p><blockquote><p>上式，书上是这样写的，但是好像写错了。 (22.2.8)</p></blockquote><p>注：<span class="math inline">\(H_0\)</span> 仅说明 <span class="math inline">\(y\)</span> 与 <span class="math inline">\(x_1,x_2,\dots,x_m\)</span> 的线性关系不明显，可能存在非线性关系(取对数)。</p><p>对于预测型回归需要检查拟合优度(<span class="math inline">\(R^2\)</span>)；解释型回归更多的关注模型整体显著性以及自变量的统计显著性和经济意义显著性即可。</p><p><span class="math display">\[R^2=\frac{SSR}{SST}=\frac{\sum_{i=1}^{n}(\hat{y_i}-\bar{y})^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2}\]</span> <span class="math inline">\(R\)</span> 称为复相关系数，<span class="math inline">\(R^2\)</span> 越大，<span class="math inline">\(y\)</span> 与 <span class="math inline">\(x_1,x_2,\dots,x_m\)</span> 相关关系越密切，通常 <span class="math inline">\(R\)</span> 大于 <span class="math inline">\(0.8\)</span> 才认为相关性成立<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
-">[1]</span></a></sup>,这是一个看拟合的好不好的一个综合指标。</p><h3 id="系数显著性检验">系数显著性检验</h3><p>经过上述验证得到 <span class="math inline">\(H_0\)</span> ，被拒绝，<span class="math inline">\(\beta_j\)</span> 不全为 <span class="math inline">\(0\)</span> ,但不排除存在 <span class="math inline">\(\beta_j\)</span> 为 <span class="math inline">\(0\)</span> 。所以还要进行以下 <span class="math inline">\(m+1\)</span> 个检验。 <span class="math display">\[H_0^{(j)}：\beta_{j}=0 , j=0,1,\cdots,m\]</span></p><p>根据无偏性和<span class="math inline">\(cov(\hat \beta)=\sigma^2(X^{T}X)^{-1}\)</span> <sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://blog.csdn.net/heirenmin/article/details/94443404
-">[2]</span></a></sup>，得到 <span class="math inline">\(\hat \beta_j \sim N(\beta_j, c_{jj}\sigma^2)\)</span> ,其中 <span class="math inline">\(c_{jj}\)</span> 表示 <span class="math inline">\((X^{T}X)^{-1}\)</span> 的对角线元素 <span class="math inline">\((j,j)\)</span> 。考虑构造<strong>t检验</strong> <span class="math inline">\(\frac{X}{\sqrt{Y/N}}\)</span>。</p><p><span class="math display">\[t=\frac{\hat \beta_j}{\sqrt{c_{jj}}\sigma}=\frac{\hat{\beta_j}/\sqrt{c_{jj}}}{\sqrt{SSE/(n-m-1)}} \sim t(n-m-1)\]</span></p><p>在 <span class="math inline">\(1-\alpha\)</span> 的置信水平下， <span class="math inline">\(\beta_j\)</span> 的置信区间为<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
-">[1]</span></a></sup>： <span class="math display">\[[\hat{\beta_j}-t_{\frac{\alpha}{2}}(n-m-1)s\sqrt{c_{jj}},\hat{\beta_j}+t_{\frac{\alpha}{2}}(n-m-1)s\sqrt{c_{jj}}]\]</span> 其中 <span class="math inline">\(s=\sqrt{\frac{SSE}{n-m-1}}\)</span> ；或者当 <span class="math inline">\(|t_j|&lt;t_{\frac{\alpha}{2}}(n-m-1)\)</span> 判断接受 <span class="math inline">\(H_0^{(j)}\)</span> ,否则拒绝。</p><h2 id="检验异方差">检验异方差</h2><p>残差的方差齐(Equal variance),即LINE原则。即残差的大小不随预测值水平的变化而变化，通常在分析残差的时候，可以通过绘制普通残差或者标准化残差与预测值的散点图进行判断。残差的分布随着变量的取值的增大而呈现扩散趋势产生异方差<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/161483493
-">[5]</span></a></sup>。</p><p>异方差是指各个扰动项的方差不相同，那么方差较大的扰动项破坏模型稳定性的程度就较大<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="清风数学建模视频
-">[4]</span></a></sup>；因变量的变异程度会随着自身数值或者其他变量的变化而变化，从而不满足残差方差齐性的条件<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://zhuanlan.zhihu.com/p/161483493
-">[5]</span></a></sup>。</p><p><img src="https://s2.loli.net/2022/02/09/ryLoOf9UKcPJqWg.png" srcset="/img/loading.gif" lazyload></p><h3 id="多种检验方法"><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46649908/article/details/117927359">多种检验方法</a></h3><h3 id="解决方法">解决方法</h3><ol type="1"><li>构建加权最小二乘法模型</li></ol><p>判断导致残差不满足方差齐性的指标，对其加权。</p><ol start="2" type="1"><li><p>使用“OLS + 稳健标准误”</p></li><li><p>广义最小二乘法 GLS</p></li></ol><h2 id="检验多重共线性">检验多重共线性</h2><p>方差膨胀因子(Variance Inflation Factor)VIF</p><p>假设 <span class="math inline">\(m\)</span> 个自变量中，第 <span class="math inline">\(j\)</span> 个自变量的 <span class="math inline">\(VIF=\frac{1}{1-R_{1-m/j}^2}\)</span></p><p><span class="math inline">\(R_{1-m/j}^2\)</span> 是将第 <span class="math inline">\(j\)</span> 个自变量作为因变量，对余下 <span class="math inline">\(m-1\)</span> 个自变量回归得到的拟合优度，<span class="math inline">\(VIF_j\)</span> 越大（也就是 <span class="math inline">\(R_{1-m/j}^2\)</span> 越大），说明当前变量和其他变量关联度越大<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="清风数学建模视频
-">[4]</span></a></sup>。记模型：</p><p><span class="math display">\[VIF=max(VIF_1,VIF_2,\dots,VIF_m)\]</span></p><p>若，<span class="math inline">\(VIF &gt; 10\)</span>, 则表示回归模型存在严重多重共线性。</p><p>注：多重共线性不影响回归方程的解释变量能力与预测能力，只会影响被多重共线性影响的变量的显著性（系数）。解决办法是增大样本或剔除共线性变量。</p><figure><img src="https://s2.loli.net/2022/02/08/tOTeL4yjENYF6ld.png" srcset="/img/loading.gif" lazyload alt="用散点图观察相关性"><figcaption aria-hidden="true">用散点图观察相关性</figcaption></figure><p>有时候逐步回归（Lasso回归）是个快捷不动脑子的做法。此外，<strong>主成分回归</strong>也可用来解决多重共线性的问题。</p><h2 id="spss实现多元线性回归">SPSS实现多元线性回归</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/143049922">SPSS实现多元线性回归</a></p><h1 id="岭回归和lasso回归">岭回归和Lasso回归</h1><p>岭回归 (Ridge regression)<br>Lasso(Least absolute shrinkage and selection operator)回归<br>是一种压缩估计。它通过构造一个惩罚函数得到一个较为精炼的模型，使得它压缩一些回归系数。以损失部分信息、降低精度为代价获得回归系数更为符合实际、更可靠的回归方法，对病态数据的拟合要强于最小二乘法。</p><p><span class="math display">\[\left\{ \begin{matrix} 多元线性：\boldsymbol{\hat{\beta }} =argmin_{\hat{\beta }} \sum_{i=1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta} } )^2 ，其中\boldsymbol{\hat{\beta}}=[\hat{\beta}_1,\hat{\beta}_2,\dots ]\\ 岭回归：\boldsymbol{\hat{\beta } }=argmin_{\hat{\beta }} [ \sum_{i=1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta}} )^2 + \lambda \sum_{i=1}^n \hat{\beta_i}^2]，\lambda&gt;0\\ Lasso回归：\boldsymbol{\hat{\beta }} =argmin_{\hat{\beta }} [ \sum_{i=1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta} } )^2 + \lambda \sum_{i=1}^n |\hat{\beta_i}|] \end{matrix} \right.\]</span></p><p>其中新增的最后一项<span class="math inline">\(\sum_{i=1}^n \hat{\beta_i}^2\)</span>称为惩罚函数。</p><p>对于岭回归有解为：</p><p><span class="math display">\[\boldsymbol{\widehat{\beta}}=\left(\boldsymbol{X}^{T} \boldsymbol{X}+\lambda \boldsymbol{I}\right)^{-1} \boldsymbol{X}^{T} \boldsymbol{y}\]</span></p><p>易知：<span class="math inline">\(\lambda\)</span> 趋近 <span class="math inline">\(0\)</span> 时，系数和多元线性回归相同；<span class="math inline">\(\lambda\)</span> 趋近无穷时，系数趋近 <span class="math inline">\(0\)</span> 。</p><p>Lasso回归相比岭回归，能将不重要的回归系数压缩至 <span class="math inline">\(0\)</span> ，可以进行降纬，但是没有显式解。</p><p><img src="https://s2.loli.net/2022/02/09/XOaLo1vwhMDCgbn.jpg" srcset="/img/loading.gif" lazyload></p><h1 id="多元二项式回归">多元二项式回归</h1><p>Matlab 的统计工具箱提供了多元二项式回归命令 <code>rstool</code></p><div class="hljs code-wrapper"><pre><code class="hljs matlab">rstool(X,Y,model,alpha)</code></pre></div><p>其中 <code>alpha</code> 为显著性水平（默认为 <span class="math inline">\(0.05\)</span>）, <code>model</code> 有以下四个模型（默认为线性模型）</p><ol type="1"><li><span class="math inline">\(\operatorname{linear}( 线性 ): y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}\)</span></li><li><span class="math inline">\(purequadratic (纯二次) : y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny j=1}^{\tiny m} \beta_{j j} x_{j}^{2}\)</span></li><li><span class="math inline">\(interaction(交叉) : y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny1 \leqslant j&lt;k \leqslant m} \beta_{j k} x_{j} x_{k}\)</span></li><li><span class="math inline">\(quadratic(完全二次) : y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny 1 \leqslant j \leqslant k \leqslant m} \beta_{j k} x_{j} x_{k}\)</span></li></ol><h1 id="非线性回归">非线性回归</h1><p>这里的“线性”是相对于模型参数 <span class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span> 而言的。</p><p>对于此类问题，应先给出 <span class="math inline">\(y\)</span> 与 <span class="math inline">\(x_1,x_2,\dots,x_n\)</span> 关于 <span class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span> 的非线性表达式。</p><p>再使用 Matlab 的 <code>nlpredci</code> 计算回归系数。</p><h1 id="参考">参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页. <a href="#fnref:1" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>https://blog.csdn.net/heirenmin/article/details/94443404 <a href="#fnref:2" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>https://zhuanlan.zhihu.com/p/48541799 <a href="#fnref:3" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:4" class="footnote-text"><span>清风数学建模视频 <a href="#fnref:4" rev="footnote" class="footnote-backref">↩︎</a></span></span></li><li><span id="fn:5" class="footnote-text"><span>https://zhuanlan.zhihu.com/p/161483493 <a href="#fnref:5" rev="footnote" class="footnote-backref">↩︎</a></span></span></li></ol></div></section><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></div><hr><div><div class="post-metas mb-3"><div class="post-meta mr-3"><i class="iconfont icon-category"></i> <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">多元线性回归</a> <a class="hover-with-bg" href="/tags/%E5%A4%9A%E5%85%83%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%9B%9E%E5%BD%92/">多元二项式回归</a> <a class="hover-with-bg" href="/tags/%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">非线性回归</a></div></div><div class="post-prevnext"><article class="post-prev col-6"><a href="/2022/02/12/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">分类模型</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/2022/02/06/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/"><span class="hidden-mobile">插值算法</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article class="comments" id="comments" lazyload><div id="valine"></div><script type="text/javascript">Fluid.utils.loadComments("#valine",(function(){Fluid.utils.createScript("https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js",(function(){var e=Object.assign({appId:"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz",appKey:"IVwl94UT4wnOPWUgwn4AfOCE",path:"window.location.pathname",placeholder:"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…",avatar:"robohash",avatarForce:!0,meta:["nick","mail","link"],requiredFields:[],pageSize:10,lang:"zh-CN",highlight:!0,recordIP:!0,serverURLs:"",admin_email_hash:"393669798@qq.com",enableQQ:!0,emojiCDN:"//i0.hdslb.com/bfs/emote/",emojiMaps:{tv_doge:"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},{el:"#valine",path:window.location.pathname});new Valine(e),Fluid.utils.waitElementVisible("#valine .vcontent",()=>{Fluid.plugins.initFancyBox("#valine .vcontent img:not(.vemoji)")})}))}))</script><noscript>Please enable JavaScript to view the comments</noscript></article></article></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div class="toc-body" id="toc-body"></div></div></div></div></div><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer class="text-center mt-5 py-3"><div class="footer-content">&copy;<script type="text/javascript">var myDate=(new Date).getFullYear();document.write(myDate)</script><a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black">风倾</a> | 船动莲开</div></footer><script src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="/js/local-search.js"></script><script src="/js/img-lazyload.js"></script><script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script><script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js"></script><script>!function(t,i){(0,Fluid.plugins.typing)(i.getElementById("subtitle").title)}(window,document)</script><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},loader:{load:["ui/lazy"]},options:{renderActions:{findScript:[10,e=>{document.querySelectorAll('script[type^="math/tex"]').forEach(t=>{const a=!!t.type.match(/; *mode=display/),n=new e.options.MathItem(t.textContent,e.inputJax[0],a),o=document.createTextNode("");t.parentNode.replaceChild(o,t),n.start={node:o,delim:"",n:0},n.end={node:o,delim:"",n:0},e.math.push(n)})},"",!1],insertedScript:[200,()=>{document.querySelectorAll("mjx-container").forEach(e=>{let t=e.parentNode;"li"===t.nodeName.toLowerCase()&&t.parentNode.classList.add("has-jax")})},"",!1]}}}</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><script defer>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script src="/js/boot.js"></script></body></html>
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png">
+  <link rel="icon" href="/img/logo/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个神秘的人">
+  <meta name="author" content="epochxi">
+  <meta name="keywords" content="dramwig">
+  <meta name="description" content="多元线性回归 模型结构 多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下： \[\left\{\begin{matrix} y &#x3D; \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\\ \varepsilon \sim N(0,\sigma ^2) \end{matrix}\right.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回归分析">
+<meta property="og:url" content="http://example.com/2022/02/08/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="风倾客栈 ✧">
+<meta property="og:description" content="多元线性回归 模型结构 多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下： \[\left\{\begin{matrix} y &#x3D; \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\\ \varepsilon \sim N(0,\sigma ^2) \end{matrix}\right.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/02/09/ryLoOf9UKcPJqWg.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/08/tOTeL4yjENYF6ld.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/09/XOaLo1vwhMDCgbn.jpg">
+<meta property="article:published_time" content="2022-02-08T06:53:00.000Z">
+<meta property="article:modified_time" content="2022-02-27T01:38:10.866Z">
+<meta property="article:author" content="epochxi">
+<meta property="article:tag" content="多元线性回归">
+<meta property="article:tag" content="多元二项式回归">
+<meta property="article:tag" content="非线性回归">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/02/09/ryLoOf9UKcPJqWg.png">
+  
+  <title>回归分析 &lt; 风倾客栈 ✧</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hovor","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"fa7203cd147458a2bb6b7c7fc7bd03a3","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <!--菜单栏-->
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="iconfont icon-home-fill"></i> <!-- homeͼ�� -->
+      <strong>风倾客栈</strong> <!-- �������� -->
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content --> <!-- �˵��б� -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                朋友
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+    <!--视差滚动-->
+    <div class="banner" id="banner" parallax=true   
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <!--副标题 (打字机)-->
+            <span class="h2" id="subtitle" title="回归分析">
+              <!--typing打字机-->
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-08 14:53" pubdate>
+        2022年2月8日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.7k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">回归分析</h1>
+            
+            <div class="markdown-body">
+              <h1 id="多元线性回归">多元线性回归</h1>
+<h2 id="模型结构">模型结构</h2>
+<p>多元线性回归是研究一个应变量依赖多个自变量的变化关系，并用线性关系刻画的模型。如下：</p>
+<p><span class="math display">\[\left\{\begin{matrix}
+y = \beta_0 + \beta_1 x_1 + \cdots + \beta_mx_m + \varepsilon\\
+\varepsilon \sim N(0,\sigma ^2)
+\end{matrix}\right.\]</span></p>
+<p>其中：<span
+class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span>
+为回归系数；<span class="math inline">\(x_0,x_1,\dotsb,x_m\)</span>
+为变量；<span class="math inline">\(\varepsilon\)</span>
+是误差随机项。</p>
+<p>对于 <span class="math inline">\(n\)</span> 组观测，满足 <span
+class="math inline">\(y_i=\beta_{0} + \beta_1 x_{i1} + \cdots +
+\beta_mx_{im} + \varepsilon_i\)</span> ,记</p>
+<p><span class="math display">\[\boldsymbol{Y}=\left[\begin{array}{l}
+y_{1} \\
+y_{2} \\
+\vdots \\
+y_{n}
+\end{array}\right] \quad, \quad \boldsymbol{X}=\left[\begin{array}{cccc}
+1 &amp; x_{11} &amp; \ldots &amp; x_{1m} \\
+1 &amp; x_{21} &amp; \ldots &amp; x_{2m} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+1 &amp; x_{n1} &amp; \ldots &amp; x_{nm}
+\end{array}\right] \quad, \quad
+\boldsymbol{\beta}=\left[\begin{array}{c}
+\beta_{0} \\
+\beta_{1} \\
+\vdots \\
+\beta_{k}
+\end{array}\right] \quad, \quad
+\boldsymbol{\varepsilon}=\left[\begin{array}{c}
+\varepsilon_{1} \\
+\varepsilon_{2} \\
+\vdots \\
+\varepsilon_{n}
+\end{array}\right]\]</span></p>
+<p>这时模型可以写作:</p>
+<p><span class="math display">\[\boldsymbol{Y}=\boldsymbol{X}
+\boldsymbol{\beta}+\boldsymbol{\varepsilon}\]</span></p>
+<h2 id="参数估计">参数估计</h2>
+<p>模型中的参数 <span
+class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span>
+用最小二乘法估计，得到估计值 <span
+class="math inline">\(\hat{\beta}_{i}\)</span> 。</p>
+<p>需要最小化的函数是：</p>
+<p><span class="math display">\[SSE = Q\left(\beta_{0}, \beta_{1},
+\ldots,
+\beta_{p}\right)=\sum_{i=1}^{n}(y_i-\hat{y_i})^2=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}
+x_{i 1}-\ldots-\beta_{p} x_{i p}\right)^{2}\]</span></p>
+<p>为此，令 <span class="math display">\[\frac{\partial Q}{\partial
+\beta _j} =0,(j=0,1,\dots ,m)\]</span></p>
+<p>解得(详细过程参考<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/48541799
+">[3]</span></a></sup>或<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
+">[1]</span></a></sup>)： <span
+class="math display">\[\boldsymbol{\hat{\beta}}=\left(\boldsymbol{X}^{T}
+\boldsymbol{X}\right)^{-1} \boldsymbol{X}^{T}
+\boldsymbol{Y}\]</span></p>
+<p>记 <span
+class="math inline">\(\boldsymbol{\hat{Y}}=\boldsymbol{X}\boldsymbol{\hat{\beta}}\)</span>
+，<span
+class="math inline">\(\boldsymbol{e}=\boldsymbol{Y}-\boldsymbol{\hat{Y}}\)</span>
+为残差，而 <span class="math inline">\(SSE=\sum e_i^2\)</span>
+为残差平方和<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
+">[1]</span></a></sup>。</p>
+<h2 id="显著性检验">显著性检验</h2>
+<h3 id="方程显著性检验">方程显著性检验</h3>
+<p>检验这个回归方程本身是否有效。我们给出下列原假设和备择假设： <span
+class="math display">\[ H_0: \beta_j=0 , j=1,2,\dots,m\\
+H_1: \beta_1,\dots,\beta_m 不全为 0\]</span> 当假设 <span
+class="math inline">\(H_0\)</span> 成立时，满足： <span
+class="math display">\[F=\frac{SSR/m}{SSE/(n-m-1)} \sim
+F(m,n-m-1)\]</span></p>
+<p>式中, <span
+class="math inline">\(SSR=\sum_{i=1}^{n}\left(\hat{y}_{i}-\bar{y}\right)^{2}\)</span>
+是回归平方和； <span
+class="math inline">\(SSE=\sum_{i=1}^{n}\left(y_{i}-\hat{y}_{i}\right)^{2}\)</span>
+是残差平方和。再给定的 显著性水平 <span
+class="math inline">\(\alpha\)</span> 下，对于上 <span
+class="math inline">\(\alpha\)</span> 分位数 <span
+class="math inline">\(F_{\alpha}(k, n-k-1)\)</span> ， 检验的拒绝域为
+<span class="math inline">\(F&gt;F_{\alpha}(k, n-k-1)\)</span>
+接受域可以为：<span class="math inline">\(F_{1-\alpha/2}(k,
+n-k-1)&lt;F&lt;F_{\alpha/2}(k, n-k-1)\)</span>。</p>
+<blockquote>
+<p>上式，书上是这样写的，但是好像写错了。 (22.2.8)</p>
+</blockquote>
+<p>注：<span class="math inline">\(H_0\)</span> 仅说明 <span
+class="math inline">\(y\)</span> 与 <span
+class="math inline">\(x_1,x_2,\dots,x_m\)</span>
+的线性关系不明显，可能存在非线性关系(取对数)。</p>
+<p>对于预测型回归需要检查拟合优度(<span
+class="math inline">\(R^2\)</span>)；解释型回归更多的关注模型整体显著性以及自变量的统计显著性和经济意义显著性即可。</p>
+<p><span
+class="math display">\[R^2=\frac{SSR}{SST}=\frac{\sum_{i=1}^{n}(\hat{y_i}-\bar{y})^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2}\]</span>
+<span class="math inline">\(R\)</span> 称为复相关系数，<span
+class="math inline">\(R^2\)</span> 越大，<span
+class="math inline">\(y\)</span> 与 <span
+class="math inline">\(x_1,x_2,\dots,x_m\)</span> 相关关系越密切，通常
+<span class="math inline">\(R\)</span> 大于 <span
+class="math inline">\(0.8\)</span>
+才认为相关性成立<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
+">[1]</span></a></sup>,这是一个看拟合的好不好的一个综合指标。</p>
+<h3 id="系数显著性检验">系数显著性检验</h3>
+<p>经过上述验证得到 <span class="math inline">\(H_0\)</span>
+，被拒绝，<span class="math inline">\(\beta_j\)</span> 不全为 <span
+class="math inline">\(0\)</span> ,但不排除存在 <span
+class="math inline">\(\beta_j\)</span> 为 <span
+class="math inline">\(0\)</span> 。所以还要进行以下 <span
+class="math inline">\(m+1\)</span> 个检验。 <span
+class="math display">\[H_0^{(j)}：\beta_{j}=0 ,
+j=0,1,\cdots,m\]</span></p>
+<p>根据无偏性和<span class="math inline">\(cov(\hat
+\beta)=\sigma^2(X^{T}X)^{-1}\)</span>
+<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://blog.csdn.net/heirenmin/article/details/94443404
+">[2]</span></a></sup>，得到 <span class="math inline">\(\hat \beta_j
+\sim N(\beta_j, c_{jj}\sigma^2)\)</span> ,其中 <span
+class="math inline">\(c_{jj}\)</span> 表示 <span
+class="math inline">\((X^{T}X)^{-1}\)</span> 的对角线元素 <span
+class="math inline">\((j,j)\)</span> 。考虑构造<strong>t检验</strong>
+<span class="math inline">\(\frac{X}{\sqrt{Y/N}}\)</span>。</p>
+<p><span class="math display">\[t=\frac{\hat
+\beta_j}{\sqrt{c_{jj}}\sigma}=\frac{\hat{\beta_j}/\sqrt{c_{jj}}}{\sqrt{SSE/(n-m-1)}}
+\sim t(n-m-1)\]</span></p>
+<p>在 <span class="math inline">\(1-\alpha\)</span> 的置信水平下， <span
+class="math inline">\(\beta_j\)</span>
+的置信区间为<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="司守奎 孙兆亮. 数学建模算法与运用[M]. 第2版. 第150页.
+">[1]</span></a></sup>： <span
+class="math display">\[[\hat{\beta_j}-t_{\frac{\alpha}{2}}(n-m-1)s\sqrt{c_{jj}},\hat{\beta_j}+t_{\frac{\alpha}{2}}(n-m-1)s\sqrt{c_{jj}}]\]</span>
+其中 <span class="math inline">\(s=\sqrt{\frac{SSE}{n-m-1}}\)</span>
+；或者当 <span
+class="math inline">\(|t_j|&lt;t_{\frac{\alpha}{2}}(n-m-1)\)</span>
+判断接受 <span class="math inline">\(H_0^{(j)}\)</span> ,否则拒绝。</p>
+<h2 id="检验异方差">检验异方差</h2>
+<p>残差的方差齐(Equal
+variance),即LINE原则。即残差的大小不随预测值水平的变化而变化，通常在分析残差的时候，可以通过绘制普通残差或者标准化残差与预测值的散点图进行判断。残差的分布随着变量的取值的增大而呈现扩散趋势产生异方差<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/161483493
+">[5]</span></a></sup>。</p>
+<p>异方差是指各个扰动项的方差不相同，那么方差较大的扰动项破坏模型稳定性的程度就较大<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded" aria-label="清风数学建模视频
+">[4]</span></a></sup>；因变量的变异程度会随着自身数值或者其他变量的变化而变化，从而不满足残差方差齐性的条件<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="https://zhuanlan.zhihu.com/p/161483493
+">[5]</span></a></sup>。</p>
+<p><img src="https://s2.loli.net/2022/02/09/ryLoOf9UKcPJqWg.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="多种检验方法"><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46649908/article/details/117927359">多种检验方法</a></h3>
+<h3 id="解决方法">解决方法</h3>
+<ol type="1">
+<li>构建加权最小二乘法模型</li>
+</ol>
+<p>判断导致残差不满足方差齐性的指标，对其加权。</p>
+<ol start="2" type="1">
+<li><p>使用“OLS + 稳健标准误”</p></li>
+<li><p>广义最小二乘法 GLS</p></li>
+</ol>
+<h2 id="检验多重共线性">检验多重共线性</h2>
+<p>方差膨胀因子(Variance Inflation Factor)VIF</p>
+<p>假设 <span class="math inline">\(m\)</span> 个自变量中，第 <span
+class="math inline">\(j\)</span> 个自变量的 <span
+class="math inline">\(VIF=\frac{1}{1-R_{1-m/j}^2}\)</span></p>
+<p><span class="math inline">\(R_{1-m/j}^2\)</span> 是将第 <span
+class="math inline">\(j\)</span> 个自变量作为因变量，对余下 <span
+class="math inline">\(m-1\)</span> 个自变量回归得到的拟合优度，<span
+class="math inline">\(VIF_j\)</span> 越大（也就是 <span
+class="math inline">\(R_{1-m/j}^2\)</span>
+越大），说明当前变量和其他变量关联度越大<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded" aria-label="清风数学建模视频
+">[4]</span></a></sup>。记模型：</p>
+<p><span
+class="math display">\[VIF=max(VIF_1,VIF_2,\dots,VIF_m)\]</span></p>
+<p>若，<span class="math inline">\(VIF &gt; 10\)</span>,
+则表示回归模型存在严重多重共线性。</p>
+<p>注：多重共线性不影响回归方程的解释变量能力与预测能力，只会影响被多重共线性影响的变量的显著性（系数）。解决办法是增大样本或剔除共线性变量。</p>
+<figure>
+<img src="https://s2.loli.net/2022/02/08/tOTeL4yjENYF6ld.png" srcset="/img/loading.gif" lazyload
+alt="用散点图观察相关性" />
+<figcaption aria-hidden="true">用散点图观察相关性</figcaption>
+</figure>
+<p>有时候逐步回归（Lasso回归）是个快捷不动脑子的做法。此外，<strong>主成分回归</strong>也可用来解决多重共线性的问题。</p>
+<h2 id="spss实现多元线性回归">SPSS实现多元线性回归</h2>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/143049922">SPSS实现多元线性回归</a></p>
+<h1 id="岭回归和lasso回归">岭回归和Lasso回归</h1>
+<p>岭回归 (Ridge regression)<br />
+Lasso(Least absolute shrinkage and selection operator)回归<br />
+是一种压缩估计。它通过构造一个惩罚函数得到一个较为精炼的模型，使得它压缩一些回归系数。以损失部分信息、降低精度为代价获得回归系数更为符合实际、更可靠的回归方法，对病态数据的拟合要强于最小二乘法。</p>
+<p><span class="math display">\[\left\{
+\begin{matrix}
+多元线性：\boldsymbol{\hat{\beta }} =argmin_{\hat{\beta }}
+\sum_{i=1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta} } )^2
+，其中\boldsymbol{\hat{\beta}}=[\hat{\beta}_1,\hat{\beta}_2,\dots ]\\
+岭回归：\boldsymbol{\hat{\beta } }=argmin_{\hat{\beta }} [
+\sum_{i=1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta}}  )^2 +
+\lambda \sum_{i=1}^n \hat{\beta_i}^2]，\lambda&gt;0\\
+Lasso回归：\boldsymbol{\hat{\beta }} =argmin_{\hat{\beta }} [
+\sum_{i=1}^{n}(y_i-\boldsymbol{x_i}^T \boldsymbol{\hat{\beta} } )^2 +
+\lambda \sum_{i=1}^n |\hat{\beta_i}|]
+\end{matrix}
+\right.\]</span></p>
+<p>其中新增的最后一项<span class="math inline">\(\sum_{i=1}^n
+\hat{\beta_i}^2\)</span>称为惩罚函数。</p>
+<p>对于岭回归有解为：</p>
+<p><span
+class="math display">\[\boldsymbol{\widehat{\beta}}=\left(\boldsymbol{X}^{T}
+\boldsymbol{X}+\lambda \boldsymbol{I}\right)^{-1} \boldsymbol{X}^{T}
+\boldsymbol{y}\]</span></p>
+<p>易知：<span class="math inline">\(\lambda\)</span> 趋近 <span
+class="math inline">\(0\)</span> 时，系数和多元线性回归相同；<span
+class="math inline">\(\lambda\)</span> 趋近无穷时，系数趋近 <span
+class="math inline">\(0\)</span> 。</p>
+<p>Lasso回归相比岭回归，能将不重要的回归系数压缩至 <span
+class="math inline">\(0\)</span> ，可以进行降纬，但是没有显式解。</p>
+<p><img src="https://s2.loli.net/2022/02/09/XOaLo1vwhMDCgbn.jpg" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="多元二项式回归">多元二项式回归</h1>
+<p>Matlab 的统计工具箱提供了多元二项式回归命令 <code>rstool</code></p>
+<div class="hljs code-wrapper"><pre><code class="hljs matlab">rstool(X,Y,model,alpha)</code></pre></div>
+<p>其中 <code>alpha</code> 为显著性水平（默认为 <span
+class="math inline">\(0.05\)</span>）, <code>model</code>
+有以下四个模型（默认为线性模型）</p>
+<ol type="1">
+<li><span class="math inline">\(\operatorname{linear}( 线性 ):
+y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}\)</span></li>
+<li><span class="math inline">\(purequadratic (纯二次) :
+y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny
+j=1}^{\tiny m} \beta_{j j} x_{j}^{2}\)</span></li>
+<li><span class="math inline">\(interaction(交叉) :
+y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny1
+\leqslant j&lt;k \leqslant m} \beta_{j k} x_{j} x_{k}\)</span></li>
+<li><span class="math inline">\(quadratic(完全二次) :
+y=\beta_{0}+\beta_{1} x_{1}+\cdots+\beta_{m} x_{m}+\sum\limits_{\tiny 1
+\leqslant j \leqslant k \leqslant m} \beta_{j k} x_{j}
+x_{k}\)</span></li>
+</ol>
+<h1 id="非线性回归">非线性回归</h1>
+<p>这里的“线性”是相对于模型参数 <span
+class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span>
+而言的。</p>
+<p>对于此类问题，应先给出 <span class="math inline">\(y\)</span> 与
+<span class="math inline">\(x_1,x_2,\dots,x_n\)</span> 关于 <span
+class="math inline">\(\beta_0,\beta_1,\dotsb,\beta_m\)</span>
+的非线性表达式。</p>
+<p>再使用 Matlab 的 <code>nlpredci</code> 计算回归系数。</p>
+<h1 id="参考">参考</h1>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>司守奎 孙兆亮.
+数学建模算法与运用[M]. 第2版. 第150页.
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2"
+class="footnote-text"><span>https://blog.csdn.net/heirenmin/article/details/94443404
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/48541799
+<a href="#fnref:3" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:4" class="footnote-text"><span>清风数学建模视频
+<a href="#fnref:4" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:5"
+class="footnote-text"><span>https://zhuanlan.zhihu.com/p/161483493
+<a href="#fnref:5" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">多元线性回归</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%9A%E5%85%83%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%9B%9E%E5%BD%92/">多元二项式回归</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">非线性回归</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/12/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">分类模型</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/06/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">插值算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <!-- begin 评论 -->
+  <div id="valine"></div> 
+  <!-- end 评论 -->
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+       
+        var options = Object.assign(
+          {"appId":"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz","appKey":"IVwl94UT4wnOPWUgwn4AfOCE","path":"window.location.pathname","placeholder":"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…","avatar":"robohash","avatarForce":true,"meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","admin_email_hash":"393669798@qq.com","enableQQ":true,"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        ) 
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+ 
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    <!--向顶部滚动的箭头-->
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!--自定义底部 HTML 内容-->
+    
+  </main>
+  
+  <!--页脚-->
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <!---->
+     &copy; <script type="text/javascript"> var myDate = new Date().getFullYear(); document.write(myDate) </script> <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+
+      <!--通过API接口作为首页副标题的内容-->
+      
+        typing(title)  //tying打字机
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
