@@ -1,0 +1,1114 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png">
+  <link rel="icon" href="/img/logo/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个神秘的人">
+  <meta name="author" content="epochxi">
+  <meta name="keywords" content="dramwig">
+  <meta name="description" content="CNKI知网爬虫&amp;Python 当涉及从CNKI（中国知网）获取数据时，编写一个网络爬虫以收集信息可能是个不错的选择。这篇博客将指导您如何使用Python和Selenium库编写一个简单的爬虫，从CNKI网站上检索关于特定主题的论文信息。 利用Python编写CNKI知网爬虫 中国知网（CNKI）是一个知名的学术资源库，它提供了丰富的学术文献、期刊和论文。为了从CNKI获取数据，我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CNKI知网爬虫&amp;Python">
+<meta property="og:url" content="http://example.com/2023/12/06/43/index.html">
+<meta property="og:site_name" content="风倾客栈 ✧">
+<meta property="og:description" content="CNKI知网爬虫&amp;Python 当涉及从CNKI（中国知网）获取数据时，编写一个网络爬虫以收集信息可能是个不错的选择。这篇博客将指导您如何使用Python和Selenium库编写一个简单的爬虫，从CNKI网站上检索关于特定主题的论文信息。 利用Python编写CNKI知网爬虫 中国知网（CNKI）是一个知名的学术资源库，它提供了丰富的学术文献、期刊和论文。为了从CNKI获取数据，我们">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-06T14:56:00.000Z">
+<meta property="article:modified_time" content="2023-12-06T14:57:14.875Z">
+<meta property="article:author" content="epochxi">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="知网">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>CNKI知网爬虫&amp;Python &lt; 风倾客栈 ✧</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hovor","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"fa7203cd147458a2bb6b7c7fc7bd03a3","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <!--菜单栏-->
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="iconfont icon-home-fill"></i> <!-- homeͼ�� -->
+      <strong>风倾客栈</strong> <!-- �������� -->
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content --> <!-- �˵��б� -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                朋友
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+    <!--视差滚动-->
+    <div class="banner" id="banner" parallax=true   
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <!--副标题 (打字机)-->
+            <span class="h2" id="subtitle" title="CNKI知网爬虫&amp;Python">
+              <!--typing打字机-->
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-12-06 22:56" pubdate>
+        2023年12月6日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      21k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CNKI知网爬虫&amp;Python</h1>
+            
+            <div class="markdown-body">
+              <h1 id="cnki知网爬虫python">CNKI知网爬虫&amp;Python</h1>
+<p>当涉及从CNKI（中国知网）获取数据时，编写一个网络爬虫以收集信息可能是个不错的选择。这篇博客将指导您如何使用Python和Selenium库编写一个简单的爬虫，从CNKI网站上检索关于特定主题的论文信息。</p>
+<h2 id="利用python编写cnki知网爬虫">利用Python编写CNKI知网爬虫</h2>
+<p>中国知网（CNKI）是一个知名的学术资源库，它提供了丰富的学术文献、期刊和论文。为了从CNKI获取数据，我们将使用Python编写一个简单但功能强大的网络爬虫。</p>
+<p>因为知网的频繁的更新，以及目录是动态加载的，<del>而我不会找包</del>，还有听说知网有严厉的反爬机制。用传统的<code>response = requests.get(url)</code>爬取论文信息是不太可能的。</p>
+<p>我查找了一些资料，先尝试查了GitHub上有没有现成的</p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/qiuqingyu/CNKICrawler">qiuqingyu/CNKICrawler:
+中国知网爬虫</a>、<a
+target="_blank" rel="noopener" href="https://github.com/yanzhou/CnkiSpider">yanzhou/CnkiSpider:
+中国知网爬虫</a>，两个排名比较高的项目因为年久失修不能使用了……</p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/aFlyBird0/CnkiSpider">aFlyBird0/CnkiSpider:
+知网爬虫，专利、论文项目</a>这个是2021年的，新一些，但是我没有尝试。</p>
+<p>以及我只想要一个能运行的轻量级一点的爬虫，我几乎想要放弃了，但之后Bing，发现了CSDN和知乎有一些不算长的脚本就能爬。然后就认识了Selenium的强大。</p>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599579339">这篇知乎文章</a>代码我只能跑通一部分，但是已经看到了能实现的眉目。<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/663793038">作者的另一篇介绍</a>让我了解了selenium的Xpath怎么用怎么获取。</p>
+<p>缺点就是比较慢，而且加载网页会置顶浏览器，导致跑代码的时候干其他事情不太方便。</p>
+<h3 id="准备工作">准备工作</h3>
+<p>首先，确保您已经安装了Python并安装了必要的库。我们将使用Selenium来模拟浏览器行为，从而检索和提取我们感兴趣的信息。</p>
+<h3 id="代码实现">代码实现</h3>
+<p>以下是一个简化的示例代码，展示了如何使用Python和Selenium进行基本的CNKI知网爬取：</p>
+<div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_info</span>(<span class="hljs-params">driver, xpath</span>):</span>
+    <span class="hljs-keyword">try</span>:
+        element = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, xpath)))
+        <span class="hljs-keyword">return</span> element.text
+    <span class="hljs-keyword">except</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;无&#x27;</span>
+<span class="hljs-comment"># 以上是一个简要的函数，展示了如何使用Python和Selenium进行基本的CNKI知网爬取。</span></code></pre></div>
+<p>selenium其实就是操控（Driver）一个浏览器，点击、填写、获取文本等。这其实就是一个自动化脚本而已。</p>
+<h3 id="实现步骤">实现步骤</h3>
+<ol type="1">
+<li><strong>设置环境</strong>：确保您已经安装了Python和Selenium库，并配置了WebDriver（例如Chrome
+WebDriver或Edge WebDriver）。</li>
+<li><strong>编写代码</strong>：使用Python编写爬虫代码，包括模拟浏览器行为（例如页面导航、关键字搜索等）和信息提取（例如论文标题、作者、摘要等）。</li>
+<li><strong>测试和调试</strong>：运行您的代码并测试其功能。确保它可以成功地检索到您感兴趣的信息。</li>
+<li><strong>优化和扩展</strong>：根据需要优化代码，处理异常情况并扩展其功能。您可以添加多线程支持以加快爬取速度，或者保存数据到文件或数据库中。</li>
+</ol>
+<h3 id="接下来的步骤">接下来的步骤</h3>
+<p>这只是一个入门级的示例，您可以根据需要扩展它。您可能想要添加更多功能，例如多线程支持、数据持久化、自动化登录等。同时，还请确保您的爬虫行为是合法的，遵守网站的使用条款和规定。</p>
+<p>我修改了<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599579339">这篇知乎文章</a>的代码，重新更改了一些Xpath，并加上自己的逻辑。</p>
+<div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span>
+<span class="hljs-string">    参考：</span>
+<span class="hljs-string">        https://zhuanlan.zhihu.com/p/599579339</span>
+<span class="hljs-string">        https://zhuanlan.zhihu.com/p/663793038</span>
+<span class="hljs-string">&#x27;&#x27;&#x27;</span>
+
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+<span class="hljs-keyword">from</span> selenium.webdriver.support.ui <span class="hljs-keyword">import</span> WebDriverWait
+<span class="hljs-keyword">from</span> selenium.webdriver.support <span class="hljs-keyword">import</span> expected_conditions <span class="hljs-keyword">as</span> EC
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+<span class="hljs-keyword">from</span> selenium.webdriver.common.desired_capabilities <span class="hljs-keyword">import</span> DesiredCapabilities
+<span class="hljs-keyword">from</span> selenium.webdriver.common.action_chains <span class="hljs-keyword">import</span> ActionChains
+<span class="hljs-keyword">import</span> os
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">webserver</span>():</span>
+    <span class="hljs-comment"># get直接返回，不再等待界面加载完成</span>
+    desired_capabilities = DesiredCapabilities.EDGE
+    desired_capabilities[<span class="hljs-string">&quot;pageLoadStrategy&quot;</span>] = <span class="hljs-string">&quot;none&quot;</span>
+
+    <span class="hljs-comment"># 设置微软驱动器的环境</span>
+    options = webdriver.EdgeOptions()
+    <span class="hljs-comment"># 设置浏览器不加载图片，提高速度</span>
+    options.add_experimental_option(<span class="hljs-string">&quot;prefs&quot;</span>, &#123;<span class="hljs-string">&quot;profile.managed_default_content_settings.images&quot;</span>: <span class="hljs-number">2</span>&#125;)
+
+    <span class="hljs-comment"># 创建一个微软驱动器</span>
+    driver = webdriver.Edge(options=options)
+
+    <span class="hljs-keyword">return</span> driver
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_page</span>(<span class="hljs-params">driver, keyword</span>):</span>
+    <span class="hljs-comment"># 打开页面，等待两秒</span>
+    driver.get(<span class="hljs-string">&quot;https://kns.cnki.net/kns8/AdvSearch&quot;</span>)
+    time.sleep(<span class="hljs-number">2</span>)
+
+    <span class="hljs-comment"># 修改属性，使下拉框显示</span>
+    opt = driver.find_element(By.CSS_SELECTOR, <span class="hljs-string">&#x27;div.sort-list&#x27;</span>)  <span class="hljs-comment"># 定位元素</span>
+    driver.execute_script(<span class="hljs-string">&quot;arguments[0].setAttribute(&#x27;style&#x27;, &#x27;display: block;&#x27;)&quot;</span>, opt)  <span class="hljs-comment"># 执行 js 脚本进行属性的修改；arguments[0]代表第一个属性</span>
+
+    <span class="hljs-comment"># 鼠标移动到下拉框中的[通讯作者]</span>
+    ActionChains(driver).move_to_element(driver.find_element(By.CSS_SELECTOR, <span class="hljs-string">&#x27;li[data-val=&quot;RP&quot;]&#x27;</span>)).perform()
+
+    <span class="hljs-comment"># # 找到[关键词]选项并点击</span>
+    <span class="hljs-comment"># WebDriverWait(driver, 100).until(</span>
+    <span class="hljs-comment">#     EC.visibility_of_element_located((By.CSS_SELECTOR, &#x27;li[data-val=&quot;KY&quot;]&#x27;))).click()</span>
+
+    <span class="hljs-comment"># 传入关键字</span>
+    WebDriverWait(driver, <span class="hljs-number">100</span>).until(
+        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;gradetxt&quot;]/dd[1]/div[2]/input&#x27;&#x27;&#x27;</span>))
+    ).send_keys(keyword)
+
+    <span class="hljs-comment"># 点击搜索</span>
+    WebDriverWait(driver, <span class="hljs-number">100</span>).until(
+        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;ModuleSearch&quot;]/div[1]/div/div[2]/div/div[1]/div[1]/div[2]/div[3]/input&#x27;&#x27;&#x27;</span>))
+    ).click()
+
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;正在搜索，请稍后...&quot;</span>)
+
+    <span class="hljs-comment"># # 点击切换中文文献</span>
+    <span class="hljs-comment"># WebDriverWait(driver, 100).until(</span>
+    <span class="hljs-comment">#     EC.presence_of_element_located((By.XPATH, &quot;/html/body/div[3]/div[1]/div/div/div/a[1]&quot;))</span>
+    <span class="hljs-comment"># ).click()</span>
+
+    <span class="hljs-comment"># 获取总文献数和页数</span>
+    res_unm = WebDriverWait(driver, <span class="hljs-number">100</span>).until(EC.presence_of_element_located(
+        (By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;countPageDiv&quot;]/span[1]/em&#x27;&#x27;&#x27;</span>))
+    ).text
+
+    <span class="hljs-comment"># 去除千分位里的逗号</span>
+    res_unm = <span class="hljs-built_in">int</span>(res_unm.replace(<span class="hljs-string">&quot;,&quot;</span>, <span class="hljs-string">&#x27;&#x27;</span>))
+    page_unm = <span class="hljs-built_in">int</span>(res_unm / <span class="hljs-number">20</span>) + <span class="hljs-number">1</span>
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;共找到 <span class="hljs-subst">&#123;res_unm&#125;</span> 条结果, <span class="hljs-subst">&#123;page_unm&#125;</span> 页。&quot;</span>)
+    <span class="hljs-keyword">return</span> res_unm
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">crawl</span>(<span class="hljs-params">driver, papers_need, theme</span>):</span>
+
+    count = <span class="hljs-number">1</span>
+
+    file_path = <span class="hljs-string">f&quot;CNKI_<span class="hljs-subst">&#123;theme&#125;</span>.tsv&quot;</span>
+    <span class="hljs-keyword">if</span> os.path.exists(file_path) <span class="hljs-keyword">and</span> os.path.getsize(file_path) &gt; <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&quot;r&quot;</span>) <span class="hljs-keyword">as</span> file:
+            lines = file.readlines()
+            last_line = lines[-<span class="hljs-number">1</span>].strip()
+            count = <span class="hljs-built_in">int</span>(last_line.split(<span class="hljs-string">&quot;\t&quot;</span>)[<span class="hljs-number">0</span>]) + <span class="hljs-number">1</span>
+
+
+    <span class="hljs-comment"># 当爬取数量小于需求时，循环网页页码</span>
+    <span class="hljs-keyword">while</span> count &lt;= papers_need:
+        <span class="hljs-comment"># 等待加载完全，休眠3S</span>
+        time.sleep(<span class="hljs-number">3</span>)
+
+        title_list = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_all_elements_located((By.CLASS_NAME, <span class="hljs-string">&quot;fz14&quot;</span>)))
+        <span class="hljs-comment"># 循环网页一页中的条目</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(title_list)):
+
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;正在爬取第 <span class="hljs-subst">&#123;count&#125;</span> 条……&quot;</span>)
+
+            <span class="hljs-keyword">try</span>:
+                term = count % <span class="hljs-number">20</span>  <span class="hljs-comment"># 本页的第几个条目</span>
+                title_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[2]&#x27;&#x27;&#x27;</span>
+                author_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[3]&#x27;&#x27;&#x27;</span>
+                source_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[4]&#x27;&#x27;&#x27;</span>
+                date_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[5]&#x27;&#x27;&#x27;</span>
+                database_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[6]&#x27;&#x27;&#x27;</span>
+                quote_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[7]&#x27;&#x27;&#x27;</span>
+                download_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[8]&#x27;&#x27;&#x27;</span>
+                title = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, title_xpath))).text
+                authors = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, author_xpath))).text
+                source = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, source_xpath))).text
+                date = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, date_xpath))).text
+                database = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, database_xpath))).text
+                quote = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, quote_xpath))).text
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> quote.isdigit():
+                    quote = <span class="hljs-string">&#x27;0&#x27;</span>
+                download = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, download_xpath))).text
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> download.isdigit():
+                    download = <span class="hljs-string">&#x27;0&#x27;</span>
+               
+                <span class="hljs-comment"># 点击条目</span>
+                title_list[i].click()
+                
+                <span class="hljs-comment"># 获取driver的句柄</span>
+                n = driver.window_handles
+                
+                <span class="hljs-comment"># driver切换至最新生产的页面</span>
+                driver.switch_to.window(n[-<span class="hljs-number">1</span>])
+                time.sleep(<span class="hljs-number">3</span>)
+                
+                <span class="hljs-comment"># 开始获取页面信息</span>
+                <span class="hljs-comment"># 点击展开</span>
+                <span class="hljs-keyword">try</span>:
+                    WebDriverWait(driver, <span class="hljs-number">10</span>).until(
+                        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;ChDivSummaryMore&quot;]&#x27;&#x27;&#x27;</span>))
+                    ).click()
+                <span class="hljs-keyword">except</span>:
+                    <span class="hljs-keyword">pass</span>
+                
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取institute...&#x27;</span>)
+                
+                <span class="hljs-keyword">try</span>:
+                    institute = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[3]/div/h3[2]&quot;</span>))).text
+                <span class="hljs-keyword">except</span>:
+                    institute = <span class="hljs-string">&#x27;无&#x27;</span>
+                    
+                <span class="hljs-built_in">print</span>(institute+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取abstract...&#x27;</span>)
+                    
+                <span class="hljs-keyword">try</span>:
+                    abstract = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.CLASS_NAME, <span class="hljs-string">&quot;abstract-text&quot;</span>))).text
+                <span class="hljs-keyword">except</span>:
+                    abstract = <span class="hljs-string">&#x27;无&#x27;</span>
+                
+                <span class="hljs-built_in">print</span>(abstract+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取keywords...&#x27;</span>)
+                    
+                <span class="hljs-keyword">try</span>:
+                    keywords = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.CLASS_NAME, <span class="hljs-string">&quot;keywords&quot;</span>))).text[:-<span class="hljs-number">1</span>]
+                <span class="hljs-keyword">except</span>:
+                    keywords = <span class="hljs-string">&#x27;无&#x27;</span>      
+                    
+                <span class="hljs-built_in">print</span>(keywords+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取publication...&#x27;</span>)
+                
+                publication = <span class="hljs-string">&#x27;无&#x27;</span>
+                <span class="hljs-keyword">try</span>:
+                    <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[1]/span&quot;</span>))).text==<span class="hljs-string">&quot;专辑：&quot;</span>:
+                        publication = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[1]/p&quot;</span>))).text
+                <span class="hljs-keyword">except</span>:
+                    <span class="hljs-keyword">pass</span>
+                <span class="hljs-keyword">if</span> publication == <span class="hljs-string">&#x27;无&#x27;</span>:
+                    <span class="hljs-keyword">try</span>: 
+                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/span&quot;</span>))).text==<span class="hljs-string">&quot;专辑：&quot;</span>:
+                            publication = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/p&quot;</span>))).text
+                    <span class="hljs-keyword">except</span>:
+                        <span class="hljs-keyword">pass</span>
+                <span class="hljs-keyword">if</span> publication == <span class="hljs-string">&#x27;无&#x27;</span>:
+                    <span class="hljs-keyword">try</span>: 
+                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[1]/span&quot;</span>))).text==<span class="hljs-string">&quot;专辑：&quot;</span>:
+                            publication = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[1]/p&quot;</span>))).text
+                    <span class="hljs-keyword">except</span>:
+                        <span class="hljs-keyword">pass</span>
+                <span class="hljs-keyword">if</span> publication == <span class="hljs-string">&#x27;无&#x27;</span>:
+                    <span class="hljs-keyword">try</span>: 
+                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/span&quot;</span>))).text==<span class="hljs-string">&quot;专辑：&quot;</span>:
+                            publication = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/p&quot;</span>))).text
+                    <span class="hljs-keyword">except</span>:
+                        <span class="hljs-keyword">pass</span>
+                    
+                <span class="hljs-built_in">print</span>(publication+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取topic...&#x27;</span>)
+                
+                topic = <span class="hljs-string">&#x27;无&#x27;</span>
+                <span class="hljs-keyword">try</span>:
+                    <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/span&quot;</span>))).text==<span class="hljs-string">&quot;专题：&quot;</span>:
+                        topic = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/p&quot;</span>))).text
+                <span class="hljs-keyword">except</span>:
+                    <span class="hljs-keyword">pass</span>
+                <span class="hljs-keyword">if</span> topic == <span class="hljs-string">&#x27;无&#x27;</span>:
+                    <span class="hljs-keyword">try</span>: 
+                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[3]/span&quot;</span>))).text==<span class="hljs-string">&quot;专题：&quot;</span>:
+                            topic = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[3]/p&quot;</span>))).text
+                    <span class="hljs-keyword">except</span>:
+                        <span class="hljs-keyword">pass</span>
+                <span class="hljs-keyword">if</span> topic == <span class="hljs-string">&#x27;无&#x27;</span>:
+                    <span class="hljs-keyword">try</span>: 
+                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/span&quot;</span>))).text==<span class="hljs-string">&quot;专题：&quot;</span>:
+                            topic = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/p&quot;</span>))).text
+                    <span class="hljs-keyword">except</span>:
+                        <span class="hljs-keyword">pass</span>
+                <span class="hljs-keyword">if</span> topic == <span class="hljs-string">&#x27;无&#x27;</span>:
+                    <span class="hljs-keyword">try</span>: 
+                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/span&quot;</span>))).text==<span class="hljs-string">&quot;专题：&quot;</span>:
+                            topic = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/p&quot;</span>))).text
+                    <span class="hljs-keyword">except</span>:
+                        <span class="hljs-keyword">pass</span>
+                    
+                <span class="hljs-built_in">print</span>(topic+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                
+                <span class="hljs-comment"># url = driver.current_url</span>
+                
+                <span class="hljs-comment"># 获取下载链接</span>
+                <span class="hljs-comment"># link = WebDriverWait( driver, 10 ).until( EC.presence_of_all_elements_located((By.CLASS_NAME  ,&quot;btn-dlcaj&quot;) ) )[0].get_attribute(&#x27;href&#x27;)</span>
+                <span class="hljs-comment"># link = urljoin(driver.current_url, link)</span>
+
+                <span class="hljs-comment"># 写入文件</span>
+                res = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;count&#125;</span>\t<span class="hljs-subst">&#123;title&#125;</span>\t<span class="hljs-subst">&#123;authors&#125;</span>\t<span class="hljs-subst">&#123;institute&#125;</span>\t<span class="hljs-subst">&#123;date&#125;</span>\t<span class="hljs-subst">&#123;source&#125;</span>\t<span class="hljs-subst">&#123;publication&#125;</span>\t<span class="hljs-subst">&#123;topic&#125;</span>\t<span class="hljs-subst">&#123;database&#125;</span>\t<span class="hljs-subst">&#123;quote&#125;</span>\t<span class="hljs-subst">&#123;download&#125;</span>\t<span class="hljs-subst">&#123;keywords&#125;</span>\t<span class="hljs-subst">&#123;abstract&#125;</span>&quot;</span>.replace(<span class="hljs-string">&quot;\n&quot;</span>, <span class="hljs-string">&quot;&quot;</span>) + <span class="hljs-string">&quot;\n&quot;</span>
+                
+                <span class="hljs-comment"># print(res)</span>
+                <span class="hljs-comment"># print(f&#x27;文件路径: CNKI_&#123;theme&#125;.tsv&#x27;)</span>
+                <span class="hljs-keyword">try</span>:
+                    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&#x27;a&#x27;</span>, encoding=<span class="hljs-string">&#x27;gbk&#x27;</span>) <span class="hljs-keyword">as</span> f:
+                        f.write(res)
+                        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;写入成功&#x27;</span>)
+                <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+                    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;写入失败:&#x27;</span>, <span class="hljs-built_in">str</span>(e))
+                    <span class="hljs-keyword">raise</span> e
+            <span class="hljs-keyword">except</span>:
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot; 第<span class="hljs-subst">&#123;count&#125;</span> 条爬取失败\n&quot;</span>)
+                <span class="hljs-comment"># 跳过本条，接着下一个</span>
+                <span class="hljs-keyword">continue</span>
+            
+            <span class="hljs-keyword">finally</span>:
+                <span class="hljs-comment"># 如果有多个窗口，关闭第二个窗口， 切换回主页</span>
+                n2 = driver.window_handles
+                <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(n2) &gt; <span class="hljs-number">1</span>:
+                    driver.close()
+                    driver.switch_to.window(n2[<span class="hljs-number">0</span>])
+                <span class="hljs-comment"># 计数,判断需求是否足够</span>
+                count += <span class="hljs-number">1</span>
+                <span class="hljs-keyword">if</span> count == papers_need: <span class="hljs-keyword">break</span>
+
+        <span class="hljs-comment"># 切换到下一页</span>
+        WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;//a[@id=&#x27;PageNext&#x27;]&quot;</span>))).click()
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    
+    keyword = <span class="hljs-string">&quot;青少年抑郁&quot;</span>
+    driver = webserver()
+    
+    <span class="hljs-comment"># 设置所需篇数</span>
+    papers_need = <span class="hljs-number">100</span>
+    res_unm = open_page(driver, keyword)
+    
+    <span class="hljs-comment"># 判断所需是否大于总篇数</span>
+    papers_need = papers_need <span class="hljs-keyword">if</span> (papers_need &lt;= res_unm) <span class="hljs-keyword">else</span> res_unm
+    
+    crawl(driver, papers_need, keyword)
+
+    <span class="hljs-comment"># 关闭浏览器</span>
+    driver.close()</code></pre></div>
+<p>总算能成功运行了，因为太慢了之后增加了并行处理，尽量加速。得到了下面这个代码，封装的多一些。</p>
+<div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span>
+<span class="hljs-string">    参考：</span>
+<span class="hljs-string">        https://zhuanlan.zhihu.com/p/599579339</span>
+<span class="hljs-string">        https://zhuanlan.zhihu.com/p/663793038</span>
+<span class="hljs-string">&#x27;&#x27;&#x27;</span>
+
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">import</span> concurrent.futures
+<span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+<span class="hljs-keyword">from</span> selenium.webdriver.support.ui <span class="hljs-keyword">import</span> WebDriverWait
+<span class="hljs-keyword">from</span> selenium.webdriver.support <span class="hljs-keyword">import</span> expected_conditions <span class="hljs-keyword">as</span> EC
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+<span class="hljs-keyword">from</span> selenium.webdriver.common.desired_capabilities <span class="hljs-keyword">import</span> DesiredCapabilities
+<span class="hljs-keyword">from</span> selenium.webdriver.common.action_chains <span class="hljs-keyword">import</span> ActionChains
+<span class="hljs-keyword">import</span> os
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">webserver</span>():</span>
+    <span class="hljs-comment"># get直接返回，不再等待界面加载完成</span>
+    desired_capabilities = DesiredCapabilities.EDGE
+    desired_capabilities[<span class="hljs-string">&quot;pageLoadStrategy&quot;</span>] = <span class="hljs-string">&quot;none&quot;</span>
+
+    <span class="hljs-comment"># 设置微软驱动器的环境</span>
+    options = webdriver.EdgeOptions()
+    <span class="hljs-comment"># 设置浏览器不加载图片，提高速度</span>
+    options.add_experimental_option(<span class="hljs-string">&quot;prefs&quot;</span>, &#123;<span class="hljs-string">&quot;profile.managed_default_content_settings.images&quot;</span>: <span class="hljs-number">2</span>&#125;)
+
+    <span class="hljs-comment"># 创建一个微软驱动器</span>
+    driver = webdriver.Edge(options=options)
+
+    <span class="hljs-keyword">return</span> driver
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_page</span>(<span class="hljs-params">driver, keyword</span>):</span>
+    <span class="hljs-comment"># 打开页面，等待两秒</span>
+    driver.get(<span class="hljs-string">&quot;https://kns.cnki.net/kns8/AdvSearch&quot;</span>)
+    time.sleep(<span class="hljs-number">2</span>)
+
+    <span class="hljs-comment"># 修改属性，使下拉框显示</span>
+    opt = driver.find_element(By.CSS_SELECTOR, <span class="hljs-string">&#x27;div.sort-list&#x27;</span>)  <span class="hljs-comment"># 定位元素</span>
+    driver.execute_script(<span class="hljs-string">&quot;arguments[0].setAttribute(&#x27;style&#x27;, &#x27;display: block;&#x27;)&quot;</span>, opt)  <span class="hljs-comment"># 执行 js 脚本进行属性的修改；arguments[0]代表第一个属性</span>
+
+    <span class="hljs-comment"># 鼠标移动到下拉框中的[通讯作者]</span>
+    ActionChains(driver).move_to_element(driver.find_element(By.CSS_SELECTOR, <span class="hljs-string">&#x27;li[data-val=&quot;RP&quot;]&#x27;</span>)).perform()
+
+    <span class="hljs-comment"># # 找到[关键词]选项并点击</span>
+    <span class="hljs-comment"># WebDriverWait(driver, 100).until(</span>
+    <span class="hljs-comment">#     EC.visibility_of_element_located((By.CSS_SELECTOR, &#x27;li[data-val=&quot;KY&quot;]&#x27;))).click()</span>
+
+    <span class="hljs-comment"># 传入关键字</span>
+    WebDriverWait(driver, <span class="hljs-number">100</span>).until(
+        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;gradetxt&quot;]/dd[1]/div[2]/input&#x27;&#x27;&#x27;</span>))
+    ).send_keys(keyword)
+
+    <span class="hljs-comment"># 点击搜索</span>
+    WebDriverWait(driver, <span class="hljs-number">100</span>).until(
+        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;ModuleSearch&quot;]/div[1]/div/div[2]/div/div[1]/div[1]/div[2]/div[3]/input&#x27;&#x27;&#x27;</span>))
+    ).click()
+
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;正在搜索，请稍后...&quot;</span>)
+
+    <span class="hljs-comment"># # 点击切换中文文献</span>
+    <span class="hljs-comment"># WebDriverWait(driver, 100).until(</span>
+    <span class="hljs-comment">#     EC.presence_of_element_located((By.XPATH, &quot;/html/body/div[3]/div[1]/div/div/div/a[1]&quot;))</span>
+    <span class="hljs-comment"># ).click()</span>
+
+    <span class="hljs-comment"># 获取总文献数和页数</span>
+    res_unm = WebDriverWait(driver, <span class="hljs-number">100</span>).until(EC.presence_of_element_located(
+        (By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;countPageDiv&quot;]/span[1]/em&#x27;&#x27;&#x27;</span>))
+    ).text
+
+    <span class="hljs-comment"># 去除千分位里的逗号</span>
+    res_unm = <span class="hljs-built_in">int</span>(res_unm.replace(<span class="hljs-string">&quot;,&quot;</span>, <span class="hljs-string">&#x27;&#x27;</span>))
+    page_unm = <span class="hljs-built_in">int</span>(res_unm / <span class="hljs-number">20</span>) + <span class="hljs-number">1</span>
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;共找到 <span class="hljs-subst">&#123;res_unm&#125;</span> 条结果, <span class="hljs-subst">&#123;page_unm&#125;</span> 页。&quot;</span>)
+    <span class="hljs-keyword">return</span> res_unm
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_info</span>(<span class="hljs-params">driver, xpath</span>):</span>
+    <span class="hljs-keyword">try</span>:
+        element = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, xpath)))
+        <span class="hljs-keyword">return</span> element.text
+    <span class="hljs-keyword">except</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;无&#x27;</span>
+    
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_choose_info</span>(<span class="hljs-params">driver, xpath1, xpath2, <span class="hljs-built_in">str</span></span>):</span>
+    <span class="hljs-keyword">try</span>: 
+        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">1</span>).until(EC.presence_of_element_located((By.XPATH, xpath1))).text==<span class="hljs-built_in">str</span>:
+            <span class="hljs-keyword">return</span> WebDriverWait(driver, <span class="hljs-number">1</span>).until(EC.presence_of_element_located((By.XPATH, xpath2))).text
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;无&#x27;</span>
+    <span class="hljs-keyword">except</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;无&#x27;</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">crawl</span>(<span class="hljs-params">driver, papers_need, theme</span>):</span>
+
+    count = <span class="hljs-number">1</span>
+
+    file_path = <span class="hljs-string">f&quot;CNKI_<span class="hljs-subst">&#123;theme&#125;</span>.tsv&quot;</span>
+    <span class="hljs-keyword">if</span> os.path.exists(file_path) <span class="hljs-keyword">and</span> os.path.getsize(file_path) &gt; <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&quot;r&quot;</span>) <span class="hljs-keyword">as</span> file:
+            lines = file.readlines()
+            last_line = lines[-<span class="hljs-number">1</span>].strip()
+            count = <span class="hljs-built_in">int</span>(last_line.split(<span class="hljs-string">&quot;\t&quot;</span>)[<span class="hljs-number">0</span>]) + <span class="hljs-number">1</span>
+
+
+    <span class="hljs-comment"># 当爬取数量小于需求时，循环网页页码</span>
+    <span class="hljs-keyword">while</span> count &lt;= papers_need:
+        <span class="hljs-comment"># 等待加载完全，休眠3S</span>
+        time.sleep(<span class="hljs-number">3</span>)
+
+        title_list = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_all_elements_located((By.CLASS_NAME, <span class="hljs-string">&quot;fz14&quot;</span>)))
+        <span class="hljs-comment"># 循环网页一页中的条目</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(title_list)):
+
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;正在爬取第 <span class="hljs-subst">&#123;count&#125;</span> 条……&quot;</span>)
+
+            <span class="hljs-keyword">try</span>:
+                term = count % <span class="hljs-number">20</span>  <span class="hljs-comment"># 本页的第几个条目</span>
+                
+                <span class="hljs-comment"># 获取基础信息</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取基础信息...&#x27;</span>)
+                title_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[2]&#x27;&#x27;&#x27;</span>
+                author_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[3]&#x27;&#x27;&#x27;</span>
+                source_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[4]&#x27;&#x27;&#x27;</span>
+                date_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[5]&#x27;&#x27;&#x27;</span>
+                database_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[6]&#x27;&#x27;&#x27;</span>
+                quote_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[7]&#x27;&#x27;&#x27;</span>
+                download_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[8]&#x27;&#x27;&#x27;</span>
+                xpaths = [title_xpath, author_xpath, source_xpath, date_xpath, database_xpath, quote_xpath, download_xpath]
+                <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="hljs-keyword">as</span> executor:
+                    future_elements = [executor.submit(get_info, driver, xpath) <span class="hljs-keyword">for</span> xpath <span class="hljs-keyword">in</span> xpaths]
+                title, authors, source, date, database, quote, download = [future.result() <span class="hljs-keyword">for</span> future <span class="hljs-keyword">in</span> future_elements]
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> quote.isdigit():
+                    quote = <span class="hljs-string">&#x27;0&#x27;</span>
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> download.isdigit():
+                    download = <span class="hljs-string">&#x27;0&#x27;</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;title&#125;</span> <span class="hljs-subst">&#123;authors&#125;</span> <span class="hljs-subst">&#123;source&#125;</span> <span class="hljs-subst">&#123;date&#125;</span> <span class="hljs-subst">&#123;database&#125;</span> <span class="hljs-subst">&#123;quote&#125;</span> <span class="hljs-subst">&#123;download&#125;</span>\n&quot;</span>)
+               
+                <span class="hljs-comment"># 点击条目</span>
+                title_list[i].click()
+                
+                <span class="hljs-comment"># 获取driver的句柄</span>
+                n = driver.window_handles
+                
+                <span class="hljs-comment"># driver切换至最新生产的页面</span>
+                driver.switch_to.window(n[-<span class="hljs-number">1</span>])
+                time.sleep(<span class="hljs-number">3</span>)
+                
+                <span class="hljs-comment"># 开始获取页面信息</span>
+                <span class="hljs-comment"># 点击展开</span>
+                <span class="hljs-keyword">try</span>:
+                    WebDriverWait(driver, <span class="hljs-number">10</span>).until(
+                        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;ChDivSummaryMore&quot;]&#x27;&#x27;&#x27;</span>))
+                    ).click()
+                <span class="hljs-keyword">except</span>:
+                    <span class="hljs-keyword">pass</span>
+                
+                <span class="hljs-comment"># 获取作者单位</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取institute...&#x27;</span>)
+                <span class="hljs-keyword">try</span>:
+                    institute = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[3]/div/h3[2]&quot;</span>))).text
+                <span class="hljs-keyword">except</span>:
+                    institute = <span class="hljs-string">&#x27;无&#x27;</span>
+                <span class="hljs-built_in">print</span>(institute+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                
+                <span class="hljs-comment"># 获取摘要、关键词、专辑、专题</span>
+                <span class="hljs-comment"># 获取摘要</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取abstract...&#x27;</span>)
+                <span class="hljs-keyword">try</span>:
+                    abstract = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.CLASS_NAME, <span class="hljs-string">&quot;abstract-text&quot;</span>))).text
+                <span class="hljs-keyword">except</span>:
+                    abstract = <span class="hljs-string">&#x27;无&#x27;</span>
+                <span class="hljs-built_in">print</span>(abstract+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                
+                <span class="hljs-comment"># 获取关键词</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取keywords...&#x27;</span>)
+                <span class="hljs-keyword">try</span>:
+                    keywords = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.CLASS_NAME, <span class="hljs-string">&quot;keywords&quot;</span>))).text[:-<span class="hljs-number">1</span>]
+                <span class="hljs-keyword">except</span>:
+                    keywords = <span class="hljs-string">&#x27;无&#x27;</span>      
+                <span class="hljs-built_in">print</span>(keywords+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                
+                <span class="hljs-comment"># 获取专辑</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取publication...&#x27;</span>)
+                xpaths = [
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[1]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[1]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[1]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[1]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/p&quot;</span>)
+                ]
+                <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="hljs-keyword">as</span> executor:
+                    futures = [executor.submit(get_choose_info, driver, xpath1, xpath2, <span class="hljs-string">&#x27;专辑：&#x27;</span>) <span class="hljs-keyword">for</span> xpath1, xpath2 <span class="hljs-keyword">in</span> xpaths]
+                    results = [future.result() <span class="hljs-keyword">for</span> future <span class="hljs-keyword">in</span> concurrent.futures.as_completed(futures)]
+                publication = <span class="hljs-built_in">next</span>((result <span class="hljs-keyword">for</span> result <span class="hljs-keyword">in</span> results <span class="hljs-keyword">if</span> result != <span class="hljs-string">&#x27;无&#x27;</span>), <span class="hljs-string">&#x27;无&#x27;</span>)
+                <span class="hljs-built_in">print</span>(publication+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                
+                <span class="hljs-comment"># 获取专题</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取topic...&#x27;</span>)
+                xpaths = [
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[3]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[3]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/p&quot;</span>)
+                ]
+                <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="hljs-keyword">as</span> executor:
+                    futures = [executor.submit(get_choose_info, driver, xpath1, xpath2, <span class="hljs-string">&#x27;专题：&#x27;</span>) <span class="hljs-keyword">for</span> xpath1, xpath2 <span class="hljs-keyword">in</span> xpaths]
+                    results = [future.result() <span class="hljs-keyword">for</span> future <span class="hljs-keyword">in</span> concurrent.futures.as_completed(futures)]
+                topic = <span class="hljs-built_in">next</span>((result <span class="hljs-keyword">for</span> result <span class="hljs-keyword">in</span> results <span class="hljs-keyword">if</span> result != <span class="hljs-string">&#x27;无&#x27;</span>), <span class="hljs-string">&#x27;无&#x27;</span>)
+                <span class="hljs-built_in">print</span>(topic+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                
+                <span class="hljs-comment"># url = driver.current_url</span>
+                
+                <span class="hljs-comment"># 获取下载链接</span>
+                <span class="hljs-comment"># link = WebDriverWait( driver, 10 ).until( EC.presence_of_all_elements_located((By.CLASS_NAME  ,&quot;btn-dlcaj&quot;) ) )[0].get_attribute(&#x27;href&#x27;)</span>
+                <span class="hljs-comment"># link = urljoin(driver.current_url, link)</span>
+
+                <span class="hljs-comment"># 写入文件</span>
+                res = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;count&#125;</span>\t<span class="hljs-subst">&#123;title&#125;</span>\t<span class="hljs-subst">&#123;authors&#125;</span>\t<span class="hljs-subst">&#123;institute&#125;</span>\t<span class="hljs-subst">&#123;date&#125;</span>\t<span class="hljs-subst">&#123;source&#125;</span>\t<span class="hljs-subst">&#123;publication&#125;</span>\t<span class="hljs-subst">&#123;topic&#125;</span>\t<span class="hljs-subst">&#123;database&#125;</span>\t<span class="hljs-subst">&#123;quote&#125;</span>\t<span class="hljs-subst">&#123;download&#125;</span>\t<span class="hljs-subst">&#123;keywords&#125;</span>\t<span class="hljs-subst">&#123;abstract&#125;</span>&quot;</span>.replace(<span class="hljs-string">&quot;\n&quot;</span>, <span class="hljs-string">&quot;&quot;</span>) + <span class="hljs-string">&quot;\n&quot;</span>
+
+                <span class="hljs-keyword">try</span>:
+                    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&#x27;a&#x27;</span>, encoding=<span class="hljs-string">&#x27;gbk&#x27;</span>) <span class="hljs-keyword">as</span> f:
+                        f.write(res)
+                        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;写入成功&#x27;</span>)
+                <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+                    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;写入失败:&#x27;</span>, <span class="hljs-built_in">str</span>(e))
+                    <span class="hljs-keyword">raise</span> e
+            <span class="hljs-keyword">except</span>:
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot; 第<span class="hljs-subst">&#123;count&#125;</span> 条爬取失败\n&quot;</span>)
+                <span class="hljs-comment"># 跳过本条，接着下一个</span>
+                <span class="hljs-keyword">continue</span>
+            
+            <span class="hljs-keyword">finally</span>:
+                <span class="hljs-comment"># 如果有多个窗口，关闭第二个窗口， 切换回主页</span>
+                n2 = driver.window_handles
+                <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(n2) &gt; <span class="hljs-number">1</span>:
+                    driver.close()
+                    driver.switch_to.window(n2[<span class="hljs-number">0</span>])
+                <span class="hljs-comment"># 计数,判断需求是否足够</span>
+                count += <span class="hljs-number">1</span>
+                <span class="hljs-keyword">if</span> count == papers_need: <span class="hljs-keyword">break</span>
+
+        <span class="hljs-comment"># 切换到下一页</span>
+        WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;//a[@id=&#x27;PageNext&#x27;]&quot;</span>))).click()
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    
+    keyword = <span class="hljs-string">&quot;青少年抑郁&quot;</span>
+    driver = webserver()
+    
+    <span class="hljs-comment"># 设置所需篇数</span>
+    papers_need = <span class="hljs-number">100</span>
+    res_unm = open_page(driver, keyword)
+    
+    <span class="hljs-comment"># 判断所需是否大于总篇数</span>
+    papers_need = papers_need <span class="hljs-keyword">if</span> (papers_need &lt;= res_unm) <span class="hljs-keyword">else</span> res_unm
+    
+    crawl(driver, papers_need, keyword)
+
+    <span class="hljs-comment"># 关闭浏览器</span>
+    driver.close()</code></pre></div>
+<p>获取专辑和获取专题是最慢的，而且因为知网摆放的问题而且没有特殊命名，用了很蠢的方法查询了四个位置，应该有其他优化方法。</p>
+<h3 id="展示">展示</h3>
+<p><img
+src="https://pic.imgdb.cn/item/65708984c458853aef8c5262.jpg" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="结语">结语</h2>
+<p>这篇博客希望能为您提供一个简单但实用的起点，让您开始使用Python编写CNKI知网爬虫。祝您编写爬虫的过程愉快，同时请注意遵守相关法律法规和网站规定。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E7%9B%B8%E5%85%B3/">大学相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%9F%A5%E7%BD%91/">知网</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/09/42/">
+                        <span class="hidden-mobile">眠</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <!-- begin 评论 -->
+  <div id="valine"></div> 
+  <!-- end 评论 -->
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+       
+        var options = Object.assign(
+          {"appId":"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz","appKey":"IVwl94UT4wnOPWUgwn4AfOCE","path":"window.location.pathname","placeholder":"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…","avatar":"robohash","avatarForce":true,"meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","admin_email_hash":"393669798@qq.com","enableQQ":true,"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        ) 
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+ 
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    <!--向顶部滚动的箭头-->
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!--自定义底部 HTML 内容-->
+    
+  </main>
+  
+  <!--页脚-->
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <!---->
+     &copy; <script type="text/javascript"> var myDate = new Date().getFullYear(); document.write(myDate) </script> <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+
+      <!--通过API接口作为首页副标题的内容-->
+      
+        typing(title)  //tying打字机
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
