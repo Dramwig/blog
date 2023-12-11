@@ -18,15 +18,15 @@
   <meta name="description" content="一个神秘的人">
   <meta name="author" content="epochxi">
   <meta name="keywords" content="dramwig">
-  <meta name="description" content="CNKI知网爬虫&amp;Python 当涉及从CNKI（中国知网）获取数据时，编写一个网络爬虫以收集信息可能是个不错的选择。这篇博客将指导您如何使用Python和Selenium库编写一个简单的爬虫，从CNKI网站上检索关于特定主题的论文信息。 利用Python编写CNKI知网爬虫 中国知网（CNKI）是一个知名的学术资源库，它提供了丰富的学术文献、期刊和论文。为了从CNKI获取数据，我们">
+  <meta name="description" content="CNKI知网爬虫&amp;Python 当涉及从CNKI（中国知网）获取数据时，编写一个网络爬虫以收集信息可能是个不错的选择。这篇博客将指导您如何使用Python和Selenium库编写一个简单的爬虫，从CNKI网站上检索关于特定主题的论文信息。 特点  根据指定关键词在 CNKI 进行论文搜索。 提取信息包括标题、作者、摘要、出版详情等。 支持多线程以提高检索速度。 将提取的信息保">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CNKI知网爬虫&amp;Python">
 <meta property="og:url" content="http://example.com/2023/12/06/43/index.html">
 <meta property="og:site_name" content="风倾客栈 ✧">
-<meta property="og:description" content="CNKI知网爬虫&amp;Python 当涉及从CNKI（中国知网）获取数据时，编写一个网络爬虫以收集信息可能是个不错的选择。这篇博客将指导您如何使用Python和Selenium库编写一个简单的爬虫，从CNKI网站上检索关于特定主题的论文信息。 利用Python编写CNKI知网爬虫 中国知网（CNKI）是一个知名的学术资源库，它提供了丰富的学术文献、期刊和论文。为了从CNKI获取数据，我们">
+<meta property="og:description" content="CNKI知网爬虫&amp;Python 当涉及从CNKI（中国知网）获取数据时，编写一个网络爬虫以收集信息可能是个不错的选择。这篇博客将指导您如何使用Python和Selenium库编写一个简单的爬虫，从CNKI网站上检索关于特定主题的论文信息。 特点  根据指定关键词在 CNKI 进行论文搜索。 提取信息包括标题、作者、摘要、出版详情等。 支持多线程以提高检索速度。 将提取的信息保">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-06T14:56:00.000Z">
-<meta property="article:modified_time" content="2023-12-06T14:57:14.875Z">
+<meta property="article:modified_time" content="2023-12-10T03:35:24.743Z">
 <meta property="article:author" content="epochxi">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="知网">
@@ -229,6 +229,15 @@
             <div class="markdown-body">
               <h1 id="cnki知网爬虫python">CNKI知网爬虫&amp;Python</h1>
 <p>当涉及从CNKI（中国知网）获取数据时，编写一个网络爬虫以收集信息可能是个不错的选择。这篇博客将指导您如何使用Python和Selenium库编写一个简单的爬虫，从CNKI网站上检索关于特定主题的论文信息。</p>
+<h2 id="特点">特点</h2>
+<ul>
+<li>根据指定关键词在 CNKI 进行论文搜索。</li>
+<li>提取信息包括标题、作者、摘要、出版详情等。</li>
+<li>支持多线程以提高检索速度。</li>
+<li>将提取的信息保存到指定文件中（在这种情况下是一个 TSV 文件）。</li>
+<li><strong>若存在指定文件将最后一行编号开始查询（可以随时关闭程序，下次接着爬取）。</strong></li>
+<li>异常处理以确保稳健性。</li>
+</ul>
 <h2 id="利用python编写cnki知网爬虫">利用Python编写CNKI知网爬虫</h2>
 <p>中国知网（CNKI）是一个知名的学术资源库，它提供了丰富的学术文献、期刊和论文。为了从CNKI获取数据，我们将使用Python编写一个简单但功能强大的网络爬虫。</p>
 <p>因为知网的频繁的更新，以及目录是动态加载的，<del>而我不会找包</del>，还有听说知网有严厉的反爬机制。用传统的<code>response = requests.get(url)</code>爬取论文信息是不太可能的。</p>
@@ -270,286 +279,10 @@ WebDriver或Edge WebDriver）。</li>
 <p>这只是一个入门级的示例，您可以根据需要扩展它。您可能想要添加更多功能，例如多线程支持、数据持久化、自动化登录等。同时，还请确保您的爬虫行为是合法的，遵守网站的使用条款和规定。</p>
 <p>我修改了<a
 target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599579339">这篇知乎文章</a>的代码，重新更改了一些Xpath，并加上自己的逻辑。</p>
-<div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span>
-<span class="hljs-string">    参考：</span>
-<span class="hljs-string">        https://zhuanlan.zhihu.com/p/599579339</span>
-<span class="hljs-string">        https://zhuanlan.zhihu.com/p/663793038</span>
-<span class="hljs-string">&#x27;&#x27;&#x27;</span>
-
-<span class="hljs-keyword">import</span> time
-<span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
-<span class="hljs-keyword">from</span> selenium.webdriver.support.ui <span class="hljs-keyword">import</span> WebDriverWait
-<span class="hljs-keyword">from</span> selenium.webdriver.support <span class="hljs-keyword">import</span> expected_conditions <span class="hljs-keyword">as</span> EC
-<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
-<span class="hljs-keyword">from</span> selenium.webdriver.common.desired_capabilities <span class="hljs-keyword">import</span> DesiredCapabilities
-<span class="hljs-keyword">from</span> selenium.webdriver.common.action_chains <span class="hljs-keyword">import</span> ActionChains
-<span class="hljs-keyword">import</span> os
-
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">webserver</span>():</span>
-    <span class="hljs-comment"># get直接返回，不再等待界面加载完成</span>
-    desired_capabilities = DesiredCapabilities.EDGE
-    desired_capabilities[<span class="hljs-string">&quot;pageLoadStrategy&quot;</span>] = <span class="hljs-string">&quot;none&quot;</span>
-
-    <span class="hljs-comment"># 设置微软驱动器的环境</span>
-    options = webdriver.EdgeOptions()
-    <span class="hljs-comment"># 设置浏览器不加载图片，提高速度</span>
-    options.add_experimental_option(<span class="hljs-string">&quot;prefs&quot;</span>, &#123;<span class="hljs-string">&quot;profile.managed_default_content_settings.images&quot;</span>: <span class="hljs-number">2</span>&#125;)
-
-    <span class="hljs-comment"># 创建一个微软驱动器</span>
-    driver = webdriver.Edge(options=options)
-
-    <span class="hljs-keyword">return</span> driver
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_page</span>(<span class="hljs-params">driver, keyword</span>):</span>
-    <span class="hljs-comment"># 打开页面，等待两秒</span>
-    driver.get(<span class="hljs-string">&quot;https://kns.cnki.net/kns8/AdvSearch&quot;</span>)
-    time.sleep(<span class="hljs-number">2</span>)
-
-    <span class="hljs-comment"># 修改属性，使下拉框显示</span>
-    opt = driver.find_element(By.CSS_SELECTOR, <span class="hljs-string">&#x27;div.sort-list&#x27;</span>)  <span class="hljs-comment"># 定位元素</span>
-    driver.execute_script(<span class="hljs-string">&quot;arguments[0].setAttribute(&#x27;style&#x27;, &#x27;display: block;&#x27;)&quot;</span>, opt)  <span class="hljs-comment"># 执行 js 脚本进行属性的修改；arguments[0]代表第一个属性</span>
-
-    <span class="hljs-comment"># 鼠标移动到下拉框中的[通讯作者]</span>
-    ActionChains(driver).move_to_element(driver.find_element(By.CSS_SELECTOR, <span class="hljs-string">&#x27;li[data-val=&quot;RP&quot;]&#x27;</span>)).perform()
-
-    <span class="hljs-comment"># # 找到[关键词]选项并点击</span>
-    <span class="hljs-comment"># WebDriverWait(driver, 100).until(</span>
-    <span class="hljs-comment">#     EC.visibility_of_element_located((By.CSS_SELECTOR, &#x27;li[data-val=&quot;KY&quot;]&#x27;))).click()</span>
-
-    <span class="hljs-comment"># 传入关键字</span>
-    WebDriverWait(driver, <span class="hljs-number">100</span>).until(
-        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;gradetxt&quot;]/dd[1]/div[2]/input&#x27;&#x27;&#x27;</span>))
-    ).send_keys(keyword)
-
-    <span class="hljs-comment"># 点击搜索</span>
-    WebDriverWait(driver, <span class="hljs-number">100</span>).until(
-        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;ModuleSearch&quot;]/div[1]/div/div[2]/div/div[1]/div[1]/div[2]/div[3]/input&#x27;&#x27;&#x27;</span>))
-    ).click()
-
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;正在搜索，请稍后...&quot;</span>)
-
-    <span class="hljs-comment"># # 点击切换中文文献</span>
-    <span class="hljs-comment"># WebDriverWait(driver, 100).until(</span>
-    <span class="hljs-comment">#     EC.presence_of_element_located((By.XPATH, &quot;/html/body/div[3]/div[1]/div/div/div/a[1]&quot;))</span>
-    <span class="hljs-comment"># ).click()</span>
-
-    <span class="hljs-comment"># 获取总文献数和页数</span>
-    res_unm = WebDriverWait(driver, <span class="hljs-number">100</span>).until(EC.presence_of_element_located(
-        (By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;countPageDiv&quot;]/span[1]/em&#x27;&#x27;&#x27;</span>))
-    ).text
-
-    <span class="hljs-comment"># 去除千分位里的逗号</span>
-    res_unm = <span class="hljs-built_in">int</span>(res_unm.replace(<span class="hljs-string">&quot;,&quot;</span>, <span class="hljs-string">&#x27;&#x27;</span>))
-    page_unm = <span class="hljs-built_in">int</span>(res_unm / <span class="hljs-number">20</span>) + <span class="hljs-number">1</span>
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;共找到 <span class="hljs-subst">&#123;res_unm&#125;</span> 条结果, <span class="hljs-subst">&#123;page_unm&#125;</span> 页。&quot;</span>)
-    <span class="hljs-keyword">return</span> res_unm
-
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">crawl</span>(<span class="hljs-params">driver, papers_need, theme</span>):</span>
-
-    count = <span class="hljs-number">1</span>
-
-    file_path = <span class="hljs-string">f&quot;CNKI_<span class="hljs-subst">&#123;theme&#125;</span>.tsv&quot;</span>
-    <span class="hljs-keyword">if</span> os.path.exists(file_path) <span class="hljs-keyword">and</span> os.path.getsize(file_path) &gt; <span class="hljs-number">0</span>:
-        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&quot;r&quot;</span>) <span class="hljs-keyword">as</span> file:
-            lines = file.readlines()
-            last_line = lines[-<span class="hljs-number">1</span>].strip()
-            count = <span class="hljs-built_in">int</span>(last_line.split(<span class="hljs-string">&quot;\t&quot;</span>)[<span class="hljs-number">0</span>]) + <span class="hljs-number">1</span>
-
-
-    <span class="hljs-comment"># 当爬取数量小于需求时，循环网页页码</span>
-    <span class="hljs-keyword">while</span> count &lt;= papers_need:
-        <span class="hljs-comment"># 等待加载完全，休眠3S</span>
-        time.sleep(<span class="hljs-number">3</span>)
-
-        title_list = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_all_elements_located((By.CLASS_NAME, <span class="hljs-string">&quot;fz14&quot;</span>)))
-        <span class="hljs-comment"># 循环网页一页中的条目</span>
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(title_list)):
-
-            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;正在爬取第 <span class="hljs-subst">&#123;count&#125;</span> 条……&quot;</span>)
-
-            <span class="hljs-keyword">try</span>:
-                term = count % <span class="hljs-number">20</span>  <span class="hljs-comment"># 本页的第几个条目</span>
-                title_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[2]&#x27;&#x27;&#x27;</span>
-                author_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[3]&#x27;&#x27;&#x27;</span>
-                source_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[4]&#x27;&#x27;&#x27;</span>
-                date_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[5]&#x27;&#x27;&#x27;</span>
-                database_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[6]&#x27;&#x27;&#x27;</span>
-                quote_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[7]&#x27;&#x27;&#x27;</span>
-                download_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[8]&#x27;&#x27;&#x27;</span>
-                title = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, title_xpath))).text
-                authors = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, author_xpath))).text
-                source = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, source_xpath))).text
-                date = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, date_xpath))).text
-                database = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, database_xpath))).text
-                quote = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, quote_xpath))).text
-                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> quote.isdigit():
-                    quote = <span class="hljs-string">&#x27;0&#x27;</span>
-                download = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, download_xpath))).text
-                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> download.isdigit():
-                    download = <span class="hljs-string">&#x27;0&#x27;</span>
-               
-                <span class="hljs-comment"># 点击条目</span>
-                title_list[i].click()
-                
-                <span class="hljs-comment"># 获取driver的句柄</span>
-                n = driver.window_handles
-                
-                <span class="hljs-comment"># driver切换至最新生产的页面</span>
-                driver.switch_to.window(n[-<span class="hljs-number">1</span>])
-                time.sleep(<span class="hljs-number">3</span>)
-                
-                <span class="hljs-comment"># 开始获取页面信息</span>
-                <span class="hljs-comment"># 点击展开</span>
-                <span class="hljs-keyword">try</span>:
-                    WebDriverWait(driver, <span class="hljs-number">10</span>).until(
-                        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;ChDivSummaryMore&quot;]&#x27;&#x27;&#x27;</span>))
-                    ).click()
-                <span class="hljs-keyword">except</span>:
-                    <span class="hljs-keyword">pass</span>
-                
-                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取institute...&#x27;</span>)
-                
-                <span class="hljs-keyword">try</span>:
-                    institute = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[3]/div/h3[2]&quot;</span>))).text
-                <span class="hljs-keyword">except</span>:
-                    institute = <span class="hljs-string">&#x27;无&#x27;</span>
-                    
-                <span class="hljs-built_in">print</span>(institute+<span class="hljs-string">&#x27;\n&#x27;</span>)
-                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取abstract...&#x27;</span>)
-                    
-                <span class="hljs-keyword">try</span>:
-                    abstract = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.CLASS_NAME, <span class="hljs-string">&quot;abstract-text&quot;</span>))).text
-                <span class="hljs-keyword">except</span>:
-                    abstract = <span class="hljs-string">&#x27;无&#x27;</span>
-                
-                <span class="hljs-built_in">print</span>(abstract+<span class="hljs-string">&#x27;\n&#x27;</span>)
-                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取keywords...&#x27;</span>)
-                    
-                <span class="hljs-keyword">try</span>:
-                    keywords = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.CLASS_NAME, <span class="hljs-string">&quot;keywords&quot;</span>))).text[:-<span class="hljs-number">1</span>]
-                <span class="hljs-keyword">except</span>:
-                    keywords = <span class="hljs-string">&#x27;无&#x27;</span>      
-                    
-                <span class="hljs-built_in">print</span>(keywords+<span class="hljs-string">&#x27;\n&#x27;</span>)
-                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取publication...&#x27;</span>)
-                
-                publication = <span class="hljs-string">&#x27;无&#x27;</span>
-                <span class="hljs-keyword">try</span>:
-                    <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[1]/span&quot;</span>))).text==<span class="hljs-string">&quot;专辑：&quot;</span>:
-                        publication = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[1]/p&quot;</span>))).text
-                <span class="hljs-keyword">except</span>:
-                    <span class="hljs-keyword">pass</span>
-                <span class="hljs-keyword">if</span> publication == <span class="hljs-string">&#x27;无&#x27;</span>:
-                    <span class="hljs-keyword">try</span>: 
-                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/span&quot;</span>))).text==<span class="hljs-string">&quot;专辑：&quot;</span>:
-                            publication = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/p&quot;</span>))).text
-                    <span class="hljs-keyword">except</span>:
-                        <span class="hljs-keyword">pass</span>
-                <span class="hljs-keyword">if</span> publication == <span class="hljs-string">&#x27;无&#x27;</span>:
-                    <span class="hljs-keyword">try</span>: 
-                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[1]/span&quot;</span>))).text==<span class="hljs-string">&quot;专辑：&quot;</span>:
-                            publication = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[1]/p&quot;</span>))).text
-                    <span class="hljs-keyword">except</span>:
-                        <span class="hljs-keyword">pass</span>
-                <span class="hljs-keyword">if</span> publication == <span class="hljs-string">&#x27;无&#x27;</span>:
-                    <span class="hljs-keyword">try</span>: 
-                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/span&quot;</span>))).text==<span class="hljs-string">&quot;专辑：&quot;</span>:
-                            publication = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/p&quot;</span>))).text
-                    <span class="hljs-keyword">except</span>:
-                        <span class="hljs-keyword">pass</span>
-                    
-                <span class="hljs-built_in">print</span>(publication+<span class="hljs-string">&#x27;\n&#x27;</span>)
-                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取topic...&#x27;</span>)
-                
-                topic = <span class="hljs-string">&#x27;无&#x27;</span>
-                <span class="hljs-keyword">try</span>:
-                    <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/span&quot;</span>))).text==<span class="hljs-string">&quot;专题：&quot;</span>:
-                        topic = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/p&quot;</span>))).text
-                <span class="hljs-keyword">except</span>:
-                    <span class="hljs-keyword">pass</span>
-                <span class="hljs-keyword">if</span> topic == <span class="hljs-string">&#x27;无&#x27;</span>:
-                    <span class="hljs-keyword">try</span>: 
-                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[3]/span&quot;</span>))).text==<span class="hljs-string">&quot;专题：&quot;</span>:
-                            topic = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[3]/p&quot;</span>))).text
-                    <span class="hljs-keyword">except</span>:
-                        <span class="hljs-keyword">pass</span>
-                <span class="hljs-keyword">if</span> topic == <span class="hljs-string">&#x27;无&#x27;</span>:
-                    <span class="hljs-keyword">try</span>: 
-                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/span&quot;</span>))).text==<span class="hljs-string">&quot;专题：&quot;</span>:
-                            topic = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/p&quot;</span>))).text
-                    <span class="hljs-keyword">except</span>:
-                        <span class="hljs-keyword">pass</span>
-                <span class="hljs-keyword">if</span> topic == <span class="hljs-string">&#x27;无&#x27;</span>:
-                    <span class="hljs-keyword">try</span>: 
-                        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/span&quot;</span>))).text==<span class="hljs-string">&quot;专题：&quot;</span>:
-                            topic = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">f&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/p&quot;</span>))).text
-                    <span class="hljs-keyword">except</span>:
-                        <span class="hljs-keyword">pass</span>
-                    
-                <span class="hljs-built_in">print</span>(topic+<span class="hljs-string">&#x27;\n&#x27;</span>)
-                
-                <span class="hljs-comment"># url = driver.current_url</span>
-                
-                <span class="hljs-comment"># 获取下载链接</span>
-                <span class="hljs-comment"># link = WebDriverWait( driver, 10 ).until( EC.presence_of_all_elements_located((By.CLASS_NAME  ,&quot;btn-dlcaj&quot;) ) )[0].get_attribute(&#x27;href&#x27;)</span>
-                <span class="hljs-comment"># link = urljoin(driver.current_url, link)</span>
-
-                <span class="hljs-comment"># 写入文件</span>
-                res = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;count&#125;</span>\t<span class="hljs-subst">&#123;title&#125;</span>\t<span class="hljs-subst">&#123;authors&#125;</span>\t<span class="hljs-subst">&#123;institute&#125;</span>\t<span class="hljs-subst">&#123;date&#125;</span>\t<span class="hljs-subst">&#123;source&#125;</span>\t<span class="hljs-subst">&#123;publication&#125;</span>\t<span class="hljs-subst">&#123;topic&#125;</span>\t<span class="hljs-subst">&#123;database&#125;</span>\t<span class="hljs-subst">&#123;quote&#125;</span>\t<span class="hljs-subst">&#123;download&#125;</span>\t<span class="hljs-subst">&#123;keywords&#125;</span>\t<span class="hljs-subst">&#123;abstract&#125;</span>&quot;</span>.replace(<span class="hljs-string">&quot;\n&quot;</span>, <span class="hljs-string">&quot;&quot;</span>) + <span class="hljs-string">&quot;\n&quot;</span>
-                
-                <span class="hljs-comment"># print(res)</span>
-                <span class="hljs-comment"># print(f&#x27;文件路径: CNKI_&#123;theme&#125;.tsv&#x27;)</span>
-                <span class="hljs-keyword">try</span>:
-                    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&#x27;a&#x27;</span>, encoding=<span class="hljs-string">&#x27;gbk&#x27;</span>) <span class="hljs-keyword">as</span> f:
-                        f.write(res)
-                        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;写入成功&#x27;</span>)
-                <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
-                    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;写入失败:&#x27;</span>, <span class="hljs-built_in">str</span>(e))
-                    <span class="hljs-keyword">raise</span> e
-            <span class="hljs-keyword">except</span>:
-                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot; 第<span class="hljs-subst">&#123;count&#125;</span> 条爬取失败\n&quot;</span>)
-                <span class="hljs-comment"># 跳过本条，接着下一个</span>
-                <span class="hljs-keyword">continue</span>
-            
-            <span class="hljs-keyword">finally</span>:
-                <span class="hljs-comment"># 如果有多个窗口，关闭第二个窗口， 切换回主页</span>
-                n2 = driver.window_handles
-                <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(n2) &gt; <span class="hljs-number">1</span>:
-                    driver.close()
-                    driver.switch_to.window(n2[<span class="hljs-number">0</span>])
-                <span class="hljs-comment"># 计数,判断需求是否足够</span>
-                count += <span class="hljs-number">1</span>
-                <span class="hljs-keyword">if</span> count == papers_need: <span class="hljs-keyword">break</span>
-
-        <span class="hljs-comment"># 切换到下一页</span>
-        WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;//a[@id=&#x27;PageNext&#x27;]&quot;</span>))).click()
-
-
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
-    
-    keyword = <span class="hljs-string">&quot;青少年抑郁&quot;</span>
-    driver = webserver()
-    
-    <span class="hljs-comment"># 设置所需篇数</span>
-    papers_need = <span class="hljs-number">100</span>
-    res_unm = open_page(driver, keyword)
-    
-    <span class="hljs-comment"># 判断所需是否大于总篇数</span>
-    papers_need = papers_need <span class="hljs-keyword">if</span> (papers_need &lt;= res_unm) <span class="hljs-keyword">else</span> res_unm
-    
-    crawl(driver, papers_need, keyword)
-
-    <span class="hljs-comment"># 关闭浏览器</span>
-    driver.close()</code></pre></div>
-<p>总算能成功运行了，因为太慢了之后增加了并行处理，尽量加速。得到了下面这个代码，封装的多一些。</p>
-<div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span>
-<span class="hljs-string">    参考：</span>
-<span class="hljs-string">        https://zhuanlan.zhihu.com/p/599579339</span>
-<span class="hljs-string">        https://zhuanlan.zhihu.com/p/663793038</span>
-<span class="hljs-string">&#x27;&#x27;&#x27;</span>
-
+<blockquote>
+<p>代码不再维护，含有一些问题，最新代码见下文</p>
+</blockquote>
+<div class="hljs code-wrapper"><pre><code class="hljs python">
 <span class="hljs-keyword">import</span> time
 <span class="hljs-keyword">import</span> concurrent.futures
 <span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
@@ -646,7 +379,13 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599579339">这
             lines = file.readlines()
             last_line = lines[-<span class="hljs-number">1</span>].strip()
             count = <span class="hljs-built_in">int</span>(last_line.split(<span class="hljs-string">&quot;\t&quot;</span>)[<span class="hljs-number">0</span>]) + <span class="hljs-number">1</span>
+    
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>((count-<span class="hljs-number">1</span>) // <span class="hljs-number">20</span>):
+        <span class="hljs-comment"># 切换到下一页</span>
+        time.sleep(<span class="hljs-number">3</span>)
+        WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;//*[@id=&#x27;PageNext&#x27;]&quot;</span>))).click()
 
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;从第 <span class="hljs-subst">&#123;count&#125;</span> 条开始爬取\n&quot;</span>)
 
     <span class="hljs-comment"># 当爬取数量小于需求时，循环网页页码</span>
     <span class="hljs-keyword">while</span> count &lt;= papers_need:
@@ -655,12 +394,12 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599579339">这
 
         title_list = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_all_elements_located((By.CLASS_NAME, <span class="hljs-string">&quot;fz14&quot;</span>)))
         <span class="hljs-comment"># 循环网页一页中的条目</span>
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(title_list)):
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>((count-<span class="hljs-number">1</span>) % <span class="hljs-number">20</span> + <span class="hljs-number">1</span>, <span class="hljs-number">21</span>):
 
-            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;正在爬取第 <span class="hljs-subst">&#123;count&#125;</span> 条……&quot;</span>)
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\n###正在爬取第 <span class="hljs-subst">&#123;count&#125;</span> 条(本页第<span class="hljs-subst">&#123;i&#125;</span>条)#######################################\n&quot;</span>)
 
             <span class="hljs-keyword">try</span>:
-                term = count % <span class="hljs-number">20</span>  <span class="hljs-comment"># 本页的第几个条目</span>
+                term = (count-<span class="hljs-number">1</span>) % <span class="hljs-number">20</span> + <span class="hljs-number">1</span>  <span class="hljs-comment"># 本页的第几个条目</span>
                 
                 <span class="hljs-comment"># 获取基础信息</span>
                 <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取基础信息...&#x27;</span>)
@@ -682,7 +421,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599579339">这
                 <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;title&#125;</span> <span class="hljs-subst">&#123;authors&#125;</span> <span class="hljs-subst">&#123;source&#125;</span> <span class="hljs-subst">&#123;date&#125;</span> <span class="hljs-subst">&#123;database&#125;</span> <span class="hljs-subst">&#123;quote&#125;</span> <span class="hljs-subst">&#123;download&#125;</span>\n&quot;</span>)
                
                 <span class="hljs-comment"># 点击条目</span>
-                title_list[i].click()
+                title_list[i-<span class="hljs-number">1</span>].click()
                 
                 <span class="hljs-comment"># 获取driver的句柄</span>
                 n = driver.window_handles
@@ -731,7 +470,8 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599579339">这
                     (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[1]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[1]/p&quot;</span>),
                     (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/p&quot;</span>),
                     (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[1]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[1]/p&quot;</span>),
-                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/p&quot;</span>)
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[4]/ul/li[1]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[4]/ul/li[1]/p&quot;</span>)
                 ]
                 <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="hljs-keyword">as</span> executor:
                     futures = [executor.submit(get_choose_info, driver, xpath1, xpath2, <span class="hljs-string">&#x27;专辑：&#x27;</span>) <span class="hljs-keyword">for</span> xpath1, xpath2 <span class="hljs-keyword">in</span> xpaths]
@@ -745,7 +485,8 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599579339">这
                     (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/p&quot;</span>),
                     (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[3]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[3]/p&quot;</span>),
                     (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/p&quot;</span>),
-                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/p&quot;</span>)
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[4]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[4]/ul/li[2]/p&quot;</span>)
                 ]
                 <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="hljs-keyword">as</span> executor:
                     futures = [executor.submit(get_choose_info, driver, xpath1, xpath2, <span class="hljs-string">&#x27;专题：&#x27;</span>) <span class="hljs-keyword">for</span> xpath1, xpath2 <span class="hljs-keyword">in</span> xpaths]
@@ -753,14 +494,14 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599579339">这
                 topic = <span class="hljs-built_in">next</span>((result <span class="hljs-keyword">for</span> result <span class="hljs-keyword">in</span> results <span class="hljs-keyword">if</span> result != <span class="hljs-string">&#x27;无&#x27;</span>), <span class="hljs-string">&#x27;无&#x27;</span>)
                 <span class="hljs-built_in">print</span>(topic+<span class="hljs-string">&#x27;\n&#x27;</span>)
                 
-                <span class="hljs-comment"># url = driver.current_url</span>
+                url = driver.current_url
                 
                 <span class="hljs-comment"># 获取下载链接</span>
                 <span class="hljs-comment"># link = WebDriverWait( driver, 10 ).until( EC.presence_of_all_elements_located((By.CLASS_NAME  ,&quot;btn-dlcaj&quot;) ) )[0].get_attribute(&#x27;href&#x27;)</span>
                 <span class="hljs-comment"># link = urljoin(driver.current_url, link)</span>
 
                 <span class="hljs-comment"># 写入文件</span>
-                res = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;count&#125;</span>\t<span class="hljs-subst">&#123;title&#125;</span>\t<span class="hljs-subst">&#123;authors&#125;</span>\t<span class="hljs-subst">&#123;institute&#125;</span>\t<span class="hljs-subst">&#123;date&#125;</span>\t<span class="hljs-subst">&#123;source&#125;</span>\t<span class="hljs-subst">&#123;publication&#125;</span>\t<span class="hljs-subst">&#123;topic&#125;</span>\t<span class="hljs-subst">&#123;database&#125;</span>\t<span class="hljs-subst">&#123;quote&#125;</span>\t<span class="hljs-subst">&#123;download&#125;</span>\t<span class="hljs-subst">&#123;keywords&#125;</span>\t<span class="hljs-subst">&#123;abstract&#125;</span>&quot;</span>.replace(<span class="hljs-string">&quot;\n&quot;</span>, <span class="hljs-string">&quot;&quot;</span>) + <span class="hljs-string">&quot;\n&quot;</span>
+                res = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;count&#125;</span>\t<span class="hljs-subst">&#123;title&#125;</span>\t<span class="hljs-subst">&#123;authors&#125;</span>\t<span class="hljs-subst">&#123;institute&#125;</span>\t<span class="hljs-subst">&#123;date&#125;</span>\t<span class="hljs-subst">&#123;source&#125;</span>\t<span class="hljs-subst">&#123;publication&#125;</span>\t<span class="hljs-subst">&#123;topic&#125;</span>\t<span class="hljs-subst">&#123;database&#125;</span>\t<span class="hljs-subst">&#123;quote&#125;</span>\t<span class="hljs-subst">&#123;download&#125;</span>\t<span class="hljs-subst">&#123;keywords&#125;</span>\t<span class="hljs-subst">&#123;abstract&#125;</span>\t<span class="hljs-subst">&#123;url&#125;</span>&quot;</span>.replace(<span class="hljs-string">&quot;\n&quot;</span>, <span class="hljs-string">&quot;&quot;</span>) + <span class="hljs-string">&quot;\n&quot;</span>
 
                 <span class="hljs-keyword">try</span>:
                     <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&#x27;a&#x27;</span>, encoding=<span class="hljs-string">&#x27;gbk&#x27;</span>) <span class="hljs-keyword">as</span> f:
@@ -786,6 +527,8 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599579339">这
 
         <span class="hljs-comment"># 切换到下一页</span>
         WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;//a[@id=&#x27;PageNext&#x27;]&quot;</span>))).click()
+        
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;爬取完毕！&quot;</span>)
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
@@ -794,12 +537,287 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599579339">这
     driver = webserver()
     
     <span class="hljs-comment"># 设置所需篇数</span>
-    papers_need = <span class="hljs-number">100</span>
+    papers_need = <span class="hljs-number">500</span>
     res_unm = open_page(driver, keyword)
     
     <span class="hljs-comment"># 判断所需是否大于总篇数</span>
     papers_need = papers_need <span class="hljs-keyword">if</span> (papers_need &lt;= res_unm) <span class="hljs-keyword">else</span> res_unm
     
+    os.system(<span class="hljs-string">&quot;pause&quot;</span>)
+    
+    <span class="hljs-comment"># 开始爬取</span>
+    crawl(driver, papers_need, keyword)
+
+    <span class="hljs-comment"># 关闭浏览器</span>
+    driver.close()</code></pre></div>
+<p>总算能成功运行了，因为太慢了之后增加了并行处理，尽量加速。得到了下面这个代码，封装的多一些。</p>
+<blockquote>
+<p>2023/12/07 更新，修复了一些逻辑BUG、专辑专题覆盖更全。</p>
+</blockquote>
+<div class="hljs code-wrapper"><pre><code class="hljs python">
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">import</span> concurrent.futures
+<span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+<span class="hljs-keyword">from</span> selenium.webdriver.support.ui <span class="hljs-keyword">import</span> WebDriverWait
+<span class="hljs-keyword">from</span> selenium.webdriver.support <span class="hljs-keyword">import</span> expected_conditions <span class="hljs-keyword">as</span> EC
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+<span class="hljs-keyword">from</span> selenium.webdriver.common.desired_capabilities <span class="hljs-keyword">import</span> DesiredCapabilities
+<span class="hljs-keyword">from</span> selenium.webdriver.common.action_chains <span class="hljs-keyword">import</span> ActionChains
+<span class="hljs-keyword">import</span> os
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">webserver</span>():</span>
+    <span class="hljs-comment"># get直接返回，不再等待界面加载完成</span>
+    desired_capabilities = DesiredCapabilities.EDGE
+    desired_capabilities[<span class="hljs-string">&quot;pageLoadStrategy&quot;</span>] = <span class="hljs-string">&quot;none&quot;</span>
+
+    <span class="hljs-comment"># 设置微软驱动器的环境</span>
+    options = webdriver.EdgeOptions()
+    <span class="hljs-comment"># 设置浏览器不加载图片，提高速度</span>
+    options.add_experimental_option(<span class="hljs-string">&quot;prefs&quot;</span>, &#123;<span class="hljs-string">&quot;profile.managed_default_content_settings.images&quot;</span>: <span class="hljs-number">2</span>&#125;)
+
+    <span class="hljs-comment"># 创建一个微软驱动器</span>
+    driver = webdriver.Edge(options=options)
+
+    <span class="hljs-keyword">return</span> driver
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_page</span>(<span class="hljs-params">driver, keyword</span>):</span>
+    <span class="hljs-comment"># 打开页面，等待两秒</span>
+    driver.get(<span class="hljs-string">&quot;https://kns.cnki.net/kns8/AdvSearch&quot;</span>)
+    time.sleep(<span class="hljs-number">2</span>)
+
+    <span class="hljs-comment"># 修改属性，使下拉框显示</span>
+    opt = driver.find_element(By.CSS_SELECTOR, <span class="hljs-string">&#x27;div.sort-list&#x27;</span>)  <span class="hljs-comment"># 定位元素</span>
+    driver.execute_script(<span class="hljs-string">&quot;arguments[0].setAttribute(&#x27;style&#x27;, &#x27;display: block;&#x27;)&quot;</span>, opt)  <span class="hljs-comment"># 执行 js 脚本进行属性的修改；arguments[0]代表第一个属性</span>
+
+    <span class="hljs-comment"># 鼠标移动到下拉框中的[通讯作者]</span>
+    ActionChains(driver).move_to_element(driver.find_element(By.CSS_SELECTOR, <span class="hljs-string">&#x27;li[data-val=&quot;RP&quot;]&#x27;</span>)).perform()
+
+    <span class="hljs-comment"># # 找到[关键词]选项并点击</span>
+    <span class="hljs-comment"># WebDriverWait(driver, 100).until(</span>
+    <span class="hljs-comment">#     EC.visibility_of_element_located((By.CSS_SELECTOR, &#x27;li[data-val=&quot;KY&quot;]&#x27;))).click()</span>
+
+    <span class="hljs-comment"># 传入关键字</span>
+    WebDriverWait(driver, <span class="hljs-number">100</span>).until(
+        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;gradetxt&quot;]/dd[1]/div[2]/input&#x27;&#x27;&#x27;</span>))
+    ).send_keys(keyword)
+
+    <span class="hljs-comment"># 点击搜索</span>
+    WebDriverWait(driver, <span class="hljs-number">100</span>).until(
+        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;ModuleSearch&quot;]/div[1]/div/div[2]/div/div[1]/div[1]/div[2]/div[3]/input&#x27;&#x27;&#x27;</span>))
+    ).click()
+
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;正在搜索，请稍后...&quot;</span>)
+
+    <span class="hljs-comment"># # 点击切换中文文献</span>
+    <span class="hljs-comment"># WebDriverWait(driver, 100).until(</span>
+    <span class="hljs-comment">#     EC.presence_of_element_located((By.XPATH, &quot;/html/body/div[3]/div[1]/div/div/div/a[1]&quot;))</span>
+    <span class="hljs-comment"># ).click()</span>
+
+    <span class="hljs-comment"># 获取总文献数和页数</span>
+    res_unm = WebDriverWait(driver, <span class="hljs-number">100</span>).until(EC.presence_of_element_located(
+        (By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;countPageDiv&quot;]/span[1]/em&#x27;&#x27;&#x27;</span>))
+    ).text
+
+    <span class="hljs-comment"># 去除千分位里的逗号</span>
+    res_unm = <span class="hljs-built_in">int</span>(res_unm.replace(<span class="hljs-string">&quot;,&quot;</span>, <span class="hljs-string">&#x27;&#x27;</span>))
+    page_unm = <span class="hljs-built_in">int</span>(res_unm / <span class="hljs-number">20</span>) + <span class="hljs-number">1</span>
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;共找到 <span class="hljs-subst">&#123;res_unm&#125;</span> 条结果, <span class="hljs-subst">&#123;page_unm&#125;</span> 页。&quot;</span>)
+    <span class="hljs-keyword">return</span> res_unm
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_info</span>(<span class="hljs-params">driver, xpath</span>):</span>
+    <span class="hljs-keyword">try</span>:
+        element = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, xpath)))
+        <span class="hljs-keyword">return</span> element.text
+    <span class="hljs-keyword">except</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;无&#x27;</span>
+    
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_choose_info</span>(<span class="hljs-params">driver, xpath1, xpath2, <span class="hljs-built_in">str</span></span>):</span>
+    <span class="hljs-keyword">try</span>: 
+        <span class="hljs-keyword">if</span> WebDriverWait(driver, <span class="hljs-number">1</span>).until(EC.presence_of_element_located((By.XPATH, xpath1))).text==<span class="hljs-built_in">str</span>:
+            <span class="hljs-keyword">return</span> WebDriverWait(driver, <span class="hljs-number">1</span>).until(EC.presence_of_element_located((By.XPATH, xpath2))).text
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;无&#x27;</span>
+    <span class="hljs-keyword">except</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;无&#x27;</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">crawl</span>(<span class="hljs-params">driver, papers_need, theme</span>):</span>
+
+    count = <span class="hljs-number">1</span>
+
+    file_path = <span class="hljs-string">f&quot;CNKI_<span class="hljs-subst">&#123;theme&#125;</span>.tsv&quot;</span>
+    <span class="hljs-keyword">if</span> os.path.exists(file_path) <span class="hljs-keyword">and</span> os.path.getsize(file_path) &gt; <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&quot;r&quot;</span>) <span class="hljs-keyword">as</span> file:
+            lines = file.readlines()
+            last_line = lines[-<span class="hljs-number">1</span>].strip()
+            count = <span class="hljs-built_in">int</span>(last_line.split(<span class="hljs-string">&quot;\t&quot;</span>)[<span class="hljs-number">0</span>]) + <span class="hljs-number">1</span>
+    
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(count // <span class="hljs-number">20</span>):
+        <span class="hljs-comment"># 切换到下一页</span>
+        time.sleep(<span class="hljs-number">3</span>)
+        WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;//*[@id=&#x27;PageNext&#x27;]&quot;</span>))).click()
+
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;从第 <span class="hljs-subst">&#123;count&#125;</span> 条开始爬取\n&quot;</span>)
+
+    <span class="hljs-comment"># 当爬取数量小于需求时，循环网页页码</span>
+    <span class="hljs-keyword">while</span> count &lt;= papers_need:
+        <span class="hljs-comment"># 等待加载完全，休眠3S</span>
+        time.sleep(<span class="hljs-number">3</span>)
+
+        title_list = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_all_elements_located((By.CLASS_NAME, <span class="hljs-string">&quot;fz14&quot;</span>)))
+        <span class="hljs-comment"># 循环网页一页中的条目</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>((count-<span class="hljs-number">1</span>) % <span class="hljs-number">20</span> + <span class="hljs-number">1</span>, <span class="hljs-number">21</span>):
+
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\n###正在爬取第 <span class="hljs-subst">&#123;count&#125;</span> 条(本页第<span class="hljs-subst">&#123;i&#125;</span>条)#######################################\n&quot;</span>)
+
+            <span class="hljs-keyword">try</span>:
+                term = (count-<span class="hljs-number">1</span>) % <span class="hljs-number">20</span> + <span class="hljs-number">1</span>  <span class="hljs-comment"># 本页的第几个条目</span>
+                
+                <span class="hljs-comment"># 获取基础信息</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取基础信息...&#x27;</span>)
+                title_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[2]&#x27;&#x27;&#x27;</span>
+                author_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[3]&#x27;&#x27;&#x27;</span>
+                source_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[4]&#x27;&#x27;&#x27;</span>
+                date_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[5]&#x27;&#x27;&#x27;</span>
+                database_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[6]&#x27;&#x27;&#x27;</span>
+                quote_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[7]&#x27;&#x27;&#x27;</span>
+                download_xpath = <span class="hljs-string">f&#x27;&#x27;&#x27;//*[@id=&quot;gridTable&quot;]/div/div/table/tbody/tr[<span class="hljs-subst">&#123;term&#125;</span>]/td[8]&#x27;&#x27;&#x27;</span>
+                xpaths = [title_xpath, author_xpath, source_xpath, date_xpath, database_xpath, quote_xpath, download_xpath]
+                <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="hljs-keyword">as</span> executor:
+                    future_elements = [executor.submit(get_info, driver, xpath) <span class="hljs-keyword">for</span> xpath <span class="hljs-keyword">in</span> xpaths]
+                title, authors, source, date, database, quote, download = [future.result() <span class="hljs-keyword">for</span> future <span class="hljs-keyword">in</span> future_elements]
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> quote.isdigit():
+                    quote = <span class="hljs-string">&#x27;0&#x27;</span>
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> download.isdigit():
+                    download = <span class="hljs-string">&#x27;0&#x27;</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;title&#125;</span> <span class="hljs-subst">&#123;authors&#125;</span> <span class="hljs-subst">&#123;source&#125;</span> <span class="hljs-subst">&#123;date&#125;</span> <span class="hljs-subst">&#123;database&#125;</span> <span class="hljs-subst">&#123;quote&#125;</span> <span class="hljs-subst">&#123;download&#125;</span>\n&quot;</span>)
+               
+                <span class="hljs-comment"># 点击条目</span>
+                title_list[i-<span class="hljs-number">1</span>].click()
+                
+                <span class="hljs-comment"># 获取driver的句柄</span>
+                n = driver.window_handles
+                
+                <span class="hljs-comment"># driver切换至最新生产的页面</span>
+                driver.switch_to.window(n[-<span class="hljs-number">1</span>])
+                time.sleep(<span class="hljs-number">3</span>)
+                
+                <span class="hljs-comment"># 开始获取页面信息</span>
+                <span class="hljs-comment"># 点击展开</span>
+                <span class="hljs-keyword">try</span>:
+                    WebDriverWait(driver, <span class="hljs-number">10</span>).until(
+                        EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&#x27;&#x27;&#x27;//*[@id=&quot;ChDivSummaryMore&quot;]&#x27;&#x27;&#x27;</span>))
+                    ).click()
+                <span class="hljs-keyword">except</span>:
+                    <span class="hljs-keyword">pass</span>
+                
+                <span class="hljs-comment"># 获取作者单位</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取institute...&#x27;</span>)
+                <span class="hljs-keyword">try</span>:
+                    institute = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[3]/div/h3[2]&quot;</span>))).text
+                <span class="hljs-keyword">except</span>:
+                    institute = <span class="hljs-string">&#x27;无&#x27;</span>
+                <span class="hljs-built_in">print</span>(institute+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                
+                <span class="hljs-comment"># 获取摘要、关键词、专辑、专题</span>
+                <span class="hljs-comment"># 获取摘要</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取abstract...&#x27;</span>)
+                <span class="hljs-keyword">try</span>:
+                    abstract = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.CLASS_NAME, <span class="hljs-string">&quot;abstract-text&quot;</span>))).text
+                <span class="hljs-keyword">except</span>:
+                    abstract = <span class="hljs-string">&#x27;无&#x27;</span>
+                <span class="hljs-built_in">print</span>(abstract+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                
+                <span class="hljs-comment"># 获取关键词</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取keywords...&#x27;</span>)
+                <span class="hljs-keyword">try</span>:
+                    keywords = WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.CLASS_NAME, <span class="hljs-string">&quot;keywords&quot;</span>))).text[:-<span class="hljs-number">1</span>]
+                <span class="hljs-keyword">except</span>:
+                    keywords = <span class="hljs-string">&#x27;无&#x27;</span>      
+                <span class="hljs-built_in">print</span>(keywords+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                
+                <span class="hljs-comment"># 获取专辑</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取publication...&#x27;</span>)
+                xpaths = [
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[1]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[1]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[1]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[1]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[4]/ul/li[1]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[4]/ul/li[1]/p&quot;</span>)
+                ]
+                <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="hljs-keyword">as</span> executor:
+                    futures = [executor.submit(get_choose_info, driver, xpath1, xpath2, <span class="hljs-string">&#x27;专辑：&#x27;</span>) <span class="hljs-keyword">for</span> xpath1, xpath2 <span class="hljs-keyword">in</span> xpaths]
+                    results = [future.result() <span class="hljs-keyword">for</span> future <span class="hljs-keyword">in</span> concurrent.futures.as_completed(futures)]
+                publication = <span class="hljs-built_in">next</span>((result <span class="hljs-keyword">for</span> result <span class="hljs-keyword">in</span> results <span class="hljs-keyword">if</span> result != <span class="hljs-string">&#x27;无&#x27;</span>), <span class="hljs-string">&#x27;无&#x27;</span>)
+                <span class="hljs-built_in">print</span>(publication+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                
+                <span class="hljs-comment"># 获取专题</span>
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;正在获取topic...&#x27;</span>)
+                xpaths = [
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[2]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[3]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[6]/ul/li[3]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[2]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[7]/ul/li[3]/p&quot;</span>),
+                    (<span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[4]/ul/li[2]/span&quot;</span>, <span class="hljs-string">&quot;/html/body/div[2]/div[1]/div[3]/div/div/div[4]/ul/li[2]/p&quot;</span>)
+                ]
+                <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="hljs-keyword">as</span> executor:
+                    futures = [executor.submit(get_choose_info, driver, xpath1, xpath2, <span class="hljs-string">&#x27;专题：&#x27;</span>) <span class="hljs-keyword">for</span> xpath1, xpath2 <span class="hljs-keyword">in</span> xpaths]
+                    results = [future.result() <span class="hljs-keyword">for</span> future <span class="hljs-keyword">in</span> concurrent.futures.as_completed(futures)]
+                topic = <span class="hljs-built_in">next</span>((result <span class="hljs-keyword">for</span> result <span class="hljs-keyword">in</span> results <span class="hljs-keyword">if</span> result != <span class="hljs-string">&#x27;无&#x27;</span>), <span class="hljs-string">&#x27;无&#x27;</span>)
+                <span class="hljs-built_in">print</span>(topic+<span class="hljs-string">&#x27;\n&#x27;</span>)
+                
+                url = driver.current_url
+                
+                <span class="hljs-comment"># 获取下载链接</span>
+                <span class="hljs-comment"># link = WebDriverWait( driver, 10 ).until( EC.presence_of_all_elements_located((By.CLASS_NAME  ,&quot;btn-dlcaj&quot;) ) )[0].get_attribute(&#x27;href&#x27;)</span>
+                <span class="hljs-comment"># link = urljoin(driver.current_url, link)</span>
+
+                <span class="hljs-comment"># 写入文件</span>
+                res = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;count&#125;</span>\t<span class="hljs-subst">&#123;title&#125;</span>\t<span class="hljs-subst">&#123;authors&#125;</span>\t<span class="hljs-subst">&#123;institute&#125;</span>\t<span class="hljs-subst">&#123;date&#125;</span>\t<span class="hljs-subst">&#123;source&#125;</span>\t<span class="hljs-subst">&#123;publication&#125;</span>\t<span class="hljs-subst">&#123;topic&#125;</span>\t<span class="hljs-subst">&#123;database&#125;</span>\t<span class="hljs-subst">&#123;quote&#125;</span>\t<span class="hljs-subst">&#123;download&#125;</span>\t<span class="hljs-subst">&#123;keywords&#125;</span>\t<span class="hljs-subst">&#123;abstract&#125;</span>\t<span class="hljs-subst">&#123;url&#125;</span>&quot;</span>.replace(<span class="hljs-string">&quot;\n&quot;</span>, <span class="hljs-string">&quot;&quot;</span>) + <span class="hljs-string">&quot;\n&quot;</span>
+
+                <span class="hljs-keyword">try</span>:
+                    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&#x27;a&#x27;</span>, encoding=<span class="hljs-string">&#x27;gbk&#x27;</span>) <span class="hljs-keyword">as</span> f:
+                        f.write(res)
+                        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;写入成功&#x27;</span>)
+                <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+                    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;写入失败:&#x27;</span>, <span class="hljs-built_in">str</span>(e))
+                    <span class="hljs-keyword">raise</span> e
+            <span class="hljs-keyword">except</span>:
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot; 第<span class="hljs-subst">&#123;count&#125;</span> 条爬取失败\n&quot;</span>)
+                <span class="hljs-comment"># 跳过本条，接着下一个</span>
+                <span class="hljs-keyword">continue</span>
+            
+            <span class="hljs-keyword">finally</span>:
+                <span class="hljs-comment"># 如果有多个窗口，关闭第二个窗口， 切换回主页</span>
+                n2 = driver.window_handles
+                <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(n2) &gt; <span class="hljs-number">1</span>:
+                    driver.close()
+                    driver.switch_to.window(n2[<span class="hljs-number">0</span>])
+                <span class="hljs-comment"># 计数,判断需求是否足够</span>
+                count += <span class="hljs-number">1</span>
+                <span class="hljs-keyword">if</span> count == papers_need: <span class="hljs-keyword">break</span>
+
+        <span class="hljs-comment"># 切换到下一页</span>
+        WebDriverWait(driver, <span class="hljs-number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="hljs-string">&quot;//a[@id=&#x27;PageNext&#x27;]&quot;</span>))).click()
+        
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;爬取完毕！&quot;</span>)
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    
+    keyword = <span class="hljs-string">&quot;青少年抑郁&quot;</span>
+    driver = webserver()
+    
+    <span class="hljs-comment"># 设置所需篇数</span>
+    papers_need = <span class="hljs-number">500</span>
+    res_unm = open_page(driver, keyword)
+    
+    <span class="hljs-comment"># 判断所需是否大于总篇数</span>
+    papers_need = papers_need <span class="hljs-keyword">if</span> (papers_need &lt;= res_unm) <span class="hljs-keyword">else</span> res_unm
+    
+    <span class="hljs-comment"># os.system(&quot;pause&quot;)</span>
+    
+    <span class="hljs-comment"># 开始爬取</span>
     crawl(driver, papers_need, keyword)
 
     <span class="hljs-comment"># 关闭浏览器</span>
