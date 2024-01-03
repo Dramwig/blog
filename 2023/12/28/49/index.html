@@ -1,0 +1,1561 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png">
+  <link rel="icon" href="/img/logo/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个神秘的人">
+  <meta name="author" content="epochxi">
+  <meta name="keywords" content="dramwig">
+  <meta name="description" content="Java开发技术复习 Java语言基础 1-2  标识符以字母、下划线(_)或者**美元符号(\()**开头，字母、数字、下划线(_)以及美元符号(\))组成 长整型是long(64位)、char是16位、boolean是1位 整型常量的后缀字母：l(L)，表示long型, 64bits 实型常量的后缀字母：f(F), d(D) 字符串连接运算时，如果一个操作数为字符串，一个操作数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java开发技术 - 期末复习">
+<meta property="og:url" content="http://example.com/2023/12/28/49/index.html">
+<meta property="og:site_name" content="风倾客栈 ✧">
+<meta property="og:description" content="Java开发技术复习 Java语言基础 1-2  标识符以字母、下划线(_)或者**美元符号(\()**开头，字母、数字、下划线(_)以及美元符号(\))组成 长整型是long(64位)、char是16位、boolean是1位 整型常量的后缀字母：l(L)，表示long型, 64bits 实型常量的后缀字母：f(F), d(D) 字符串连接运算时，如果一个操作数为字符串，一个操作数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/12/24/mMRItxWVFleHa6N.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/24/jKT4ZypieSOu5fN.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/25/9NkHdIcfWqTjxv8.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/26/hBzpenVt9jCMy6U.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/12/26/tSbIMTWqeArzaUg.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/26/GztHKeYBqrmvaQW.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/26/r7HoV9j2UuEt3MS.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/26/crBT7xOAX6ymewz.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/26/Hp6yk4Aa7BGXSDl.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/26/iU7patLI2lMPmB6.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/28/LnPcwXpEDv45duM.png">
+<meta property="article:published_time" content="2023-12-28T07:53:00.000Z">
+<meta property="article:modified_time" content="2024-01-03T10:05:13.053Z">
+<meta property="article:author" content="epochxi">
+<meta property="article:tag" content="Java开发技术">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2023/12/24/mMRItxWVFleHa6N.png">
+  
+  <title>Java开发技术 - 期末复习 &lt; 风倾客栈 ✧</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hovor","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"fa7203cd147458a2bb6b7c7fc7bd03a3","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <!--菜单栏-->
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="iconfont icon-home-fill"></i> <!-- homeͼ�� -->
+      <strong>风倾客栈</strong> <!-- �������� -->
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content --> <!-- �˵��б� -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                朋友
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+    <!--视差滚动-->
+    <div class="banner" id="banner" parallax=true   
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <!--副标题 (打字机)-->
+            <span class="h2" id="subtitle" title="Java开发技术 - 期末复习">
+              <!--typing打字机-->
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-12-28 15:53" pubdate>
+        2023年12月28日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      20k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java开发技术 - 期末复习</h1>
+            
+            <div class="markdown-body">
+              <h1 id="java开发技术复习">Java开发技术复习</h1>
+<h2 id="java语言基础-1-2">Java语言基础 1-2</h2>
+<ul>
+<li><p>标识符以字母、下划线(_)或者**美元符号(<span
+class="math inline">\()**开头，字母、数字、下划线(_)以及美元符号(\)</span>)组成</p></li>
+<li><p>长整型是<code>long</code>(64位)、<code>char</code>是16位、<code>boolean</code>是1位</p></li>
+<li><p>整型常量的后缀字母：l(L)，表示<code>long</code>型,
+64bits</p></li>
+<li><p>实型常量的后缀字母：f(F), d(D)</p></li>
+<li><p>字符串连接运算时，如果一个操作数为字符串，一个操作数为数值型，则会自动将数值型转换为字符串
+(塑型)</p></li>
+<li><p><code>String substring(int k)</code>
+从位置k处提取子串到串结束</p>
+<p><code>String substring(int start, int end)</code>从位置start到end提取子串</p>
+<p><code>int compareTo(String t)</code> 本串&lt;串t,
+返回负数；本串&gt;串t, 返回正数；本串=串t, 返回0</p>
+<p><code>char charAt(int k)</code>
+返回<code>String</code>串第<em>k</em>个字符(<em>k</em>从0开始)</p></li>
+<li><p><code>int</code> - <code>Integer</code>, <code>char</code> -
+<code>Character</code></p></li>
+<li><p><code>valueOf()</code>
+<strong>静态方法</strong>，用于返回给定参数的原生 Number
+对象值，参数可以是基本数据类型, String等。</p></li>
+<li><p>用<strong><code>Scanner</code></strong>类实现数据输入</p>
+<figure>
+<img src="https://s2.loli.net/2023/12/24/mMRItxWVFleHa6N.png" srcset="/img/loading.gif" lazyload
+alt="image-20231224222156195" />
+<figcaption aria-hidden="true">image-20231224222156195</figcaption>
+</figure></li>
+<li><p><code>System.out.print(字符串)</code> 输出串不换行</p>
+<p><code>System.out.println(字符串)</code> 输出串并换行,
+<code>println</code>的ln是line的意思</p>
+<p><code>System.out.printf(格式串,表达式列表)</code></p>
+<figure>
+<img src="https://s2.loli.net/2023/12/24/jKT4ZypieSOu5fN.png" srcset="/img/loading.gif" lazyload
+alt="image-20231224222639445" />
+<figcaption aria-hidden="true">image-20231224222639445</figcaption>
+</figure></li>
+<li><p>Java数组作函数参数时为引用型参数传递；其它参数传递情况都是传值。</p></li>
+<li><p><code>int[] a 和</code>int a[]
+都是合法的，可以作为声明数组或函数的形参。</p></li>
+</ul>
+<h2 id="面向对象编程-1-3">面向对象编程 1-3</h2>
+<ul>
+<li><p>Java会给成员变量一个初始值；Java不会给局部变量赋予初始值，如果在类声明中没有给实例变量赋初值，则对象的属性值为零或空</p></li>
+<li><p>Java不支持默认的参数值</p></li>
+<li><p>类的访问控制只有public（公共类）及无修饰符（缺省类）两种</p>
+<table>
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>无修饰</th>
+<th>public</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>同一包中的类</strong></td>
+<td><strong>yes</strong></td>
+<td><strong>yes</strong></td>
+</tr>
+<tr class="even">
+<td><strong>不同包中的类</strong></td>
+<td><strong>no</strong></td>
+<td><strong>yes</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>private</th>
+<th>无修饰</th>
+<th>protected</th>
+<th>public</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>同一类</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="even">
+<td>同一包中的 子类</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="odd">
+<td>同一包中的 非子类</td>
+<td>no</td>
+<td>yes</td>
+<td><strong>yes</strong></td>
+<td>yes</td>
+</tr>
+<tr class="even">
+<td>不同包中的 子类</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr class="odd">
+<td>不同包中的 非子类</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>如果在一个类中不存在无参的构造方法，则要求其子类声明时必须声明构造方法，否则在子类对象的初始化时会出错</p></li>
+<li><p>[public] [abstract|final] class 类名[<strong>extends
+</strong>父类名] | [<strong>implements </strong>接口名]</p></li>
+<li><p>只支持类的单继承，每个子类只能有一个直接父类</p></li>
+<li><p>在 Java 中，如果子类的构造函数中没有显式调用
+<code>super(...)</code> 或者调用另一个构造函数（使用
+<code>this(...)</code>），那么会隐式调用父类的默认（无参）构造函数（如果父类有默认构造函数）</p></li>
+<li><p><code>super()</code> 或 <code>this()</code>
+必须作为构造函数的第一条语句，这是由于对象的初始化顺序，确保在子类构造过程中首先完成父类的初始化或本类其他构造方法的调用。</p></li>
+<li><p><code>this()</code>
+关键字用于在构造函数中调用同一类的其他构造函数（重载）</p></li>
+<li><p>抽象方法定义：<code>abstract double getArea();</code></p></li>
+<li><p>继承改写已有的属性和方法方法：隐藏，<code>super.value</code>访问父类被隐藏的的变量和方法</p></li>
+<li><p>父类不能直接访问子类的变量和方法，因为继承是单向的。但是父类并不知道它的子类的存在。当子类执行继承自父类的操作时，处理的是继承自父类的变量，而当子类执行它自己声明的方法时，所操作的就是它自己声明的变量。</p></li>
+<li><p><code>static</code>静态方法是与类本身相关联的，而不是与类的实例相关联的。因此，它们不涉及多态性和动态绑定，所以不能被覆盖。</p></li>
+<li><p><code>final</code> 修饰的变量表示该变量的值不能被修改。</p></li>
+<li><p>类本身并不能被声明为
+<code>static</code>，可以创建静态内部类。</p></li>
+<li><p>接口的数据成员一定要赋初值，且此值将不能再更改，允许省略final关键字；
+接口中的字段默认是 <code>public</code>、<code>static</code> 和
+<code>final</code> 的；
+接口中的方法必须是“抽象方法”，不能有方法体，允许省略public及abstract关键字。</p></li>
+<li><p><code>abstract</code> 和 <code>static</code>
+两个修饰符是互斥的</p></li>
+<li><p>接口可通过扩展<code>extends</code>的技术派生出新的接口</p></li>
+<li><p>塑型(类型转换):当一个类对象被塑型为其父类后，它提供的方法会减少</p></li>
+<li><p><strong>多态</strong>：所有的对象都可被塑型为相同的类型，响应相同的消息。</p>
+<ul>
+<li>向上塑型技术：一个父类的引用变量可以指向不同的子类对象</li>
+<li>动态绑定技术：运行时根据父类引用变量所指对</li>
+<li>象的实际类型执行相应的子类方法，从而实现多态性</li>
+</ul></li>
+</ul>
+<h2 id="异常">异常</h2>
+<ul>
+<li><p>try-catch-finally（无论是否发生异常，代码总执行）throws-声明异常
+throw-抛出异常</p></li>
+<li><p>用户自定义处理信息：<code>System.err.println("出现错误”)</code></p></li>
+<li><p>调用方法输出异常信息：<strong><code>e.printStackTrace();</code></strong></p></li>
+<li><table>
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>异 常 类 型</th>
+<th>说 明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exception</td>
+<td>异常层次结构的父类</td>
+</tr>
+<tr class="even">
+<td>ArithmeticException</td>
+<td>算术错误情形，如以零作除数</td>
+</tr>
+<tr class="odd">
+<td>ArrayIndexOutOfBoundsException</td>
+<td>数组下标越界</td>
+</tr>
+<tr class="even">
+<td>NullPointerException</td>
+<td>尝试访问 null 对象成员</td>
+</tr>
+<tr class="odd">
+<td>ClassNotFoundException</td>
+<td>不能加载所需的类</td>
+</tr>
+<tr class="even">
+<td>IllegalArgumentException</td>
+<td>方法接收到非法参数</td>
+</tr>
+<tr class="odd">
+<td>ClassCastException</td>
+<td>对象强制类型转换出错</td>
+</tr>
+<tr class="even">
+<td>NumberFormatException</td>
+<td>数字格式转换异常，如把"abc"转换成数字</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>try块或catch块有return，返回前也会执行finally块，唯一不执行finally块是System.exit()退出</p></li>
+<li><p>多catch：只执行第一个与异常类型匹配的catch语句</p></li>
+<li><p>使用 <code>throws</code>
+关键字对外声明该方法有可能发生异常，如果没处理会报错“未处理异常类型异常”。<code>void myMethod() throws SomeException &#123; /*方法体*/ &#125;</code></p></li>
+<li><p>手动抛出异常 throw new Exception(“说明");</p></li>
+<li><p>使用log4j记录日志</p></li>
+</ul>
+<h2 id="字符串">字符串</h2>
+<ul>
+<li>字符串是常量final类，值不可改。replace等函数将引用s指向了一个新的String对象</li>
+<li>String的长度是不可变，StringBuffer长度可变，所以当进行大量的字符串连接操作时用StringBuffer</li>
+<li>public String(charl] value, int offset, int count) , value -
+作为字符源的数组 offset -初始偏移量 count - 长度</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/25/9NkHdIcfWqTjxv8.png" srcset="/img/loading.gif" lazyload alt="image-20231225120535157" style="zoom:50%;" /></p>
+<ul>
+<li><p>使用 <code>==</code> 运算符比较两个 <code>String</code>
+对象时，它会比较两个对象的引用是否指向相同的内存地址，而不是比较字符串的内容。要用str1.equals(str2)</p></li>
+<li><p>equalsIgnoreCase()，toLowerCase()， toUpperCase( )</p></li>
+<li><p>index0f(String str, int fromIndex), lastIndex0f(String str, int
+fromindex) , 注意lastIndex0f是反向搜索</p></li>
+<li><p>substring(int index)提取从位置索引开始的字符串部分， ing
+substring(int beginindex, int endindex)</p></li>
+<li><p>trim()方法，用于去除字符串两端的空白字符（空格、制表符、换行符等），返回一个新的字符串</p></li>
+<li><p>split(string
+s)方法，将一个字符串分割为子字符串，结果作为字符串数组返回</p></li>
+<li><p>StringBuffer的使用：sb.append("c"); 追加字符串sb.insert(index,
+"c"); //插入字符串</p></li>
+<li><p>String类提供了大量的操作字符串的方法</p>
+<ul>
+<li>获得字符串的长度：length()</li>
+<li>比较字符串：equals()</li>
+<li>连接字符串：concat()</li>
+<li>提取字符串：substring()</li>
+<li>搜索字符串：indexOf()</li>
+<li>拆分字符串：split()</li>
+</ul></li>
+<li><p>常用的StringBuffer类提供的方法</p>
+<ul>
+<li><p>转换成String类型：toString()</p></li>
+<li><p>连接字符串：append()</p></li>
+<li><p>插入字符串：insert()</p></li>
+</ul></li>
+</ul>
+<h2 id="applet">Applet</h2>
+<ul>
+<li><p>init()方法是Applet首先执行的方法</p></li>
+<li><p>小应用程序都继承自<strong>java.applet.Applet</strong>类，必须是public类</p></li>
+<li><p>生命周期</p>
+<p>1.打开浏览器时，创建(<strong>init</strong>)方法运行；整个生命周期只被执行一次</p>
+<p>2.显示Applet时，启动(<strong>start</strong>)方法运行；运行或从其它页面返回时调用</p>
+<ul>
+<li>public void paint(Graphics g)
+<strong>输出文本，绘制图像，输出图像，声音等</strong>，start()
+后被执行</li>
+</ul>
+<p>3.不显示Applet时，停止(<strong>stop</strong>)方法运行；离开Applet所在页面时</p>
+<p>4.关闭浏览器时，撤销(<strong>destroy</strong>)方法运行；关闭浏览器，运行时浏览器被关闭，系统将先执行stop()方法，再执行destroy()方法</p></li>
+<li><p>任何与绘图有关的操作第一个要用的是java.awt.Graphics类，Graphics类的对象不是由new产生的,而是由系统或其他方式直接将生成好的</p></li>
+<li><p>坐标原点在左上角，X轴向右，Y轴向下</p></li>
+<li><p>public abstract void <strong>drawString</strong>(String) str, int
+x, int y)</p>
+<p>使用此图形上下文的当前字体和颜色绘制由指定 string
+给定的文本。最左侧字符的基线位于此图形上下文坐标系的 (<em>x</em>,
+<em>y</em>) 位置处。</p></li>
+<li><p>public abstract void <strong>fillRect</strong>(int x, int y, int
+width, int height)</p>
+<p>填充指定的矩形。该矩形左边缘和右边缘分别位于 x 和 x + width -
+1。上边缘和下边缘分别位于 y 和 y + height - 1。得到的矩形覆盖 width
+像素宽乘以 height 像素高的区域</p></li>
+<li><p>Color c = new Color(0,255,0) //Color(int r，int g，int b);
+Color(int rgb);</p>
+<p>g.setColor(c); g.setColor(Color.red);</p></li>
+<li><p>0-正常-PLAIN； 1-粗体-BOLD；2-斜体-ITALIC</p></li>
+<li><p>g.setFont(new Font("隶书", Font.BOLD, 28));</p></li>
+<li><p><strong>Graphics</strong>拥有的绘图方法</p>
+<p>drawLine(int,int,int,int) 画直线。起点坐标，终点坐标</p>
+<p>drawRect(int,int,int,int) 画矩形。左角坐标，宽，高</p>
+<p>fillRect(int,int,int,int) 用前景颜色填充矩形。</p>
+<p>drawRoundRect(int,int,int,int,int,int)
+画圆角矩形。左角坐标，X宽，Y高，深度X，深度Y</p>
+<p>draw3DRect(int,int,int,int,boolean)
+画3D矩形。左角坐标，宽X，高Y，true</p>
+<p>drawOval(int,int,int,int) 画椭圆。中心坐标，长轴，短轴</p>
+<p>drawArc(int,int,int,int,int,int)
+画弧。左角坐标，宽，高，起始角，终止角</p>
+<p>drawPolyline(int[],int[],int) 画折线。各点的X坐标，Y坐标，折线数</p>
+<p>drawPolygon(int[],int[],int) 画多角形。各点的X坐标，Y坐标，边数</p>
+<p>drawPolygon(Polygon) 画多角形。定义好的多角形对象</p></li>
+<li><p>返回Applet类文件所在网页的网络路径:
+<code>public URL getDocumentBase()</code></p></li>
+<li><p>载入图片:
+<code>public Image getImage(URL url, String name) name</code>可以为路径下的图片</p>
+<p>testImage = getImage(getDocumentBase(),"flag.gif");</p>
+<p>g.drawImage(testImage,0,0,this);</p></li>
+<li><p>载入声音:</p>
+<p>public AudioClip getAudioClip(URL url, String name)</p>
+<p>getAudioClip(getDocumentBase(),"tiger.au").play();</p></li>
+<li><p>Applet被设计为从远程站点下载然后在本地执行,游览器中启用了Java，那么浏览器就会自动下载网页中的Applet代码并执行。</p></li>
+<li><p>Applet的限制执行环境常常称作<strong>sandbox</strong>。<strong>不能读写</strong>本地计算机的文件，<strong>不能运行</strong>任何本地可执行程序；除与下载处它的服务器Applet<strong>不能同的其他任何主机通信</strong>；只能获取Java版本操作系统的名字和版本、用来分离文件、路径以及行的字符，不能获取任何其它关于本地计算机的信息。</p></li>
+</ul>
+<h2 id="gui-1-2">GUI 1-2</h2>
+<h3 id="了解awt和swing">了解AWT和Swing</h3>
+<ul>
+<li><p>AWT（Abstract Window
+Toolkit）是在Swing出现之前用来设计界面的工具包</p>
+<p>用awt包中的类创建的用户界面在不同的操作平台上有不同的表现。使用不灵活</p>
+<p>import java.awt.*;</p></li>
+<li><p>Swing是对AWT的扩展，它是Java 2中的一个标准包</p>
+<p>组件都以J开头，例如：JFrame、JButton等。swing界面在不同的平台上外观完全一样，真正做到平台独立</p>
+<p>import javax.swing.*;</p></li>
+</ul>
+<h3
+id="熟悉4个顶层容器和常用的中间容器">熟悉4个顶层容器和常用的中间容器</h3>
+<ul>
+<li><p>顶层容器</p>
+<ul>
+<li><p><strong>JFrame</strong>用来创建application，最常用的</p>
+<p>JApplet用来创建applet</p>
+<p>JDialog用来创建对话框，常用</p>
+<p>JWindow不常用</p></li>
+</ul></li>
+<li><p>中间容器</p>
+<ul>
+<li><p><strong>JPanel</strong>提供一个面板</p>
+<p><strong>JScrollPane</strong>是具有滚动条的窗格</p>
+<p><strong>JSplitPane</strong>是具有拆分功能的窗格</p>
+<p>JTabbedPane是带有若干标签的分类窗格</p>
+<p>JInternalFrame用于创建内嵌于JFrame中的内部框架</p>
+<p><strong>Box </strong>提供创建横向/纵向盒子容器的功能</p></li>
+</ul></li>
+<li><p>基本组件</p></li>
+</ul>
+<h3 id="掌握jframe">掌握JFrame</h3>
+<ul>
+<li>构造方法
+<ul>
+<li>JFrame() 创建无标题窗口。</li>
+<li>JFrame(String s) 创建标题名字是字符串s的窗口。</li>
+</ul></li>
+<li>常用方法
+<ul>
+<li>getContentPane() JFrame
+不是一个容器而是一个框架，可以通过getContentPane()方法得到JFrame的content
+pane</li>
+<li>setTitle(String title) 设置JFrame标题文本</li>
+<li>get/setSize()：获取/设置JFrame的大小。</li>
+<li>add(Object a)：将组件添加到JFrame中。</li>
+<li>dispose()关闭JFrame并回收用于创建窗口的任何资源。</li>
+<li>setVisible(boolean b)设置JFrame的可见性。</li>
+<li>setLocation(x,y) 设置JFrame在屏幕的位置</li>
+<li>void setExtendedState(int); 设置扩展的状态</li>
+<li>void setDefaultCloseOperation(int); 设置默认的关闭时的操作</li>
+<li>setIconImage(image); 设置JFrame的图标</li>
+</ul></li>
+</ul>
+<h3 id="基本组件">基本组件</h3>
+<ul>
+<li><p>标签（JLabel）是最简单的组件，用于显示单行静态文本。</p>
+<ul>
+<li><p>构造</p>
+<p>JLabel label1 = new JLabel(“姓名”); ImageIcon ii = new
+ImageIcon(“java.gif”); JLabel label2 = new JLabel(ii); JLabel label3 =
+new JLabel(“姓名”,ii,JLabel.CENTER);</p></li>
+<li><p>方法</p>
+<p>setText、setIcon</p></li>
+</ul></li>
+<li><p>按钮（JButton）</p>
+<ul>
+<li><p>构造</p>
+<p>JButton button1 = new JButton(“姓名”); ImageIcon ii = new
+ImageIcon(“java.gif”); JButton button2 = new JButton(ii); JButton
+button3 = new JButton(“姓名”，ii);</p></li>
+<li><p>方法</p>
+<p>void setActionCommand(String); void
+addActionListener(ActionListener);</p></li>
+</ul></li>
+<li><p>文本框（<strong>JTextField</strong>）</p>
+<ul>
+<li><p>构造</p>
+<p>JTextField tf1 = new JTextField(10);</p>
+<p>JTextField tf2 = new TextField(“aa”);</p>
+<p>JTextField tf3 = new JTextField(“aa”，8);</p></li>
+<li><p>方法</p>
+<p>public String getText()</p>
+<p>public String getSelectedText()</p>
+<p>public void setText(String s)</p>
+<p>public void setEchoChar(char c)</p>
+<p>public void setEditable(boolean b)</p></li>
+</ul></li>
+<li><p>文本区（JTextArea）</p>
+<ul>
+<li>JTextArea ta = new JTextArea(10,10);</li>
+<li>JScrollPane sp = new JScrollPane(ta);
+//将文本区对象放入一个滚动窗格中</li>
+</ul></li>
+<li><p>单选按钮（ JRadioButton ）</p>
+<ul>
+<li><p>方法</p></li>
+<li><p>void addActionListener(ActionListener);</p>
+<p>void addItemListener(ItemListener);</p>
+<p>boolean isSelected();</p>
+<p>void setSelected(boolean);</p></li>
+<li><p>按钮组（ButtonGroup）维持只有一个单选按钮处于选择状态</p></li>
+</ul></li>
+<li><p>复选框（JCheckbox）</p></li>
+<li><p>列表框（JList）</p></li>
+<li><p>下拉列表（ JComboBox ）</p></li>
+<li><p>密码域（ JPasswordField ）</p></li>
+<li><p>滑动条（JSlider ）</p></li>
+</ul>
+<h3 id="会对组件进行布局">会对组件进行布局</h3>
+<ul>
+<li>FlowLayout
+流式布局：该布局以行为单位依次排列各组件，一行排不下时，另起一行
+<ul>
+<li><strong>JPanel</strong>的默认布局</li>
+</ul></li>
+<li>BorderLayout
+边界布局：<strong>按照东、西、南、北、中</strong>5个方位排列各组件
+<ul>
+<li>顶层容器JFrame、JApplet、JDialog、JWindow的默认布局</li>
+</ul></li>
+<li>GridLayout 网格布局</li>
+<li>GridBagLayout 网格包布局</li>
+<li>CardLayout 卡片布局：该布局以一叠卡片的形式依次排列各组件</li>
+<li>BoxLayout 盒式布局：以一行或一列的方式依次排列各组件</li>
+<li>null 空布局（不使用布局）</li>
+</ul>
+<h3 id="熟悉常用基本组件的创建和操作">熟悉常用基本组件的创建和操作</h3>
+<h3 id="会设置组件的颜色和字体">会设置组件的颜色和字体</h3>
+<h3 id="awt组件及其事件处理机制">AWT组件及其事件处理机制</h3>
+<ul>
+<li>事件处理
+<ul>
+<li>事件源——发生事件的对象，如：按钮 单击按钮会触发ActionEvent事件</li>
+<li>监听器——对事件源实施监视的对象，如：包含按钮的窗口<br />
+</li>
+<li>处理事件的接口——监听器对象自动调用一个方法，负责处理事件源发生的事件。
+该事件由ActionListener接口来监听</li>
+</ul></li>
+</ul>
+<h2 id="其他">其他</h2>
+<h3 id="流stream文件file和io">流(Stream)、文件(File)和IO</h3>
+<p>#### 字节流方法</p>
+<p>字节输入流<code>InputStream</code>主要方法：</p>
+<ul>
+<li><code>read()</code> ：从此输入流中读取一个数据字节。</li>
+<li><code>read(byte[] b)</code> ：从此输入流中将最多 b.length
+个字节的数据读入一个 byte 数组中。</li>
+<li><code>read(byte[] b, int off, int len)</code> ：从此输入流中将最多
+len 个字节的数据读入一个 byte 数组中。</li>
+<li><code>close()</code>：关闭此输入流并释放与该流关联的所有系统资源。</li>
+</ul>
+<p>字节输出流<code>OutputStream</code>主要方法：</p>
+<ul>
+<li><code>write(byte[] b)</code> ：将 b.length 个字节从指定 byte
+数组写入此文件输出流中。</li>
+<li><code>write(byte[] b, int off, int len)</code> ：将指定 byte
+数组中从偏移量 off 开始的 len 个字节写入此文件输出流。</li>
+<li><code>write(int b)</code> ：将指定字节写入此文件输出流。</li>
+<li><code>close()</code>
+：关闭此输入流并释放与该流关联的所有系统资源。</li>
+</ul>
+<h4 id="字符流方法">字符流方法</h4>
+<p>字符输入流<code>Reader</code>主要方法：</p>
+<ul>
+<li><code>read()</code>：读取单个字符。</li>
+<li><code>read(char[] cbuf)</code> ：将字符读入数组。</li>
+<li><code>read(char[] cbuf, int off, int len)</code> ：
+将字符读入数组的某一部分。</li>
+<li><code>read(CharBuffer target)</code>
+：试图将字符读入指定的字符缓冲区。</li>
+<li><code>flush()</code> ：刷新该流的缓冲。</li>
+<li><code>close()</code> ：关闭此流，但要先刷新它。</li>
+</ul>
+<p>字符输出流<code>Writer</code>主要方法：</p>
+<ul>
+<li><code>write(char[] cbuf)</code> ：写入字符数组。</li>
+<li><code>write(char[] cbuf, int off, int len)</code>
+：写入字符数组的某一部分。</li>
+<li><code>write(int c)</code> ：写入单个字符。</li>
+<li><code>write(String str)</code> ：写入字符串。</li>
+<li><code>write(String str, int off, int len)</code>
+：写入字符串的某一部分。</li>
+<li><code>flush()</code> ：刷新该流的缓冲。</li>
+<li><code>close()</code> ：关闭此流，但要先刷新它。</li>
+</ul>
+<p>另外，字符缓冲流还有两个独特的方法：</p>
+<ul>
+<li><code>BufferedWriter</code>类<code>newLine()</code>
+：<strong>写入一个行分隔符。这个方法会自动适配所在系统的行分隔符。</strong></li>
+<li><code>BufferedReader</code>类<code>readLine()</code>
+：读取一个文本行。</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2023/12/26/hBzpenVt9jCMy6U.jpg" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h3 id="java内存">Java内存</h3>
+<ul>
+<li><strong>方法区</strong>（静态区，method）：
+<ul>
+<li><strong>类的元数据信息</strong>：每个被加载的类都有对应的元数据，包括类的名称、访问修饰符、字段信息、方法信息等。这些信息在方法区中被存储。</li>
+<li><strong>运行时常量池</strong>：每个类都有自己的常量池，其中包含类中使用的常量、字面量和符号引用。这些在编译时生成，运行时存储在方法区的运行时常量池中。</li>
+<li><strong>静态变量</strong>：类的静态变量被存储在方法区中，它们是类级别的变量，而不是实例级别的。</li>
+<li><strong>类的字节码</strong>：类经过编译后产生的字节码也会被存储在方法区中。这些字节码被JVM加载后转换成运行时的机器码。</li>
+<li><strong>类和方法的其他相关信息</strong>：方法区还包括其他与类和方法相关的信息，如方法的字节码、方法的访问修饰符、方法的异常表等。</li>
+</ul></li>
+<li><strong>堆(heap)</strong>：
+<ul>
+<li><strong>对象实例</strong>: 所有通过 <code>new</code>
+关键字创建的对象实例都存储在堆中。这包括类的实例、数组以及任何动态分配的对象。</li>
+<li><strong>实例变量</strong>:
+对象的实例变量也存储在堆中。这些变量定义了对象的状态和特征，并在对象创建时分配内存。</li>
+<li><strong>数组</strong>:
+Java中的数组也是对象，因此它们的数据存储在堆中。无论是基本数据类型的数组还是对象类型的数组，它们都被存储在堆内存中。</li>
+<li><strong>垃圾回收信息</strong>:
+Java的堆还包含垃圾回收器所需的信息，用于管理对象的生命周期和内存的回收。</li>
+</ul></li>
+<li><strong>栈</strong>（Stack）：小、快
+<ul>
+<li><p><strong>局部变量</strong>：方法中定义的局部变量，包括基本数据类型（如int、boolean等）和对象的引用。这些变量的生命周期与方法的执行周期相关联，在方法执行期间分配，在方法执行结束时释放。</p></li>
+<li><p><strong>方法调用和执行信息</strong>：每次方法调用时，栈会存储调用的方法所需的信息，包括方法的参数、返回地址、方法的执行状态等。当方法调用结束时，栈会弹出该方法的信息，恢复上一个方法的执行状态。</p></li>
+<li><p><strong>操作数栈</strong>：栈中还包括一个操作数栈（Operand
+Stack），用于存放方法执行过程中的临时数据和运算结果。例如，在方法中进行算术运算或者对象引用的操作时，临时结果会被压入操作数栈，进行计算后再弹出。</p></li>
+</ul></li>
+<li>例题：
+<ul>
+<li>类方法的定义只会在类加载时存储在方法区中，并且被所有实例共享；而实例方法的引用会存在于对象的内存空间中，但实际方法的定义并不会复制到每个对象中。</li>
+</ul></li>
+</ul>
+<h3 id="修饰符分类">修饰符分类</h3>
+<ul>
+<li>访问修饰符
+<ul>
+<li><strong>default</strong> (即默认，什么也不写）:
+在同一包内可见，不使用任何修饰符。使用对象：类、接口、变量、方法。</li>
+<li><strong>private</strong> : 在同一类内可见。使用对象：变量、方法。
+<strong>注意：不能修饰类（外部类）</strong></li>
+<li><strong>public</strong> :
+对所有类可见。使用对象：类、接口、变量、方法</li>
+<li><strong>protected</strong> :
+对同一包内的类和所有子类可见。使用对象：变量、方法。
+<strong>注意：不能修饰类（外部类）</strong>。</li>
+</ul></li>
+<li>非访问修饰符
+<ul>
+<li><strong>static</strong> 修饰符，用来修饰类方法和类变量。</li>
+<li><strong>final</strong> 修饰符，用来修饰类、方法和变量，final
+修饰的类不能够被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，是不可修改的。</li>
+<li><strong>abstract </strong>修饰符，用来创建抽象类和抽象方法。</li>
+<li><strong>synchronized </strong>和 <strong>volatile
+</strong>修饰符，主要用于线程的编程。</li>
+</ul></li>
+</ul>
+<h1 id="复习ppt">复习PPT</h1>
+<h2 id="jdbcjava数据库连接">JDBC（Java数据库连接）</h2>
+<p><img src="https://s2.loli.net/2023/12/26/tSbIMTWqeArzaUg.png" srcset="/img/loading.gif" lazyload alt="image-20231226144610571" style="zoom:50%;" /></p>
+<div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.sql.Connection;
+<span class="hljs-keyword">import</span> java.sql.DriverManager;
+<span class="hljs-keyword">import</span> java.sql.Statement;
+
+<span class="hljs-comment">//1、导入驱动jar包</span>
+<span class="hljs-comment">//2、注册驱动</span>
+Class.forName(<span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span>);
+
+<span class="hljs-comment">//3、获取数据库的连接对象</span>
+Connection con = DriverManager.getConnection(<span class="hljs-string">&quot;url&quot;</span>, <span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-string">&quot;123456789&quot;</span>);
+
+<span class="hljs-comment">//4、获取执行sql语句的对象</span>
+Statement stat = con.createStatement();
+
+<span class="hljs-comment">//5.1、执行sql查询并接收返回结果</span>
+ResultSet resultSet = statement.executeQuery(<span class="hljs-string">&quot;SELECT * FROM tableName&quot;</span>);
+
+<span class="hljs-comment">//5.2、执行sql并接收返回结果</span>
+<span class="hljs-keyword">int</span> rowsAffected = statement.executeUpdate(<span class="hljs-string">&quot;UPDATE tableName SET column = value WHERE condition&quot;</span>);
+
+<span class="hljs-comment">//6、处理结果</span>
+<span class="hljs-keyword">while</span> (resultSet.next()) &#123; <span class="hljs-comment">//指针移动下一行</span>
+    <span class="hljs-keyword">int</span> id = resultSet.getInt(<span class="hljs-string">&quot;id&quot;</span>); <span class="hljs-comment">// 通过列名或列索引获取整数</span>
+    String name = resultSet.getString(<span class="hljs-string">&quot;name&quot;</span>); <span class="hljs-comment">// 通过列名或列索引获取字符串</span>
+    <span class="hljs-keyword">double</span> price = resultSet.getDouble(<span class="hljs-string">&quot;price&quot;</span>); <span class="hljs-comment">// 通过列名或列索引获取双精度数值</span>
+&#125;
+
+<span class="hljs-comment">//7、释放资源</span>
+stat.close();
+con.close();
+resultSet.close()</code></pre></div>
+<h2 id="applet-1">Applet</h2>
+<p><img src="https://s2.loli.net/2023/12/26/GztHKeYBqrmvaQW.png" srcset="/img/loading.gif" lazyload alt="image-20231226153307577" style="zoom:50%;" /></p>
+<div class="hljs code-wrapper"><pre><code class="hljs HTML"><span class="hljs-tag">&lt;<span class="hljs-name">applet</span> <span class="hljs-attr">code</span>=<span class="hljs-string">&quot;HelloWorldApplet.class&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;320&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;120&quot;</span>&gt;</span></code></pre></div>
+<div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.applet.*;   
+<span class="hljs-keyword">import</span> java.awt.*;   
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JavaApplet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Applet</span></span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">paint</span><span class="hljs-params">(Graphics g)</span></span>
+<span class="hljs-function">    </span>&#123;
+        g.setColor(<span class="hljs-keyword">new</span> Color(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)); <span class="hljs-comment">// 设置颜色为红色</span>
+        g.setFont(<span class="hljs-keyword">new</span> Font(<span class="hljs-string">&quot;宋体&quot;</span>, Font.BOLD, <span class="hljs-number">20</span>)); <span class="hljs-comment">// 0-正常-PLAIN； 1-粗体-BOLD；2-斜体-ITALIC</span>
+        g.drawString(<span class="hljs-string">&quot;Hello, Java Applet!&quot;</span>, <span class="hljs-number">50</span>, <span class="hljs-number">50</span>); <span class="hljs-comment">// 在 (50, 50) 处绘制字符串</span>
+        g.drawLine(<span class="hljs-number">50</span>, <span class="hljs-number">50</span>, <span class="hljs-number">200</span>, <span class="hljs-number">50</span>); <span class="hljs-comment">// 起点 (50, 50)，终点 (200, 50)</span>
+        g.drawRect(<span class="hljs-number">50</span>, <span class="hljs-number">100</span>, <span class="hljs-number">150</span>, <span class="hljs-number">80</span>); <span class="hljs-comment">// 左上角坐标 (50, 100)，宽 150，高 80</span>
+        g.fillRect(<span class="hljs-number">250</span>, <span class="hljs-number">100</span>, <span class="hljs-number">150</span>, <span class="hljs-number">80</span>); <span class="hljs-comment">// 左上角坐标 (250, 100)，宽 150，高 80</span>
+    &#125;
+&#125;</code></pre></div>
+<h2 id="异常处理">异常处理</h2>
+<p><img src="https://s2.loli.net/2023/12/26/r7HoV9j2UuEt3MS.png" srcset="/img/loading.gif" lazyload alt="image-20231226153445381" style="zoom:50%;" /></p>
+<div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">// 抛出异常的函数</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">exampleFunction</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+        <span class="hljs-comment">// 在这个例子中，我们手动抛出一个异常</span>
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception(<span class="hljs-string">&quot;这是一个示例异常&quot;</span>);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-comment">// 调用可能抛出异常的函数</span>
+            exampleFunction();
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            <span class="hljs-comment">// 捕获并处理异常</span>
+            System.err.println(<span class="hljs-string">&quot;捕获到异常: &quot;</span> + e.getMessage());
+            e.printStackTrace();
+        &#125; <span class="hljs-keyword">finally</span> &#123;
+            <span class="hljs-comment">// 无论异常是否被捕获，finally 块中的代码都会执行</span>
+            System.out.println(<span class="hljs-string">&quot;无论如何都会执行的代码块&quot;</span>);
+        &#125;
+    &#125;</code></pre></div>
+<h2 id="字符串操作">字符串操作</h2>
+<figure>
+<img src="https://s2.loli.net/2023/12/26/crBT7xOAX6ymewz.png" srcset="/img/loading.gif" lazyload
+alt="image-20231226154030401" />
+<figcaption aria-hidden="true">image-20231226154030401</figcaption>
+</figure>
+<h2 id="字节流字符流缓冲流">字节流、字符流、缓冲流</h2>
+<p><img src="https://s2.loli.net/2023/12/26/Hp6yk4Aa7BGXSDl.png" srcset="/img/loading.gif" lazyload alt="image-20231226153930902" style="zoom: 25%;" /></p>
+<p>File - FileOutputStream - BufferedOutputStream</p>
+<p>File - FileOutputStream - OutputStreamWriter - BufferedWriter</p>
+<p>File - FileWriter - BufferedWriter</p>
+<p>主要方法：（<strong>字节流就是byte，字符流就是char</strong>）</p>
+<ul>
+<li><code>read()</code>：读取单个字符。</li>
+<li><code>read(byte[] cbuf)</code> ：将字符读入数组。</li>
+<li><code>write(byte[] b)</code> ：将 b.length 个字节从指定 byte
+数组写入此文件输出流中。返回一个长度，到达<strong>流的末尾</strong>返回<strong>-1</strong>。</li>
+<li><code>close()</code> ：关闭此流</li>
+</ul>
+<div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">// BufferedInputStream、BufferedOutputStream（缓冲字节流）</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IOTest</span> </span>&#123;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(File file)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+		<span class="hljs-comment">// 缓冲字节流，提高了效率</span>
+		BufferedOutputStream bis = <span class="hljs-keyword">new</span> BufferedOutputStream(<span class="hljs-keyword">new</span> FileOutputStream(file, <span class="hljs-keyword">true</span>));
+
+		<span class="hljs-comment">// 要写入的字符串</span>
+		String string = <span class="hljs-string">&quot;松下问童子，言师采药去。只在此山中，云深不知处。&quot;</span>;
+		<span class="hljs-comment">// 写入文件</span>
+		bis.write(string.getBytes());
+		<span class="hljs-comment">// 关闭流</span>
+		bis.close();
+	&#125;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">read</span><span class="hljs-params">(File file)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+		BufferedInputStream fis = <span class="hljs-keyword">new</span> BufferedInputStream(<span class="hljs-keyword">new</span> FileInputStream(file));
+
+		<span class="hljs-comment">// 一次性取多少个字节</span>
+		<span class="hljs-keyword">byte</span>[] bytes = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1024</span>];
+		<span class="hljs-comment">// 用来接收读取的字节数组</span>
+		StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
+		<span class="hljs-comment">// 读取到的字节数组长度，为-1时表示没有数据</span>
+		<span class="hljs-keyword">int</span> length = <span class="hljs-number">0</span>;
+		<span class="hljs-comment">// 循环取数据</span>
+		<span class="hljs-keyword">while</span> ((length = fis.read(bytes)) != -<span class="hljs-number">1</span>) &#123;
+			<span class="hljs-comment">// 将读取的内容转换成字符串</span>
+			sb.append(<span class="hljs-keyword">new</span> String(bytes, <span class="hljs-number">0</span>, length));
+		&#125;
+		<span class="hljs-comment">// 关闭流</span>
+		fis.close();
+
+		<span class="hljs-keyword">return</span> sb.toString();
+	&#125;
+&#125;</code></pre></div>
+<div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">// InputStreamReader、OutputStreamWriter（字符流）</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IOTest</span> </span>&#123;
+	
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(File file)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+		<span class="hljs-comment">// OutputStreamWriter可以显示指定字符集，否则使用默认字符集</span>
+		OutputStreamWriter osw = <span class="hljs-keyword">new</span> OutputStreamWriter(<span class="hljs-keyword">new</span> FileOutputStream(file, <span class="hljs-keyword">true</span>), <span class="hljs-string">&quot;UTF-8&quot;</span>);
+        <span class="hljs-comment">//FileWriter fw = new FileWriter(file, true);</span>
+
+		<span class="hljs-comment">// 要写入的字符串</span>
+		String string = <span class="hljs-string">&quot;松下问童子，言师采药去。只在此山中，云深不知处。&quot;</span>;
+		osw.write(string);
+		osw.close();
+	&#125;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">read</span><span class="hljs-params">(File file)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+		InputStreamReader isr = <span class="hljs-keyword">new</span> InputStreamReader(<span class="hljs-keyword">new</span> FileInputStream(file), <span class="hljs-string">&quot;UTF-8&quot;</span>);
+		<span class="hljs-comment">// 字符数组：一次读取多少个字符</span>
+		<span class="hljs-keyword">char</span>[] chars = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">1024</span>];
+		<span class="hljs-comment">// 每次读取的字符数组先append到StringBuilder中</span>
+		StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
+		<span class="hljs-comment">// 读取到的字符数组长度，为-1时表示没有数据</span>
+		<span class="hljs-keyword">int</span> length;
+		<span class="hljs-comment">// 循环取数据</span>
+		<span class="hljs-keyword">while</span> ((length = isr.read(chars)) != -<span class="hljs-number">1</span>) &#123;
+			<span class="hljs-comment">// 将读取的内容转换成字符串</span>
+			sb.append(chars, <span class="hljs-number">0</span>, length);
+		&#125;
+		<span class="hljs-comment">// 关闭流</span>
+		isr.close();
+
+		<span class="hljs-keyword">return</span> sb.toString()
+	&#125;
+&#125;</code></pre></div>
+<div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">// BufferedReader、BufferedWriter（字符缓冲流）</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IOTest</span> </span>&#123;
+	
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(File file)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+		<span class="hljs-comment">// BufferedWriter fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), &quot;UTF-8&quot;));</span>
+		<span class="hljs-comment">// FileWriter可以大幅度简化代码</span>
+		BufferedWriter bw = <span class="hljs-keyword">new</span> BufferedWriter(<span class="hljs-keyword">new</span> FileWriter(file, <span class="hljs-keyword">true</span>));
+
+		<span class="hljs-comment">// 要写入的字符串</span>
+		String string = <span class="hljs-string">&quot;松下问童子，言师采药去。只在此山中，云深不知处。&quot;</span>;
+		bw.write(string);
+		bw.close();
+	&#125;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">read</span><span class="hljs-params">(File file)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+		BufferedReader br = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> FileReader(file));
+		<span class="hljs-comment">// 用来接收读取的字节数组</span>
+		StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
+
+		<span class="hljs-comment">// 按行读数据</span>
+		String line;
+		<span class="hljs-comment">// 循环取数据</span>
+		<span class="hljs-keyword">while</span> ((line = br.readLine()) != <span class="hljs-keyword">null</span>) &#123;
+			<span class="hljs-comment">// 将读取的内容转换成字符串</span>
+			sb.append(line);
+		&#125;
+		<span class="hljs-comment">// 关闭流</span>
+		br.close();
+
+		<span class="hljs-keyword">return</span> sb.toString();
+	&#125;
+&#125;</code></pre></div>
+<h2 id="file">File</h2>
+<p>file.exists()</p>
+<p>file.createNewFile();</p>
+<p>file.delete();</p>
+<div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.File;
+<span class="hljs-keyword">import</span> java.io.IOException;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileTest</span> </span>&#123;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+		File file = <span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;D:\\Download\\test.txt&quot;</span>);
+
+		<span class="hljs-comment">// 判断文件是否存在</span>
+		<span class="hljs-keyword">if</span> (!file.exists()) &#123;
+			<span class="hljs-comment">// 不存在则创建</span>
+			file.createNewFile();
+		&#125;
+		System.out.println(<span class="hljs-string">&quot;文件的绝对路径：&quot;</span> + file.getAbsolutePath());
+		System.out.println(<span class="hljs-string">&quot;文件的大小：&quot;</span> + file.length());
+
+		<span class="hljs-comment">// 刪除文件</span>
+		file.delete();
+	&#125;
+&#125;</code></pre></div>
+<h2 id="html-jsp---web开发">HTML &amp; JSP - WEB开发</h2>
+<div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%<span class="hljs-meta">@page</span> language=<span class="hljs-string">&quot;java&quot;</span>  pageEncoding=<span class="hljs-string">&quot;utf-8&quot;</span>%&gt;
+&lt;%<span class="hljs-meta">@page</span> <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;java.util.*&quot;</span>%&gt;
+&lt;%<span class="hljs-meta">@page</span> <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;cn.edu.swjtu.news.entity.*&quot;</span>%&gt;
+&lt;%<span class="hljs-meta">@page</span> <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;cn.edu.swjtu.news.dao.NewsDao&quot;</span>%&gt;
+&lt;%<span class="hljs-meta">@page</span> <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;cn.edu.swjtu.news.dao.impl.NewsDaoImpl&quot;</span>%&gt;
+
+&lt;!DOCTYPE html PUBLIC <span class="hljs-string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span> <span class="hljs-string">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span>&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=<span class="hljs-string">&quot;Content-Type&quot;</span> content=<span class="hljs-string">&quot;text/html; charset=ISO-8859-1&quot;</span>&gt;
+&lt;title&gt;新闻列表&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table align=<span class="hljs-string">&quot;center&quot;</span> border=<span class="hljs-string">&quot;1&quot;</span>&gt;
+	  &lt;tr&gt;
+	  	  &lt;th&gt;主题&lt;/th&gt; 
+	      &lt;th&gt;标题&lt;/th&gt; 
+	      &lt;th&gt;作者&lt;/th&gt;
+      &lt;/tr&gt;
+&lt;% 
+	NewsDao newsDao=<span class="hljs-keyword">new</span> NewsDaoImpl();
+	List&lt;News&gt; list=newsDao.getAllnews();
+	<span class="hljs-keyword">for</span>(News tempNew:list)
+	&#123;		
+%&gt;   
+	  &lt;tr&gt;
+	  	  &lt;td&gt;&lt;%=tempNew.getNtname() %&gt;&lt;/td&gt; 
+	      &lt;td&gt;&lt;%=tempNew.getNtitle() %&gt;&lt;/td&gt; 
+	      &lt;td&gt;作者：&lt;%=tempNew.getNauthor() %&gt;&lt;/td&gt;
+      &lt;/tr&gt; 
+
+&lt;%
+    &#125;
+%&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+<div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>菜鸟教程(runoob.com)<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>一级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span> 二级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span> 三级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>我的第一个段落。<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+	  	  <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>主题<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span> 
+	      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>标题<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span> 
+	      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>作者<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      	<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> 1 <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> 1 <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> 1 <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>	
+	<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
+<h2 id="gui---swing---基本组件">GUI - Swing - 基本组件</h2>
+<figure>
+<img src="https://s2.loli.net/2023/12/26/iU7patLI2lMPmB6.png" srcset="/img/loading.gif" lazyload
+alt="image-20231226153357844" />
+<figcaption aria-hidden="true">image-20231226153357844</figcaption>
+</figure>
+<div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> javax.swing.*;
+<span class="hljs-keyword">import</span> java.awt.*;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">J</span> </span>&#123;
+ 
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+		<span class="hljs-comment">//创建窗口</span>
+		JFrame jf = <span class="hljs-keyword">new</span> JFrame();
+		jf.setTitle(<span class="hljs-string">&quot;这是一个窗口&quot;</span>);    <span class="hljs-comment">//设置窗口标题</span>
+		jf.setSize(<span class="hljs-number">800</span>,<span class="hljs-number">600</span>);
+		<span class="hljs-comment">//jf.setExtendedState(JFrame.MAXIMIZED_BOTH); //设置窗口最大化</span>
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); <span class="hljs-comment">//设置窗口关闭方式</span>
+
+		Container con=jf.getContentPane();
+		
+		JPanel pan=<span class="hljs-keyword">new</span> JPanel();
+
+		JLabel l_ma=<span class="hljs-keyword">new</span> JLabel(<span class="hljs-string">&quot;密码&quot;</span>);
+		pan.add(l_ma);
+		JPasswordField password=<span class="hljs-keyword">new</span> JPasswordField(<span class="hljs-number">20</span>);
+		password.setEchoChar(<span class="hljs-string">&#x27;*&#x27;</span>);
+		pan.add(password);
+
+
+		JLabel l_xm=<span class="hljs-keyword">new</span> JLabel(<span class="hljs-string">&quot;姓名&quot;</span>);
+		pan.add(l_xm);
+		JTextField tf_name=<span class="hljs-keyword">new</span> JTextField(<span class="hljs-number">20</span>);
+		pan.add(tf_name);
+
+		JLabel l_xb=<span class="hljs-keyword">new</span> JLabel(<span class="hljs-string">&quot;性别&quot;</span>);
+		pan.add(l_xb);
+		JRadioButton  male = <span class="hljs-keyword">new</span> JRadioButton(<span class="hljs-string">&quot;男&quot;</span>, <span class="hljs-keyword">true</span>);
+		JRadioButton  female = <span class="hljs-keyword">new</span> JRadioButton(<span class="hljs-string">&quot;女&quot;</span>);
+		ButtonGroup  group=<span class="hljs-keyword">new</span> ButtonGroup();
+		group.add(male);
+		group.add(female);
+		pan.add(male);
+		pan.add(female); 
+
+		JLabel l_ah=<span class="hljs-keyword">new</span> JLabel(<span class="hljs-string">&quot;爱好&quot;</span>);
+		JCheckBox[] hobby=&#123;<span class="hljs-keyword">new</span> JCheckBox(<span class="hljs-string">&quot;音乐&quot;</span>),<span class="hljs-keyword">new</span> JCheckBox(<span class="hljs-string">&quot;足球&quot;</span>),<span class="hljs-keyword">new</span> JCheckBox(<span class="hljs-string">&quot;绘画&quot;</span>)&#125;;
+		pan.add(l_ah);
+		pan.add(hobby[<span class="hljs-number">0</span>]);
+		pan.add(hobby[<span class="hljs-number">1</span>]);
+		pan.add(hobby[<span class="hljs-number">2</span>]); 
+
+		JLabel  l_yx=<span class="hljs-keyword">new</span> JLabel(<span class="hljs-string">&quot;院系&quot;</span>);
+		pan.add(l_yx);
+		String[] departmentNames = &#123;<span class="hljs-string">&quot;计算机科学与技术系&quot;</span>,<span class="hljs-string">&quot;电子信息与技术系&quot;</span>,<span class="hljs-string">&quot;计算机工程系&quot;</span>&#125;;
+		JComboBox  department = <span class="hljs-keyword">new</span> JComboBox(departmentNames);
+		department.setEditable(<span class="hljs-keyword">false</span>);
+		pan.add(department);
+		
+		
+		JLabel   l_xk=<span class="hljs-keyword">new</span> JLabel(<span class="hljs-string">&quot;选课&quot;</span>);
+		String[] coursesNames = &#123;<span class="hljs-string">&quot;数据结构&quot;</span>,<span class="hljs-string">&quot;操作系统&quot;</span>,<span class="hljs-string">&quot;网络原理&quot;</span>,<span class="hljs-string">&quot;Java程序设计&quot;</span>,<span class="hljs-string">&quot;分布式系统开发技术&quot;</span>,<span class="hljs-string">&quot;计算机导论&quot;</span>,<span class="hljs-string">&quot;密码学&quot;</span>,<span class="hljs-string">&quot;计算机组成原理&quot;</span>,<span class="hljs-string">&quot;编译原理&quot;</span>,<span class="hljs-string">&quot;图形学&quot;</span>&#125;;
+		JList course = <span class="hljs-keyword">new</span> JList(coursesNames);
+		pan.add(l_xk);
+		pan.add(course);
+
+		JLabel l_jf=<span class="hljs-keyword">new</span> JLabel(<span class="hljs-string">&quot;加分&quot;</span>);    
+		pan.add(l_jf);
+		JSlider addition = <span class="hljs-keyword">new</span> JSlider(JSlider.HORIZONTAL, <span class="hljs-number">0</span>, <span class="hljs-number">100</span>, <span class="hljs-number">50</span>);
+		addition.setMajorTickSpacing(<span class="hljs-number">10</span>);
+		addition.setMinorTickSpacing(<span class="hljs-number">5</span>);
+		addition.setPaintTicks(<span class="hljs-keyword">true</span>);
+		addition.setPaintLabels(<span class="hljs-keyword">true</span>);
+		addition.setSnapToTicks(<span class="hljs-keyword">true</span>);
+		pan.add(addition); 
+
+		JButton b_sub=<span class="hljs-keyword">new</span> JButton(<span class="hljs-string">&quot;确认&quot;</span>);
+		pan.add(b_sub);
+		JButton b_save=<span class="hljs-keyword">new</span> JButton(<span class="hljs-string">&quot;保存&quot;</span>);
+		pan.add(b_save); 
+
+		JProgressBar progbar = <span class="hljs-keyword">new</span> JProgressBar(JProgressBar.HORIZONTAL,<span class="hljs-number">0</span>,<span class="hljs-number">100</span>);
+		progbar.setStringPainted(<span class="hljs-keyword">true</span>);
+		pan.add(progbar);
+
+		JLabel l_jg=<span class="hljs-keyword">new</span> JLabel(<span class="hljs-string">&quot;录入结果&quot;</span>);
+		JTextArea result=<span class="hljs-keyword">new</span> JTextArea(<span class="hljs-number">10</span>,<span class="hljs-number">30</span>);
+		JScrollPane sp=<span class="hljs-keyword">new</span> JScrollPane(result);
+		pan.add(l_jg); 
+		pan.add(sp); 
+
+		con.add(pan);
+	
+		jf.setVisible(<span class="hljs-keyword">true</span>);
+	&#125;
+&#125;</code></pre></div>
+<figure>
+<img src="https://s2.loli.net/2023/12/28/LnPcwXpEDv45duM.png" srcset="/img/loading.gif" lazyload
+alt="image-20231228110640861" />
+<figcaption aria-hidden="true">image-20231228110640861</figcaption>
+</figure>
+<p>ActionListener接口的actionPerformed(ActionEvent
+e)方法，e.getSource()==btn 判断</p>
+<div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.awt.*;
+<span class="hljs-keyword">import</span> java.awt.event.*;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">guessFrame</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Frame</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ActionListener</span></span>
+<span class="hljs-class"></span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> number;
+    Button btnGetNum=<span class="hljs-keyword">new</span> Button(<span class="hljs-string">&quot;get&quot;</span>);
+    Button btnEnter=<span class="hljs-keyword">new</span> Button(<span class="hljs-string">&quot;yes&quot;</span>);
+    Label lblInfo=<span class="hljs-keyword">new</span> Label(<span class="hljs-string">&quot;guess&quot;</span>,Label.CENTER);
+    TextField txtInput=<span class="hljs-keyword">new</span> TextField(<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-number">10</span>);
+    
+    guessFrame(String s) 
+    &#123;
+    	<span class="hljs-keyword">super</span>(s);
+       	setSize(<span class="hljs-number">300</span>,<span class="hljs-number">200</span>);
+		setResizable(<span class="hljs-keyword">false</span>);
+		setVisible(<span class="hljs-keyword">true</span>);
+		setLayout(<span class="hljs-keyword">new</span> FlowLayout());
+
+		<span class="hljs-comment">//lblInfo.setBounds(50,50,120,20);</span>
+		add(lblInfo);
+		<span class="hljs-comment">//txtInput.setBounds(50,80,120,20);</span>
+		add(txtInput);	
+		<span class="hljs-comment">//btnGetNum.setBounds(50,120,80,20);</span>
+		add(btnGetNum);
+		<span class="hljs-comment">//btnEnter.setBounds(150,120,50,20);</span>
+		add(btnEnter);
+		
+		btnGetNum.addActionListener(<span class="hljs-keyword">this</span>);
+		btnEnter.addActionListener(<span class="hljs-keyword">this</span>);
+	&#125;
+    <span class="hljs-comment">//实现ActionListener接口中的actionPerformed方法（见下一页）</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">actionPerformed</span><span class="hljs-params">(ActionEvent e)</span></span>
+<span class="hljs-function">	</span>&#123;
+       <span class="hljs-keyword">if</span>(e.getSource()==btnGetNum)		<span class="hljs-comment">//单击 “得到随机数”接钮</span>
+       &#123;
+            number=(<span class="hljs-keyword">int</span>)(Math.random()*<span class="hljs-number">100</span>)+<span class="hljs-number">1</span>;
+       &#125;
+       <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(e.getSource()==btnEnter)		<span class="hljs-comment">//单击 “确定”接钮</span>
+       &#123;
+            <span class="hljs-keyword">int</span> guess=<span class="hljs-number">0</span>;
+            <span class="hljs-keyword">try</span>
+            &#123;
+	           guess=Integer.parseInt(txtInput.getText());	<span class="hljs-comment">//获取文本框中的数值</span>
+	           <span class="hljs-keyword">if</span> (guess==number)
+	           &#123;
+	    	      lblInfo.setText(<span class="hljs-string">&quot;yes!&quot;</span>);
+	           &#125;
+	           <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(guess&gt;number)
+	           &#123;
+	    	      lblInfo.setText(<span class="hljs-string">&quot;high!&quot;</span>);
+	    	      txtInput.setText(<span class="hljs-keyword">null</span>);
+	           &#125;	
+	           <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(guess&lt;number)
+	           &#123;
+	    	      lblInfo.setText(<span class="hljs-string">&quot;low!&quot;</span>);
+	    	      txtInput.setText(<span class="hljs-keyword">null</span>);
+	           &#125;		
+            &#125;
+	 		<span class="hljs-keyword">catch</span>(NumberFormatException event)
+            &#123;
+	            lblInfo.setText(<span class="hljs-string">&quot;re&quot;</span>);
+	  		&#125;
+       &#125;
+	&#125;	
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">guessNumber</span></span>
+<span class="hljs-class"></span>&#123;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String []args)</span></span>
+<span class="hljs-function">	</span>&#123;
+        guessFrame guessfrm=<span class="hljs-keyword">new</span> guessFrame(<span class="hljs-string">&quot;猜数游戏&quot;</span>);
+	&#125;  
+&#125;</code></pre></div>
+<h2 id="题目">题目</h2>
+<ul>
+<li>单项选择题(30分，每小题2分)</li>
+<li>程序填空题（20分，每空2分）</li>
+<li>程序阅读题（20分，每小题5分）</li>
+<li>程序设计题1（15分）：html+jsp（<strong>WEB开发</strong>
+文件夹内容）</li>
+<li>程序设计题2（15分）：Gui 组件</li>
+</ul>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E7%9B%B8%E5%85%B3/">大学相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF/">Java开发技术</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/12/31/46/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机图形学 - 期末复习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/24/48/">
+                        <span class="hidden-mobile">人机交互 - 期末复习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <!-- begin 评论 -->
+  <div id="valine"></div> 
+  <!-- end 评论 -->
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+       
+        var options = Object.assign(
+          {"appId":"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz","appKey":"IVwl94UT4wnOPWUgwn4AfOCE","path":"window.location.pathname","placeholder":"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…","avatar":"robohash","avatarForce":true,"meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","admin_email_hash":"393669798@qq.com","enableQQ":true,"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        ) 
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+ 
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    <!--向顶部滚动的箭头-->
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!--自定义底部 HTML 内容-->
+    
+  </main>
+  
+  <!--页脚-->
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <!---->
+     &copy; <script type="text/javascript"> var myDate = new Date().getFullYear(); document.write(myDate) </script> <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+
+      <!--通过API接口作为首页副标题的内容-->
+      
+        typing(title)  //tying打字机
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
