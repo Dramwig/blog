@@ -1,0 +1,1095 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png">
+  <link rel="icon" href="/img/logo/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个神秘的人">
+  <meta name="author" content="epochxi">
+  <meta name="keywords" content="dramwig">
+  <meta name="description" content="计算机图形学理论课复习大纲 考试题型：简答题，计算题，绘图题，分析与设计题，程序实现题。 分数分别为：20分，30分，10分，30分，10分。 一、 图形学基本概念  什么是计算机图形学？ 计算机图形学的主要研究内容包括哪些？ 计算机图形学的主要应用领域。 图形和图像的主要区别是什么？ 计算机图形处理系统的主要构成。 显卡的工作流程。 什么是显示存储器？ GPU的基本概念。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机图形学 - 期末复习">
+<meta property="og:url" content="http://example.com/2023/12/31/46/index.html">
+<meta property="og:site_name" content="风倾客栈 ✧">
+<meta property="og:description" content="计算机图形学理论课复习大纲 考试题型：简答题，计算题，绘图题，分析与设计题，程序实现题。 分数分别为：20分，30分，10分，30分，10分。 一、 图形学基本概念  什么是计算机图形学？ 计算机图形学的主要研究内容包括哪些？ 计算机图形学的主要应用领域。 图形和图像的主要区别是什么？ 计算机图形处理系统的主要构成。 显卡的工作流程。 什么是显示存储器？ GPU的基本概念。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/12/30/hKX8oDS7I3m4tEN.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/12/30/76vOlwcSKkImxGq.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/12/30/JmBR6XfWMtEOC1F.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/12/30/9oOc6aq1bNjHnhL.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/12/30/MqsiKHj7dQc6nWr.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/12/30/DIuh4QR5KZMarbU.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/12/30/8cinNKfIslyD6ek.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/12/30/3FjEzHkNd2laMPO.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/30/I8RODVgrYcBblxZ.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/30/k1uw9eFMSd5OGv6.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/30/SE49AZKfWMmcTRj.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/NOakHouzQ9ECB8D.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/sywN25MZjOcraDW.png">
+<meta property="article:published_time" content="2023-12-31T04:18:00.000Z">
+<meta property="article:modified_time" content="2024-01-03T10:00:42.758Z">
+<meta property="article:author" content="epochxi">
+<meta property="article:tag" content="计算机图形学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2023/12/30/hKX8oDS7I3m4tEN.jpg">
+  
+  <title>计算机图形学 - 期末复习 &lt; 风倾客栈 ✧</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hovor","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"fa7203cd147458a2bb6b7c7fc7bd03a3","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <!--菜单栏-->
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="iconfont icon-home-fill"></i> <!-- homeͼ�� -->
+      <strong>风倾客栈</strong> <!-- �������� -->
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content --> <!-- �˵��б� -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                朋友
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+    <!--视差滚动-->
+    <div class="banner" id="banner" parallax=true   
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <!--副标题 (打字机)-->
+            <span class="h2" id="subtitle" title="计算机图形学 - 期末复习">
+              <!--typing打字机-->
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-12-31 12:18" pubdate>
+        2023年12月31日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      12k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机图形学 - 期末复习</h1>
+            
+            <div class="markdown-body">
+              <h2 id="计算机图形学理论课复习大纲">计算机图形学理论课复习大纲</h2>
+<p>考试题型：简答题，计算题，绘图题，分析与设计题，程序实现题。</p>
+<p>分数分别为：20分，30分，10分，30分，10分。</p>
+<h3 id="一-图形学基本概念">一、 图形学基本概念</h3>
+<ol type="1">
+<li>什么是计算机图形学？</li>
+<li>计算机图形学的主要研究内容包括哪些？</li>
+<li>计算机图形学的主要应用领域。</li>
+<li>图形和图像的主要区别是什么？</li>
+<li>计算机图形处理系统的主要构成。</li>
+<li>显卡的工作流程。</li>
+<li>什么是显示存储器？</li>
+<li>GPU的基本概念。</li>
+<li>显卡分辨率的含义。</li>
+<li>GPU堆包含哪几种主要的类型，具有什么样的特点？</li>
+<li>GPU渲染流水线包含哪几个阶段，分别完成什么任务？</li>
+<li>光照的基本原理</li>
+<li>光照模型的分类</li>
+<li>光源的分类</li>
+<li>纹理的表现形式。</li>
+<li>纹理的过滤方式及寻址方式</li>
+<li>多级纹理的基本原理</li>
+<li>模型的表示方法</li>
+<li>Direct3D 12图形绘制的基本原理</li>
+<li>三维模型顶点的数据结构表示</li>
+</ol>
+<h3 id="二-图形学基本算法">二、 图形学基本算法</h3>
+<p>要求：算法的基本原理，算法描述，算法执行过程分析，过程计算，编程实现等。</p>
+<ol type="1">
+<li>直线生成算法：DDA算法，中点画线法、Bresenham法。</li>
+<li>圆和圆弧的生成算法：DDA算法，中点画线法，Bresenham法</li>
+<li>线宽生成算法：刷子绘制法，实区域填充法</li>
+<li>线型的处理</li>
+<li>区域填充法：扫描线法，边填充法，种子填充法，扫描线种子填充法，</li>
+<li>反走样技术：像素细分技术，Bresenham反走样技术</li>
+<li>曲线生成：Bezier曲线和B样条曲线，包括二阶、三阶曲线等。</li>
+<li>图形变化：平移、缩放、旋转</li>
+<li>坐标系之间的变换：局部坐标、世界坐标、摄像机坐标、屏幕坐标</li>
+<li>四边形裁剪算法：Cohen-Sutherland裁剪算法、中点分割裁剪算法、Liang-Barskey裁剪算法</li>
+<li>多边形裁剪算法：Sutherland-Hodgman算法，Weiler-Atherton算法</li>
+<li>三维线段裁剪算法：长方体裁剪算法，视椎体裁剪算法</li>
+<li>图形消隐：背面剔除算法，画家算法，Weiler-Atherton算法，BSP树算法、深度缓冲区算法，Warnock算法</li>
+<li>曲面的生成：Bezier曲面的生成，B样条曲面的生成，特别是二阶和三阶曲面</li>
+<li>地形的生成算法</li>
+<li>雨雪的模拟算法</li>
+</ol>
+<h2 id="第1章-绪论">第1章 绪论</h2>
+<h3 id="什么是计算机图形学">什么是计算机图形学？</h3>
+<p>计算机图形学是研究通过计算机将<strong>数据</strong>转化为<strong>图形</strong>，并在专门显示设备上显示的<strong>原理、方法和技术</strong>的学科。也就是如何<strong>用计算机生成、处理和显示图形</strong>的一门学科。</p>
+<p>计算机图形学是研究怎样利用计算机来<strong>生成、处理和显示</strong>图形的<strong>原理、方法和技术</strong>的学科。</p>
+<h3 id="计算机图形学的应用">计算机图形学的应用</h3>
+<ol type="1">
+<li>图形用户接口 (2) 工业应用 (3) 商业领域 (4) 艺术领域 (5)
+科学计算可视化 (6) 虚拟现实 (7) 系统环境模拟</li>
+</ol>
+<h3 id="图形和图像的区别">图形和图像的区别</h3>
+<ul>
+<li>表示方法不同：图形是由基本几何体（直线，点，圆、曲线、三角形等）构成的实体，同时具有几何属性和视觉属性。图像是由很多像素点构成的点阵信息。</li>
+<li>生成方法不同：图形是通过计算机算法生成的，而图像是通过照相机，摄像机等扫描设备或图像生成软件制作而成。</li>
+<li>研究侧重点不同：图形学主要研究如何使用计算机表示几何体，构建几何模型、如何通过建立数学模型或者算法把真实的或者想象的物体显示出来。图像处理主要研究如何将一种图像处理成另一种图像，包括图像增强、复原、解析和理解、编码、压缩、匹配，识别等。</li>
+</ul>
+<h2 id="第2章-计算机图像处理及显示的基本原理">第2章
+计算机图像处理及显示的基本原理</h2>
+<h3 id="显卡工作流程">显卡工作流程</h3>
+<ol type="1">
+<li>通过数据总线将要显示的图形或者图像数据送入GPU（图形处理器)。</li>
+<li>GPU对送入的数据进行处理然后送入帧缓冲器（或称显存) 。</li>
+<li>送入帧缓冲器中的数据将被送入视频控制器。视频控制器将根据接口的类型确定处理方式，完成数模转换；</li>
+<li>视频控制器的输出将送到显示屏。</li>
+</ol>
+<h3 id="概念">概念</h3>
+<ul>
+<li><p><strong>帧缓存/显存：</strong>显存用来<strong>存储屏幕上像素的颜色值</strong>。帧缓冲器中的单元数目与显示器上的像素数目相同，单元与像素一一对应，各单元的数值决定了其对应的像素的颜色。（比如一个像素24位）</p></li>
+<li><p><strong>显卡分辨率：</strong>显卡分辨率是指显卡输出给显示器并能在显示器上描绘的像素点的数量。</p></li>
+<li><p><strong>显卡颜色深度：</strong>每个像素包含三种颜色：R，G，B。像素的精细度由组成像素的颜色的位数和照射到像素的颜色的强度决定。显示透明度，往往还增加8bits来表示透明度。</p></li>
+<li><p>规定以左手定则根据顶点的排列顺序来确定三角面的朝向。</p></li>
+</ul>
+<h3
+id="gpu处理输入的图形数据渲染流水线">GPU处理输入的图形数据（渲染流水线）</h3>
+<ol type="1">
+<li>输入装配阶段。从内存中读入相关的顶点和索引，从而生成几何图形的基本要素（点，线以及三角面）。</li>
+<li>顶点着色阶段。完成顶点转换（从局部坐标系转换到齐次裁剪坐标系中），光照（纹理）等各种形式的运算。</li>
+<li>曲面细分阶段。将一个大的三角形分解成若干个小的三角形。</li>
+<li>几何着色阶段。对输入的点进行筛选，然后输出相应的构成几何图形的基本要素。同时几何着色可以输出一系列的点到内存空间中。</li>
+<li>裁剪。将区域之外的物体去除掉，只显示区域之内的物体。</li>
+<li>光栅化阶段。将几何图元变为二维图像。第一部分工作：<strong>决定窗口坐标中的哪些整型栅格区域被基本图元占用</strong>；第二部分工作：分配一个颜色值和一个深度值到各个区域以便进行消隐操作。<strong>目的，是找出一个几何单元（比如线段或三角形）所覆盖的像素</strong>。</li>
+<li>像素着色阶段。通过这些点及相应的属性可以在GPU中计算除相应像素的颜色，光照的影响，阴影等处理效果。</li>
+<li>输出融合阶段。一些像素无法通过深度测试而被排除，而另一些像素送入，与此前已经写入到后台缓冲区中的像素进行相应的融合处理。</li>
+</ol>
+<h2 id="第3章-基本图形生成">第3章 基本图形生成 ★</h2>
+<h3 id="画线算法">画线算法</h3>
+<h4 id="数值微分画线法dda">数值微分画线法（DDA）</h4>
+<ul>
+<li>输入<span class="math inline">\(P_0(x_0,y_0),
+P_1(x_1,y_1)\)</span></li>
+<li>计算增量 $ x=,y= \ ((y_1-y_0),(x_1-x_0))$</li>
+<li>循环<span class="math inline">\(Length\)</span>次，<span
+class="math inline">\(x_{i+1} = x_i+\Delta x, y_{i+1} = y_i+\Delta
+y\)</span>，每步结果对不是整数那个四舍五入</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2023/12/30/hKX8oDS7I3m4tEN.jpg" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h4 id="中点画线法">中点画线法</h4>
+<p>原理：<span class="math inline">\(d = 2F(x_k+1,y_k+0.5) =
+2a(x_k+1)+2b(y_k+0.5) + c, d_0 = 2a+b\)</span></p>
+<ul>
+<li><p>输入<span class="math inline">\(P_0(x_0,y_0),
+P_1(x_1,y_1)\)</span></p></li>
+<li><p><span class="math inline">\(a=y_0-y_1,
+b=x_1-x_0\)</span></p></li>
+<li><p><span class="math inline">\(d = 2a+b\)</span>， <span
+class="math inline">\(delta1 = 2a , delta2 = 2(a+b)\)</span></p></li>
+<li><p>当<span class="math inline">\(d\ge 0\)</span>，取下点 y不变 <span
+class="math inline">\(y_{i+1} = y_i\)</span>, <span
+class="math inline">\(d+=delta1\)</span>；(<code>x++</code>一直自增)</p>
+<p>当<span class="math inline">\(d&lt;0\)</span>，取上点 y加一 <span
+class="math inline">\(y_{i+1} = y_i+1\)</span>, <span
+class="math inline">\(d+=delta2\)</span>.</p></li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2023/12/30/76vOlwcSKkImxGq.jpg" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h4 id="bresenham-画线算法">Bresenham 画线算法</h4>
+<ul>
+<li><p>输入<span class="math inline">\(P_0(x_0,y_0),
+P_1(x_1,y_1)\)</span></p></li>
+<li><p><span class="math inline">\(e=2\Delta y-\Delta
+x\)</span></p></li>
+<li><p>当<span class="math inline">\(e\ge 0\)</span>，取上点 <span
+class="math inline">\(y_{i+1} = y_i+1\)</span>, <span
+class="math inline">\(e&#39;=e+2\Delta y - 2\Delta x\)</span>；</p>
+<p>当<span class="math inline">\(e&lt;0\)</span>，取下点 <span
+class="math inline">\(y_{i+1} = y_i\)</span>, <span
+class="math inline">\(e&#39;=e+2\Delta y\)</span>.</p></li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2023/12/30/JmBR6XfWMtEOC1F.jpg" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2023/12/30/9oOc6aq1bNjHnhL.jpg" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h3 id="圆形算法">圆形算法</h3>
+<h4 id="中点画圆算法">中点画圆算法</h4>
+<p>基本算法思想就是利用下一个点的绘制要么是右方的点，要么是右下侧的点。</p>
+<ul>
+<li><p>初始值 <span class="math inline">\(x=0,y=R\)</span>,<span
+class="math inline">\(d=1-R\)</span></p></li>
+<li><p><span class="math inline">\(d&lt;0\)</span>，y不变，<span
+class="math inline">\(d=d+2x+3\)</span></p>
+<p><span class="math inline">\(d\ge0\)</span>，y减一，<span
+class="math inline">\(d= d+2x_n-2y_n+5\)</span></p></li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2023/12/30/MqsiKHj7dQc6nWr.jpg" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h4 id="bresenham画圆算法">Bresenham画圆算法</h4>
+<p>利用下一个点的绘制要么是右方的点，要么是右下侧的点，要么是下方的点
+不断判定三个距离哪个最短则选择哪个。</p>
+<ul>
+<li>初始化 x=0, y=R, d=2(1-R)</li>
+<li>d&lt;0, 2(d+y)-1&lt;=0: x=x+1, d=d+2x+3</li>
+<li>d&lt;0, 2(d+y)-1&gt;0: x=x+1, y=y-1, d=d+2(x-y+3)</li>
+<li>d=0: x=x+1, y=y-1, d=d+2(x-y+3)</li>
+<li>d&gt;0, 2(d-x)-1&lt;=0: x=x+1, y=y-1, d=d-2(x-y+3)</li>
+<li>d&gt;0, 2(d-x)-1&gt;0: y=y-1, d=d-2(x-y+3)</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2023/12/30/DIuh4QR5KZMarbU.jpg" srcset="/img/loading.gif" lazyload
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h3 id="线宽和线型的处理">线宽和线型的处理</h3>
+<ul>
+<li>线宽处理：刷子绘制法，方形刷子绘制法，实区域填充法产生线宽</li>
+<li>线型处理：看成一个由布尔值对应的像素。每种线型对应一定的长度的像素，每个像素对应相应的布尔值。如果该像素对应的布尔值为1，则绘制该像素。如果对应的布尔值为0，则不绘制该像素。</li>
+</ul>
+<h3 id="区域填充">区域填充</h3>
+<ul>
+<li>检查某个像素是否在某个多边形区域内
+<ul>
+<li>转角法：计算点与多边形各个顶点的连线所构成的夹角之和（带方向），为0标明是在区域外；如果为360°标明在区域内。</li>
+<li>射线法：水平（右）或者垂直（下）方向做<strong>射线</strong>。判断该射线与多边形交点的个数。交点数为偶数在图形外；交点数奇数在图形内。</li>
+</ul></li>
+<li>扫描线法：
+<ul>
+<li>求交、排序、两两配对、线段着色</li>
+<li>（活性边表法好像不考？）</li>
+</ul></li>
+<li>边填充法：该多边形每一条边右边区域像素的颜色全部取补</li>
+<li>栅栏填充法：该多边形每一条边与栅栏之间像素的颜色全部取补</li>
+<li>种子填充法：四连通/八联通，从某个像素点开始BFS/DFS整某个像素点开始个区域（缺点：堆栈大量使用）</li>
+<li><strong>扫描线种子</strong>填充法：
+<ul>
+<li>栈顶像素出栈。</li>
+<li>沿扫描线对出栈像素的左右像素进行填充，直到遇到边界像素xl和xr为止</li>
+<li>在区间[xl,xr]中检查与当前扫描线相邻的上下两条扫描线，则把<strong>每个</strong>
+<em>非边界、未填充</em> 的
+<strong>像素区间</strong>的<strong>最右</strong>像素取为种子像素入栈。</li>
+</ul></li>
+</ul>
+<h3 id="图形反走样技术">图形反走样技术</h3>
+<p>问题：阶梯状边界；图形细节失真；狭小图形遗失：动画序列中时隐时现，产生闪烁。本质是用<strong>离散</strong>的像素去表示<strong>连续图形</strong>，从而引起失真。</p>
+<p>Bresenham区域反走样技术：将多边形每条边与具有一定面积的像素相交的面积大小分为8个等级。相交面积
+0-1/8 1/8-2/8……</p>
+<p><span class="math inline">\(S=(y_(i+1)+ y_i)/2=(y_i+ y_i+m)/2=
+y_i+m/2=e+m/2\)</span></p>
+<p>### 曲线生成</p>
+<p>要求：</p>
+<ul>
+<li>唯一性</li>
+<li>几何不变性：用<strong>相同的方法</strong>去拟合平面空间中<strong>不同坐标</strong>系下<strong>相同</strong>的几个点，得到的<strong>拟合曲线不变</strong>。直角坐标系不具备几何不变性。</li>
+<li>易于定界：矢量坐标系中<span
+class="math inline">\(p(t)=[x(t),y(t),z(t)]\)</span>，由于每一个变量都用统一的t标量来描述，非常容易确定其边界。</li>
+<li>统一性:可以在不增加其他参数的情况下进行维数的扩充。P(t) = [x(t)
+y(t)] =&gt; P(t) = [x(t) y(t) z(t)]</li>
+</ul>
+<h4 id="参数样条曲线">参数样条曲线</h4>
+<ul>
+<li>零阶几何连续性：<span
+class="math inline">\(G^0\)</span>连续性，首尾相接</li>
+<li>一阶几何连续性：<span
+class="math inline">\(G^1\)</span>连续性，首尾相接，且切矢量方向连续（一阶导数成比例）</li>
+<li>一阶几何连续性：<span
+class="math inline">\(G^2\)</span>连续性，首尾相接，一二阶导数成比例，曲率连续。</li>
+</ul>
+<figure>
+<img
+src="../../AppData/Roaming/Typora/typora-user-images/image-20231230120756856.png" srcset="/img/loading.gif" lazyload
+alt="image-20231230120756856" />
+<figcaption aria-hidden="true">image-20231230120756856</figcaption>
+</figure>
+<p>参数样条曲线数学表示：</p>
+<p><span
+class="math display">\[P(t)=\begin{bmatrix}x(t)\\y(t)\\z(t)\end{bmatrix}=\begin{bmatrix}x_0&amp;x_1&amp;\cdots&amp;x_n\\y_0&amp;y_1&amp;\cdots&amp;y_n\\z_0&amp;z_1&amp;\cdots&amp;z_n\end{bmatrix}\begin{bmatrix}1
+\\ \vdots\\t^n\end{bmatrix}=C\cdot T\quad t\in[0,1]\]</span></p>
+<p>Hermite插值样条：已知每个型值点的位置矢量及其切矢量，然后绘制出的样条曲线。</p>
+<h4 id="bezier曲线的生成">Bezier曲线的生成</h4>
+<p>Bezier曲线通过控制点来控制曲线的形状。把相邻的点连接起来形成一个特征多边形，并将其作为曲线的轮廓线，然后在每个特征多边形顶点配以伯恩斯坦（Bernstein)多项式作为权函数，对特征多边形的各顶点进行加权求和。
+<span class="math display">\[
+\begin{aligned}&amp;P(t)=\sum_{i=0}^nP_i\cdot BEZ_{i,n}(t)\quad
+t\in[0,1]\\\\&amp;BEZ_{i,n}(t)=C_n^it^i(1-t)^{n-i},\quad
+t\in[0,1]\end{aligned}
+\]</span> <strong>De
+Casteljau算法</strong>：<strong>递归</strong>法绘制点</p>
+<ol type="1">
+<li><p>用直线连接所有相邻的n个控制点，得到其特征多边形。</p></li>
+<li><p>如果t∈[0,1]，则在特征多边形的每一条边上按照t:(1-t)的比例寻找一组新的点，构成新的多边形，该多边形的边比前面的多边形少一条边。</p></li>
+<li><p>在新的多边形上，重复（2）的操作得到一组新的多边形。在n次这种操作之后，将得到一个点，该点即为曲线上的点。</p></li>
+</ol>
+<p><img src="https://s2.loli.net/2023/12/30/8cinNKfIslyD6ek.jpg" srcset="/img/loading.gif" lazyload alt="img" style="zoom:33%;" /></p>
+<h4 id="b样条曲线的生成">B样条曲线的生成</h4>
+<p>B样条曲线由n+m+1个控制点构成，其中<span class="math inline">\(P_0~
+P_n\)</span>这个n+1个控制点控制其第一段曲线， <span
+class="math inline">\(P_1~
+P_{n+1}\)</span>这个n+1个控制点控制其第二段曲线,…,依次类推，总共m段曲线构成B样条曲线。
+<span class="math display">\[
+P(t)=\sum_{i=0}^nP_i\cdot B_{i,n}(t) t\in[0,1] \\
+B_{i,n}(t){=}\color{red}\frac1{n!}\sum_{j=0}^{n-i}(-1)^jC_{n+1}^j(t+n-k-j)^n
+\]</span></p>
+<p>其第i段曲线可表示为：<span
+class="math inline">\(\begin{aligned}\mathsf{P}_{i,n}(t)&amp;=\sum_{\mathrm{k=0}}^nP_{i+\mathrm{k}}\cdot
+B_{k,n}(t)&amp;&amp;t\in[0,1]\end{aligned}\)</span></p>
+<p><img src="https://s2.loli.net/2023/12/30/3FjEzHkNd2laMPO.png" srcset="/img/loading.gif" lazyload alt="image-20231230132401533" style="zoom:33%;" /></p>
+<h2 id="第4章-图形变换与裁剪">第4章 图形变换与裁剪 ★</h2>
+<h3 id="图形矩阵变换">图形矩阵变换</h3>
+注：课程默认使用行向量表达，复合变换矩阵要写在列向量的右侧（从左向右结合）
+$$ T_{3D}=
+<span
+class="math display">\[\begin{bmatrix}1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\b_x&amp;b_y&amp;b_z&amp;1\end{bmatrix}\]</span>
+S_{3D}=
+<span
+class="math display">\[\begin{bmatrix}s_x&amp;0&amp;0&amp;0\\0&amp;s_y&amp;0&amp;0\\0&amp;0&amp;s_z&amp;0\\0&amp;0&amp;0&amp;1\end{bmatrix}\]</span>
+<p>\</p>
+<p><em>{}=</em>{}=_{}=$$
+<img src="https://s2.loli.net/2023/12/30/I8RODVgrYcBblxZ.png" srcset="/img/loading.gif" lazyload alt="image-20231230135219739" style="zoom: 33%;" /></p>
+<h4 id="平行投影">平行投影</h4>
+<h4 id="透视投影">透视投影</h4>
+<figure>
+<img src="https://s2.loli.net/2023/12/30/k1uw9eFMSd5OGv6.png" srcset="/img/loading.gif" lazyload
+alt="image-20231230135755972" />
+<figcaption aria-hidden="true">image-20231230135755972</figcaption>
+</figure>
+<p>灭点：不平行于投影平面的平行线（如平行于 z
+轴的平行线）的投影的汇聚点，这个点称为灭点。（一定落在同一个面上）</p>
+<p>主灭点：平行于三维坐标系坐标轴的平行线在投影平面上形成的灭点。</p>
+<h3 id="图形裁剪">图形裁剪</h3>
+<h4
+id="cohen-sutherland裁剪算法编码裁剪算法">Cohen-Sutherland裁剪算法（编码裁剪算法）</h4>
+<ol type="1">
+<li>对线段端点编码，定义为它所在区域的编码;</li>
+<li>快速判断“完全可见”，若两端点编码均为0，则完全可见。<strong>RC0=0且RC1=0</strong></li>
+<li>快速判断“完全不可见”，线段两端点编码的逻辑位“与”运算结果非零，则完全不可见。<strong>RC0&amp;RC1≠0</strong>说明直线段位于窗外的同一侧</li>
+<li>若2)、3)不满足，逐个端点判断其编码 CtCbCrCl(C3C2C1C0)
+中位是否为“1”，若是，则需求交，交点的x坐标进行排序，从而将原始线段分割成最多五段线段（四个交点）。然后根据（1）（2）步判断这些线段是否在区域内。</li>
+</ol>
+<h4 id="中点分割裁剪算法">中点分割裁剪算法</h4>
+<p>中点分割法的思想是通过不断求线段的中点，并<strong>采用Cohen-Sutherland算法可见性判断</strong>，然后确定可见区域内的线段。</p>
+<p>固定 P1，测试 P2是否在窗口内，若是，则 P2 是离 P1
+点最远的可见点。否则，将线段 P1P2 对分，求出中点 Pm，编码判断线段 PmP2
+是否全部在窗口外，若是，则舍弃PmP2，用 P1Pm代替
+P1P2；若不是，则用PmP2代替P1P2。</p>
+<p>本质就是固定一个端点求，用二分法求这个端点的最远的可见点。</p>
+<h4
+id="liang梁友栋-barsky裁剪算法">Liang（<strong>梁友栋）</strong>-Barsky裁剪算法</h4>
+<p>无论何种情况下，在裁剪区域之内的线段均为：AB∩RS ∩TU</p>
+<p><img src="https://s2.loli.net/2023/12/30/SE49AZKfWMmcTRj.png" srcset="/img/loading.gif" lazyload alt="image-20231230144247813" style="zoom:33%;" /></p>
+<h3 id="多边形裁剪">多边形裁剪</h3>
+<h4 id="sutherland-hodgman算法">Sutherland-Hodgman算法</h4>
+<p>基本思想：用裁剪窗口的每一条边去裁剪某个多边形</p>
+<ol type="1">
+<li>边 <span class="math inline">\(P_i P_{i+1}\)</span>
+可见一侧，输出<span class="math inline">\(P_{i+1}\)</span>。<br />
+</li>
+<li>边<span class="math inline">\(P_i
+P_{i+1}\)</span>不可见一侧，此时没有新的顶点输出。</li>
+<li>边<span class="math inline">\(P_i
+P_{i+1}\)</span>离开窗口，输出交点。</li>
+<li>边<span class="math inline">\(P_i
+P_{i+1}\)</span>进入窗口，该交点和顶点<span
+class="math inline">\(P_{i+1}\)</span>都输出。</li>
+</ol>
+<p>问题：裁剪<strong>凹多边形</strong>可能会出现多余的边</p>
+<h4 id="weiler-atherton算法">Weiler-Atherton算法</h4>
+<p>可适用于任意类型的多边形，包括有空洞的。将裁剪多边形称为CP，被裁剪多边形称为SP。</p>
+<ol type="1">
+<li>算法首先将CP和SP的顶点按照<strong>外部边界取顺时针</strong>，内部边界取逆时针的的方式将其构成环形链表。</li>
+<li>求出SP与CP边线的所有交点，并将这些交点插入到SP和CP的环形链表中，并<strong>标明</strong>交点是出点还是进点。</li>
+<li>算法从任意一个<strong>进点开始</strong>沿着SP的边线按照边线所标示的方向搜集顶点序列，当遇到<strong>出点</strong>时，则<strong>沿着CP的边线</strong>所标示的方向搜集顶点序列，当遇到<strong>进点</strong>时，则<strong>沿着SP的边线</strong>所标示的方向搜集顶点序列。</li>
+</ol>
+<p>搜索所有点。</p>
+<h3 id="图形消隐">图形消隐</h3>
+<h4 id="背面剔除算法">背面剔除算法</h4>
+<p>在取景变换（将物体从世界坐标系转换到摄像机坐标系）之前，将那些背离视点方向而不可见的景物表面剔除。</p>
+<ol type="1">
+<li>计算多边形的法向向量N和视线向量V。</li>
+<li>计算法向向量N和视线向量V的夹角θ的余弦Cosθ=N.V。</li>
+<li>cosθ＜0，即θ＞90°， 则该多边形表面为背面，是不可见的</li>
+</ol>
+<h4 id="画家算法">画家算法</h4>
+<p>将多边形按照离视点的远近进行排序（P221
+判断遮挡，分割），然后先画出被遮挡的多边形，再画出不被遮挡的多边形，用后画的多边形覆盖先画的多边形，从而达到自动消隐的目的。</p>
+<h4 id="weiler-atherton算法-1">Weiler-Atherton算法</h4>
+<p>算法思想：采用裁剪算法的思想对隐藏面进行消隐。</p>
+<p>算法步骤如下：</p>
+<ol type="1">
+<li>先进行初步的深度预排序，即将变换到屏幕坐标系中的景物表面多边形按各顶点的
+z 最小值进行排序，形成景物多边形表。</li>
+<li>以当前具有最大 z 值（即离视点最近）的景物表面作为裁剪多边形 CP
+。</li>
+<li>用CP对景物多边形表中排在后面的景物表面进行裁剪，产生内部多边形 Pin
+和外部多边形 Pout 。</li>
+<li>由于多边形顶点离视点最近的多边形表面不一定是真正排在最前面的可见面，因此，需比较CP与内部多边形
+Pin 的深度，检查 CP是否是真正离视点较近的多边形。
+如果是，则CP为可见表面，而位于裁剪多边形 CP之内的多边形 Pin
+为当前视点的隐藏面，可以消去该隐藏面；如果不是，则选择 Pin
+为新的裁剪多边形，重复步骤 3。</li>
+<li>将位于裁剪多边形之外的景物表面 Pout
+组成外裁剪结果多边形表，取表中深度最大即排在最前面的表面为裁剪多边形，重复步骤
+3，继续对表中其他景物表面进行裁剪。</li>
+<li>上述过程递归进行，直到外裁剪结果多边形表为空时为止</li>
+</ol>
+<h4 id="bsp树算法">BSP树算法</h4>
+<p>算法思想：平面分割二叉树</p>
+<p>先在场景中选取一剖分平面
+P1（与视点垂直的平面），将场景空间分割成两个半空间。它相应地把场景中的景物分成两组，相对于视点而言，一组景物多边形位于P1的前面，作为BSP树的左孩子（front)，另一组景物多边形位于P1的后面,作为BSP树的右孩子（Back)，如果有物体与
+P1相交，就将它分割为两个物体分别标识为A和B，再用平面 P2
+对所生成的两个子空间继续进行分割，并对每一子空间所含景物进行分类。上述空间剖分和景物分类过程递归进行，直至每一子空间中所含景物少于给定的阈值为止。</p>
+<p>优先绘制标识为“back”的子空间中所含的景物，这样可使得前面的物体覆盖后面的物体，从而实现物体的消隐。</p>
+<h4 id="深度缓冲区算法">深度缓冲区算法</h4>
+<p>目前大多数的硬件实现方法</p>
+<p>算法思想：对投影到显示屏上的每一个像素所对应的多边形表面的深度进行比较，然后取最近表面的属性值作为该像素的属性值。<strong>Z缓冲器（Z-buffer，深度缓冲区）</strong>，深度缓冲器只是帧缓冲器的扩充。</p>
+<ol type="1">
+<li>将场景中的所有多边形通过取景变换、透视变换变换到屏幕坐标系中，物体的深度比较可通过它们z值的比较来实现。</li>
+<li>初始化深度缓冲存储器和帧缓冲器。深度缓冲器应初始化为离视点最远的最大z值，帧缓冲器应初始化为背景的属性值。</li>
+<li>扫描待显示的每一个多边形，比较当前多边形所覆盖的每一个像素点的深度值，如果其深度值比深度缓冲区中当前像素的深度值小，则取代原来的深度值，并将对应像素的属性值保存到帧缓冲区对应的位置中。反之，则不做任何处理。循环该步骤，直到处理完所有的多边形。</li>
+</ol>
+<h4 id="warnock算法">Warnock算法</h4>
+<p>该算法将整个观察范围细分成越来越小的矩形单元，直至每个单元仅包含单个可见面片的投影或不包含任何面片。</p>
+<p>单纯窗口：景物已经足够简单，比如没有任何可见物体，或者窗口已被一个可见面片完全充满</p>
+<p>算法思想：将非单纯的窗口四等分为4个子窗口（四叉树），对每个子窗口再进一步判别是否是单纯的，直到窗口单纯或窗口边长已缩减至一个像素点为止。</p>
+<ol type="1">
+<li>对每个窗口进行判断，若画面中所有多边形均与此窗口分离，即此窗口为空，则按背景光强或颜色直接显示而无需继续分割。</li>
+<li>若窗口中仅包含一个多边形，则窗口内多边形外的区域按背景光强或颜色填充，多边形内按多边形相应的光强或颜色填充。</li>
+<li>若窗口与一个多边形相交，则窗口内多边形外的区域按背景光强或颜色填充，相交多边形内位于窗口内的部分按多边形相应的光强或颜色填充。</li>
+<li>若窗口被一个多边形包围且窗口内无其他的多边形，则窗口按此包围多边形相应的光强或颜色填充。</li>
+<li>若窗口至少被一个多边形包围且此多边形距离视点最近，则窗口按此离视点最近的包围多边形的相应光强或颜色填充。</li>
+<li>若以上条件都不满足，则继续细分窗口，并重复以上测试。</li>
+</ol>
+<p>四元素，看不懂…</p>
+<h2 id="第5章-模型生成方法">第5章 模型生成方法</h2>
+<h3 id="模型的表示方法">模型的表示方法</h3>
+<p>三角面：顶点+索引</p>
+<h3 id="参数多项式曲面">参数多项式曲面</h3>
+<p><span class="math display">\[
+\begin{cases}x=x(u,v)\\y=y(u,v)\\z=z(u,v)&amp;\end{cases}\quad(u,v)\in[0,1]\times[0,1]
+\]</span></p>
+<p><span class="math display">\[
+P(u,v)=\sum_{i=0}^m\sum_{j=0}^na_{ij}u^i\nu^j=U^\mathrm{T}AV\quad(u,v)\in[0,1]\times[0,1]
+\]</span></p>
+<h4 id="bezier曲面">Bezier曲面</h4>
+<p><span class="math display">\[
+P(u,v)=\sum_{i=0}^m\sum_{j=0}^nP_{ij}BEZ_{i,m}(u)BEZ_{j,n}(v)\quad
+u\in[0,1],v\in[0,1]\]</span> $$</p>
+<h4 id="b-样条曲面">B 样条曲面</h4>
+<p><span class="math display">\[
+P(u,v)=\sum_{i=0}^m\sum_{j=0}^nP_{ij}B_{i,k}(u)B_{j,h}(\nu)\quad
+u\in[0,1],\nu\in[0,1]
+\]</span></p>
+<h3 id="d地形模拟">3D地形模拟</h3>
+<h4 id="diamond-square算法">Diamond-Square算法</h4>
+<ol type="1">
+<li>给定一个四边形,四个顶点的坐标(包含高度)，定义一初始高度因子h和一缩放倍数b。</li>
+<li>迭代，先求出四边形的中心点高度为顶点平均高度+h*r的随机数，再分别求出4个边的中点，高度为两端点高度的平均值+h*r</li>
+<li>修正高度因子 h=h/b，用(2)的方法分别对这 4
+个小正方形进行处理。直到达到所期望的山形细腻程度。</li>
+</ol>
+<h3 id="植物形态模拟">植物形态模拟</h3>
+<h4 id="l系统的植物形态模拟">L系统的植物形态模拟</h4>
+<ul>
+<li>F：从当前位置向前走h的长度，同时画线</li>
+<li>G：从当前位置向前走h的长度，但不画线</li>
+<li>+：从当前方向向左转δ角度</li>
+<li>−：从当前方向向右转δ角度</li>
+<li>｜：原地转向180°</li>
+</ul>
+<p>定义一个产生式，通过产生式生成新的符号串。如果进行多次迭代，可生成更长的新的符号串，然后根据所产生的符号串来生成对应的树。</p>
+<figure>
+<img src="https://s2.loli.net/2023/12/31/NOakHouzQ9ECB8D.png" srcset="/img/loading.gif" lazyload
+alt="image-20231231094949109" />
+<figcaption aria-hidden="true">image-20231231094949109</figcaption>
+</figure>
+<h4 id="迭代函数算法iterated-function-systemifs">迭代函数算法（Iterated
+Function System，IFS）</h4>
+<p>IFS系统由一个压缩仿射变换集<span
+class="math inline">\(X=\{w_1,w_2,…,w_N\}\)</span>和对应概率集<span
+class="math inline">\(P=\{p_1,p_2,…,p_N\}\)</span>组成 <span
+class="math display">\[
+\begin{gathered}\sum_{j=1}^Np_j=1,p_j&gt;0,j=1,2,\cdots,N\\\boldsymbol{w}_j\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}\boldsymbol{a}_j&amp;\boldsymbol{b}_j\\\boldsymbol{c}_j&amp;\boldsymbol{d}_j\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}+\begin{pmatrix}\boldsymbol{e}_j\\\boldsymbol{f}_j\end{pmatrix},\boldsymbol{j}=1,2,\cdots,N\end{gathered}
+\]</span> 输入：初始点的坐标x,y; 输出：屏幕上显示的树</p>
+<ol type="1">
+<li>输入N或者设定N为某个固定值, 输入或设置迭代次数M。</li>
+<li>随机生成N个W概率值，并保存到w[N]。</li>
+<li>随机生成N个概率值，并保存到P[N]。</li>
+<li>随机生成概率值p。</li>
+<li>轮盘选择法。如果P&lt;P[0],则w= w[0]; 反之，如果P&lt;p[0]+P[1],则w=
+w[0]+w[1];….</li>
+<li>根据前面的公式更新x,y。</li>
+<li>在屏幕上(x,y)的位置以一定的亮度或者颜色显示该像素。</li>
+<li>循环执行步骤（4）~（7）M次。</li>
+</ol>
+<figure>
+<img src="https://s2.loli.net/2023/12/31/sywN25MZjOcraDW.png" srcset="/img/loading.gif" lazyload
+alt="image-20231231100959845" />
+<figcaption aria-hidden="true">image-20231231100959845</figcaption>
+</figure>
+<h3
+id="粒子系统雨雪现象模拟液态流体模拟">粒子系统：雨雪现象模拟、液态流体模拟</h3>
+<ol type="1">
+<li>生成一定数量的初始粒子，对其各个属性进行赋值。</li>
+<li>更新粒子的运动参数，比如速度，加速度，位置，生命周期等。<br />
+</li>
+<li>针对每一个粒子，在粒子对应的位置上绘制位图，并进行位移的映射，背景融合等。</li>
+<li>删除已经消亡的粒子，释放其占用的资源。</li>
+</ol>
+<p>在模拟时都是在每一帧对其属性进行更新。</p>
+<ul>
+<li>基于粒子系统的喷泉模拟</li>
+<li>基于粒子系统的瀑布模拟</li>
+</ul>
+<h3 id="气态流体模拟">气态流体模拟</h3>
+<p>细胞自动机：又称为元胞自动机（Cellular
+Automata），是一种在空间和时间上都离散的演化动力系统。每个元胞之上都有若干种离散或者连续的状态，这些状态在每一个时间步都会按照相同的规则发生变化，于是形成了整个元胞自动机的演化过程。</p>
+<p>例子：火焰的模拟，<span
+class="math inline">\(s_{i,j}^t\)</span>局部温度<span
+class="math inline">\(u_{i,j}^t\)</span>燃料供应……</p>
+<h2 id="第6章-图形显示技术">第6章 图形显示技术</h2>
+<h3 id="光照模型">光照模型</h3>
+<ul>
+<li>光照模型分类：几何光照模型（局部光照模型和整体光照模型）、物理光照模型</li>
+<li>光源的分类：点光源、线光源、面光源、体光源</li>
+</ul>
+<h4 id="光照基本模型">光照基本模型</h4>
+<p><strong>漫反射光</strong>(diffuse
+Reflection)：当光线照射到物体表面，有一部分光线将进入物体内部，部分会被吸收，而另一部分会从内部向各个方向散射并返回表面，这就形成漫反射光。<span
+class="math inline">\(\begin{aligned}c_d&amp;=\max(\texttt{L.n, 0})\cdot
+B_L\otimes m_d\end{aligned}\)</span></p>
+<p><strong>环境光照</strong>（Ambient
+Light）：从其他物体发射过来的光线照射到物体所形成的间接光照。<span
+class="math inline">\(c_a=A_L\otimes\boldsymbol{m}_d\mid\)</span></p>
+<p><strong>镜面光照</strong>（Specular
+reflection)：一部分光将被反射，另一部分光被折，被反射的部分称为镜面反射光，只有观察者在特定的角度才能看到。<span
+class="math inline">\(\mathbf{c}_s=\max\left(\mathbf{L}\cdot\mathbf{n},0\right)\cdot\mathbf{B}_L\otimes\mathbf{R}_F(\alpha_h)\frac{m+8}8{\left(\mathbf{n}\cdot\mathbf{h}\right)}^m\)</span></p>
+<p><strong>光照整体模型</strong>： <span class="math display">\[
+\begin{aligned}
+\text{LitColor}&amp; =\mathbf{c}_a+\mathbf{c}_d+\mathbf{c}_s  \\
+&amp;=\mathbf{A}_L\otimes\mathbf{m}_d+\max\left(\mathbf{L}\cdot\mathbf{n},0\right)\cdot\mathbf{B}_L\otimes\left(\mathbf{m}_d+\mathbf{R}_F(\alpha_h)\frac{m+8}8{\left(\mathbf{n}\cdot\mathbf{h}\right)}^m\right)
+\end{aligned}
+\]</span></p>
+<ul>
+<li>L:光源的光向量 n: 表面法向 h: 光向量与观察向量之间的中间向量 $A_L:
+$入射的环境光量。 <span
+class="math inline">\(m_d:\)</span>根据表面漫反射率而反射的入射光量。
+L.n: 光线与法向量之间夹角的余弦。 <span
+class="math inline">\(a_h{:}\)</span> 中间向量h与光向量之间的夹角。
+<span class="math inline">\(R_F(a_h):\)</span> 中间向量h
+(由表面点指向观察点的单位向量) 所反射到观察者眼中的光量。 m:
+控制表面的粗糙度。<span
+class="math inline">\((\mathbf{n}\cdot\mathbf{h})^m\)</span>线h与宏观表面法向n之间夹角为<span
+class="math inline">\(\Theta h\)</span>的所有为平面片段。 <span
+class="math inline">\(\frac{m+8}{s}:\)</span>在镜面发射过程中，为模拟能量守恒所采用的归一化因子。</li>
+</ul>
+<p>环境光照</p>
+<ul>
+<li>环境光模型（物体表面对环境光反射的强度）</li>
+<li>漫反射模型（观察者从不同角度观察到的反射光具有同样的亮度，这样的反射光成为漫反射光）</li>
+<li>镜面反射（反射光 =&gt; 对入射光的直接反射）</li>
+<li>Phong模型（环境光 + 漫反射光 + 镜面反射光）</li>
+</ul>
+<p><strong>整体光照模型：</strong>光线追踪</p>
+<h3 id="明暗处理">明暗处理</h3>
+<h4 id="gouraud明暗处理">Gouraud明暗处理</h4>
+<p>基本思想：对离散的<strong>顶点颜色</strong>采样进行双线性插值得到内部点颜色。</p>
+<ol type="1">
+<li>计算每个多边形顶点的平均单位法矢量</li>
+<li>对每个顶点根据简单光照模型计算光强</li>
+<li>在多边形表面上对顶点颜色进行线性插值</li>
+</ol>
+<p>特点：（1）只适用于简单的漫反射模型（2）线性光强度插值会引起马赫带效应</p>
+<h4 id="phong明暗处理">Phong明暗处理</h4>
+<ol type="1">
+<li>计算多边形顶点处曲面法向矢量的平均值。</li>
+<li>对离散的多边形顶点<strong>法向量</strong>进行<strong>双线性插值</strong>，得到面上每个点的法向矢量。</li>
+<li>按光照模型确定多边形内部各点的光强</li>
+</ol>
+<h3 id="纹理细节模拟">纹理细节模拟</h3>
+<p><strong>颜色纹理</strong>：将图片映射到物体表面的方式来实现。将图片的四个角点的坐标分别定义为(0,0)
+(0,1) (1,1) (1,0)。三角形每一个顶点均对应图片的一个(u,v)坐标。</p>
+<p><strong>几何纹理</strong>：物体表面的微观几何形状（粗燥程度）。物体表面法向量矢量的修改可通过在各采样点的位置上增加一个扰动函数，对其做微小的扰动，从而改变表面的微观几何现状来实现。</p>
+<p><strong>过程纹理</strong>：通过过程迭代函数生成纹理。目的是用简单的参数来逼真的描述复杂的自然纹理细节。例如：噪声函数，湍流函数等来动态的生成天空，水流等。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E7%9B%B8%E5%85%B3/">大学相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/12/31/47/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机网络期末复习 - 期末复习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/24/48/">
+                        <span class="hidden-mobile">人机交互 - 期末复习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <!-- begin 评论 -->
+  <div id="valine"></div> 
+  <!-- end 评论 -->
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+       
+        var options = Object.assign(
+          {"appId":"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz","appKey":"IVwl94UT4wnOPWUgwn4AfOCE","path":"window.location.pathname","placeholder":"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…","avatar":"robohash","avatarForce":true,"meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","admin_email_hash":"393669798@qq.com","enableQQ":true,"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        ) 
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+ 
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    <!--向顶部滚动的箭头-->
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!--自定义底部 HTML 内容-->
+    
+  </main>
+  
+  <!--页脚-->
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <!---->
+     &copy; <script type="text/javascript"> var myDate = new Date().getFullYear(); document.write(myDate) </script> <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+
+      <!--通过API接口作为首页副标题的内容-->
+      
+        typing(title)  //tying打字机
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
