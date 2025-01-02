@@ -1,0 +1,1177 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo/favicon.png">
+  <link rel="icon" href="/img/logo/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个神秘的人">
+  <meta name="author" content="epochxi">
+  <meta name="keywords" content="dramwig">
+  <meta name="description" content="云计算与并行技术复习 开卷 1.概述 云计算定义、特点  云计算是一种商业计算模型。它将计算任务分布在大量计算机构成的资源池上，使各种应用系统能够根据需要获取计算力、存储空间和信息服务。 计算是分布式计算、并行计算、效用计算、网络存储、虚拟化、负载均衡、热备份冗余等传统计算机和网络技术发展融合的产物。 云计算是通过网络按需提供可动态伸缩的廉价计算服务。 云计算是一种按使用量付费的模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云计算与并行技术期末复习">
+<meta property="og:url" content="http://example.com/2025/01/02/61/index.html">
+<meta property="og:site_name" content="风倾客栈 ✧">
+<meta property="og:description" content="云计算与并行技术复习 开卷 1.概述 云计算定义、特点  云计算是一种商业计算模型。它将计算任务分布在大量计算机构成的资源池上，使各种应用系统能够根据需要获取计算力、存储空间和信息服务。 计算是分布式计算、并行计算、效用计算、网络存储、虚拟化、负载均衡、热备份冗余等传统计算机和网络技术发展融合的产物。 云计算是通过网络按需提供可动态伸缩的廉价计算服务。 云计算是一种按使用量付费的模">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/12/24/C45oKDuUjx8MlqS.png">
+<meta property="og:image" content="https://s2.loli.net/2024/12/24/D2TJOIz5naEirup.png">
+<meta property="og:image" content="https://s2.loli.net/2024/12/25/JIaOfv1j6rMDchg.png">
+<meta property="og:image" content="https://s2.loli.net/2024/12/25/vKp4g1iyNx3wSYL.png">
+<meta property="og:image" content="https://s2.loli.net/2024/12/25/txJhL2RUjIryElo.png">
+<meta property="article:published_time" content="2025-01-02T04:14:00.000Z">
+<meta property="article:modified_time" content="2025-01-02T04:15:08.839Z">
+<meta property="article:author" content="epochxi">
+<meta property="article:tag" content="云计算">
+<meta property="article:tag" content="并行技术">
+<meta property="article:tag" content="期末复习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2024/12/24/C45oKDuUjx8MlqS.png">
+  
+  <title>云计算与并行技术期末复习 &lt; 风倾客栈 ✧</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/tomorrow-night-bright.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hovor","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"fa7203cd147458a2bb6b7c7fc7bd03a3","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <!--菜单栏-->
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="iconfont icon-home-fill"></i> <!-- homeͼ�� -->
+      <strong>风倾客栈</strong> <!-- �������� -->
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content --> <!-- �˵��б� -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                朋友
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+    <!--视差滚动-->
+    <div class="banner" id="banner" parallax=true   
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <!--副标题 (打字机)-->
+            <span class="h2" id="subtitle" title="云计算与并行技术期末复习">
+              <!--typing打字机-->
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2025-01-02 12:14" pubdate>
+        2025年1月2日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      13k 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">云计算与并行技术期末复习</h1>
+            
+            <div class="markdown-body">
+              <h1 id="云计算与并行技术复习">云计算与并行技术复习</h1>
+<p>开卷</p>
+<h2 id="概述">1.概述</h2>
+<h3 id="云计算定义特点">云计算定义、特点</h3>
+<ul>
+<li>云计算是一种<strong>商业计算模型</strong>。它将计算任务分布在大量计算机构成的资源池上，使各种应用系统能够根据需要获取计算力、存储空间和信息服务。</li>
+<li>计算是<strong>分布式计算、并行计算、效用计算、网络存储、虚拟化、负载均衡、热备份冗余</strong>等传统计算机和网络技术发展融合的产物。</li>
+<li>云计算是通过网络按需提供<strong>可动态伸缩</strong>的<strong>廉价计算服务</strong>。</li>
+<li>云计算是一种<strong>按使用量付费</strong>的模式，这种模式提供可用的、便捷的、按需的网络访问，进入可配置的<strong>计算资源共享池</strong>（资源包括网络、服务器、存储、应用软件、服务），这些资源能够被快速提供，只需投入<strong>很少的管理工作</strong>，或与服务供应商进行很少的交互。</li>
+</ul>
+<p>7个特点：<u>超大规模、虚拟化、高可靠性、通用性、高可伸缩性、按需服务、极其廉</u></p>
+<h3
+id="云计算的服务类型saaspaasiaas">云计算的服务类型，SaaS,PaaS,IaaS</h3>
+<ul>
+<li>将软件作为服务SaaS：一种通过Internet提供软件的模式，用户无需购买软件，而是向提供商租用基于Web的软件。</li>
+<li>将平台作为服务PaaS：是将服务器平台或者开发环境作为服务进行提供。开发简单、部署简单、维护简单。</li>
+<li>将基础设施作为服务IaaS：服务提供商将多台服务器组成的“云端”服务（包括内存、I/O设备、存储和计算能力等等）作为计量服务提供给用户。</li>
+<li>容器即服务CaaS：也称为容器云，是以容器为资源分割和调度的基本单位，封装整个软件运行时环境，为开发者和系统管理员提供用于构建、发布和运行分布式应用的平台。</li>
+</ul>
+<p><img src="https://s2.loli.net/2024/12/24/C45oKDuUjx8MlqS.png" srcset="/img/loading.gif" lazyload alt="image-20241224163028568" style="zoom: 67%;" /></p>
+<h3
+id="云部署模式公有云私有云混合云">云部署模式：公有云、私有云、混合云</h3>
+<ul>
+<li>公有云：为外部客户提供服务的云，它所有的服务是供别人使用，而不是自己用。在此种模式下，应用程序、资源、存储和其他服务，都由云服务供应商提供给用户，这些服务多半是免费的，也有部分按需按使用量来付费，这种模式只能使用互联网访问和使用。</li>
+<li>私有云：企业自己使用的云，它所有的服务不是供别人使用，而是供自己内部人员或分支机构使用</li>
+<li>混合云：指供自己和客户共同使用的云，它所提供的服务既可以供别人使用，也可以供自己使用。</li>
+</ul>
+<h3 id="多租户的概念">多租户的概念</h3>
+<ul>
+<li>多租户应用---多个租户共享硬件资源，硬件资源提供<strong>一个</strong>共享的应用和数据库实例。每个租户认为自己独占资源，因为实例提供高度的定制以满足租户所需。</li>
+<li>指一个软件实例服务于多个用户的架构。每个用户称为一个租户</li>
+<li>随着“多租户”在应用架构中实现层次的增高，租户间共享资源也越来越多，资源利用率越来也高，单位资源成本越来越低，租户间的隔离性越来越差。
+<ul>
+<li>租户间隔离性降低，会导致许多问题：如数据安全性降低，
+租户间性能、异常相互影响等 等。</li>
+<li><strong>在单位资源成本和租户隔离成本取最佳平衡点，就能找到最合理的架构。</strong></li>
+</ul></li>
+</ul>
+<h3 id="云计算的优势">云计算的优势</h3>
+<ul>
+<li>减少企业IT的电力和制次成本、管理成本、系统采购成本；大型数据中心减少网络、存储、管理成本；减少电力消耗，平衡区域用电</li>
+<li>提供弹性的服务，在超大资源池中动态分配和释放资源；云计算平台的规模极大，
+比较容易平稳整体负载；资源利用率达到80%左右，是传统模式5～7倍；低成本+高利用率=节约总成本</li>
+</ul>
+<h3 id="重要的商用云平台">重要的商用云平台</h3>
+<ul>
+<li>亚马逊云计算：Amazon EC2、Amazon S3、Amazon分布式架构Dynamo</li>
+<li>谷歌云计算：Google文件系统GFS、分布式数据处理MapReduce、分布式结构化数据表Bigtable</li>
+<li>其他：微软Windows
+Azure操作系统、中国移动BigCloud、阿里/腾讯/百度/华为/京东云</li>
+</ul>
+<h2 id="虚拟化掌握基本概念">虚拟化（掌握基本概念）</h2>
+<h3
+id="虚拟化架构寄居虚拟化裸机虚拟化">虚拟化架构：寄居虚拟化、裸机虚拟化</h3>
+<ul>
+<li>寄居虚拟化：虚拟化层称为虚拟机监控器（VMM）、系统损耗比较大、没有独立的Hypervisor层、操作系统层虚拟化虚拟服务器必须运行同一操作系统</li>
+<li>裸机虚拟化：架构中的VMM也可以认为是一个操作系统，一般称为Hypervisor、Hypervisor实现从虚拟资源到物理资源的映射、Hypervisor实现了不同虚拟机的运行上下文保护与切换，保证了各个客户虚拟系统的有效隔离</li>
+</ul>
+<h3
+id="三种cpu虚拟化技术全虚拟化半虚拟化硬件辅助虚拟化">三种CPU虚拟化技术（全虚拟化、半虚拟化、硬件辅助虚拟化）</h3>
+<ul>
+<li>全虚拟化技术：VMM<strong>捕获</strong>客户操作系统异常，进行<strong>翻译</strong>、<strong>模拟</strong>的过程</li>
+<li>半虚拟化：修改操作系统内核，替换掉不能虚拟化的指令，通过超级调用（hypercall）直接和底层的虚拟化层hypervisor来通讯。</li>
+<li>硬件辅助虚拟化：CPU厂商支持，Intel 引入了 Intel-VT 技术，VMM运行 VMX
+root operation、客户 OS 运行在 VMX non-root operation模式</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2024/12/24/D2TJOIz5naEirup.png" srcset="/img/loading.gif" lazyload
+alt="image-20241224174818292" />
+<figcaption aria-hidden="true">image-20241224174818292</figcaption>
+</figure>
+<h3 id="内存虚拟化的基本原理">内存虚拟化的基本原理</h3>
+<p>内存虚拟化技术：把物理内存统一管理，包装成多个<strong>虚拟的物理内存</strong>提供给若干虚拟机使用，每个虚拟机拥有各自独立的内存空间。</p>
+<ul>
+<li>客户机采用客户页表维护虚拟地址到客户机物理地址的动态映射；</li>
+<li>VMM负责维护客户机物理地址到宿主物理地址的动态映射；</li>
+</ul>
+<h3 id="io虚拟化的概念">IO虚拟化的概念</h3>
+<p>I/O设备虚拟化技术：把真实的设备统一管理起来，包装成多个虚拟设备给若干个虚拟机使用，响应每个虚拟机的设备访问请求和I/O请求。</p>
+<h3
+id="虚拟机迁移内存网络资源迁移">虚拟机迁移、内存、网络、资源迁移</h3>
+<ul>
+<li>虚拟机迁移：将虚拟机实例从源宿主机迁移到目标宿主机，并且在目标宿主机上
+能够将虚拟机运行状态恢复到其在迁移之前相同的状态，以便能够继续完成应用程序的任务。
+<ul>
+<li>预迁移、预定资源、预复制、停机复制、提交、启动</li>
+</ul></li>
+<li>内存迁移：
+（虚拟机迁移<strong>最困难</strong>的部分）Push阶段、Stop-and-Copy阶段、Pull阶段。</li>
+<li>网络迁移：在局域网内，可以通过发送ARP重定向包，将VM的IP地址与目的机器的MAC地址相绑定，之后的所有包就可以发送到目的机器上。</li>
+<li>存储设备迁移：以共享的方式共享数据和文件系统、NAS（网络连接存储）作为存储设备共享数据。</li>
+<li>虚拟机隔离：虚拟机之间在没有授权许可的情况下，互相之间不可通信、不可联系的一种技术。</li>
+</ul>
+<h3 id="openstack的基本概念">Openstack的基本概念</h3>
+<ul>
+<li><p>旨在为公共及私有云的建设与管理提供软件的开源项⽬</p></li>
+<li><p>三个主要的服务成员：计算服务（Nova）、存储服务（Swift）、镜像服务（Glance）</p></li>
+<li><p>计算服务Nova：计算系统的结构控制器，其能根据用户需求来提供计算服务，
+配置虚拟机规格，负责对虚拟机进行创建，并管理虚拟机使用的整个生命周期</p></li>
+<li><p>存储服务主要包括Swift（提供镜像存储）、Glance（虚拟磁盘镜像目录分类管理及镜像库存储管理功能）和Cinder（数据块存储服务）</p></li>
+<li><p>特点：⾼数据持久性、对称的系统架构、⽆限的可扩展性、⽆单点故障、简单可依赖</p></li>
+</ul>
+<h2 id="分布式文件系统谷歌文件系统gfs">3.
+分布式文件系统（谷歌文件系统GFS）</h2>
+<h3 id="gfs的设计动机假设条件">GFS的设计动机、假设条件</h3>
+<ul>
+<li>组件故障是常态而非例外；按照传统的标准，文件是巨大的（必须重新审视设计假设和参数，如
+I/O
+操作和数据块大小）；大多数文件都是通过添加新数据而不是覆盖现有数据进行变异的（优化追加操作并保证原子性）；共同设计应用程序和文件系统应用程序接口</li>
+<li>组件故障率高、少量大文件、两种读数、将数据追加到文件的许多大型连续写入操作、为多个客户端提供定义明确的语、高持续带宽比低延迟更重要</li>
+</ul>
+<h3 id="gfs的接口及操作">GFS的接口及操作</h3>
+<ul>
+<li>文件系统界面 ；按目录分级组织，并用路径名标识；业务：常规操作
+（创建、删除、打开、关闭、读取和写入文件）特别行动
+（快照和记录附加）</li>
+</ul>
+<h3 id="gfs的基本架构">GFS的基本架构</h3>
+<ul>
+<li>一个 GFS 集群 ；文件块；系统元数据 ；全系统活动</li>
+</ul>
+<h3 id="文件块元数据的概念">文件块、元数据的概念</h3>
+<ul>
+<li>全局元数据存储在主文件和块命名空间</li>
+</ul>
+<h3 id="单master的优化机制">单master的优化机制</h3>
+<ul>
+<li>最大限度地减少主节点参与：切勿通过 master
+读取和写入文件数据；在缓存的信息过期或文件重新打开之前，不再进行
+client-master 交互；在同一请求中请求多个 chunk</li>
+</ul>
+<h3 id="文件块的大小设计">文件块的大小设计</h3>
+<ul>
+<li>存储为块的文件：固定大小 （64MB）</li>
+<li>每个块副本都存储为普通 Linux 文件</li>
+<li>根据需要扩展。</li>
+</ul>
+<h3 id="元数据的设计">元数据的设计</h3>
+<ul>
+<li><p>全局元数据存储在 master 上</p></li>
+<li><p>内存数据库（In-memory data structure）：快、内存限制</p></li>
+<li><p>数据块位置：不保留永久记录、启动时轮询块服务器、Heartbeat
+Message</p></li>
+<li><p>操作日志：关键元数据更改的历史记录、在多个远程计算机上复制它、重播
++ 检查点</p></li>
+</ul>
+<h3
+id="系统交互活动租赁与写一致性机制流程数据流优化原子记录追加等">系统交互活动：租赁与写一致性机制（流程）、数据流优化、原子记录追加等</h3>
+<ul>
+<li><strong>租约和变更顺序</strong>：租约：在不同副本中保持一致的突变顺序、主要（带租约的副本）、最大限度减少管理开销
+(60s) ；突变：更改内容或元数据的操作，如写入或附加操作
+<ul>
+<li>租赁与写一致性机制流程：1客户端向主站发送请求、2主站回复客户端、3客户端将数据推送到所有副本、4客户端向主设备发送写入请求、5主副本会将写入请求转发给所有辅助副本、6二级回复一级、7主站回复客户端</li>
+</ul></li>
+<li>数据流优化：
+<ul>
+<li>充分利用每台机器的网络带宽：数据是沿着分块服务器链线性推送的</li>
+<li>避免网络瓶颈和高延迟链路：将数据转发给尚未收到数据的 "最近
+"机器</li>
+<li>最大限度地减少延迟：通过 TCP 连接进行管道数据传输</li>
+</ul></li>
+<li>原子记录方法：将大型写入操作分解为多个写入操作、一致性模型、<strong>记录附加</strong>（
+至少一次原子式地将数据添加到文件中）、附加数据的大小
+、保证数据作为原子单元至少被写入一次</li>
+<li>快照：复制文件或目录树、写入时复制、快照后写入</li>
+</ul>
+<h3
+id="master的操作副本放置的原则垃圾回收机制旧副本检测">Master的操作：副本放置的原则、垃圾回收机制、旧副本检测</h3>
+<ul>
+<li><p>副本放置的原则：多级高度分布、
+最大限度地提高数据可靠性和可用性、最大限度地利用网络带宽、将大块复制分散到各个机架上</p></li>
+<li><p>垃圾回收机制：重命名为包含删除时间戳的隐藏名称；如果文件存在超过三天，则应删除
+；使用 HeartBeat 消息删除块服务器上的副本</p></li>
+<li><p>旧副本检测：块版本号
+当主模块授予新租约时，增加租约；如果副本不可用，则不高级
+；在定期垃圾回收中删除过期副本</p></li>
+</ul>
+<h2 id="分布式文件系统小文件系统haystack">4.
+分布式文件系统（小文件系统Haystack）</h2>
+<h3 id="haystack的设计背景">Haystack的设计背景</h3>
+<ul>
+<li>Facebook 存储超过 2600 亿张图片、用户每周上传 10
+亿张新图片、峰值时每秒提供超过 100
+万张图片、用于图像服务的两种工作负载（个人资料图片 – 访问量大、尺寸较小
+；相册 – 间歇性访问，开始时较高，随时间减少（长尾））</li>
+<li>需求：高吞吐量和低延迟、容错、成本效益、简单性</li>
+</ul>
+<h3 id="haystack-directory的功能">Haystack Directory的功能</h3>
+<ul>
+<li>提供从逻辑卷到物理卷的映射；在逻辑卷之间对写入进行负载平衡；确定照片请求应由
+CDN 还是由 Haystack Cache 处理；识别只读的逻辑卷</li>
+</ul>
+<h3 id="haystack-cache的功能">Haystack Cache的功能</h3>
+<ul>
+<li>分布式哈希表，使用 photo 的 id 来定位缓存的数据；接收来自 CDN
+和浏览器的 HTTP 请求；如果满足两个条件，则将照片添加到缓存...</li>
+</ul>
+<h3 id="haystack-store的功能">Haystack Store的功能</h3>
+<ul>
+<li>每台 Store 计算机管理多个物理卷；可以仅使用对应逻辑卷的 id
+和照片的文件偏移量快速访问照片；处理三种类型的请求（读取 写入
+删除）</li>
+</ul>
+<h3 id="needle的结构index-file的结构">needle的结构、index
+file的结构</h3>
+<ul>
+<li>一个针（needle）的唯一标识是由它的 &lt;Offset, Key, Alternate
+Key（备用键）,
+Cookie&gt;元组决定的，其中偏移量是指针在干草堆存储中的偏移量。</li>
+<li>索引文件提供了在存储区中查找特定针所需的最少元数据
+<ul>
+<li>主要目的：允许将 needle 元数据快速加载到内存中，而无需遍历较大的
+Haystack 存储文件</li>
+</ul></li>
+</ul>
+<h2 id="mapreduce">5. MapReduce</h2>
+<h3 id="背景知识">背景知识</h3>
+<ul>
+<li>大数据处理很困难，设计一个新的抽象化并隐藏实现的混乱细节！</li>
+</ul>
+<h3 id="map和reduce的基本概念">Map和Reduce的基本概念</h3>
+<ul>
+<li>Map：处理输入键/值对、生成一组中间对</li>
+<li>Reduce：合并特定键的所有中间值、生成一组合并的输出值</li>
+</ul>
+<h3 id="mapreduce的例子">MapReduce的例子</h3>
+<ul>
+<li>有一个句子，我们想计算每个 word 的出现次数
+<ul>
+<li>Map：遍历输入，并为每个单词返回一个 （<word>， 1） 元组。将相同的
+key 分组并按 key 排序。</li>
+<li>Reduce：Sum每个列表中的值。</li>
+</ul></li>
+<li>URL 访问频率计数：Map: &lt;URL,1&gt;Reduce: &lt;URL, total
+count&gt;</li>
+</ul>
+<h3 id="mapreduce实现的基本流程">MapReduce实现的基本流程</h3>
+<ol type="1">
+<li>将输入文件拆分为 M 个块，通常为 16 MB 到
+64MB。在一组计算机上启动程序的多个副本。</li>
+<li>master 挑选空闲的 worker 并为每个 worker 分配一个 map 任务或一个
+reduce 任务。有 M map 任务和 R reduce 任务要分配。</li>
+<li>分配了映射任务的工作线程读取输入拆分的内容。中间键/值对缓冲在内存中。</li>
+<li>缓冲对会定期写入本地磁盘，并通过分区功能分区到 R 区域。</li>
+<li>reduce worker 使用远程过程调用从 map worker
+的本地磁盘读取缓冲数据。中间键按中间键排序。</li>
+<li>reduce 迭代排序的中间数据，并将 key 和值集传递给 Reduce 函数。Reduce
+函数的输出将附加到此 reduce 分区的最终输出文件中。</li>
+<li>当 map 任务和 reduce 任务全部完成后，master 唤醒用户程序。</li>
+</ol>
+<h3
+id="容错机制注意map任务和reduce任务之间的不同">容错机制、（注意Map任务和Reduce任务之间的不同）</h3>
+<ul>
+<li>工作线程故障（Worker Failure）
+<ul>
+<li>通过定期检测信号消息检测故障</li>
+<li>重新执行已完成和正在进行的地图任务</li>
+<li>重新执行正在进行的 reduce 任务</li>
+<li>通过 master 提交任务完成</li>
+</ul></li>
+<li>主站故障（Master Failure）
+<ul>
+<li>从最后一个 checkpointed 状态开始新副本（多主站）</li>
+<li>中止 MapReduce 计算、客户端重试 MapReduce 操作（单主站）</li>
+</ul></li>
+</ul>
+<h3 id="任务粒度">任务粒度</h3>
+<ul>
+<li>M 是Map块的数量。R 是 reduce 件的数量，实际边界：master 做出
+O（M+R） 调度决策并将 O（M*R） 状态保存在内存中。</li>
+</ul>
+<h3 id="备份任务">备份任务</h3>
+<ul>
+<li>工作程序速度较慢会显著延迟完成时间
+<ul>
+<li>其他作业消耗计算机上的资源。具有软错误的</li>
+<li>Bad 磁盘传输数据的速度很慢。</li>
+</ul></li>
+<li>解决方案：在阶段接近尾声时，生成备份任务
+<ul>
+<li>先完成的任务“获胜“</li>
+</ul></li>
+<li>显著缩短作业完成时间</li>
+</ul>
+<h2 id="spark">6. Spark</h2>
+<h3 id="spark的设计动机">Spark的设计动机</h3>
+<ul>
+<li>当前的大多数集群编程模型都是基于从稳定存储到稳定存储的无环数据流</li>
+<li>对于重复重用一组工作数据的应用程序来说，非循环数据流效率低下：迭代算法（机器学习、图形）
+、交互式数据挖掘工具（R、Excel、Python）
+使用当前框架，应用程序在每个查询时从稳定存储中重新加载数据</li>
+</ul>
+<h3
+id="rdd的基本概念并行操作共享变量">RDD的基本概念、并行操作、共享变量</h3>
+<ul>
+<li>Resilient distributed datasets (RDDs)：弹性分布式数据集
+。允许应用程序将工作集保留在内存中以实现高效重用；保留 MapReduce
+的特性（容错性、数据局部性、可扩展性）；支持广泛的应用程序
+<ul>
+<li>不可变的分区对象集合；computetheRDD从可靠存储中的数据开始；通过对稳定存储中的数据进行并行转换（map、filter、groupBy、join
+等）创建；可以缓存以实现高效重用</li>
+</ul></li>
+<li>并行操作：Reduce：在驱动程序中使用关联函数组合数据集元素
+；collect：将数据集的所有元素发送到驱动程序；foreach：通过 AUSER
+提供的函数传递每个元素</li>
+<li>共享变量：Broadcast变量（只读、UsedInMultiple 并行操作、分发给
+worker
+一次）Accumulators（工作只能通过关联操作添加，只有驱动可以读取）</li>
+</ul>
+<h3 id="log-mining的例子容错机制">Log mining的例子，容错机制</h3>
+<ul>
+<li>将错误消息从日志加载到内存中，然后以交互方式搜索各种模式；RDD
+维护可用于重建丢失分区的世系信息</li>
+</ul>
+<h3 id="logistic-regression的例子">Logistic regression的例子</h3>
+<div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-number">1</span> to <span class="hljs-type">ITERATIONS</span>) &#123;
+    <span class="hljs-keyword">val</span> grad = spark.accumulator(<span class="hljs-keyword">new</span> <span class="hljs-type">Vector</span>(<span class="hljs-type">D</span>))
+    <span class="hljs-keyword">for</span> (p &lt;- points) &#123;
+        <span class="hljs-keyword">val</span> s = (<span class="hljs-number">1</span> / (<span class="hljs-number">1</span> + exp(-w dot p.x) - p.y)
+        grad += s * p.x
+    &#125;
+    w -= grad.value
+&#125;</code></pre></div>
+<p><code>for (p &lt;- points)</code>循环中的代码会在Spark的多个工作节点上并行执行，这是通过RDD的并行操作实现的。每个节点处理数据的一个分区，并计算局部梯度，然后将结果汇总到累加器中。</p>
+<h2 id="pregel-图计算">7. Pregel 图计算</h2>
+<h3
+id="计算模型的基本概念输入输出超级步停止条件">计算模型的基本概念（输入、输出、超级步、停止条件）</h3>
+<ul>
+<li><p>输入：有向图
+；每个顶点由一个顶点标识符唯一标识，该标识符与一个可修改的用户定义值相关联
+；每个有向边与一个源顶点、一个可修改的用户定义值和一个目标顶点标识符相关联</p></li>
+<li><p>超级步：由全局同步点分隔；顶点并行计算；修改其状态或传出边的状态；改变图形的拓扑</p></li>
+<li><p>停止条件：<strong>所有顶点同时处于非活动状态</strong>；没有传输中的消息</p></li>
+<li><p>输出：顶点显式输出的值集；通常是有向图，但不是必需的</p></li>
+<li><p>Pregel的计算过程：是由一系列被称为“<strong>超步</strong>”的迭代组成的。在每个超步中，每个顶点上面都会并行执行用户自定义的函数，该函数描述了一个顶点V在一个超步S中需要执行的操作。该函数可以读取前一个超步(S-1)中其他顶点发送给顶点V的消息，执行相应计算后，修改顶点V及其出射边的状态，然后沿着顶点V的出射边发送消息给其他顶点，而且，一个消息可能经过多条边的传递后被发送到任意已知ID的目标顶点上去。</p></li>
+<li><p><strong>当一个顶点不需要继续执行进一步的计算时，就会把自己的状态设置为“停机”，进入非活跃状态。</strong></p></li>
+</ul>
+<h3
+id="理解两个例子maximum-value-example-sssp单源最短路径包括代码理解">理解两个例子（Maximum
+value example, SSSP单源最短路径，包括代码理解)</h3>
+<p><img src="https://s2.loli.net/2024/12/25/JIaOfv1j6rMDchg.png" srcset="/img/loading.gif" lazyload alt="image-20241225184702977" style="zoom: 33%;" /></p>
+<h3 id="理解mapreduce和pregel的不同">理解MapReduce和Pregel的不同</h3>
+<ul>
+<li>图形算法可以编写为一系列链式 MapReduce 调用</li>
+<li>Pregel：在执行计算的机器上保留顶点和边；只对消息使用网络传输</li>
+<li>MapReduce：将图形的整个状态从一个阶段传递到下一个阶段；需要协调链式
+MapReduce 的步骤</li>
+</ul>
+<h3 id="combiner函数">Combiner函数</h3>
+<ul>
+<li>Worker 可以组合其 vertices 上报的消息，并发出一条消息</li>
+<li>减少消息流量和磁盘空间</li>
+</ul>
+<h3 id="pregel的实现流程">pregel的实现流程</h3>
+<ul>
+<li>程序的许多副本开始在计算机集群上执行</li>
+<li>Master 对图形进行分区，并为每个 worker 分配一个或多个分区</li>
+<li>Master 还为每个 worker 分配一个 input 的分区</li>
+<li>Master 指示每个 worker 执行一个 superstep</li>
+<li>计算停止后，master 可以指示每个 worker 保存其部分的 graph</li>
+</ul>
+<h3 id="容错机制-局部恢复">容错机制: 局部恢复</h3>
+<ul>
+<li>Checkpointing：主节点定期指示 worker
+将其分区的状态保存到持久存储中</li>
+<li>故障检测：使用常规的 “ping” 消息</li>
+<li>恢复：主节点将图形分区重新分配给当前可用的工作线程、所有工作线程从最近的可用检查点重新加载其分区状态</li>
+<li>受限恢复：记录传出消息、仅涉及正在恢复的分区</li>
+</ul>
+<h3
+id="workermasteraggregator的实现">worker、master、aggregator的实现</h3>
+<ul>
+<li>worker：维护其图形部分的状态、发送消息给另一个顶点</li>
+<li>master：协调工作人员的活动、维护有关计算进度和图形状态的统计信息</li>
+<li>aggregator：在 superstep 期间，worker
+将提供给聚合器实例的所有值组合成一个 local
+值，将部分缩减的聚合器减少为全局值</li>
+</ul>
+<h3 id="pagerank算法和二部图的实现">PageRank算法和二部图的实现</h3>
+<ul>
+<li><p>PageRank：用于根据对文档的引用数量和源文档本身的重要性来确定文档的重要性</p>
+<ul>
+<li>A = 指定页面； T1 …. Tn = 指向页面 A 的页面(引用)； d =
+阻尼系数，介于 0 到 1 （通常设为 0.85）； C(T) = 链接数量； PR(A) = 页面
+A 的 PageRank</li>
+</ul>
+<p><span class="math display">\[
+PR(A)=(1-d)+d\bullet(\frac{PR(T_1)}{C(T_1)}+\frac{PR(T_2)}{C(T_2)}+.......+\frac{PR(T_n)}{C(T_n)})
+\]</span></p></li>
+<li><p>Bipartite Matching：输入2
+个不同的顶点集（L、R），边缘仅在该集之间</p>
+<p>第一阶段：每个尚未匹配的左顶点向每个相邻顶点发送请求匹配的消息，然后无条件投票停止。
+第二阶段：每个尚未匹配的右顶点随机选择收到的信息之一，发送信息批准该请求，并向其他请求者发送拒绝请求的信息。然后无条件投票停止。
+第三阶段：每个尚未匹配的左顶点选择收到的批准信息之一，并发送接受信息。
+第四阶段：未匹配的右顶点最多收到一条接受信息。它记录匹配的节点，并无条件投票停止</p></li>
+</ul>
+<h2 id="graphlab">8.GraphLab</h2>
+<h3 id="基于图的数据表示">基于图的数据表示</h3>
+<ul>
+<li>具有与每个顶点和边关联的任意数据（C++ 对象）的图形。</li>
+</ul>
+<h3 id="更新函数">更新函数</h3>
+<ul>
+<li>更新函数是用户定义的程序，当应用于顶点时，它会转换顶点范围内的数据</li>
+</ul>
+<h3 id="调度器">调度器</h3>
+<ul>
+<li>调度器确定顶点的更新顺序。该过程将重复，直到调度程序为空
+<ul>
+<li>Round Robin：顶点按固定顺序更新</li>
+<li>FIFO：顶点按添加顺序更新</li>
+<li>优先级：顶点按优先级顺序更新</li>
+</ul></li>
+</ul>
+<h3 id="一致性模型">一致性模型</h3>
+<ul>
+<li>对于每个并行执行，存在一个 update
+函数的顺序执行，这会产生相同的结果。</li>
+<li>运行相邻更新函数的处理器同时修改共享数据</li>
+<li>保证所有更新函数的顺序一致性</li>
+<li>如果两个顶点不共享一条边，则可以同时更新这两个顶点</li>
+</ul>
+<h3 id="label-propagation的例子标签传播算法">Label
+Propagation的例子（标签传播算法）</h3>
+<p><img src="https://s2.loli.net/2024/12/25/vKp4g1iyNx3wSYL.png" srcset="/img/loading.gif" lazyload alt="image-20241225192707227" style="zoom:33%;" /></p>
+<h2 id="paxos">9. Paxos</h2>
+<h3
+id="相关概念问题描述角色类型工作环境">相关概念（问题描述、角色类型、工作环境）</h3>
+<p>Paxos旨在解决的是在一群可以提出值的进程中如何确保这些值中仅有一个被选中的问题。共识算法必须满足以下的安全要求：</p>
+<ul>
+<li>只有已经被提出的值才可能被选中。</li>
+<li>只能选择一个单一的值。</li>
+<li>进程不能得知一个值已被选中除非它实际上已经被选中。</li>
+</ul>
+<p>在Paxos算法中有三种类型的代理（角色）：</p>
+<ul>
+<li><strong>Proposers（提议者）</strong>：负责提出值和尝试让这些值被接受。</li>
+<li><strong>Acceptors（接受者）</strong>：负责对提议进行投票，并最终决定哪些值被选中。</li>
+<li><strong>Learners（学习者）</strong>：负责了解哪些值最终被选定。</li>
+</ul>
+<p>一个单独的进程可以同时扮演多个角色。</p>
+<p>Paxos算法是在异步、非拜占庭模型下工作的，意味着：</p>
+<ul>
+<li>各个代理的操作速度是任意的，可能会因为停止而失败，也可能会重启。</li>
+<li>消息传递的时间可能是任意长的，消息可能会被复制或丢失，但不会被篡改。</li>
+</ul>
+<h3
+id="算法描述阶段1阶段2理解例子">算法描述（阶段1、阶段2）理解例子</h3>
+<p>阶段1: 准备（Prepare）阶段2: 接受（Accept）阶段3：Learn阶段</p>
+<ol type="1">
+<li><p>获取一个Proposal ID n，为了保证Proposal
+ID唯一，可采用时间戳+Server ID生成；</p></li>
+<li><p>Proposer向<strong>所有</strong>Acceptors广播Prepare(n)请求（提议包含两个字段：[n,
+v]，其中 n 为序号（具有唯一性），v 为提议值）</p></li>
+<li><p>Acceptor比较n和minProposal，如果n&gt;minProposal，minProposal=n（保证以后不会再接受序号小于
+n1的提议。），并且将 acceptedProposal 和 acceptedValue 返回（包括 [no
+previous] 尚无提案）；n&lt;=minProposal，则丢弃该提议请求；</p></li>
+<li><p>Proposer接收到过半数回复后，如果发现有acceptedValue返回，将所有回复中<strong>v最大的</strong>作为本次提案的v，否则可以任意决定本次提案的vv；</p></li>
+<li><p>进入<strong>第二阶段</strong>，广播Accept (n,value)
+到所有节点；</p></li>
+<li><p>Acceptor比较n和minProposal，如果n&gt;=minProposal，则acceptedProposal=minProposal=n，acceptedValue=v，本地持久化后，那么就发送通知给所有的
+Learner；否则，返回minProposal。</p></li>
+<li><p>提议者接收到过半数请求后，如果发现有返回值result
+&gt;n，表示有更新的提议，跳转到1；否则value达成一致。</p></li>
+</ol>
+<h2 id="chubby">10. Chubby</h2>
+<h3 id="chubby-cell的概念">Chubby cell的概念</h3>
+<ul>
+<li>副本集：放置以减少相关故障；</li>
+<li>使用 Paxos 选择 master （主租赁）：承诺不为主租约选择新的主租约 –
+副本会定期续订主租约；</li>
+<li>维护简单数据库的副本</li>
+<li>只有 master 启动数据库的读取和写入：使用共识协议进行更新</li>
+<li>用于故障副本的替换系统：从空闲池中选择一台新计算机 – 更新 DNS
+表，替换 IP 地址 – 主轮询 DNS 并注意到更改 –
+从备份和活动副本中获取数据库的副本</li>
+</ul>
+<h3 id="缓存机制">缓存机制</h3>
+<ul>
+<li>客户端缓存文件数据、节点元数据。内存中保存的直写缓存</li>
+<li>失效：主服务器保留客户端可能已缓存的内容列表 –
+写入区块，主服务器发送失效 – 客户端刷新更改的数据，使用KeepAlive确认 –
+一轮失效，数据不可缓存</li>
+<li>使数据无效但不更新：任意更新效率低下</li>
+<li>严格一致性与弱一致性：较弱的模型更难为程序员使用；不想更改预先存在的通信协议</li>
+<li>处理和锁定缓存：事件通知客户端有冲突的锁请求</li>
+</ul>
+<h3 id="会话机制">会话机制</h3>
+<ul>
+<li>通过 KeepAlives
+维护的会话；句柄、锁、缓存数据仍然有效；显式终止，或在租约超时后终止；租约超时提前；Master
+提前租约超时；客户端立即发送另一个 KeepAlive；缓存失效搭载在 KeepAlive
+上；客户端维护本地租约超时；本地租约到期时：禁用缓存、会话处于危险状态，客户端在宽限期内等待、重新连接时启用缓存；应用程序获知会话更改</li>
+</ul>
+<h3 id="fail-over机制">Fail-over机制</h3>
+<ul>
+<li>已丢弃的内存中状态（ In-memory state discarded）；快速连任（Quick
+re-election）；缓慢的连任（ Slow re-election）</li>
+<li>新当选主机的步骤：1. 选择新的纪元编号 2. 仅响应主机位置请求 3.
+为数据库中的会话/锁建立内存状态 4. 响应KeepAlives 5.
+向缓存发出故障转移事件 6. 等待确认/会话过期 7. 允许所有操作继续
+新选主机的步骤（续）：8.处理创建的故障转移前使用的主机——在内存中重新创建，响应调用——如果关闭，则在内存中记录
+9.删除间隔后没有打开句柄的临时文件</li>
+</ul>
+<h2 id="bigtable">11. Bigtable</h2>
+<h3
+id="数据模型行列时间戳维度以网页为例">数据模型（行、列、时间戳维度），以网页为例</h3>
+<p>Bigtable的数据模型是一种稀疏、分布式、持久化的多维排序映射，它以（行：字符串,
+列：字符串, 时间戳：int64）-&gt;
+字符串的形式组织数据。下面我们将以存储网页为例来解释这个数据模型中的各个维度。</p>
+<p><strong>行 (Row)</strong></p>
+<ul>
+<li><strong>键</strong>：行键是任意的字符串，长度可达64KB，但通常会更短。在网页的例子中，行键可以是反转后的URL（例如，com.example.www会被存为www.example.com），以便于按域名进行排序。</li>
+<li><strong>操作</strong>：对同一行的所有操作都是原子性的。</li>
+<li><strong>排序</strong>：行按照字典序排列。具有连续键的行构成一个Tablet，这是Bigtable分布和负载均衡的基本单位。</li>
+</ul>
+<p><strong>列 (Column)</strong></p>
+<ul>
+<li><strong>分组</strong>：列被分成若干个列族（column
+families），每个列族是一个访问控制单元。例如，对于网页，可能有多个列族来分别存储页面内容、元数据、链接等不同方面的信息。</li>
+<li><strong>类型</strong>：所有在一个列族内的数据都应该是同一种类型。</li>
+<li><strong>创建</strong>：必须先创建列族才能向其中写入数据。</li>
+<li><strong>数量</strong>：不同的列族数量应该保持较小，并且很少改变。</li>
+</ul>
+<p><strong>时间戳 (Timestamp)</strong></p>
+<ul>
+<li><strong>键</strong>：时间戳是一个64位整数，用来索引同一行同一列的不同版本的数据。</li>
+<li><strong>分配</strong>：时间戳可以由Bigtable自动分配（精确到微秒级别），也可以由客户端应用程序指定。</li>
+<li><strong>顺序</strong>：数据按照递减的时间戳排序，即最近的版本排在最前面。</li>
+<li><strong>垃圾收集</strong>：为了管理版本历史，Bigtable允许设置每列族保留的最大版本数或一定时间段内的版本，超出范围的数据将被清理。</li>
+</ul>
+<h3 id="sstable的概念及结构">SSTable的概念及结构</h3>
+<p>它是一种持久化、不可变且有序的键值对存储结构。每个SSTable由一系列按照字典序排序的键值对组成，这些键值对被组织成多个块（block），通常每个块大小为64KB。</p>
+<p><img src="https://s2.loli.net/2024/12/25/txJhL2RUjIryElo.png" srcset="/img/loading.gif" lazyload alt="image-20241225220101819" style="zoom: 33%;" /></p>
+<h3 id="chubby和bigtable的联系">Chubby和Bigtable的联系</h3>
+<p>Chubby作为Bigtable的外部依赖，提供高可用且持久的分布式锁服务，各种任务（提供命名空间，并保证任何时候最多一个活动服务器的读/写的原子;发现
+Tablet 服务器并最终确定 Tablet 服务器死亡）。如果 Chubby
+长时间不可用，Bigtable 将不可用。</p>
+<h3 id="tablet的定位三层架构">Tablet的定位（三层架构）</h3>
+<ul>
+<li><strong>根表 (Root
+Tablet)</strong>：存储了所有METADATA表的Tablet位置信息。</li>
+<li><strong>元数据表 (METADATA
+Tablet)</strong>：每个METADATA行存储了一个Tablet的信息（包括标识符和结束行键），并且每行大约占用1KB内存。为了防止METADATA表过大，对其大小有一个适度限制，比如128MB。</li>
+<li><strong>用户数据表 (User Data
+Tablet)</strong>：这些Tablet存储实际的用户数据。当需要访问某个具体的Tablet时，首先会查询根表以获取对应的METADATA表位置，再从METADATA表中查找目标Tablet的具体位置。</li>
+</ul>
+<h3 id="tablet的分配">Tablet的分配</h3>
+<ul>
+<li><strong>跟踪在线状态</strong>：主服务器持续监控存活的tablet服务器集合以及当前Tablet到tablet服务器的分配情况。</li>
+<li><strong>分配任务</strong>：当有新的Tablet需要分配或现有分配发生变化时，主服务器会向相应的tablet服务器发送加载请求。</li>
+<li><strong>负载均衡</strong>：主服务器还负责检测集群中的负载状况，并根据需要重新分配Tablet以保持各服务器之间的负载均衡。</li>
+<li><strong>发现与终结</strong>：主服务器通过监视Chubby目录来发现新加入的tablet服务器，并在服务器失效时做出响应。</li>
+</ul>
+<h3 id="tablet的服务读写恢复">Tablet的服务（读、写、恢复）</h3>
+<ul>
+<li>写操作：在写入之前，系统会检查输入格式是否正确并验证权限。有效的变更会被记录到提交日志中，随后插入到memtable里。</li>
+<li>读操作：读取前同样进行格式和权限检查。读取是在SSTable和memtable合并视图上执行的，这样可以确保即使数据分布在多个文件中也能高效地形成结果集。</li>
+<li>恢复操作：当Tablet重启时，它会从METADATA表读取元数据，加载SSTable索引到内存，并重建自上次持久化点以来的memtable，从而恢复到最新的状态。</li>
+</ul>
+<h3 id="compaction的三种类型及概念">Compaction的三种类型及概念</h3>
+<ol type="1">
+<li><strong>Minor
+Compaction</strong>：将memtable转换为一个新的SSTable，减少内存使用量，并降低重启时的日志流量。</li>
+<li><strong>Merging
+Compaction</strong>：减少SSTable的数量，这是应用版本控制策略（如保留最近N个版本的数据）的好时机。</li>
+<li><strong>Major
+Compaction</strong>：是一种特殊的合并压缩，最终只产生一个SSTable，里面仅包含未被删除的有效数据。这种压缩有助于清理不再需要的数据，并提高查询效率。</li>
+</ol>
+<h2 id="并行计算">12. 并行计算</h2>
+<h3 id="并行计算的定义">并行计算的定义</h3>
+<ul>
+<li><strong>同时</strong>使用多种计算资源解决计算问题。问题被分为离散的部分；每个部分进一步分解为离散的指令；
+每个部分指令同时在不同处理器执行；总体控制和协调机制</li>
+</ul>
+<h3 id="并行计算的发展">并行计算的发展</h3>
+<ul>
+<li>始于70年代：1946年第一台计算机<strong>ENIAC</strong>，1972年第一台并行计算机<strong>ILLIAC
+IV</strong>，向量机<strong>Cray-1</strong>（一般将Cray-1投入运行的1976年称为
+<strong>“超级计算元年”</strong>）</li>
+<li>80年代百家争鸣：<strong>早期</strong>：以<strong>MIMD</strong>并行计算机的研制为主；<strong>中期</strong>：共享存储多处理机<strong>SMP</strong>；<strong>后期</strong>：具有强大计算能力的并行机</li>
+<li>90年代体系结构框架趋于一统：<strong>DSM</strong>分布式共享存储，
+<strong>MPP</strong>大规模并行处理结构，
+<strong>NOW</strong>工作站机群</li>
+<li>2000年至今前所未有大踏步发展：<strong>Cluster机群</strong>，<strong>Constellation星群</strong>，
+<strong>MPP</strong>专用高性能网络</li>
+<li>目前典型的并行系统组成（引入<strong>异构架构</strong>）</li>
+<li>并行计算发展水平的标志：<strong>超级计算机</strong>，性能是以<strong>每秒浮点运算（FLOPS）</strong>来衡量</li>
+<li>Top500趋势：国家对比、算力架构对比、互联网络对比、超算架构对比、制造商对比、百亿亿次（EFlop）、E级超算计划</li>
+</ul>
+<h3 id="并行程序的性能评价">并行程序的性能评价</h3>
+<ul>
+<li>加速比：<span
+class="math inline">\(S(p)=\frac{T_s}{T_p}\)</span>，<span
+class="math inline">\(T_s\)</span>是最佳串行算法的执行时间，<span
+class="math inline">\(T_p\)</span>是使用p个处理器时的执行时间。无法达到的原因：不能并行化<strong>处理器空闲</strong>、并行需要额外的计算（<strong>同步成本</strong>）、进程之间通讯成本（<strong>主要因素</strong>）
+<ul>
+<li>系统效率<span class="math inline">\(E(p)=\frac{T_s}{p\times
+T_p}\)</span></li>
+</ul></li>
+<li>Amdahl定律：并行化后加速比计算公式与理论上限， f
+表示程序中不可以被并行化的部分所占的比例。$S(p)= = $
+，随着处理器数量的增加，对并行效 率的提升会固定在一定比例<span
+class="math inline">\(S(p)_{p\to\infty }=1/f\)</span></li>
+<li>Gustafson定律：
+研究在给定的时间内用不同数目的处理器能够完成多大的计算量<span
+class="math inline">\(S(p)= \frac {ts+p\times t_ {p}}{t_ {s}+p\times t_
+{p}/p} = \frac {t_ {s}+p\times t_ {p}}{t_ {s}+t_ {p}} =f+p \times
+(1-f)\)</span></li>
+<li>可扩展性：性能随处理器数的增加而按比例提高的能力
+<ul>
+<li>强可扩展性：问题规模不变，处理器的数量增加。线性扩展（加速比等于处理器的数量）很难实现，</li>
+<li>弱可扩展性：随着处理器的增加，问题的规模同比增加。线性扩展（负载的增加，执行时间保持不变）更容易实现。</li>
+</ul></li>
+<li>时间复杂度：<span class="math inline">\(T_p =
+T_{comp}+T_{comm}\)</span>，计算时间+通信时间；<span
+class="math inline">\(T_{comm}=\sum T_{startup}+nT_{data}\)</span>
+信息延迟+信息数据量×单位数据的传输时间</li>
+</ul>
+<h3 id="mpi并行编程的6个常用接口">MPI并行编程的6个常用接口</h3>
+<p>MPI是一个消息传递接口标准</p>
+<ul>
+<li>MPI_INIT：MPI初始化。初始化MPI并行程序的执行环境，其它MPI函数之前被调用，并且在一个MPI程序中，只能被调用一次</li>
+<li>MPI_FINALIZE：结束MPI系统。清除MPI环境的所有状态。</li>
+<li>MPI_COMM_RANK：返回本进程在指定通信域中的进程号，将自身与其他进程区分</li>
+<li>MPI_COMM_SIZE
+：返回指定通信域所包含的进程数，确定自身完成任务比例</li>
+<li>MPI_SEND：用于发送一个消息目标进程。<strong>阻塞型</strong>消息发送接口。<strong>点对点</strong>通信是MPI通信机制的基础。</li>
+<li>MPI_RECV：用于从指定进程接受一个消息。阻塞型消息接收接口。</li>
+</ul>
+<h3 id="mpi消息的结构">MPI消息的结构</h3>
+<ul>
+<li>消息缓冲：消息的内容。由三元组&lt;起始地址，数据个数，数据类型&gt;标识</li>
+<li>消息信封：消息的接收/发送者地址。由三元组&lt;源/目标进程，消息标签，通信域&gt;标识</li>
+<li>消息类型分为<strong>预定义类型</strong>和<strong>派生数据类型</strong>。<strong>消息标签</strong>用于接收者区分这两个消息</li>
+</ul>
+<h2 id="课程报告--基本解决方案思路">13. 课程报告-
+基本解决方案（思路）</h2>
+<h3 id="从技术角度对方案进行分析">从技术角度对方案进行分析</h3>
+<h3 id="从非技术角度对方案进行分析">从非技术角度对方案进行分析</h3>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%8A%A8%E6%80%81/">动态</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B9%B6%E8%A1%8C%E6%8A%80%E6%9C%AF/">并行技术</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">期末复习</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/12/11/59/">
+                        <span class="hidden-mobile">常用GAN及其损失函数</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <!-- begin 评论 -->
+  <div id="valine"></div> 
+  <!-- end 评论 -->
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+       
+        var options = Object.assign(
+          {"appId":"t9jCQpAs0bonvdH69rBoVs08-gzGzoHsz","appKey":"IVwl94UT4wnOPWUgwn4AfOCE","path":"window.location.pathname","placeholder":"世界的小小漂泊者呀，把你的足迹留在我的文字里吧…","avatar":"robohash","avatarForce":true,"meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","admin_email_hash":"393669798@qq.com","enableQQ":true,"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"}},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        ) 
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+ 
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    <!--向顶部滚动的箭头-->
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!--自定义底部 HTML 内容-->
+    
+  </main>
+  
+  <!--页脚-->
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <!---->
+     &copy; <script type="text/javascript"> var myDate = new Date().getFullYear(); document.write(myDate) </script> <a target="_blank" rel="noopener" href="https://dramwig.github.io/" title="风倾 | 船动莲开" targe="_black" >风倾</a>  |  船动莲开 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+
+      <!--通过API接口作为首页副标题的内容-->
+      
+        typing(title)  //tying打字机
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fa7203cd147458a2bb6b7c7fc7bd03a3";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
